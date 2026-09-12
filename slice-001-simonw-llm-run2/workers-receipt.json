@@ -1,0 +1,250 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 2
+ },
+ "completed_at": "2026-09-12T16:54:59.656431Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c9: marked observed but cited groundings are ['inferred']",
+   "c11: marked observed but cited groundings are ['inferred']",
+   "c12: marked observed but cited groundings are ['inferred']",
+   "c14: marked observed but cited groundings are ['inferred']",
+   "c28: path 'readme.md' not in the analyzed file inventory"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "escalation_required",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "734137b9-bc3d-4c0e-ae26-ceb28a87145b",
+   "conservative_cost_ceiling_usd": 0.0345776,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.000845,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0004225,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 661,
+     "prompt_tokens": 3430,
+     "reasoning_tokens": 560,
+     "total_tokens": 4091
+    }
+   },
+   "failure": null,
+   "latency_seconds": 10.36,
+   "output_ref": "slice-001-simonw-llm-run2/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "schema_invalid",
+   "summary": {
+    "confidence": 0.85,
+    "primary": "cli-tools",
+    "secondary": [
+     "artificial-intelligence",
+     "developer-tools"
+    ]
+   },
+   "task_id": "af-slice-001-simonw-llm-run2-taxonomy-01",
+   "worker_run_entity_id": "worker_734137b9-bc3d-4c0e-ae26-ceb28a87145b"
+  },
+  {
+   "attempt": 1,
+   "candidate": "67e5d043-db10-435b-be39-923462aefe63",
+   "conservative_cost_ceiling_usd": 0.0394559,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.017819150000000002,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.008909575000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 31414,
+     "prompt_tokens": 14081,
+     "reasoning_tokens": 26726,
+     "total_tokens": 45495
+    }
+   },
+   "failure": null,
+   "latency_seconds": 281.85,
+   "output_ref": "slice-001-simonw-llm-run2/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run2-writer-01",
+   "worker_run_entity_id": "worker_67e5d043-db10-435b-be39-923462aefe63"
+  },
+  {
+   "attempt": 2,
+   "candidate": "c14aae60-adf6-489e-8624-0ec45fec46db",
+   "conservative_cost_ceiling_usd": 0.042894800000000004,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00660675,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003303375,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 6984,
+     "prompt_tokens": 20765,
+     "reasoning_tokens": 2258,
+     "total_tokens": 27749
+    }
+   },
+   "failure": null,
+   "latency_seconds": 54.73,
+   "output_ref": "slice-001-simonw-llm-run2/worker_runs/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run2-writer-revision-02",
+   "worker_run_entity_id": "worker_c14aae60-adf6-489e-8624-0ec45fec46db"
+  },
+  {
+   "attempt": 1,
+   "candidate": "2543deaa-8fcb-4ca9-8004-1bc17f030481",
+   "conservative_cost_ceiling_usd": 0.04275635,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.016936200000000002,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.008468100000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 27711,
+     "prompt_tokens": 20538,
+     "reasoning_tokens": 24845,
+     "total_tokens": 48249
+    }
+   },
+   "failure": null,
+   "latency_seconds": 246.45,
+   "output_ref": "slice-001-simonw-llm-run2/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 2,
+     "supported": 38,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 4,
+    "status": "fail"
+   },
+   "task_id": "af-slice-001-simonw-llm-run2-verifier-01",
+   "worker_run_entity_id": "worker_2543deaa-8fcb-4ca9-8004-1bc17f030481"
+  },
+  {
+   "attempt": 1,
+   "candidate": "67751df2-7f02-4185-b837-2a7f7ff36bce",
+   "conservative_cost_ceiling_usd": 0.037265900000000005,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.005278649999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0026393249999999997,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8049,
+     "prompt_tokens": 8361,
+     "reasoning_tokens": 6959,
+     "total_tokens": 16410
+    }
+   },
+   "failure": null,
+   "latency_seconds": 95.41,
+   "output_ref": "slice-001-simonw-llm-run2/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.75,
+     "redundancy": 0.8,
+     "scope_discipline": 0.9,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-001-simonw-llm-run2-critic-01",
+   "worker_run_entity_id": "worker_67751df2-7f02-4185-b837-2a7f7ff36bce"
+  },
+  {
+   "attempt": 1,
+   "candidate": "26c0c540-3dae-46b8-8014-19832a7d3462",
+   "conservative_cost_ceiling_usd": 0.03411425,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00215425,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.001077125,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3704,
+     "prompt_tokens": 2015,
+     "reasoning_tokens": 3514,
+     "total_tokens": 5719
+    }
+   },
+   "failure": null,
+   "latency_seconds": 37.84,
+   "output_ref": "slice-001-simonw-llm-run2/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-001-simonw-llm-run2-seo-01",
+   "worker_run_entity_id": "worker_26c0c540-3dae-46b8-8014-19832a7d3462"
+  }
+ ],
+ "slice": "slice-001-simonw-llm-run2",
+ "started_at": "2026-09-12T16:42:23.044931Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 4,
+  "leakage": [],
+  "status": "fail",
+  "summary": "Fail on two grounds. Epistemic: c30 and c31 cite execution paths (exec_1883828468e7, exec_c714034a13f9) but declare observed, exceeding the inferred ceiling the contract sets for execution-path evidence; c9/c11/c12/c14 handle identical evidence correctly as inferred. Citation sufficiency: c23 and c38 are only partially supported because ev_manifest_1 and important_3 back just the three-manifest count and pyproject.toml importance, while the requirements-only parsing scope and docs/requirements.txt contents rest on uncited analyzer-limitations text. All 40 claims use valid grounding IDs; no knowledge leakage, hallucinated names, or rights issues; the draft correctly avoids the packet's self-contradictory claim_4d30ade3e21e and reports both the 2,059 and 2,324 relation figures.",
+  "unsupported": []
+ }
+}

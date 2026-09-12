@@ -1,0 +1,19 @@
+# AI Frontier RKE lab: pipeline code, documents and run receipts are tracked; artifacts are not.
+# validated != published. Canonical drafts, worker outputs, MACR task files and third-party
+# repository excerpts (RepoLumen manifests, grounding bundles) stay local until a publication
+# event (RELEASE_GATES G0-G10 + human review) says otherwise. Receipts (numbers, hashes) are kept.
+slice-*/artifacts/
+slice-*/worker_runs/
+slice-*/tasks/
+slice-*/canonical/
+slice-*/validation/
+slice-*/REPORT.md
+slice-*/*.log
+repolumen-cache/
+mock/
+pipeline.v1-backup-*/
+__pycache__/
+*.pyc
+step3.err
+step3.out
+slice-*/packets/

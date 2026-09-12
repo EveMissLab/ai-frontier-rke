@@ -1,0 +1,66 @@
+{
+ "asset_id": "asset_repo_github_622352364_overview",
+ "asset_revision_id": "assetrev_asset_repo_github_622352364_overview_v3",
+ "canonical_bytes": 20306,
+ "canonical_source_ref": "slice-001-simonw-llm-run2/canonical/overview.v3.DRAFT-NOT-VALIDATED.md",
+ "canonical_source_sha256": "89ee2bd888822bb13227efaf4254c18b1ff2cfa3ee2251408a9d469df0a2cbd9",
+ "claims": 40,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "fail"
+   },
+   "passed": false
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 40,
+    "sections": 6
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "1df47ddcac20d58726a993949da8ef84f4081085",
+    "registered": "1df47ddcac20d58726a993949da8ef84f4081085"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/simonw/llm",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": false,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 9,
+  "unchanged_entities": 0,
+  "updated_entities": 3,
+  "written_cells": 102
+ },
+ "supported_claims": 38
+}

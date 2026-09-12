@@ -1,0 +1,1367 @@
+{
+ "boundaries_static": [
+  "warnings.simplefilter reached from llm/cli.py",
+  "hasattr reached from llm/plugins.py [load_plugins]",
+  "pm.load_setuptools_entrypoints reached from llm/plugins.py [load_plugins]",
+  "LLM_LOAD_PLUGINS.split reached from llm/plugins.py [load_plugins]",
+  "name.strip reached from llm/plugins.py [load_plugins]",
+  "metadata.distribution reached from llm/plugins.py [load_plugins]",
+  "entry_point.load reached from llm/plugins.py [load_plugins]",
+  "pm.register reached from llm/plugins.py [load_plugins]",
+  "pm._plugin_distinfo.append reached from llm/plugins.py [load_plugins]",
+  "sys.stderr.write reached from llm/plugins.py [load_plugins]",
+  "importlib.import_module reached from llm/plugins.py [load_plugins]"
+ ],
+ "core_flow_static": [
+  "llm/__main__.py [__main__] -> llm/cli.py [cli]",
+  "llm/cli.py -> llm/plugins.py [load_plugins] -> external/unresolved [importlib.import_module] (boundary)",
+  "llm/cli.py -> llm/plugins.py [load_plugins] -> external/unresolved [name.strip] (boundary)",
+  "llm/cli.py -> llm/plugins.py [load_plugins] -> external/unresolved [pm.register] (boundary)",
+  "llm/cli.py -> llm/plugins.py [load_plugins] -> external/unresolved [sys.stderr.write] (boundary)",
+  "llm/cli.py -> llm/plugins.py [load_plugins] -> external/unresolved [pm._plugin_distinfo.append] (boundary)"
+ ],
+ "dependencies_partial": [
+  {
+   "line": 1,
+   "name": "sphinx",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": "==7.2.6"
+  },
+  {
+   "line": 2,
+   "name": "furo",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": "==2023.9.10"
+  },
+  {
+   "line": 3,
+   "name": "sphinx-autobuild",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": null
+  },
+  {
+   "line": 4,
+   "name": "sphinx-copybutton",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": null
+  },
+  {
+   "line": 5,
+   "name": "sphinx-markdown-builder",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": "==0.6.8"
+  },
+  {
+   "line": 6,
+   "name": "myst-parser",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": null
+  },
+  {
+   "line": 7,
+   "name": "cogapp",
+   "scope": "runtime",
+   "source_path": "docs/requirements.txt",
+   "version": null
+  }
+ ],
+ "entrypoints": [
+  {
+   "excerpt": "if __name__ == \"__main__\":\n    cli()",
+   "id": "py_entry_8d052da6b4aa",
+   "observation": "Contains a Python __main__ execution guard.",
+   "path": "llm/__main__.py",
+   "provenance": "verified",
+   "symbol": "__main__"
+  },
+  {
+   "excerpt": null,
+   "id": "entry_1",
+   "observation": "Likely executable entrypoint by filename heuristic.",
+   "path": "llm/cli.py",
+   "provenance": "verified",
+   "symbol": null
+  }
+ ],
+ "execution_paths_static": [
+  {
+   "entrypoint": "llm/__main__.py:__main__",
+   "id": "exec_1883828468e7",
+   "steps": [
+    "llm/__main__.py: -> llm/cli.py:cli (local)"
+   ],
+   "terminal_reason": "leaf",
+   "truncated": false
+  },
+  {
+   "entrypoint": "llm/cli.py:None",
+   "id": "exec_837f2dee781c",
+   "steps": [
+    "llm/cli.py: -> warnings.simplefilter: (external_or_unresolved)"
+   ],
+   "terminal_reason": "unresolved_boundary",
+   "truncated": false
+  },
+  {
+   "entrypoint": "llm/cli.py:None",
+   "id": "exec_bbf7b5170507",
+   "steps": [
+    "llm/cli.py: -> llm/plugins.py:load_plugins (local)",
+    "llm/plugins.py:load_plugins -> hasattr: (external_or_unresolved)"
+   ],
+   "terminal_reason": "unresolved_boundary",
+   "truncated": false
+  },
+  {
+   "entrypoint": "llm/cli.py:None",
+   "id": "exec_c714034a13f9",
+   "steps": [
+    "llm/cli.py: -> llm/plugins.py:load_plugins (local)",
+    "llm/plugins.py:load_plugins -> pm.load_setuptools_entrypoints: (external_or_unresolved)"
+   ],
+   "terminal_reason": "unresolved_boundary",
+   "truncated": false
+  },
+  {
+   "entrypoint": "llm/cli.py:None",
+   "id": "exec_cf7f251ec694",
+   "steps": [
+    "llm/cli.py: -> llm/plugins.py:load_plugins (local)",
+    "llm/plugins.py:load_plugins -> LLM_LOAD_PLUGINS.split: (external_or_unresolved)"
+   ],
+   "terminal_reason": "unresolved_boundary",
+   "truncated": false
+  },
+  {
+   "entrypoint": "llm/cli.py:None",
+   "id": "exec_25ee09cebebb",
+   "steps": [
+    "llm/cli.py: -> llm/plugins.py:load_plugins (local)",
+    "llm/plugins.py:load_plugins -> name.strip: (external_or_unresolved)"
+   ],
+   "terminal_reason": "unresolved_boundary",
+   "truncated": false
+  }
+ ],
+ "files": {
+  "count": 116,
+  "sample": [
+   "llm/__init__.py",
+   "llm/__main__.py",
+   "llm/cli.py",
+   "llm/default_plugins/__init__.py",
+   "llm/default_plugins/default_tools.py",
+   "llm/default_plugins/openai_models.py",
+   "llm/embeddings.py",
+   "llm/embeddings_migrations.py",
+   "llm/errors.py",
+   "llm/hookspecs.py",
+   "llm/logs.py",
+   "llm/migrations.py",
+   "llm/models.py",
+   "llm/parts.py",
+   "llm/plugins.py",
+   "llm/py.typed",
+   "llm/serialization.py",
+   "llm/templates.py",
+   "llm/tools.py",
+   "llm/utils.py"
+  ],
+  "top_level_directories": {
+   "(root)": 11,
+   ".github": 6,
+   "docs": 35,
+   "llm": 20,
+   "tests": 44
+  }
+ },
+ "grounding_id_note": "Cite only IDs that appear in this packet: important_*, entry_*, py_*, exec_*, claim_*, meta_*, summary_repository, architecture_reconstruction, subsys_*, ev_*.",
+ "important_files": [
+  {
+   "id": "important_1",
+   "observation": "Project-level important file.",
+   "path": "README.md",
+   "provenance": "verified"
+  },
+  {
+   "id": "important_2",
+   "observation": "Project-level important file.",
+   "path": "readme.md",
+   "provenance": "verified"
+  },
+  {
+   "id": "important_3",
+   "observation": "Project-level important file.",
+   "path": "pyproject.toml",
+   "provenance": "verified"
+  },
+  {
+   "id": "important_4",
+   "observation": "Project-level important file.",
+   "path": "LICENSE",
+   "provenance": "verified"
+  },
+  {
+   "id": "important_5",
+   "observation": "Important because it is likely an entrypoint.",
+   "path": "llm/__main__.py",
+   "provenance": "verified"
+  },
+  {
+   "id": "important_6",
+   "observation": "Important because it is likely an entrypoint.",
+   "path": "llm/cli.py",
+   "provenance": "verified"
+  }
+ ],
+ "module_roles_by_static_call_degree": [
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 754,
+   "outgoing_calls": 48,
+   "path": "llm/__init__.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 470,
+   "outgoing_calls": 22,
+   "path": "llm/parts.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 0,
+   "outgoing_calls": 422,
+   "path": "tests/test_parts.py",
+   "role": "orchestration candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 58,
+   "outgoing_calls": 348,
+   "path": "tests/test_logs_store.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 105,
+   "outgoing_calls": 245,
+   "path": "llm/cli.py",
+   "role": "entry/orchestration candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 130,
+   "outgoing_calls": 96,
+   "path": "llm/models.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 89,
+   "outgoing_calls": 130,
+   "path": "llm/default_plugins/openai_models.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 123,
+   "outgoing_calls": 64,
+   "path": "llm/logs.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 27,
+   "outgoing_calls": 92,
+   "path": "tests/test_openai_messages.py",
+   "role": "service/core candidate"
+  },
+  {
+   "evidence_basis": "static resolved call degree and entrypoint membership",
+   "incoming_calls": 26,
+   "outgoing_calls": 93,
+   "path": "tests/test_openai_responses.py",
+   "role": "service/core candidate"
+  }
+ ],
+ "modules": [
+  "docs: Top-level directory 'docs' likely represents a subsystem.",
+  "llm: Top-level directory 'llm' likely represents a subsystem.",
+  "tests: Top-level directory 'tests' likely represents a subsystem."
+ ],
+ "packet_version": "overview-selector/v1",
+ "platform_metadata": [
+  {
+   "epistemic_status": "author_claimed",
+   "id": "meta_description",
+   "origin": "github_api",
+   "text": "Access large language models from the command-line",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "author_claimed",
+   "id": "meta_homepage",
+   "origin": "github_api",
+   "text": "https://llm.datasette.io",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_topics",
+   "origin": "github_api",
+   "text": "ai, llms, openai",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_primary_language",
+   "origin": "github_api",
+   "text": "Python",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_language_bytes",
+   "origin": "github_api",
+   "text": "{\"Just\": 972, \"Python\": 1226965, \"Shell\": 929}",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_license",
+   "origin": "github_api+repository_file",
+   "text": "Apache-2.0",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_latest_release",
+   "origin": "github_api",
+   "text": "0.35 published 2026-09-07T23:54:54Z",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_stars",
+   "origin": "github_api",
+   "text": "12489 stargazers at 2026-09-12T06:38:39.129538Z",
+   "type": "repository_metadata"
+  }
+ ],
+ "relation_counts": {
+  "by_resolution": {
+   "external_or_unresolved": 7374,
+   "local": 2324
+  },
+  "by_type": {
+   "calls": 9116,
+   "imports": 582
+  },
+  "total": 9698
+ },
+ "repository": {
+  "analyzed_revision": "1df47ddcac20d58726a993949da8ef84f4081085",
+  "analyzer": {
+   "capability_profile": {
+    "javascript": "bounded_heuristic",
+    "other": "structural_only",
+    "python": "strong_static"
+   },
+   "external_provider": "disabled",
+   "manifest_schema_version": "0.10",
+   "mode": "deterministic",
+   "name": "RepoLumen",
+   "version": "0.10"
+  },
+  "canonical_source_url": "https://github.com/simonw/llm",
+  "license_state": {
+   "agreement": true,
+   "repolumen_detected": "Apache-2.0",
+   "spdx": "Apache-2.0",
+   "status": "open-source"
+  }
+ },
+ "repository_level_evidence": [
+  {
+   "excerpt": null,
+   "id": "subsys_1",
+   "observation": "Top-level directory 'docs' likely represents a subsystem.",
+   "path": "docs",
+   "provenance": "verified",
+   "type": "subsystem"
+  },
+  {
+   "excerpt": null,
+   "id": "subsys_2",
+   "observation": "Top-level directory 'llm' likely represents a subsystem.",
+   "path": "llm",
+   "provenance": "verified",
+   "type": "subsystem"
+  },
+  {
+   "excerpt": null,
+   "id": "subsys_3",
+   "observation": "Top-level directory 'tests' likely represents a subsystem.",
+   "path": "tests",
+   "provenance": "verified",
+   "type": "subsystem"
+  },
+  {
+   "excerpt": null,
+   "id": "ev_manifest_1",
+   "observation": "Repository contains 3 build/dependency manifest file(s).",
+   "path": "pyproject.toml",
+   "provenance": "verified",
+   "type": "manifest_summary"
+  },
+  {
+   "excerpt": null,
+   "id": "ev_tests_1",
+   "observation": "Repository contains 44 test file(s) or test-like file(s).",
+   "path": "tests/conftest.py",
+   "provenance": "verified",
+   "type": "test_summary"
+  }
+ ],
+ "repository_summary": {
+  "file_count": 116,
+  "language_hint": "Python",
+  "maturity_signals": [
+   "116 analyzed files",
+   "44 test-like files",
+   "3 manifest files",
+   "9698 static relation edges",
+   "13 bounded execution paths",
+   "10 grounded teaching claims",
+   "4371 line-addressable semantic code blocks",
+   "4371 evidence-grounded block annotations"
+  ],
+  "purpose_inferred_by_analyzer": "This repository looks like a Python project. It contains 116 analyzed files, and the main starting place appears to be llm/__main__.py. The code seems organized around docs, llm, tests. It includes tests.",
+  "thirty_second_explanation_inferred_by_analyzer": "This repository looks like a Python project. It contains 116 analyzed files, and the main starting place appears to be llm/__main__.py. The code seems organized around docs, llm, tests. It includes tests.",
+  "title": "repo",
+  "top_level_directories": {
+   "(root)": 11,
+   ".github": 6,
+   "docs": 35,
+   "llm": 20,
+   "tests": 44
+  }
+ },
+ "resolved_relation_summary_sample": [
+  "llm/cli.py imports llm/__init__.py:AsyncConversation",
+  "llm/cli.py imports llm/__init__.py:AsyncKeyModel",
+  "llm/cli.py imports llm/__init__.py:AsyncResponse",
+  "llm/cli.py imports llm/__init__.py:Attachment",
+  "llm/cli.py imports llm/__init__.py:CancelToolCall",
+  "llm/cli.py imports llm/__init__.py:Collection",
+  "llm/cli.py imports llm/__init__.py:Conversation",
+  "llm/cli.py imports llm/__init__.py:Fragment",
+  "llm/cli.py imports llm/__init__.py:KeyModel",
+  "llm/cli.py imports llm/__init__.py:Response",
+  "llm/cli.py imports llm/__init__.py:ServerSideTool",
+  "llm/cli.py imports llm/__init__.py:Template",
+  "llm/cli.py imports llm/__init__.py:Tool",
+  "llm/cli.py imports llm/__init__.py:Toolbox",
+  "llm/cli.py imports llm/__init__.py:UnknownModelError",
+  "llm/cli.py imports llm/__init__.py:encode",
+  "llm/cli.py imports llm/__init__.py:get_async_model",
+  "llm/cli.py imports llm/__init__.py:get_default_embedding_model",
+  "llm/cli.py imports llm/__init__.py:get_default_model",
+  "llm/cli.py imports llm/__init__.py:get_embedding_model"
+ ],
+ "runtime_hints_partial": {
+  "build": [
+   "Build/runtime flow inference is partial in v0.10 and depends on manifests, static relations, bounded execution paths, and semantic block extraction."
+  ],
+  "install": [
+   "Inspect dependency manifests before installation."
+  ],
+  "start": [
+   "Contains a Python __main__ execution guard.",
+   "Likely executable entrypoint by filename heuristic."
+  ],
+  "test": [
+   "Run repository tests if present."
+  ]
+ },
+ "selected_symbols_by_file": {
+  "llm/__init__.py": [
+   {
+    "id": "py_func_b506016ee9cb",
+    "lines": "94-111",
+    "symbol": "get_plugins",
+    "type": "function"
+   },
+   {
+    "id": "py_func_dcf6267c03ad",
+    "lines": "114-134",
+    "symbol": "get_models_with_aliases",
+    "type": "function"
+   },
+   {
+    "id": "py_func_5988dfe46aad",
+    "lines": "137-150",
+    "symbol": "_get_loaders",
+    "type": "function"
+   },
+   {
+    "id": "py_func_4987c7ae0980",
+    "lines": "153-155",
+    "symbol": "get_template_loaders",
+    "type": "function"
+   },
+   {
+    "id": "py_func_579fedaf7542",
+    "lines": "158-163",
+    "symbol": "get_fragment_loaders",
+    "type": "function"
+   },
+   {
+    "id": "py_func_476d9808f6f6",
+    "lines": "166-234",
+    "symbol": "get_tools",
+    "type": "function"
+   },
+   {
+    "id": "py_func_175e7f9d4afa",
+    "lines": "237-257",
+    "symbol": "get_embedding_models_with_aliases",
+    "type": "function"
+   },
+   {
+    "id": "py_func_e1698b6a122d",
+    "lines": "260-268",
+    "symbol": "get_embedding_models",
+    "type": "function"
+   },
+   {
+    "id": "py_func_950a3b14de8b",
+    "lines": "271-276",
+    "symbol": "get_embedding_model",
+    "type": "function"
+   },
+   {
+    "id": "py_func_5d5299abc58f",
+    "lines": "279-285",
+    "symbol": "get_embedding_model_aliases",
+    "type": "function"
+   },
+   {
+    "id": "py_func_18fc3f6d56e4",
+    "lines": "288-297",
+    "symbol": "get_async_model_aliases",
+    "type": "function"
+   },
+   {
+    "id": "py_func_ae5e3dc917be",
+    "lines": "300-307",
+    "symbol": "get_model_aliases",
+    "type": "function"
+   }
+  ],
+  "llm/cli.py": [
+   {
+    "id": "py_class_06f6b5bdc0da",
+    "lines": "99-100",
+    "symbol": "FragmentNotFound",
+    "type": "class"
+   },
+   {
+    "id": "py_func_6f9e620f8af8",
+    "lines": "103-119",
+    "symbol": "display_stream_events",
+    "type": "function"
+   },
+   {
+    "id": "py_func_33b51f6c216b",
+    "lines": "122-133",
+    "symbol": "display_async_stream_events",
+    "type": "function"
+   },
+   {
+    "id": "py_func_dd0d97a359a8",
+    "lines": "136-219",
+    "symbol": "_run_chat",
+    "type": "function"
+   },
+   {
+    "id": "py_func_d7103083ecf4",
+    "lines": "222-225",
+    "symbol": "validate_fragment_alias",
+    "type": "function"
+   },
+   {
+    "id": "py_func_fcd2bfa34e8c",
+    "lines": "228-296",
+    "symbol": "resolve_fragments",
+    "type": "function"
+   },
+   {
+    "id": "py_func_4f3b4fe39196",
+    "lines": "299-329",
+    "symbol": "process_fragments_in_chat",
+    "type": "function"
+   },
+   {
+    "id": "py_class_41022981b74f",
+    "lines": "332-333",
+    "symbol": "AttachmentError",
+    "type": "class"
+   },
+   {
+    "id": "py_func_53673e3c227b",
+    "lines": "336-375",
+    "symbol": "resolve_attachment",
+    "type": "function"
+   },
+   {
+    "id": "py_class_829bf15025d5",
+    "lines": "378-385",
+    "symbol": "AttachmentType",
+    "type": "class"
+   },
+   {
+    "id": "py_func_96f6122dac58",
+    "lines": "388-401",
+    "symbol": "resolve_attachment_with_type",
+    "type": "function"
+   },
+   {
+    "id": "py_func_8c5be5083ef2",
+    "lines": "404-408",
+    "symbol": "attachment_types_callback",
+    "type": "function"
+   }
+  ],
+  "llm/default_plugins/openai_models.py": [
+   {
+    "id": "py_func_e9f6a58f456f",
+    "lines": "40-448",
+    "symbol": "register_models",
+    "type": "function"
+   },
+   {
+    "id": "py_func_4816ca37a50d",
+    "lines": "452-486",
+    "symbol": "register_embedding_models",
+    "type": "function"
+   },
+   {
+    "id": "py_class_12b36795c0e9",
+    "lines": "489-510",
+    "symbol": "OpenAIEmbeddingModel",
+    "type": "class"
+   },
+   {
+    "id": "py_func_dd176d248cb5",
+    "lines": "514-895",
+    "symbol": "register_commands",
+    "type": "function"
+   },
+   {
+    "id": "py_class_54ef2c6c58cb",
+    "lines": "898-983",
+    "symbol": "SharedOptions",
+    "type": "class"
+   },
+   {
+    "id": "py_class_b6603707778c",
+    "lines": "986-993",
+    "symbol": "ReasoningEffortEnum",
+    "type": "class"
+   },
+   {
+    "id": "py_class_94b9f672f58c",
+    "lines": "996-999",
+    "symbol": "ReasoningSummaryEnum",
+    "type": "class"
+   },
+   {
+    "id": "py_class_0f25fd4194b2",
+    "lines": "1002-1005",
+    "symbol": "VerbosityEnum",
+    "type": "class"
+   },
+   {
+    "id": "py_class_3eb43d9a206e",
+    "lines": "1008-1011",
+    "symbol": "ImageDetailEnum",
+    "type": "class"
+   },
+   {
+    "id": "py_class_573d4582f2d8",
+    "lines": "1014-1018",
+    "symbol": "ImageDetailWithOriginalEnum",
+    "type": "class"
+   },
+   {
+    "id": "py_func_4a7ef58adf79",
+    "lines": "1021-1025",
+    "symbol": "enum_values_sentence",
+    "type": "function"
+   },
+   {
+    "id": "py_func_a9dc9a74f690",
+    "lines": "1029-1123",
+    "symbol": "build_options_class",
+    "type": "function"
+   }
+  ],
+  "llm/logs.py": [
+   {
+    "id": "py_func_145efc3329cd",
+    "lines": "61-73",
+    "symbol": "canonical_json",
+    "type": "function"
+   },
+   {
+    "id": "py_func_5d911d7e0494",
+    "lines": "76-82",
+    "symbol": "content_hash",
+    "type": "function"
+   },
+   {
+    "id": "py_func_d7cb3c7c2872",
+    "lines": "85-120",
+    "symbol": "_canonical_attachment",
+    "type": "function"
+   },
+   {
+    "id": "py_func_678618701eb5",
+    "lines": "123-140",
+    "symbol": "message_hash",
+    "type": "function"
+   },
+   {
+    "id": "py_class_861b6a204af3",
+    "lines": "143-711",
+    "symbol": "LogStore",
+    "type": "class"
+   },
+   {
+    "id": "py_func_1994a077cf6c",
+    "lines": "714-727",
+    "symbol": "ensure_attachment",
+    "type": "function"
+   },
+   {
+    "id": "py_func_63276cbfdb9f",
+    "lines": "739-745",
+    "symbol": "_attachments_of",
+    "type": "function"
+   },
+   {
+    "id": "py_func_ef08cd10ce32",
+    "lines": "748-784",
+    "symbol": "_encode_text_refs",
+    "type": "function"
+   },
+   {
+    "id": "py_func_b8e24f6d3380",
+    "lines": "787-799",
+    "symbol": "_decode_text_refs",
+    "type": "function"
+   },
+   {
+    "id": "py_func_c4901bfbe961",
+    "lines": "802-807",
+    "symbol": "_fragment_ids",
+    "type": "function"
+   },
+   {
+    "id": "py_func_713a863871ad",
+    "lines": "810-817",
+    "symbol": "_encode_attachment_refs",
+    "type": "function"
+   },
+   {
+    "id": "py_func_94262a3bf682",
+    "lines": "820-832",
+    "symbol": "_resolve_attachments",
+    "type": "function"
+   }
+  ],
+  "llm/models.py": [
+   {
+    "id": "py_class_1cf62603547b",
+    "lines": "57-62",
+    "symbol": "Usage",
+    "type": "class"
+   },
+   {
+    "id": "py_class_77c3bda28bf3",
+    "lines": "66-141",
+    "symbol": "Attachment",
+    "type": "class"
+   },
+   {
+    "id": "py_class_0ac0d456aaac",
+    "lines": "145-188",
+    "symbol": "Tool",
+    "type": "class"
+   },
+   {
+    "id": "py_class_5f55e4c4befa",
+    "lines": "191-257",
+    "symbol": "ServerSideTool",
+    "type": "class"
+   },
+   {
+    "id": "py_func_76f40eee6195",
+    "lines": "260-278",
+    "symbol": "_get_arguments_input_schema",
+    "type": "function"
+   },
+   {
+    "id": "py_func_21a466911847",
+    "lines": "281-286",
+    "symbol": "_accepts_llm_tool_call",
+    "type": "function"
+   },
+   {
+    "id": "py_func_7a23e3a9a003",
+    "lines": "289-298",
+    "symbol": "_implementation_arguments",
+    "type": "function"
+   },
+   {
+    "id": "py_class_448a3b899038",
+    "lines": "301-397",
+    "symbol": "Toolbox",
+    "type": "class"
+   },
+   {
+    "id": "py_class_db5c48316c4b",
+    "lines": "401-406",
+    "symbol": "ToolCall",
+    "type": "class"
+   },
+   {
+    "id": "py_func_f2b9598a1d6a",
+    "lines": "409-416",
+    "symbol": "_ensure_tool_call_id",
+    "type": "function"
+   },
+   {
+    "id": "py_class_bcd768a80e23",
+    "lines": "420-428",
+    "symbol": "ToolResult",
+    "type": "class"
+   },
+   {
+    "id": "py_class_a119860c2d60",
+    "lines": "432-436",
+    "symbol": "ToolOutput",
+    "type": "class"
+   }
+  ],
+  "llm/parts.py": [
+   {
+    "id": "py_func_516e5a7fe7cd",
+    "lines": "31-41",
+    "symbol": "_attachment_to_dict",
+    "type": "function"
+   },
+   {
+    "id": "py_func_dce9b80611cb",
+    "lines": "44-54",
+    "symbol": "_attachment_from_dict",
+    "type": "function"
+   },
+   {
+    "id": "py_class_e405bd6299b8",
+    "lines": "58-104",
+    "symbol": "Part",
+    "type": "class"
+   },
+   {
+    "id": "py_class_11475bf90694",
+    "lines": "108-116",
+    "symbol": "TextPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_7fda580a5258",
+    "lines": "120-141",
+    "symbol": "ReasoningPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_85b1b68efc46",
+    "lines": "145-171",
+    "symbol": "ToolCallPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_ec9c6c4c70cd",
+    "lines": "175-202",
+    "symbol": "ToolResultPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_fde29fbfcdf5",
+    "lines": "206-218",
+    "symbol": "AttachmentPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_8b0cd450e370",
+    "lines": "222-250",
+    "symbol": "Message",
+    "type": "class"
+   },
+   {
+    "id": "py_func_c8a35b884418",
+    "lines": "253-271",
+    "symbol": "normalize_parts",
+    "type": "function"
+   },
+   {
+    "id": "py_func_3c1e67a86835",
+    "lines": "274-280",
+    "symbol": "system",
+    "type": "function"
+   },
+   {
+    "id": "py_func_4fff1179a215",
+    "lines": "283-289",
+    "symbol": "user",
+    "type": "function"
+   }
+  ],
+  "tests/test_logs_store.py": [
+   {
+    "id": "py_func_c40b3a807ecf",
+    "lines": "64-65",
+    "symbol": "store",
+    "type": "function"
+   },
+   {
+    "id": "py_class_c59e4f001cc5",
+    "lines": "71-82",
+    "symbol": "TestCanonicalJson",
+    "type": "class"
+   },
+   {
+    "id": "py_class_a3431f6d8baf",
+    "lines": "85-140",
+    "symbol": "TestMessageHash",
+    "type": "class"
+   },
+   {
+    "id": "py_class_6c8514e9876a",
+    "lines": "146-163",
+    "symbol": "TestSchema",
+    "type": "class"
+   },
+   {
+    "id": "py_func_157210d74e6f",
+    "lines": "169-171",
+    "symbol": "round_trip",
+    "type": "function"
+   },
+   {
+    "id": "py_class_d874ffc278ff",
+    "lines": "174-343",
+    "symbol": "TestChainRoundTrip",
+    "type": "class"
+   },
+   {
+    "id": "py_class_ef348f556c51",
+    "lines": "349-394",
+    "symbol": "TestDedup",
+    "type": "class"
+   },
+   {
+    "id": "py_class_ea12736c1139",
+    "lines": "400-420",
+    "symbol": "TestThreads",
+    "type": "class"
+   },
+   {
+    "id": "py_class_bb2a35c93fa0",
+    "lines": "423-467",
+    "symbol": "TestForking",
+    "type": "class"
+   },
+   {
+    "id": "py_class_ba1eb0a80d60",
+    "lines": "473-517",
+    "symbol": "TestPendingToolCalls",
+    "type": "class"
+   },
+   {
+    "id": "py_class_0cc2999249d3",
+    "lines": "523-569",
+    "symbol": "TestLogResponse",
+    "type": "class"
+   },
+   {
+    "id": "py_class_44cdfc5011ff",
+    "lines": "575-616",
+    "symbol": "TestConversationThreads",
+    "type": "class"
+   }
+  ],
+  "tests/test_openai_messages.py": [
+   {
+    "id": "py_func_617372695675",
+    "lines": "13-25",
+    "symbol": "_sse",
+    "type": "function"
+   },
+   {
+    "id": "py_func_9e2986c0cfee",
+    "lines": "28-33",
+    "symbol": "_text_stream",
+    "type": "function"
+   },
+   {
+    "id": "py_func_a654093d8eb7",
+    "lines": "36-69",
+    "symbol": "_tool_call_stream",
+    "type": "function"
+   },
+   {
+    "id": "py_func_4aacee82a4f6",
+    "lines": "72-89",
+    "symbol": "_text_then_tool_call_stream",
+    "type": "function"
+   },
+   {
+    "id": "py_func_e702786f6c3d",
+    "lines": "93-96",
+    "symbol": "chat_model",
+    "type": "function"
+   },
+   {
+    "id": "py_class_9447fffcde0c",
+    "lines": "99-228",
+    "symbol": "TestBuildMessagesFromExplicitMessages",
+    "type": "class"
+   },
+   {
+    "id": "py_class_8c05b58a26aa",
+    "lines": "231-263",
+    "symbol": "TestBuildMessagesLegacyFieldsStillWork",
+    "type": "class"
+   },
+   {
+    "id": "py_class_e5c45b425f00",
+    "lines": "266-304",
+    "symbol": "TestBuildMessagesSystemDedup",
+    "type": "class"
+   },
+   {
+    "id": "py_class_6f653a446038",
+    "lines": "307-383",
+    "symbol": "TestBuildMessagesConversationHistory",
+    "type": "class"
+   },
+   {
+    "id": "py_class_b87bc559ca5f",
+    "lines": "386-505",
+    "symbol": "TestStreamingExecuteYieldsStreamEvents",
+    "type": "class"
+   },
+   {
+    "id": "py_class_04dd98f0fc94",
+    "lines": "508-524",
+    "symbol": "TestAsyncStreamingExecuteYieldsStreamEvents",
+    "type": "class"
+   },
+   {
+    "id": "py_func_ddee60461e39",
+    "lines": "527-544",
+    "symbol": "_text_stream_with_reasoning_usage",
+    "type": "function"
+   }
+  ],
+  "tests/test_openai_responses.py": [
+   {
+    "id": "py_func_a471db6af84d",
+    "lines": "20-24",
+    "symbol": "test_build_options_class_is_cached_by_capabilities",
+    "type": "function"
+   },
+   {
+    "id": "py_func_48fbfe9263b0",
+    "lines": "27-44",
+    "symbol": "_text_response_json",
+    "type": "function"
+   },
+   {
+    "id": "py_func_dcc3a63a8086",
+    "lines": "71-72",
+    "symbol": "test_code_interpreter_tool_spec",
+    "type": "function"
+   },
+   {
+    "id": "py_func_6aa84042c8d1",
+    "lines": "75-83",
+    "symbol": "test_code_interpreter_validates_container_configuration",
+    "type": "function"
+   },
+   {
+    "id": "py_func_7f3cc70059d6",
+    "lines": "86-98",
+    "symbol": "test_code_interpreter_prepare_request_is_additive_and_idempotent",
+    "type": "function"
+   },
+   {
+    "id": "py_func_54936a943a48",
+    "lines": "136-137",
+    "symbol": "test_web_search_tool_spec",
+    "type": "function"
+   },
+   {
+    "id": "py_func_526400896132",
+    "lines": "154-156",
+    "symbol": "test_web_search_validates_configuration",
+    "type": "function"
+   },
+   {
+    "id": "py_func_eac0fe8e2a84",
+    "lines": "159-175",
+    "symbol": "test_web_search_prepare_request_is_additive_and_idempotent",
+    "type": "function"
+   },
+   {
+    "id": "py_func_23de3abcb425",
+    "lines": "178-250",
+    "symbol": "test_responses_web_search_request_and_result_capture",
+    "type": "function"
+   },
+   {
+    "id": "py_func_e6fc3739d08a",
+    "lines": "253-286",
+    "symbol": "test_server_side_prepare_request_runs_in_list_order_after_baseline",
+    "type": "function"
+   },
+   {
+    "id": "py_func_b3304e6b4ca4",
+    "lines": "289-319",
+    "symbol": "test_responses_mixes_function_and_code_interpreter_tools",
+    "type": "function"
+   },
+   {
+    "id": "py_func_73411f4f7005",
+    "lines": "322-341",
+    "symbol": "test_responses_raw_server_tool_passthrough_on_custom_endpoint",
+    "type": "function"
+   }
+  ],
+  "tests/test_parts.py": [
+   {
+    "id": "py_class_9bf9ff9e7da9",
+    "lines": "8-24",
+    "symbol": "TestTextPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_8946fa151d89",
+    "lines": "27-47",
+    "symbol": "TestReasoningPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_0e0f24a40725",
+    "lines": "50-71",
+    "symbol": "TestToolCallPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_b463ed3b5e3d",
+    "lines": "74-89",
+    "symbol": "TestToolResultPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_56dbd52a62ef",
+    "lines": "92-126",
+    "symbol": "TestAttachmentPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_a9c3a9006383",
+    "lines": "129-132",
+    "symbol": "TestUnknownPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_2c43cd0b4fc8",
+    "lines": "135-148",
+    "symbol": "TestRoleNotOnPart",
+    "type": "class"
+   },
+   {
+    "id": "py_class_9244f747ec47",
+    "lines": "151-195",
+    "symbol": "TestMessage",
+    "type": "class"
+   },
+   {
+    "id": "py_class_eaba7bf05f8c",
+    "lines": "198-248",
+    "symbol": "TestHelpers",
+    "type": "class"
+   },
+   {
+    "id": "py_class_a8083037b6c4",
+    "lines": "251-278",
+    "symbol": "TestStreamEvent",
+    "type": "class"
+   },
+   {
+    "id": "py_class_bf936e5eafca",
+    "lines": "286-304",
+    "symbol": "TestPlainStrPluginCompat",
+    "type": "class"
+   },
+   {
+    "id": "py_class_498bef3dfc3a",
+    "lines": "307-332",
+    "symbol": "TestStreamEventsFromPlainStrPlugin",
+    "type": "class"
+   }
+  ]
+ },
+ "task": "write_overview_asset",
+ "teaching_claims": [
+  {
+   "evidence_ids": [
+    "summary_repository",
+    "entry_1"
+   ],
+   "id": "claim_b2e3aa09dbba",
+   "provenance": "verified",
+   "section": "overview",
+   "status": "supported",
+   "text": "repo contains 116 analyzed files. A detected starting point is llm/cli.py."
+  },
+  {
+   "evidence_ids": [],
+   "id": "claim_4d30ade3e21e",
+   "provenance": "unresolved",
+   "section": "how_it_runs",
+   "status": "unresolved",
+   "text": "No bounded static execution path is available, so runtime flow must be treated as unresolved."
+  },
+  {
+   "evidence_ids": [
+    "architecture_reconstruction"
+   ],
+   "id": "claim_3a9d1854f837",
+   "provenance": "strongly_inferred",
+   "section": "architecture",
+   "status": "supported",
+   "text": "repo: 116 analyzed files, 2 entrypoints, 2059 resolved static call relations, and 13 bounded execution paths."
+  },
+  {
+   "evidence_ids": [
+    "important_1"
+   ],
+   "id": "claim_5e040738cac5",
+   "provenance": "strongly_inferred",
+   "section": "important_files",
+   "status": "supported",
+   "text": "Read README.md early because the analyzer classified it as project-level important file."
+  },
+  {
+   "evidence_ids": [
+    "important_2"
+   ],
+   "id": "claim_75179cf09303",
+   "provenance": "strongly_inferred",
+   "section": "important_files",
+   "status": "supported",
+   "text": "Read readme.md early because the analyzer classified it as project-level important file."
+  },
+  {
+   "evidence_ids": [
+    "important_3"
+   ],
+   "id": "claim_0419236c594f",
+   "provenance": "strongly_inferred",
+   "section": "important_files",
+   "status": "supported",
+   "text": "Read pyproject.toml early because the analyzer classified it as project-level important file."
+  },
+  {
+   "evidence_ids": [
+    "important_4"
+   ],
+   "id": "claim_d445d928f2f7",
+   "provenance": "strongly_inferred",
+   "section": "important_files",
+   "status": "supported",
+   "text": "Read LICENSE early because the analyzer classified it as project-level important file."
+  },
+  {
+   "evidence_ids": [
+    "important_1",
+    "important_2"
+   ],
+   "id": "claim_e56db45165bf",
+   "provenance": "strongly_inferred",
+   "section": "learning_path",
+   "status": "supported",
+   "text": "Start with manifests and important symbols, then trace the bounded execution path and inspect unresolved boundaries before changing code."
+  },
+  {
+   "evidence_ids": [
+    "entry_1"
+   ],
+   "id": "claim_b4ae7eab0895",
+   "provenance": "strongly_inferred",
+   "section": "modify_guide",
+   "status": "supported",
+   "text": "Begin modification analysis at the detected entrypoint llm/cli.py, then verify downstream effects manually."
+  },
+  {
+   "evidence_ids": [],
+   "id": "claim_7c9925f9c8f4",
+   "provenance": "unresolved",
+   "section": "uncertainties",
+   "status": "unresolved",
+   "text": "Static analysis cannot establish all dynamic dispatch, reflection, generated-code, or runtime framework behavior."
+  }
+ ],
+ "tests": {
+  "count": 44,
+  "sample": [
+   "tests/conftest.py",
+   "tests/test-llm-load-plugins.sh",
+   "tests/test_aliases.py",
+   "tests/test_async.py",
+   "tests/test_async_parity.py",
+   "tests/test_attachments.py",
+   "tests/test_chat.py",
+   "tests/test_chat_templates.py",
+   "tests/test_cli_openai_models.py",
+   "tests/test_cli_options.py"
+  ]
+ },
+ "uncertainties": {
+  "analyzer": [
+   "7374 static relation(s) remain external or unresolved; v0.10 preserves textual targets instead of fabricating local destinations."
+  ],
+  "analyzer_limitations": [
+   "static analysis only: reflection, runtime dependency injection, dynamic imports, monkey-patching, generated code, framework runtime wiring and dynamic dispatch are not resolved",
+   "install/run/build inference is partial; installation commands are not verified",
+   "dependency records come only from requirements-style manifests parsed by v0.10 (pyproject.toml dependency tables are not parsed)",
+   "README claim extraction in v0.10 is line-based and may capture code lines instead of prose claims; treat every README claim as author_claimed at best",
+   "project.actual_capabilities / non_capabilities in the manifest describe the analyzer, not the analyzed repository, and are excluded from repository evidence"
+  ],
+  "teaching_warnings": [],
+  "unresolved_relation_count": 7374
+ }
+}

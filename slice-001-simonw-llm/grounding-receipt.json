@@ -1,0 +1,52 @@
+{
+ "analysis_run_id": "analysis_f20a9f60553ce57f",
+ "analysis_run_mode": "reuse_existing",
+ "bounded_context_ratio": 0.00182,
+ "counts": {
+  "dependencies": 7,
+  "entrypoints": 2,
+  "evidence": 944,
+  "execution_paths": 13,
+  "files": 116,
+  "groundings": 15007,
+  "important_files": 6,
+  "lessons": 5,
+  "modules": 3,
+  "platform_metadata": 8,
+  "readme_claims_author_claimed_low_quality": 8,
+  "relations": 9698,
+  "semantic_blocks": 4371,
+  "symbols": 931,
+  "teaching_claims": 10,
+  "teaching_sections": 7,
+  "tests": 44
+ },
+ "grounding_bundle_bytes": 12731263,
+ "grounding_bundle_ref": "slice-001-simonw-llm/artifacts/grounding/analysis_f20a9f60553ce57f/grounding-bundle.json",
+ "grounding_bundle_sha256": "3c9a1831d852254316b18a12d49d8053bb30fcdcab8491c3eeabdaaabad645a4",
+ "license_state": {
+  "agreement": true,
+  "repolumen_detected": "Apache-2.0",
+  "spdx": "Apache-2.0",
+  "status": "open-source"
+ },
+ "manifest_ref": "slice-001-simonw-llm/artifacts/repolumen/repo_github_622352364/1df47ddcac20d58726a993949da8ef84f4081085/0.10/semantic-manifest.json",
+ "manifest_sha256": "93a20ceebc85bfc707c7f8f8609a57b23c53f16f71684be481b9993d1737f1ca",
+ "packets": {
+  "overview": {
+   "bytes": 34676,
+   "sha256": "61aceac1862db4d1aa7904b859bfc9eeabc20968a25955b7fbea433bd07a1e41"
+  },
+  "taxonomy": {
+   "bytes": 7858,
+   "sha256": "7db2901d79975a5fe73413af1bf5edd9a934a08ab5a8a6205b9c563cb1d4e0f3"
+  }
+ },
+ "sedb_write": {
+  "created_entities": 0,
+  "note": "existing analysis run reused",
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 0
+ }
+}

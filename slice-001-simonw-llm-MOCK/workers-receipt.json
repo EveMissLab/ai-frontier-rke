@@ -1,0 +1,160 @@
+{
+ "backend": "mock",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-12T18:01:49.158732Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "deterministic-mock/v1",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.0,
+   "cost": {
+    "known_cost_usd": 0.0,
+    "note": "mock: no provider call"
+   },
+   "failure": null,
+   "latency_seconds": 0.0,
+   "output_ref": "slice-001-simonw-llm-MOCK/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.5,
+    "primary": "cli-tools",
+    "secondary": [
+     "artificial-intelligence",
+     "llm-serving"
+    ]
+   },
+   "task_id": "af-slice-001-simonw-llm-MOCK-taxonomy-01",
+   "worker_run_entity_id": "worker_c66eacbce3f0e884"
+  },
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.0,
+   "cost": {
+    "known_cost_usd": 0.0,
+    "note": "mock: no provider call"
+   },
+   "failure": null,
+   "latency_seconds": 0.0,
+   "output_ref": "slice-001-simonw-llm-MOCK/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 10,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "limits_of_this_analysis"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-MOCK-writer-01",
+   "worker_run_entity_id": "worker_7c83b6c627f241b3"
+  },
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.0,
+   "cost": {
+    "known_cost_usd": 0.0,
+    "note": "mock: no provider call"
+   },
+   "failure": null,
+   "latency_seconds": 0.0,
+   "output_ref": "slice-001-simonw-llm-MOCK/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 10,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-001-simonw-llm-MOCK-verifier-01",
+   "worker_run_entity_id": "worker_64ba641fa3597fd9"
+  },
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.0,
+   "cost": {
+    "known_cost_usd": 0.0,
+    "note": "mock: no provider call"
+   },
+   "failure": null,
+   "latency_seconds": 0.0,
+   "output_ref": "slice-001-simonw-llm-MOCK/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 0,
+    "scores": {
+     "beginner_readability": 0.5,
+     "coherence": 0.5,
+     "redundancy": 0.5,
+     "scope_discipline": 0.5,
+     "structure": 0.5
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-001-simonw-llm-MOCK-critic-01",
+   "worker_run_entity_id": "worker_f946708dc3854508"
+  },
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.0,
+   "cost": {
+    "known_cost_usd": 0.0,
+    "note": "mock: no provider call"
+   },
+   "failure": null,
+   "latency_seconds": 0.0,
+   "output_ref": "slice-001-simonw-llm-MOCK/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-001-simonw-llm-MOCK-seo-01",
+   "worker_run_entity_id": "worker_785e0ec57c86db03"
+  }
+ ],
+ "slice": "slice-001-simonw-llm-MOCK",
+ "started_at": "2026-09-12T18:01:48.814858Z",
+ "synthetic": true,
+ "taxonomy": {
+  "confidence": 0.5,
+  "primary": "cli-tools",
+  "review_required": true,
+  "secondary": [
+   "artificial-intelligence",
+   "llm-serving"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "SYNTHETIC mock verification: grounding ID existence only; no semantic support check.",
+  "unsupported": []
+ }
+}

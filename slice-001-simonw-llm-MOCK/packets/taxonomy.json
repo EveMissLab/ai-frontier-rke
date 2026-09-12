@@ -1,0 +1,353 @@
+{
+ "dependencies_partial": [
+  "sphinx",
+  "furo",
+  "sphinx-autobuild",
+  "sphinx-copybutton",
+  "sphinx-markdown-builder",
+  "myst-parser",
+  "cogapp"
+ ],
+ "entrypoints": [
+  "llm/__main__.py:__main__",
+  "llm/cli.py:None"
+ ],
+ "important_files": [
+  "README.md",
+  "pyproject.toml",
+  "LICENSE",
+  "llm/__main__.py",
+  "llm/cli.py"
+ ],
+ "module_roles": [
+  {
+   "path": "docs/plugins/llm-markov/llm_markov.py",
+   "role": "service/core candidate"
+  },
+  {
+   "path": "llm/__init__.py",
+   "role": "service/core candidate"
+  },
+  {
+   "path": "llm/__main__.py",
+   "role": "entry/orchestration candidate"
+  },
+  {
+   "path": "llm/cli.py",
+   "role": "entry/orchestration candidate"
+  },
+  {
+   "path": "llm/default_plugins/openai_models.py",
+   "role": "service/core candidate"
+  },
+  {
+   "path": "llm/embeddings.py",
+   "role": "service/core candidate"
+  },
+  {
+   "path": "llm/embeddings_migrations.py",
+   "role": "leaf/data-boundary candidate"
+  },
+  {
+   "path": "llm/errors.py",
+   "role": "leaf/data-boundary candidate"
+  },
+  {
+   "path": "llm/logs.py",
+   "role": "service/core candidate"
+  },
+  {
+   "path": "llm/migrations.py",
+   "role": "service/core candidate"
+  }
+ ],
+ "packet_version": "taxonomy-selector/v1",
+ "platform_metadata": [
+  {
+   "epistemic_status": "author_claimed",
+   "id": "meta_description",
+   "origin": "github_api",
+   "text": "Access large language models from the command-line",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "author_claimed",
+   "id": "meta_homepage",
+   "origin": "github_api",
+   "text": "https://llm.datasette.io",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_topics",
+   "origin": "github_api",
+   "text": "ai, llms, openai",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_primary_language",
+   "origin": "github_api",
+   "text": "Python",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_language_bytes",
+   "origin": "github_api",
+   "text": "{\"Just\": 972, \"Python\": 1226965, \"Shell\": 929}",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_license",
+   "origin": "github_api+repository_file",
+   "text": "Apache-2.0",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_latest_release",
+   "origin": "github_api",
+   "text": "0.35 published 2026-09-07T23:54:54Z",
+   "type": "repository_metadata"
+  },
+  {
+   "epistemic_status": "observed",
+   "id": "meta_stars",
+   "origin": "github_api",
+   "text": "12489 stargazers at 2026-09-12T06:38:39.129538Z",
+   "type": "repository_metadata"
+  }
+ ],
+ "repository": {
+  "analyzed_revision": "1df47ddcac20d58726a993949da8ef84f4081085",
+  "canonical_source_url": "https://github.com/simonw/llm"
+ },
+ "repository_summary": {
+  "file_count": 116,
+  "language_hint": "Python",
+  "maturity_signals": [
+   "116 analyzed files",
+   "44 test-like files",
+   "3 manifest files",
+   "9698 static relation edges",
+   "13 bounded execution paths",
+   "10 grounded teaching claims",
+   "4371 line-addressable semantic code blocks",
+   "4371 evidence-grounded block annotations"
+  ],
+  "purpose_inferred_by_analyzer": "This repository looks like a Python project. It contains 116 analyzed files, and the main starting place appears to be llm/__main__.py. The code seems organized around docs, llm, tests. It includes tests.",
+  "thirty_second_explanation_inferred_by_analyzer": "This repository looks like a Python project. It contains 116 analyzed files, and the main starting place appears to be llm/__main__.py. The code seems organized around docs, llm, tests. It includes tests.",
+  "title": "repo",
+  "top_level_directories": {
+   "(root)": 11,
+   ".github": 6,
+   "docs": 35,
+   "llm": 20,
+   "tests": 44
+  }
+ },
+ "rule_based_candidate_categories": [
+  "ai-agents",
+  "ai-infrastructure",
+  "artificial-intelligence",
+  "cli-tools",
+  "developer-tools",
+  "llm-serving",
+  "local-ai"
+ ],
+ "task": "classify_repository_taxonomy_v1",
+ "taxonomy_v1": [
+  {
+   "name": "AI Agents",
+   "parent": "cat_artificial_intelligence",
+   "slug": "ai-agents"
+  },
+  {
+   "name": "AI Infrastructure",
+   "parent": "cat_artificial_intelligence",
+   "slug": "ai-infrastructure"
+  },
+  {
+   "name": "AI Safety",
+   "parent": "cat_artificial_intelligence",
+   "slug": "ai-safety"
+  },
+  {
+   "name": "Artificial Intelligence",
+   "parent": null,
+   "slug": "artificial-intelligence"
+  },
+  {
+   "name": "Automation",
+   "parent": null,
+   "slug": "automation"
+  },
+  {
+   "name": "Build Systems",
+   "parent": "cat_developer_tools",
+   "slug": "build-systems"
+  },
+  {
+   "name": "CLI Tools",
+   "parent": "cat_developer_tools",
+   "slug": "cli-tools"
+  },
+  {
+   "name": "Code Intelligence",
+   "parent": "cat_developer_tools",
+   "slug": "code-intelligence"
+  },
+  {
+   "name": "Code Search",
+   "parent": "cat_developer_tools",
+   "slug": "code-search"
+  },
+  {
+   "name": "Data and Databases",
+   "parent": null,
+   "slug": "data-and-databases"
+  },
+  {
+   "name": "Data Pipelines",
+   "parent": "cat_data_and_databases",
+   "slug": "data-pipelines"
+  },
+  {
+   "name": "Data Processing",
+   "parent": "cat_data_and_databases",
+   "slug": "data-processing"
+  },
+  {
+   "name": "Developer Tools",
+   "parent": null,
+   "slug": "developer-tools"
+  },
+  {
+   "name": "DevOps Tools",
+   "parent": "cat_developer_tools",
+   "slug": "devops-tools"
+  },
+  {
+   "name": "Education",
+   "parent": null,
+   "slug": "education"
+  },
+  {
+   "name": "Evaluation",
+   "parent": "cat_artificial_intelligence",
+   "slug": "evaluation"
+  },
+  {
+   "name": "IDE and Editors",
+   "parent": "cat_developer_tools",
+   "slug": "ide-and-editors"
+  },
+  {
+   "name": "Infrastructure and Cloud",
+   "parent": null,
+   "slug": "infrastructure-and-cloud"
+  },
+  {
+   "name": "Knowledge Graphs",
+   "parent": "cat_data_and_databases",
+   "slug": "knowledge-graphs"
+  },
+  {
+   "name": "LLM Serving",
+   "parent": "cat_artificial_intelligence",
+   "slug": "llm-serving"
+  },
+  {
+   "name": "Local AI",
+   "parent": "cat_artificial_intelligence",
+   "slug": "local-ai"
+  },
+  {
+   "name": "Model Training",
+   "parent": "cat_artificial_intelligence",
+   "slug": "model-training"
+  },
+  {
+   "name": "Multimedia",
+   "parent": null,
+   "slug": "multimedia"
+  },
+  {
+   "name": "Multimodal AI",
+   "parent": "cat_artificial_intelligence",
+   "slug": "multimodal-ai"
+  },
+  {
+   "name": "Observability",
+   "parent": "cat_developer_tools",
+   "slug": "observability"
+  },
+  {
+   "name": "Operating Systems",
+   "parent": null,
+   "slug": "operating-systems"
+  },
+  {
+   "name": "Other",
+   "parent": null,
+   "slug": "other"
+  },
+  {
+   "name": "Programming Languages",
+   "parent": null,
+   "slug": "programming-languages"
+  },
+  {
+   "name": "RAG and Knowledge Systems",
+   "parent": "cat_artificial_intelligence",
+   "slug": "rag-and-knowledge-systems"
+  },
+  {
+   "name": "Relational Databases",
+   "parent": "cat_data_and_databases",
+   "slug": "relational-databases"
+  },
+  {
+   "name": "Robotics and Edge",
+   "parent": null,
+   "slug": "robotics-and-edge"
+  },
+  {
+   "name": "Scientific Computing",
+   "parent": null,
+   "slug": "scientific-computing"
+  },
+  {
+   "name": "Search Engines",
+   "parent": "cat_data_and_databases",
+   "slug": "search-engines"
+  },
+  {
+   "name": "Security",
+   "parent": null,
+   "slug": "security"
+  },
+  {
+   "name": "Storage Systems",
+   "parent": "cat_data_and_databases",
+   "slug": "storage-systems"
+  },
+  {
+   "name": "Testing",
+   "parent": "cat_developer_tools",
+   "slug": "testing"
+  },
+  {
+   "name": "Vector Databases",
+   "parent": "cat_data_and_databases",
+   "slug": "vector-databases"
+  },
+  {
+   "name": "Web and Applications",
+   "parent": null,
+   "slug": "web-and-applications"
+  }
+ ]
+}
