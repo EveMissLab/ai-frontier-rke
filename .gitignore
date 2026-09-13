@@ -17,3 +17,5 @@ __pycache__/
 step3.err
 step3.out
 slice-*/packets/
+NEW_SESSION_PROMPT.md
+pipeline/local_paths.json

@@ -18,7 +18,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 LAB = Path(__file__).resolve().parents[1]
-REPOLUMEN = Path("D:/Ai/work together/RepoLumen")
+# RepoLumen checkout: AF_REPOLUMEN_ROOT, else a sibling directory of the lab (this script runs in RepoLumen's own venv, no lab imports).
+REPOLUMEN = Path(os.environ.get("AF_REPOLUMEN_ROOT", str(Path(__file__).resolve().parents[2] / "RepoLumen")))
 SCHEMA = REPOLUMEN / "repo-semantic-manifest-v0.10.schema.json"
 
 sys.path.insert(0, str(REPOLUMEN))

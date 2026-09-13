@@ -4,7 +4,7 @@ One worker attempt = one MACR task file = one preflight/approve/preflight/invoke
 sequence = at most one provider call. MACR performs no automatic retry; the
 orchestrator decides explicitly and records every attempt (Paper 05 §29-30, §64).
 
-Never touches the credential: MACR reads `D:\\KEY\\GLM.txt` inside its own bounded
+Never touches the credential: MACR reads its own key file inside its own bounded
 loader. Never puts local paths or secrets into a packet: inputs are scrubbed
 against MACR's own path-marker rules before the task is written.
 """

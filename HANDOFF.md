@@ -15,18 +15,18 @@ then a new, cheaper conversation takes over the website.
 | Pipeline scripts | `pipeline/` (`rl_analyze.py`, `step1_register.py`, `step3_ground.py`, `step4_workers.py`, `step5_validate.py`, `step6_render.py`, `report.py`, `macr_worker.py`, `mock_worker.py`, `prompts.py`, `af_common.py`) |
 | Real slice | `slice-001-simonw-llm/` (artifacts, packets, receipts, `REPORT.md`, `canonical/overview.md` v2 + `preview.html/png`; `worker_runs/` holds the 7 successful GLM runs and the 4 earlier blocked attempts) |
 | Synthetic slice | `slice-001-simonw-llm-MOCK/` (`canonical/overview.md`, `preview.html`, `preview.png`, `REPORT.md`) — SYNTHETIC, never publish |
-| SEDB catalog | `D:\Ai\work together\SEDB\projects\ai-frontier-repository-intelligence\` (config/store/cli/tests/README/VERIFY; sqlite git-ignored; committed as `d4f18d0`, README `464925a`) |
+| SEDB catalog | `<SEDB repo>\projects\ai-frontier-repository-intelligence\` (config/store/cli/tests/README/VERIFY; sqlite git-ignored; committed as `d4f18d0`, README `464925a`) |
 | Mock catalog copy | `mock/ai-frontier-mock.sqlite` (disposable) |
 | RepoLumen cache | `repolumen-cache/` |
 | Blocker note | `REQUEST_FOR_OPERATOR_GLM_ADMISSION_RECONCILIATION.md` |
-| Concept | RKE series Papers 01–08 + FINAL_HANDOFF/RELEASE_GATES/ATTRIBUTION templates, zips in `D:\我的研究\學術討論\論文\真終極\真本體論12\企業官網更新` |
-| Public page | evemisstechnology.com `/ai-frontier/` (repo `D:\Ai\網站群\EVEMISS TECHNOLOGY`, commit `3aab685`) — portal skeleton only, no repository pages yet |
+| Concept | RKE series Papers 01–08 + FINAL_HANDOFF/RELEASE_GATES/ATTRIBUTION templates, the RKE series package (Neo.K's research archive, not in this repository) |
+| Public page | evemisstechnology.com `/ai-frontier/` (repo `kakon77777-commits/evemiss-technology`, commit `3aab685`) — portal skeleton only, no repository pages yet |
 
 ## Run order (from this directory)
 
 ```powershell
 # 0. deterministic analysis (RepoLumen venv), only for a new repo/revision
-& 'D:\Ai\work together\RepoLumen\.venv\Scripts\python.exe' pipeline\rl_analyze.py https://github.com/<owner>/<repo> <slice>\artifacts\repolumen\pending <expected_sha_or_->
+& '<RepoLumen>\.venv\Scripts\python.exe' pipeline\rl_analyze.py https://github.com/<owner>/<repo> <slice>\artifacts\repolumen\pending <expected_sha_or_->
 # 1. GitHub artifacts must exist in <slice>\artifacts\github\{repo,head,languages,license,releases}.json
 python pipeline\step1_register.py <slice>
 python pipeline\step3_ground.py <slice>          # analysis run + groundings + bundle + packets (idempotent, reuses an existing run)
@@ -37,11 +37,11 @@ python pipeline\report.py <slice>
 ```
 
 Synthetic dry run (never against the real catalog):
-`$env:AF_WORKER_BACKEND='mock'; $env:AF_SEDB_DB='D:\Ai\work together\AI-Frontier-RKE-Lab\mock\ai-frontier-mock.sqlite'`, then the same commands on a copied slice directory (see how `slice-001-simonw-llm-MOCK` was made in the session log: copy the slice, drop `worker_runs`, `tasks`, `canonical`, receipts of steps 4–5).
+`$env:AF_WORKER_BACKEND='mock'; $env:AF_SEDB_DB='<lab>\mock\ai-frontier-mock.sqlite'`, then the same commands on a copied slice directory (see how `slice-001-simonw-llm-MOCK` was made in the session log: copy the slice, drop `worker_runs`, `tasks`, `canonical`, receipts of steps 4–5).
 
 ## Repeating the prototype run (MACR's GLM circuit is closed as of 2026-09-12 22:30 +08:00)
 
-1. `& 'D:\Ai\work together\MACR\scripts\macr.ps1' admission-status --provider glm_flash_worker` → expect `circuit_state: closed`, `reconciliation_required: 0`.
+1. `& '<MACR>\scripts\macr.ps1' admission-status --provider glm_flash_worker` → expect `circuit_state: closed`, `reconciliation_required: 0`.
 2. `python pipeline\step4_workers.py slice-001-simonw-llm` (task approvals created 2026-09-12 are reused; if expired, the script re-approves). Expect ~6 dispatches, conservative ceilings ≈ 0.03–0.04 USD each, latency minutes each (reasoning max).
 3. `step5` → `step6` → `report`. Read `slice-001-simonw-llm/REPORT.md`: verifier claim table, deterministic failures, gates.
 4. Prototype repetitions ("測試幾次"): rerun step 4 into fresh slice copies (e.g. `slice-001-simonw-llm-run2`) to see GLM variance: claim counts, unsupported claims, leakage flags, cost. Same packet hash each time; compare `worker_runs/*.json`.

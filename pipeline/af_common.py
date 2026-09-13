@@ -13,10 +13,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 LAB = Path(__file__).resolve().parents[1]
-SEDB_ROOT = Path("D:/Ai/work together/SEDB")
+# Component locations, in order: environment variable → pipeline/local_paths.json (git-ignored, the
+# development machine's layout) → sibling directory of the lab. Nothing here is a credential.
+_LOCAL_PATHS = LAB / "pipeline" / "local_paths.json"
+_local = json.loads(_LOCAL_PATHS.read_text(encoding="utf-8")) if _LOCAL_PATHS.exists() else {}
+
+
+def _loc(key: str, default: Path) -> Path:
+    return Path(os.environ.get(key) or _local.get(key) or default)
+
+
+SEDB_ROOT = _loc("AF_SEDB_ROOT", LAB.parent / "SEDB")
 SEDB_PROJECT = SEDB_ROOT / "projects" / "ai-frontier-repository-intelligence"
-MACR_ROOT = Path("D:/Ai/work together/MACR")
-MACR_STATE = Path("D:/AI_RESIDENCE/AI_Runtime/macr-state")
+MACR_ROOT = _loc("AF_MACR_ROOT", LAB.parent / "MACR")
+MACR_STATE = _loc("AF_MACR_STATE", MACR_ROOT / "state")
 
 for p in (SEDB_ROOT / "current" / "src", SEDB_PROJECT):
     if str(p) not in sys.path:

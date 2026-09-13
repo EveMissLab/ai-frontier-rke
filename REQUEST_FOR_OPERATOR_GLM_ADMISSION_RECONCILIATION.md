@@ -40,7 +40,7 @@ the boundary MACR exists to enforce, so I stopped at the gate.
    `resolution_evidence_digest`).
 2. Either an operator reconciliation through the intended path, or a new CLI subcommand from Codex
    (`admission-reconcile --provider glm_flash_worker --request-id … --evidence-digest …`).
-3. Then rerun, from `D:\Ai\work together\AI-Frontier-RKE-Lab`:
+3. Then rerun, from the lab root:
    `python pipeline\step4_workers.py slice-001-simonw-llm` → `step5_validate.py` → `step6_render.py` →
    `report.py`. The two task approvals created today (taxonomy, writer) stay valid for 2 days and are
    reused automatically.
