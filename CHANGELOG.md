@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.2-lab - 2026-09-14
+
+- Step 7 `step7_viewmodel.py`: validated canonical Markdown -> `repository-view.json`
+  (`ai-frontier-repository-view/v0.1`), sections split for the page, notices v0.1 verbatim, unpublished.
+- Step 8 `step8_publish.py`: human-approved publication event (`af_publication_event`, asset -> published,
+  `PUBLICATION_APPROVAL.json`) and the drop into the portal's `src/data/ai-frontier/repositories/`;
+  `--unpublish` reverses it. The pipeline never publishes on its own.
+- Portal route shipped on evemisstechnology.com (`38a9e3b`): `/ai-frontier/repository/<owner>/<repo>/`
+  EN + zh-TW, rendering only published view models.
+
 ## 0.1.1-lab — 2026-09-14
 
 - Catalog: `af_grounding_projection` kind (SEDB project commit `aeb2d2e`) — one immutable row per

@@ -8,7 +8,7 @@ EVEMISS Technology, 2026). It is a working vertical slice, not a crawler and not
 | | |
 |---|---|
 | Product status | **lab / prototype** — one repository (simonw/llm) end to end; nothing published yet |
-| Version | 0.1.1-lab (projector v1.1, validators v1.2, contracts v1.2, catalog projection history) |
+| Version | 0.1.2-lab (projector v1.1, validators v1.2, contracts v1.2, catalog projection history, view model + publication steps) |
 | Canonical website | https://evemisstechnology.com/ai-frontier/ |
 | Maintainer | Neo.K (許筌崴), EVEMISS TECHNOLOGY CO., LTD. — kakon77777@evemisslab.com |
 | Issues | bug reports and questions welcome; feature requests are triaged against the RKE series, not first-come |
@@ -41,6 +41,8 @@ python pipeline\step4b_revise.py <slice>      # optional critic-driven revision 
 python pipeline\step5_validate.py <slice>     # hard gates → canonical Markdown (validated ≠ published)
 python pipeline\step6_render.py <slice>       # local HTML preview
 python pipeline\report.py <slice>
+python pipeline\step7_viewmodel.py <slice>    # validated canonical Markdown -> repository-view.json (still unpublished)
+python pipeline\step8_publish.py <slice> --approved-by "<name>" --via "<how>"   # human-approved publication event -> portal data file
 ```
 
 Component locations (SEDB, MACR, RepoLumen) come from `AF_*_ROOT` environment variables, else
