@@ -26,7 +26,9 @@ HARD_TASK_COST_CAP_USD = 0.50
 
 _DRIVE = re.compile(r"(?i)(?<![a-z0-9])[a-z]:[\\/]")
 _UNC = re.compile(r"\\{2,}[^\s\\/:*?\"<>|{}\[\]]+\\+[^\s\\/:*?\"<>|{}\[\]]+")
-_FILE_URI = re.compile(r"(?i)(?<![a-z0-9+.-])file:[^\s]+")
+# URI form only: a draft that says "by file:\n- src/..." (JSON-escaped newline) is prose, not a local path
+# (2026-09-14, pallets/click: the verifier input was refused on exactly that).
+_FILE_URI = re.compile(r"(?i)(?<![a-z0-9+.-])file://[^\s]+")
 _SECRET = re.compile(r"(?i)(api[_-]?key|secret|token|password)\s*[:=]\s*['\"]?[A-Za-z0-9_\-]{16,}")
 
 
