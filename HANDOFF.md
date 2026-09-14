@@ -158,3 +158,27 @@ verifier reuse) → second repository (needs GitHub artifacts + RepoLumen run; p
 dependencies to exercise the analyzer limitation) → portal routes on the Astro site reading view models from
 the catalog (`/ai-frontier/repository/<owner>/<repo>/`) → Weekly Frontier data path → 5–10-repository canary.
 Publication of any asset still needs human review + RELEASE_GATES G0–G10.
+
+## 2026-09-14 (later) — the page is the deliverable: view model + publication event + portal route
+
+Neo's calibration: the daily work is https://evemisstechnology.com/ai-frontier/ itself, not the lab. So:
+
+- `step7_viewmodel.py <slice>` → `<slice>/canonical/repository-view.json` from the validated canonical
+  Markdown (front matter + sections), receipts, taxonomy names; notices v0.1 verbatim; `publication.status`
+  stays `unpublished`.
+- `step8_publish.py <slice> --approved-by "Name" --via "how"` → writes `PUBLICATION_APPROVAL.json`
+  (page-level gates G5/G6/G7/G9 + human content review), records `af_publication_event` and the asset's
+  `published` status in the catalog, and drops the view model into the site
+  (`AF_SITE_ROOT/src/data/ai-frontier/repositories/<owner>--<repo>.json`, `AF_SITE_ROOT` in
+  `local_paths.json`). Then build + push the site. `--unpublish` reverses it (ledger keeps history).
+- Site (`kakon77777-commits/evemiss-technology` `38a9e3b`): route `/ai-frontier/repository/[owner]/[repo]`
+  EN + zh-TW, portal listing + status line; only published view models render; 29 pages until the first
+  publication. Verified locally with run 4's view as a preview (31 pages, metadata, hreflang, sitemap,
+  375 px no page overflow, no console errors); the preview file was removed before commit.
+
+**First publication candidate:** run 4 `assetrev_…_overview_v6` (simonw/llm). Waiting for Neo's review of
+the rendered preview. On his go: `step8_publish.py slice-001-simonw-llm-run4 --approved-by "Neo.K" --via
+"chat 2026-09-14"` → `cd <site> && git add src/data && git commit && git push`.
+
+**Then, in page terms:** second repository page (needs a new slice end to end), category pages (route per
+taxonomy slug, listing published repositories), Weekly Frontier data path, canary batch.
