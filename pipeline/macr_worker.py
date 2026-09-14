@@ -68,11 +68,36 @@ def scrub_check(text: str, label: str) -> None:
                 raise PacketPolicyError(f"input '{label}' contains a {name} marker near: {piece[max(0, m.start()-40):m.end()+40]!r}")
 
 
+_JSON_ESCAPE = re.compile(r'\\(u[0-9a-fA-F]{4}|.)', re.S)
+_JSON_SIMPLE = {'"': '"', "\\": "\\", "/": "/", "b": "\b", "f": "\f", "n": "\n", "r": "\r", "t": "\t"}
+
+
+def readable_text(text: str) -> str:
+    """Model-facing form of a JSON input: the same structure, with string escapes resolved so a code excerpt
+    reads as code (`class E:` + newline, `^\\d+\\.\\d+$`) instead of as `E:\\n` and `\\\\d+\\\\.` — which MACR's own
+    path-marker policy (rightly) refuses in raw JSON (2026-09-14: rich and mitmproxy writer tasks failed
+    `approval_invalid` on exactly that). Non-JSON text is returned unchanged. Real paths stay visible, so
+    both this module's scrub and MACR's policy still catch them."""
+    try:
+        obj = json.loads(text)
+    except Exception:
+        return text
+    dumped = json.dumps(obj, ensure_ascii=False, indent=1)
+
+    def unescape(m):
+        code = m.group(1)
+        if code.startswith("u"):
+            return chr(int(code[1:], 16))
+        return _JSON_SIMPLE.get(code, m.group(0))
+    return _JSON_ESCAPE.sub(unescape, dumped)
+
+
 def build_task(task_id: str, contract_version: str, inputs: list[tuple[str, str]], *, max_cost_usd: float = 0.15,
                max_latency_s: int = 900, verification_methods: list[str] | None = None) -> dict:
     c = CONTRACTS[contract_version]
     task_inputs = [{"type": "text", "name": "contract", "content": c["contract"]}]
     for name, text in inputs:
+        text = readable_text(text)  # packet text v2 (2026-09-14): JSON structure, escapes resolved
         scrub_check(text, name)
         task_inputs.append({"type": "text", "name": name, "content": text})
     return {
