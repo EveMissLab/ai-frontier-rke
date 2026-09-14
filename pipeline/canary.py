@@ -104,8 +104,10 @@ def main(batch_file: str) -> int:
     status = load_json(status_path) if status_path.exists() else {"batch": batch, "started_at": utc_now(), "repos": {}}
     py = sys.executable
 
+    slugs = spec.get("slugs", {})  # optional per-repository slug override (reruns: slice-NNN-owner-name-run2)
+
     def st(full_name):
-        return status["repos"].setdefault(full_name, {"slug": slug_for(full_name, first + repos.index(full_name)), "phases": {}, "timings": {}})
+        return status["repos"].setdefault(full_name, {"slug": slugs.get(full_name) or slug_for(full_name, first + repos.index(full_name)), "phases": {}, "timings": {}})
 
     lock = threading.Lock()
 
@@ -140,6 +142,10 @@ def main(batch_file: str) -> int:
             if durable_exists:
                 s["phases"]["repolumen"] = "ok"
             else:
+                # stale unbounded analyses in RepoLumen's cache (same analyzer version) would be loaded whole; purge anything oversized
+                for stale in (LAB / "repolumen-cache").rglob("*.json"):
+                    if stale.stat().st_size > MAX_MANIFEST_BYTES:
+                        stale.unlink(); print(f"[cache] removed oversized cache file {stale.name} ({stale.stat().st_size // 2**20 if stale.exists() else 0} MB)", flush=True)
                 ok = phase(full_name, "repolumen", [str(RL_PY), str(PIPE / "rl_analyze.py"), f"https://github.com/{full_name}", str(sdir / "artifacts" / "repolumen" / "pending"), head])
             pending_manifest = sdir / "artifacts" / "repolumen" / "pending" / "semantic-manifest.json"
             if ok and pending_manifest.exists() and pending_manifest.stat().st_size > MAX_MANIFEST_BYTES:

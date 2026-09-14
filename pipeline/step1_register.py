@@ -48,6 +48,14 @@ def main(slug: str) -> int:
     repo_id = repository_entity_id("github", repo["id"])
     sha = head["sha"]
     rev_id = revision_entity_id(repo_id, sha)
+    # Idempotent re-run (2026-09-14): a slice already registered for this exact revision is left alone —
+    # the immutable revision row would otherwise conflict on its observation timestamp.
+    receipt_path = sdir / "registration-receipt.json"
+    if receipt_path.exists():
+        prior = load_json(receipt_path)
+        if prior.get("commit_sha") == sha and prior.get("revision_id") == rev_id:
+            print(json.dumps({"slice": slug, "skipped": "already registered for this revision", "repository_id": repo_id, "revision_id": rev_id}))
+            return 0
     full_name = repo["full_name"]
 
     # License: three observation sources kept separate, then one state.
