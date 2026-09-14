@@ -1,0 +1,20 @@
+{
+ "batch": "canary-003",
+ "first_index": 20,
+ "workers": 1,
+ "repos": [
+  "pallets/click",
+  "Textualize/rich",
+  "mitmproxy/mitmproxy",
+  "psf/requests",
+  "huggingface/smolagents"
+ ],
+ "slugs": {
+  "pallets/click": "slice-005-pallets-click",
+  "Textualize/rich": "slice-007-textualize-rich",
+  "mitmproxy/mitmproxy": "slice-017-mitmproxy-mitmproxy",
+  "psf/requests": "slice-004-psf-requests-run3",
+  "huggingface/smolagents": "slice-009-huggingface-smolagents-run3"
+ },
+ "note": "one at a time; graceful stop via canary/canary-003/STOP. click/rich: bounded re-analysis + SPDX license detection; mitmproxy: step 4 after the scrub fix; requests/smolagents: fresh run3 task ids (run2 ids are held by stale MACR leases)."
+}

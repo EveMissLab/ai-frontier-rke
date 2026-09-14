@@ -1,0 +1,14 @@
+{
+ "batch": "canary-004",
+ "first_index": 30,
+ "workers": 1,
+ "repos": [
+  "Textualize/rich",
+  "mitmproxy/mitmproxy"
+ ],
+ "slugs": {
+  "Textualize/rich": "slice-007-textualize-rich",
+  "mitmproxy/mitmproxy": "slice-017-mitmproxy-mitmproxy"
+ },
+ "note": "step 4 with packet text v2 (readable JSON) after MACR preflight refused the raw JSON packets; one at a time."
+}

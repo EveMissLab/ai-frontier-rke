@@ -1,0 +1,157 @@
+{
+ "batch": "canary-003",
+ "completed_at": "2026-09-14T14:06:55.251753Z",
+ "repos": {
+  "Textualize/rich": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "failed rc=2"
+   },
+   "slug": "slice-007-textualize-rich",
+   "timings": {
+    "repolumen": 21.4,
+    "step0": 0.3,
+    "step1": 0.3,
+    "step3": 34.5,
+    "step4": 42.8
+   }
+  },
+  "huggingface/smolagents": {
+   "asset_revision_id": "assetrev_asset_repo_github_898968194_overview_v1",
+   "claims": "40/40",
+   "cost_usd": 0.069,
+   "dispatches": 7,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "report": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
+   },
+   "slug": "slice-009-huggingface-smolagents-run3",
+   "taxonomy": {
+    "confidence": 0.95,
+    "primary": "ai-agents",
+    "review_required": false,
+    "secondary": [
+     "artificial-intelligence",
+     "developer-tools"
+    ]
+   },
+   "timings": {
+    "report": 77.8,
+    "step0": 0.3,
+    "step1": 0.3,
+    "step3": 29.0,
+    "step4": 915.2,
+    "step5": 39.4,
+    "step6": 0.3,
+    "step7": 39.3
+   },
+   "validated": true
+  },
+  "mitmproxy/mitmproxy": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "failed rc=2"
+   },
+   "slug": "slice-017-mitmproxy-mitmproxy",
+   "timings": {
+    "step0": 0.3,
+    "step1": 0.3,
+    "step3": 28.3,
+    "step4": 44.9
+   }
+  },
+  "pallets/click": {
+   "asset_revision_id": "assetrev_asset_repo_github_19103692_overview_v1",
+   "claims": "36/36",
+   "cost_usd": 0.0521,
+   "dispatches": 8,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "report": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
+   },
+   "slug": "slice-005-pallets-click",
+   "taxonomy": {
+    "confidence": 0.97,
+    "primary": "cli-tools",
+    "review_required": false,
+    "secondary": [
+     "developer-tools"
+    ]
+   },
+   "timings": {
+    "repolumen": 9.3,
+    "report": 78.4,
+    "step0": 0.3,
+    "step1": 0.3,
+    "step3": 27.4,
+    "step4": 667.9,
+    "step5": 39.9,
+    "step6": 0.3,
+    "step7": 39.6
+   },
+   "validated": true
+  },
+  "psf/requests": {
+   "asset_revision_id": "assetrev_asset_repo_github_1362490_overview_v1",
+   "claims": "39/39",
+   "cost_usd": 0.0587,
+   "dispatches": 7,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "report": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
+   },
+   "slug": "slice-004-psf-requests-run3",
+   "taxonomy": {
+    "confidence": 0.72,
+    "primary": "web-and-applications",
+    "review_required": false,
+    "secondary": [
+     "developer-tools"
+    ]
+   },
+   "timings": {
+    "report": 81.1,
+    "step0": 0.3,
+    "step1": 0.3,
+    "step3": 27.3,
+    "step4": 799.2,
+    "step5": 39.0,
+    "step6": 0.3,
+    "step7": 38.1
+   },
+   "validated": true
+  }
+ },
+ "started_at": "2026-09-14T13:17:14.302966Z",
+ "updated_at": "2026-09-14T14:06:55.251766Z"
+}

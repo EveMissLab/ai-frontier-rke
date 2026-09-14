@@ -215,3 +215,26 @@ gate: GitHub BSD-3-Clause vs RepoLumen no detection — `LICENSE.md` not recogni
 analyzer's license detection, never override the gate), requests + smolagents (escalation after budgets;
 smolagents root cause fixed: non-section claim ids now get a revision fix), click + rich (scrub false
 positives, fixed), datasette + mitmproxy (queue with the bounded analyzer, one at a time).
+
+## 2026-09-14 (night) — 8 repository pages live; graceful stop; packet text v2
+
+- **Live (site `91c5fbe`, 65 pages):** llm, whisper, sqlite-utils, black, pydantic-ai, click, requests, smolagents.
+  Not yet: datasette + httpx (validated 39/39 each, previews pending Neo), rich (verifier 2 left one wording
+  claim → escalation; rerun as run2), mitmproxy (39/39 but analysed before the SPDX license fix → license
+  unresolved; re-analyse). GLM spend today ≈ 0.7 USD.
+- **MACR (Codex's guidance, in general memory):** no honest cancel after transport starts. Stop = `stop_batch.py
+  <batch>` → STOP file → one CTRL_BREAK_EVENT to the running step (own process group) → wait for exit → no new
+  phases. Never kill. Killed clients leave leases (today: 6 stale units of the 8-unit cap, 5 reconciliation
+  requests) that only expiry + operator admission-reconcile clear; reruns use fresh task ids (run3 dirs).
+- **Packet text v2** (`macr_worker.readable_text`): JSON structure with escapes resolved before scrub and
+  before MACR's own preflight — raw JSON made `class E:\n` look like a drive path and `^\d+\.\d+$` like a UNC
+  path, on both sides. Real paths remain detectable (tested).
+- **Other fixes today:** step 1 idempotent on rerun; step 3 license-disagreement record idempotent; a claim
+  filed under a non-section id now gets a revision fix; canary purges oversized RepoLumen cache files;
+  af_analysis_config field in the catalog (SEDB `a0f7e6d`).
+- **RepoLumen on GitHub:** `kakon77777-commits/RepoLumen` main `008af74` = frozen baseline `03eb115`
+  (tag `baseline-v0.10`, verified 112 files byte-identical, 170 tests) + doc notes + bounded analysis /
+  SPDX license detection (172 tests). Licence still "not granted" per PROVENANCE; transfer to the org is Neo's.
+
+**Next (one at a time):** publish datasette + httpx after Neo's review; mitmproxy re-analysis + rerun; rich run2;
+then the next page-level items (Weekly Frontier data path, second category batch).

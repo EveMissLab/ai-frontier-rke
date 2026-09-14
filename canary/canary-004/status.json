@@ -1,0 +1,57 @@
+{
+ "batch": "canary-004",
+ "completed_at": "2026-09-14T14:35:12.287106Z",
+ "repos": {
+  "Textualize/rich": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "failed rc=3"
+   },
+   "slug": "slice-007-textualize-rich",
+   "timings": {
+    "step0": 0.3,
+    "step1": 0.3,
+    "step3": 37.5,
+    "step4": 716.8
+   }
+  },
+  "mitmproxy/mitmproxy": {
+   "asset_revision_id": "assetrev_asset_repo_github_519832_overview_v1",
+   "claims": "39/39",
+   "cost_usd": 0.0479,
+   "dispatches": 5,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "failed rc=3"
+   },
+   "slug": "slice-017-mitmproxy-mitmproxy",
+   "taxonomy": {
+    "confidence": 0.85,
+    "primary": "security",
+    "review_required": false,
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
+   "timings": {
+    "step0": 0.4,
+    "step1": 0.4,
+    "step3": 46.0,
+    "step4": 744.8,
+    "step5": 37.0
+   },
+   "validated": false
+  }
+ },
+ "started_at": "2026-09-14T14:09:35.425839Z",
+ "updated_at": "2026-09-14T14:35:12.287116Z"
+}

@@ -1,0 +1,165 @@
+{
+ "batch": "canary-002",
+ "completed_at": "2026-09-14T11:32:56.874574Z",
+ "repos": {
+  "Textualize/rich": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "failed rc=1"
+   },
+   "slug": "slice-007-textualize-rich",
+   "timings": {
+    "step0": 0.5,
+    "step1": 0.3,
+    "step3": 0.3
+   }
+  },
+  "encode/httpx": {
+   "asset_revision_id": "assetrev_asset_repo_github_179492861_overview_v2",
+   "claims": "39/39",
+   "cost_usd": 0.038,
+   "dispatches": 5,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "report": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
+   },
+   "slug": "slice-006-encode-httpx-run2",
+   "taxonomy": {
+    "confidence": 0.62,
+    "primary": "web-and-applications",
+    "review_required": false,
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
+   "timings": {
+    "repolumen": 11.8,
+    "report": 74.4,
+    "step0": 0.4,
+    "step1": 0.4,
+    "step3": 43.9,
+    "step4": 612.3,
+    "step5": 36.8,
+    "step6": 0.3,
+    "step7": 36.0
+   },
+   "validated": true
+  },
+  "huggingface/smolagents": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "failed rc=2"
+   },
+   "slug": "slice-009-huggingface-smolagents-run2",
+   "timings": {
+    "step0": 0.4,
+    "step1": 0.4,
+    "step3": 42.5,
+    "step4": 64.9
+   }
+  },
+  "mitmproxy/mitmproxy": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "failed rc=1"
+   },
+   "slug": "slice-017-mitmproxy-mitmproxy",
+   "timings": {
+    "repolumen": 132.2,
+    "step0": 2.4,
+    "step1": 31.5,
+    "step3": 49.4,
+    "step4": 52.2
+   }
+  },
+  "pallets/click": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "failed rc=1"
+   },
+   "slug": "slice-005-pallets-click",
+   "timings": {
+    "step0": 0.4,
+    "step1": 0.4,
+    "step3": 0.3
+   }
+  },
+  "psf/requests": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "failed rc=2"
+   },
+   "slug": "slice-004-psf-requests-run2",
+   "timings": {
+    "step0": 0.3,
+    "step1": 0.4,
+    "step3": 32.9,
+    "step4": 68.7
+   }
+  },
+  "simonw/datasette": {
+   "asset_revision_id": "assetrev_asset_repo_github_107914493_overview_v1",
+   "claims": "39/39",
+   "cost_usd": 0.0579,
+   "dispatches": 7,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "report": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
+   },
+   "slug": "slice-011-simonw-datasette",
+   "taxonomy": {
+    "confidence": 0.85,
+    "primary": "data-and-databases",
+    "review_required": false,
+    "secondary": [
+     "web-and-applications",
+     "relational-databases"
+    ]
+   },
+   "timings": {
+    "repolumen": 68.7,
+    "report": 71.9,
+    "step0": 0.4,
+    "step1": 0.4,
+    "step3": 60.3,
+    "step4": 858.8,
+    "step5": 37.0,
+    "step6": 0.3,
+    "step7": 36.0
+   },
+   "validated": true
+  }
+ },
+ "started_at": "2026-09-14T10:40:57.620463Z",
+ "updated_at": "2026-09-14T11:32:56.874585Z"
+}
