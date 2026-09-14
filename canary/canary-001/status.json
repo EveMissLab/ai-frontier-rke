@@ -1,127 +1,228 @@
 {
  "batch": "canary-001",
+ "completed_at": "2026-09-14T09:45:14.035541Z",
  "repos": {
   "Textualize/rich": {
    "phases": {
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "failed rc=1"
    },
    "slug": "slice-007-textualize-rich",
    "timings": {
     "repolumen": 21.7,
     "step0": 2.1,
     "step1": 3.7,
-    "step3": 9.1
+    "step3": 9.1,
+    "step4": 39.7
    }
   },
   "encode/httpx": {
+   "asset_revision_id": "assetrev_asset_repo_github_179492861_overview_v1",
+   "claims": "38/38",
+   "cost_usd": 0.0393,
+   "dispatches": 5,
+   "outcome": "hard_gate_pass",
    "phases": {
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "failed rc=3"
    },
    "slug": "slice-006-encode-httpx",
+   "taxonomy": {
+    "confidence": 0.8,
+    "primary": "web-and-applications",
+    "review_required": false,
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
    "timings": {
     "repolumen": 8.5,
     "step0": 2.0,
     "step1": 3.1,
-    "step3": 5.7
-   }
+    "step3": 5.7,
+    "step4": 661.9,
+    "step5": 25.6
+   },
+   "validated": false
   },
   "huggingface/smolagents": {
    "phases": {
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "failed rc=3"
    },
    "slug": "slice-009-huggingface-smolagents",
    "timings": {
     "repolumen": 12.8,
     "step0": 2.1,
     "step1": 5.5,
-    "step3": 9.1
+    "step3": 9.1,
+    "step4": 640.1
    }
   },
   "openai/whisper": {
+   "asset_revision_id": "assetrev_asset_repo_github_537603333_overview_v1",
+   "claims": "36/36",
+   "cost_usd": 0.0304,
+   "dispatches": 5,
+   "outcome": "hard_gate_pass",
    "phases": {
     "repolumen": "ok",
+    "report": "ok",
     "step0": "ok",
     "step1": "ok",
     "step3": "ok",
-    "step4": "ok"
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
    },
    "slug": "slice-002-openai-whisper",
+   "taxonomy": {
+    "confidence": 0.65,
+    "primary": "artificial-intelligence",
+    "review_required": true,
+    "secondary": [
+     "multimodal-ai",
+     "local-ai"
+    ]
+   },
    "timings": {
     "repolumen": 4.8,
+    "report": 50.6,
     "step0": 2.0,
     "step1": 1.9,
     "step3": 1.9,
-    "step4": 541.5
-   }
+    "step4": 541.5,
+    "step5": 24.7,
+    "step6": 0.3,
+    "step7": 25.4
+   },
+   "validated": true
   },
   "pallets/click": {
    "phases": {
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "failed rc=1"
    },
    "slug": "slice-005-pallets-click",
    "timings": {
     "repolumen": 10.7,
     "step0": 2.1,
     "step1": 2.9,
-    "step3": 5.2
+    "step3": 5.2,
+    "step4": 364.9
    }
   },
   "psf/black": {
+   "asset_revision_id": "assetrev_asset_repo_github_125266328_overview_v1",
+   "claims": "38/38",
+   "cost_usd": 0.0365,
+   "dispatches": 5,
+   "outcome": "hard_gate_pass",
    "phases": {
     "repolumen": "ok",
+    "report": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
    },
    "slug": "slice-008-psf-black",
+   "taxonomy": {
+    "confidence": 0.9,
+    "primary": "cli-tools",
+    "review_required": false,
+    "secondary": [
+     "developer-tools",
+     "code-intelligence"
+    ]
+   },
    "timings": {
     "repolumen": 24.0,
+    "report": 50.9,
     "step0": 2.1,
     "step1": 4.2,
-    "step3": 9.3
-   }
+    "step3": 9.3,
+    "step4": 567.7,
+    "step5": 25.0,
+    "step6": 0.3,
+    "step7": 24.9
+   },
+   "validated": true
   },
   "psf/requests": {
    "phases": {
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "failed rc=3"
    },
    "slug": "slice-004-psf-requests",
    "timings": {
     "repolumen": 6.1,
     "step0": 2.0,
     "step1": 2.4,
-    "step3": 3.4
+    "step3": 3.4,
+    "step4": 1088.9
    }
   },
   "pydantic/pydantic-ai": {
+   "asset_revision_id": "assetrev_asset_repo_github_818331198_overview_v1",
+   "claims": "39/39",
+   "cost_usd": 0.0514,
+   "dispatches": 6,
+   "outcome": "hard_gate_pass",
    "phases": {
     "repolumen": "ok",
+    "report": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
    },
    "slug": "slice-010-pydantic-pydantic-ai",
+   "taxonomy": {
+    "confidence": 0.95,
+    "primary": "ai-agents",
+    "review_required": false,
+    "secondary": [
+     "artificial-intelligence",
+     "evaluation"
+    ]
+   },
    "timings": {
     "repolumen": 1359.6,
+    "report": 49.3,
     "step0": 2.0,
     "step1": 6.2,
-    "step3": 103.4
-   }
+    "step3": 103.4,
+    "step4": 699.8,
+    "step5": 29.2,
+    "step6": 0.3,
+    "step7": 23.7
+   },
+   "validated": true
   },
   "simonw/datasette": {
    "phases": {
@@ -139,23 +240,46 @@
    }
   },
   "simonw/sqlite-utils": {
+   "asset_revision_id": "assetrev_asset_repo_github_140912432_overview_v1",
+   "claims": "39/39",
+   "cost_usd": 0.038,
+   "dispatches": 5,
+   "outcome": "hard_gate_pass",
    "phases": {
     "repolumen": "ok",
+    "report": "ok",
     "step0": "ok",
     "step1": "ok",
     "step3": "ok",
-    "step4": "ok"
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
    },
    "slug": "slice-003-simonw-sqlite-utils",
+   "taxonomy": {
+    "confidence": 0.9,
+    "primary": "cli-tools",
+    "review_required": false,
+    "secondary": [
+     "relational-databases",
+     "developer-tools"
+    ]
+   },
    "timings": {
     "repolumen": 14.7,
+    "report": 50.1,
     "step0": 2.1,
     "step1": 1.7,
     "step3": 5.5,
-    "step4": 640.1
-   }
+    "step4": 640.1,
+    "step5": 25.2,
+    "step6": 0.3,
+    "step7": 25.0
+   },
+   "validated": true
   }
  },
  "started_at": "2026-09-14T06:54:01.443306Z",
- "updated_at": "2026-09-14T08:30:20.286110Z"
+ "updated_at": "2026-09-14T09:45:14.035555Z"
 }

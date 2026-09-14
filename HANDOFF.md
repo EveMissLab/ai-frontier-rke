@@ -208,3 +208,10 @@ Changes:
   Windows Job Object with a **6 GB hard cap** (verified: a capped child gets MemoryError instead of the machine
   swapping); a manifest > 300 MB fails the analysis phase instead of reaching step 3; canary logs/previews untracked.
 - datasette (5.5 GB manifest, unbounded) and mitmproxy are re-queued as canary-002 with the bounded analyzer.
+
+**2026-09-14 18:15 +08:00 — canary-001 published: 5 repository pages live** (llm + whisper, sqlite-utils, black,
+pydantic-ai; site `316d912`, 57 pages, 9 category pages). Batch cost 0.196 USD. Not published: httpx (license
+gate: GitHub BSD-3-Clause vs RepoLumen no detection — `LICENSE.md` not recognised → unresolved; fix the
+analyzer's license detection, never override the gate), requests + smolagents (escalation after budgets;
+smolagents root cause fixed: non-section claim ids now get a revision fix), click + rich (scrub false
+positives, fixed), datasette + mitmproxy (queue with the bounded analyzer, one at a time).
