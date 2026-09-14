@@ -68,8 +68,8 @@ def deterministic_checks(draft: dict, packet: dict, catalog: dict, files: set[st
         nocat = [r for r in refs if r in ids and r not in catalog]  # v1.1: every citable ID must carry a catalog state (Paper 04 §47)
         if nocat:
             failures.append(f"{cid}: grounding ids {nocat} have no catalog state"); fixes.append({"target": cid, "action": "add_grounding", "instruction": f"grounding ids {nocat} are not in the grounding catalog; cite other packet IDs or remove the claim"})
-        if c.get("section_id") not in section_ids:
-            failures.append(f"{cid}: section_id {c.get('section_id')} not in sections")
+        if c.get("section_id") not in section_ids:  # 2026-09-14 smolagents: claims filed under "summary"; without a fix entry the revision could not repair it
+            failures.append(f"{cid}: section_id {c.get('section_id')} not in sections"); fixes.append({"target": cid, "action": "reword", "instruction": f"section_id '{c.get('section_id')}' is not a section id; set it to the section whose body states this claim (a claim used by the summary still belongs to a section and is listed in summary_claim_ids)"})
         # epistemic upgrade check against the grounding catalog states
         states = {catalog.get(r, {}).get("epistemic_status") for r in refs if r in catalog}
         st = c.get("epistemic_status")
