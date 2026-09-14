@@ -51,14 +51,16 @@
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "ok"
    },
    "slug": "slice-002-openai-whisper",
    "timings": {
     "repolumen": 4.8,
     "step0": 2.0,
     "step1": 1.9,
-    "step3": 1.9
+    "step3": 1.9,
+    "step4": 541.5
    }
   },
   "pallets/click": {
@@ -124,12 +126,16 @@
   "simonw/datasette": {
    "phases": {
     "repolumen": "ok",
-    "step0": "ok"
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "failed rc=1"
    },
    "slug": "slice-011-simonw-datasette",
    "timings": {
     "repolumen": 580.5,
-    "step0": 2.1
+    "step0": 2.1,
+    "step1": 68.0,
+    "step3": 350.3
    }
   },
   "simonw/sqlite-utils": {
@@ -137,17 +143,19 @@
     "repolumen": "ok",
     "step0": "ok",
     "step1": "ok",
-    "step3": "ok"
+    "step3": "ok",
+    "step4": "ok"
    },
    "slug": "slice-003-simonw-sqlite-utils",
    "timings": {
     "repolumen": 14.7,
     "step0": 2.1,
     "step1": 1.7,
-    "step3": 5.5
+    "step3": 5.5,
+    "step4": 640.1
    }
   }
  },
  "started_at": "2026-09-14T06:54:01.443306Z",
- "updated_at": "2026-09-14T07:59:30.271341Z"
+ "updated_at": "2026-09-14T08:30:20.286110Z"
 }

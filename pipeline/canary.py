@@ -40,6 +40,35 @@ def free_ram_gb() -> float:
 
 
 RAM_FLOOR_GB = 8.0
+MAX_MANIFEST_BYTES = 300 * 2**20
+
+
+MEMORY_CAP_GB = 6.0  # hard per-process cap (Windows Job Object); a step that needs more fails instead of taking the machine
+
+
+def _job_with_memory_cap(gb: float):
+    """Create a Job Object whose processes cannot exceed `gb` of committed memory; returns the handle or None."""
+    import ctypes
+    from ctypes import wintypes
+    k32 = ctypes.windll.kernel32
+    class IO_COUNTERS(ctypes.Structure):
+        _fields_ = [(n, ctypes.c_ulonglong) for n in ("ReadOperationCount", "WriteOperationCount", "OtherOperationCount", "ReadTransferCount", "WriteTransferCount", "OtherTransferCount")]
+    class BASIC(ctypes.Structure):
+        _fields_ = [("PerProcessUserTimeLimit", ctypes.c_longlong), ("PerJobUserTimeLimit", ctypes.c_longlong), ("LimitFlags", wintypes.DWORD), ("MinimumWorkingSetSize", ctypes.c_size_t),
+                    ("MaximumWorkingSetSize", ctypes.c_size_t), ("ActiveProcessLimit", wintypes.DWORD), ("Affinity", ctypes.c_size_t), ("PriorityClass", wintypes.DWORD), ("SchedulingClass", wintypes.DWORD)]
+    class EXTENDED(ctypes.Structure):
+        _fields_ = [("BasicLimitInformation", BASIC), ("IoInfo", IO_COUNTERS), ("ProcessMemoryLimit", ctypes.c_size_t), ("JobMemoryLimit", ctypes.c_size_t),
+                    ("PeakProcessMemoryUsed", ctypes.c_size_t), ("PeakJobMemoryUsed", ctypes.c_size_t)]
+    JOB_OBJECT_LIMIT_PROCESS_MEMORY, JOB_OBJECT_LIMIT_JOB_MEMORY, JobObjectExtendedLimitInformation = 0x100, 0x200, 9
+    job = k32.CreateJobObjectW(None, None)
+    if not job:
+        return None
+    info = EXTENDED()
+    info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_PROCESS_MEMORY | JOB_OBJECT_LIMIT_JOB_MEMORY
+    info.ProcessMemoryLimit = info.JobMemoryLimit = int(gb * 2**30)
+    if not k32.SetInformationJobObject(job, JobObjectExtendedLimitInformation, ctypes.byref(info), ctypes.sizeof(info)):
+        return None
+    return job
 
 
 def run(cmd: list[str], log: Path, cwd: Path = LAB) -> tuple[int, float]:
@@ -52,8 +81,13 @@ def run(cmd: list[str], log: Path, cwd: Path = LAB) -> tuple[int, float]:
             f.write(f"\n[ram-guard] waited {waited} s for free RAM >= {RAM_FLOOR_GB} GB (now {free_ram_gb():.1f} GB)\n")
     t0 = time.perf_counter()
     with open(log, "a", encoding="utf-8") as f:
-        f.write(f"\n===== {utc_now()} $ {' '.join(cmd)}\n"); f.flush()
-        rc = subprocess.call(cmd, cwd=str(cwd), stdout=f, stderr=subprocess.STDOUT)
+        f.write(f"\n===== {utc_now()} $ {' '.join(cmd)}  [memory cap {MEMORY_CAP_GB} GB]\n"); f.flush()
+        proc = subprocess.Popen(cmd, cwd=str(cwd), stdout=f, stderr=subprocess.STDOUT)
+        job = _job_with_memory_cap(MEMORY_CAP_GB)
+        if job:
+            import ctypes
+            ctypes.windll.kernel32.AssignProcessToJobObject(job, int(proc._handle))  # children inherit the job
+        rc = proc.wait()
     return rc, round(time.perf_counter() - t0, 1)
 
 
@@ -107,6 +141,9 @@ def main(batch_file: str) -> int:
                 s["phases"]["repolumen"] = "ok"
             else:
                 ok = phase(full_name, "repolumen", [str(RL_PY), str(PIPE / "rl_analyze.py"), f"https://github.com/{full_name}", str(sdir / "artifacts" / "repolumen" / "pending"), head])
+            pending_manifest = sdir / "artifacts" / "repolumen" / "pending" / "semantic-manifest.json"
+            if ok and pending_manifest.exists() and pending_manifest.stat().st_size > MAX_MANIFEST_BYTES:
+                s["phases"]["repolumen"] = f"failed: manifest {pending_manifest.stat().st_size // 2**20} MB exceeds {MAX_MANIFEST_BYTES // 2**20} MB (analysis needs bounds)"; save(); ok = False
         ok = ok and phase(full_name, "step1", [py, str(PIPE / "step1_register.py"), slug])
         ok = ok and phase(full_name, "step3", [py, str(PIPE / "step3_ground.py"), slug])
         print(f"[A] {full_name} -> {s['phases']}", flush=True)

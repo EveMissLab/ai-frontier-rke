@@ -7,67 +7,73 @@
   "verifier": 2,
   "writer": 3
  },
+ "completed_at": "2026-09-14T08:30:20.229582Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
  "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
  "runs": [
   {
    "attempt": 1,
-   "candidate": "048ab41f-a8f3-419f-bd98-538dffc2cb3e",
+   "candidate": "fdafc3ac-ae3d-4e49-9a2e-0d434fff2708",
    "conservative_cost_ceiling_usd": 0.0345662,
    "cost": {
     "cost_kind": "estimated",
-    "currency_cost_usd": 0.0011418499999999998,
+    "currency_cost_usd": 0.00083085,
     "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.0005709249999999999,
+    "promotional_price_estimated_usd": 0.000415425,
     "promotional_price_observed_on": "2026-08-27",
     "usage": {
      "cached_tokens": 0,
-     "completion_tokens": 1282,
+     "completion_tokens": 660,
      "prompt_tokens": 3339,
-     "reasoning_tokens": 1140,
-     "total_tokens": 4621
+     "reasoning_tokens": 496,
+     "total_tokens": 3999
     }
    },
    "failure": null,
-   "latency_seconds": 15.37,
+   "latency_seconds": 9.92,
    "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/taxonomy-01.json",
    "role": "taxonomy_classifier",
    "status": "candidate_success",
    "summary": {
-    "confidence": 0.85,
+    "confidence": 0.9,
     "primary": "cli-tools",
     "secondary": [
-     "developer-tools",
-     "relational-databases"
+     "relational-databases",
+     "developer-tools"
     ]
    },
    "task_id": "af-slice-003-simonw-sqlite-utils-taxonomy-01",
-   "worker_run_entity_id": "worker_048ab41f-a8f3-419f-bd98-538dffc2cb3e"
+   "worker_run_entity_id": "worker_fdafc3ac-ae3d-4e49-9a2e-0d434fff2708"
   },
   {
    "attempt": 1,
-   "candidate": "1206f7dc-a802-45d1-9aa9-8fe6c0071cac",
+   "candidate": "dbcffd3f-88c8-43e5-8faf-8dab7b479fb9",
    "conservative_cost_ceiling_usd": 0.0392021,
    "cost": {
     "cost_kind": "estimated",
-    "currency_cost_usd": 0.019303599999999997,
+    "currency_cost_usd": 0.0181531,
     "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.009651799999999999,
+    "promotional_price_estimated_usd": 0.00907655,
     "promotional_price_observed_on": "2026-08-27",
     "usage": {
      "cached_tokens": 0,
-     "completion_tokens": 34685,
+     "completion_tokens": 32384,
      "prompt_tokens": 13074,
-     "reasoning_tokens": 29960,
-     "total_tokens": 47759
+     "reasoning_tokens": 27300,
+     "total_tokens": 45458
     }
    },
    "failure": null,
-   "latency_seconds": 263.55,
+   "latency_seconds": 297.37,
    "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/writer-01.json",
    "role": "writer",
    "status": "candidate_success",
    "summary": {
-    "claims": 36,
+    "claims": 39,
     "sections": [
      "what_it_is",
      "how_it_starts",
@@ -80,19 +86,127 @@
     "status": "draft_ready"
    },
    "task_id": "af-slice-003-simonw-sqlite-utils-writer-01",
-   "worker_run_entity_id": "worker_1206f7dc-a802-45d1-9aa9-8fe6c0071cac"
+   "worker_run_entity_id": "worker_dbcffd3f-88c8-43e5-8faf-8dab7b479fb9"
+  },
+  {
+   "attempt": 1,
+   "candidate": "e0741f6c-a532-4276-aeeb-892dc971c17a",
+   "conservative_cost_ceiling_usd": 0.04257035,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0100976,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0050488,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 14257,
+     "prompt_tokens": 19794,
+     "reasoning_tokens": 11975,
+     "total_tokens": 34051
+    }
+   },
+   "failure": null,
+   "latency_seconds": 137.06,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-verifier-01",
+   "worker_run_entity_id": "worker_e0741f6c-a532-4276-aeeb-892dc971c17a"
+  },
+  {
+   "attempt": 1,
+   "candidate": "5c7b4132-3139-46a1-a82f-71e59edb7950",
+   "conservative_cost_ceiling_usd": 0.0375236,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.005781,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0028905,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8874,
+     "prompt_tokens": 8960,
+     "reasoning_tokens": 7789,
+     "total_tokens": 17834
+    }
+   },
+   "failure": null,
+   "latency_seconds": 102.65,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.85,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-critic-01",
+   "worker_run_entity_id": "worker_5c7b4132-3139-46a1-a82f-71e59edb7950"
+  },
+  {
+   "attempt": 1,
+   "candidate": "3f10bf1b-49c2-4e78-b203-13f834e96cf9",
+   "conservative_cost_ceiling_usd": 0.03420875,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00316925,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.001584625,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5680,
+     "prompt_tokens": 2195,
+     "reasoning_tokens": 5523,
+     "total_tokens": 7875
+    }
+   },
+   "failure": null,
+   "latency_seconds": 51.8,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-003-simonw-sqlite-utils-seo-01",
+   "worker_run_entity_id": "worker_3f10bf1b-49c2-4e78-b203-13f834e96cf9"
   }
  ],
  "slice": "slice-003-simonw-sqlite-utils",
- "started_at": "2026-09-14T07:52:43.516565Z",
+ "started_at": "2026-09-14T08:20:05.853975Z",
  "synthetic": false,
  "taxonomy": {
-  "confidence": 0.85,
+  "confidence": 0.9,
   "primary": "cli-tools",
   "review_required": false,
   "secondary": [
-   "developer-tools",
-   "relational-databases"
+   "relational-databases",
+   "developer-tools"
   ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 draft claims verified: every grounding_ref exists verbatim in the packet, cited evidence supports the text, and epistemic statuses are correctly calibrated (exec_*/role_*/summary_repository claims marked inferred; meta_description/meta_homepage as author_claimed; observed claims cite only verified/observed records). No leakage, hallucinated file or symbol names, or rights problems; quoted material is limited to short metadata strings and a two-line guard excerpt. One minor wording note: c25 compresses 'test files or test-like files' to 'test files' though the section text carries the accurate qualifier. The draft correctly avoids the packet's two internally conflicting teaching claims (1127 vs 1312 relations; no-paths vs 13 paths) and discloses both in its uncertainties. No fixes required.",
+  "unsupported": []
  }
 }

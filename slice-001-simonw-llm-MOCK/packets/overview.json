@@ -1392,6 +1392,8 @@
     "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
    }
   ],
+  "relation_truncations": [],
+  "skipped_files": [],
   "teaching_warnings": [],
   "unresolved_relation_count": 7374
  }

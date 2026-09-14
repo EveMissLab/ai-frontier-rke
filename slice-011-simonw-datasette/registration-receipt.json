@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "b338c6f5f6b39dd3e0a341431f071d8cecb0d12b",
+ "license": {
+  "file_bytes": 11357,
+  "file_sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "Apache-2.0",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_107914493_b338c6f5f6b3",
+ "observed_at": "2026-09-14T08:10:38.994340Z",
+ "repository_id": "repo_github_107914493",
+ "revision_id": "rev_repo_github_107914493_b338c6f5f6b3",
+ "sedb_write": {
+  "created_entities": 23,
+  "unchanged_entities": 42,
+  "updated_entities": 0,
+  "written_cells": 151
+ },
+ "slice": "slice-011-simonw-datasette",
+ "snapshot_id": "snap_repo_github_107914493_20260914T081038.994340Z",
+ "taxonomy_version": "v1"
+}

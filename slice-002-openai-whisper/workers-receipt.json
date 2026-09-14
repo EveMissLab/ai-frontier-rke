@@ -7,62 +7,68 @@
   "verifier": 2,
   "writer": 3
  },
+ "completed_at": "2026-09-14T08:19:40.074742Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
  "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
  "runs": [
   {
    "attempt": 1,
-   "candidate": "bd8ba5f1-c3b5-44a8-bc92-1c2c30707bad",
+   "candidate": "8b80a252-5aa7-4577-a7bd-8447763d002c",
    "conservative_cost_ceiling_usd": 0.034542949999999996,
    "cost": {
     "cost_kind": "estimated",
-    "currency_cost_usd": 0.00135535,
+    "currency_cost_usd": 0.0008538499999999999,
     "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.000677675,
+    "promotional_price_estimated_usd": 0.00042692499999999993,
     "promotional_price_observed_on": "2026-08-27",
     "usage": {
      "cached_tokens": 0,
-     "completion_tokens": 1715,
+     "completion_tokens": 712,
      "prompt_tokens": 3319,
-     "reasoning_tokens": 1545,
-     "total_tokens": 5034
+     "reasoning_tokens": 549,
+     "total_tokens": 4031
     }
    },
    "failure": null,
-   "latency_seconds": 21.32,
+   "latency_seconds": 11.03,
    "output_ref": "slice-002-openai-whisper/worker_runs/taxonomy-01.json",
    "role": "taxonomy_classifier",
    "status": "candidate_success",
    "summary": {
-    "confidence": 0.85,
+    "confidence": 0.65,
     "primary": "artificial-intelligence",
     "secondary": [
      "multimodal-ai",
-     "cli-tools"
+     "local-ai"
     ]
    },
    "task_id": "af-slice-002-openai-whisper-taxonomy-01",
-   "worker_run_entity_id": "worker_bd8ba5f1-c3b5-44a8-bc92-1c2c30707bad"
+   "worker_run_entity_id": "worker_8b80a252-5aa7-4577-a7bd-8447763d002c"
   },
   {
    "attempt": 1,
-   "candidate": "1206f7dc-a802-45d1-9aa9-8fe6c0071cac",
+   "candidate": "e51f4b16-a07e-41de-9b19-bfbb9fbabe16",
    "conservative_cost_ceiling_usd": 0.03828605,
    "cost": {
     "cost_kind": "estimated",
-    "currency_cost_usd": 0.017033,
+    "currency_cost_usd": 0.014156,
     "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.0085165,
+    "promotional_price_estimated_usd": 0.007078,
     "promotional_price_observed_on": "2026-08-27",
     "usage": {
      "cached_tokens": 0,
-     "completion_tokens": 30751,
+     "completion_tokens": 24997,
      "prompt_tokens": 11050,
-     "reasoning_tokens": 25618,
-     "total_tokens": 41801
+     "reasoning_tokens": 20393,
+     "total_tokens": 36047
     }
    },
    "failure": null,
-   "latency_seconds": 259.59,
+   "latency_seconds": 217.5,
    "output_ref": "slice-002-openai-whisper/worker_runs/writer-01.json",
    "role": "writer",
    "status": "candidate_success",
@@ -80,19 +86,127 @@
     "status": "draft_ready"
    },
    "task_id": "af-slice-002-openai-whisper-writer-01",
-   "worker_run_entity_id": "worker_1206f7dc-a802-45d1-9aa9-8fe6c0071cac"
+   "worker_run_entity_id": "worker_e51f4b16-a07e-41de-9b19-bfbb9fbabe16"
+  },
+  {
+   "attempt": 1,
+   "candidate": "e1563050-47d0-4464-9238-c06409d6dc72",
+   "conservative_cost_ceiling_usd": 0.0412958,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00856035,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004280175,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11949,
+     "prompt_tokens": 17239,
+     "reasoning_tokens": 10009,
+     "total_tokens": 29188
+    }
+   },
+   "failure": null,
+   "latency_seconds": 104.21,
+   "output_ref": "slice-002-openai-whisper/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 36,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-002-openai-whisper-verifier-01",
+   "worker_run_entity_id": "worker_e1563050-47d0-4464-9238-c06409d6dc72"
+  },
+  {
+   "attempt": 1,
+   "candidate": "fe47c6ea-0c10-46dd-8476-af5a675148be",
+   "conservative_cost_ceiling_usd": 0.0371288,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0053034,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0026517,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8100,
+     "prompt_tokens": 8356,
+     "reasoning_tokens": 7074,
+     "total_tokens": 16456
+    }
+   },
+   "failure": null,
+   "latency_seconds": 90.35,
+   "output_ref": "slice-002-openai-whisper/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.85,
+     "redundancy": 0.7,
+     "scope_discipline": 0.95,
+     "structure": 0.8
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-002-openai-whisper-critic-01",
+   "worker_run_entity_id": "worker_fe47c6ea-0c10-46dd-8476-af5a675148be"
+  },
+  {
+   "attempt": 1,
+   "candidate": "e4f1e4e4-cbe3-4f2d-bae2-b0e391ec03b0",
+   "conservative_cost_ceiling_usd": 0.0340595,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0014904,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0007452,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 2361,
+     "prompt_tokens": 2066,
+     "reasoning_tokens": 2219,
+     "total_tokens": 4427
+    }
+   },
+   "failure": null,
+   "latency_seconds": 21.31,
+   "output_ref": "slice-002-openai-whisper/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-002-openai-whisper-seo-01",
+   "worker_run_entity_id": "worker_e4f1e4e4-cbe3-4f2d-bae2-b0e391ec03b0"
   }
  ],
  "slice": "slice-002-openai-whisper",
- "started_at": "2026-09-14T07:52:43.516563Z",
+ "started_at": "2026-09-14T08:11:46.416909Z",
  "synthetic": false,
  "taxonomy": {
-  "confidence": 0.85,
+  "confidence": 0.65,
   "primary": "artificial-intelligence",
-  "review_required": false,
+  "review_required": true,
   "secondary": [
    "multimodal-ai",
-   "cli-tools"
+   "local-ai"
   ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 36 claims pass. Every grounding_ref exists in the packet (including note-sanctioned summary_repository and architecture_reconstruction), citations support the text, epistemic statuses match evidence provenance (observed only on verified/observed items, exec/role/reconstruction kept to inferred, meta_description author_claimed, c30 unresolved), no knowledge leakage, no hallucinated file or symbol names, and no rights issues; the entrypoint excerpt quoted is a short evidence citation.",
+  "unsupported": []
  }
 }

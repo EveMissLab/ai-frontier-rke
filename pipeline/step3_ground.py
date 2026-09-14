@@ -26,7 +26,20 @@ from af_common import (
 ENGINE, ENGINE_VERSION, MANIFEST_SCHEMA = "RepoLumen", "0.10", "0.10"
 ANALYSIS_CONFIG = {"engine": ENGINE, "version": ENGINE_VERSION, "mode": "deterministic",
                    "audience": "developer", "external_provider": "disabled", "history": False}
-CONFIG_HASH = sha256_bytes(canonical_bytes(ANALYSIS_CONFIG))
+
+
+def analysis_config(m: dict) -> tuple[dict, str]:
+    """Result-affecting analyzer configuration for this manifest and its hash. Bounded analyses (RepoLumen
+    limits.py, 2026-09-14) carry `uncertainty.analysis_bounds`; unbounded 0.10 manifests do not, so their
+    identity is unchanged."""
+    cfg = dict(ANALYSIS_CONFIG)
+    bounds = (m.get("uncertainty") or {}).get("analysis_bounds")
+    if bounds:
+        cfg["bounds"] = bounds
+    return cfg, sha256_bytes(canonical_bytes(cfg))
+
+
+CONFIG_HASH = sha256_bytes(canonical_bytes(ANALYSIS_CONFIG))  # unbounded-manifest hash (kept for reference)
 
 # RepoLumen teaching provenance → SEDB epistemic state (Paper 04 §51).
 EPISTEMIC = {"verified": "observed", "strongly_inferred": "inferred", "weakly_inferred": "inferred",
@@ -47,8 +60,11 @@ CAPABILITY_PROFILE = {"python": "strong_static", "javascript": "bounded_heuristi
 # path is not in the analyzed inventory are excluded from the catalog and packets (RepoLumen 0.10 reports
 # a case-variant phantom `readme.md` on NTFS). A run's original projection is never rewritten: a newer
 # projection is written beside it under its own version directory and its new groundings are appended.
-BUNDLE_VERSION = "ai-frontier-grounding/v1.1"
-PROJECTION_DIR = "v1.1"
+# v1.2 (2026-09-14): bundle uncertainties carry the analyzer's skipped_files / relation_truncations (bounded
+# analysis), and bounded manifests get an extra analyzer-limitation grounding; analysis identity includes
+# the analyzer bounds. Existing runs get a v1.2 projection row beside v1 / v1.1.
+BUNDLE_VERSION = "ai-frontier-grounding/v1.2"
+PROJECTION_DIR = "v1.2"
 
 
 def compact_symbol(s):
@@ -88,7 +104,11 @@ def build_bundle(m: dict, repo_id: str, rev_id: str, run_id: str, metadata: dict
     excluded_ids = {x["excluded_id"] for x in excluded_important}
     role_items = [dict(r, id=f"role_{i}") for i, r in enumerate(a.get("reconstruction", {}).get("module_roles", []), 1)]
     dep_items = [dict(d, id=f"dep_{i}") for i, d in enumerate(c.get("dependencies", []), 1)]
-    lim_items = [{"id": f"lim_{i}", "text": t} for i, t in enumerate(ANALYZER_LIMITATIONS, 1)]
+    limitations = list(ANALYZER_LIMITATIONS)
+    bounds = (m.get("uncertainty") or {}).get("analysis_bounds")
+    if bounds:
+        limitations.append(f"bounded analysis (bounds {bounds.get('bounds_version')}): files over {bounds.get('max_source_file_bytes', 0) // 1000} kB, minified bundles and vendored directories are inventoried but not parsed; relation extraction is capped at {bounds.get('max_relations_per_file')} per file and {bounds.get('max_relations_total')} per repository (see uncertainties.skipped_files / relation_truncations)")
+    lim_items = [{"id": f"lim_{i}", "text": t} for i, t in enumerate(limitations, 1)]
     teaching = m["teaching"]
     sections = teaching["sections"] if isinstance(teaching["sections"], list) else list(teaching["sections"].values())
     teaching_claims = [dict(cl, section=sec.get("id")) for sec in sections for cl in sec.get("claims", [])]
@@ -155,6 +175,8 @@ def build_bundle(m: dict, repo_id: str, rev_id: str, run_id: str, metadata: dict
             "unresolved_relation_count": m.get("uncertainty", {}).get("unresolved_relation_count"),
             "analyzer_limitations": lim_items,
             "excluded_important_files": excluded_important,
+            "skipped_files": (m.get("uncertainty") or {}).get("skipped_files", []),
+            "relation_truncations": (m.get("uncertainty") or {}).get("relation_truncations", []),
             "teaching_warnings": teaching.get("warnings", []),
         },
     }
@@ -270,8 +292,6 @@ def main(slug: str) -> int:
     reg = load_json(sdir / "registration-receipt.json")
     pending = sdir / "artifacts" / "repolumen" / "pending"
     repo_id, rev_id, sha = reg["repository_id"], reg["revision_id"], reg["commit_sha"]
-    run_id = analysis_run_id(repo_id, sha, ENGINE_VERSION, CONFIG_HASH)
-
     # Two-phase artifact commit: temp → hash → validate → durable → SEDB (Paper 04 §131).
     # Re-runs are idempotent: once the artifact is durable, the pending copy no longer exists.
     durable = sdir / "artifacts" / "repolumen" / repo_id / sha / ENGINE_VERSION
@@ -285,6 +305,10 @@ def main(slug: str) -> int:
         shutil.move(str(pending / "analysis-receipt.json"), str(durable / "analysis-receipt.json"))
     assert sha256_file(manifest_path) == receipt["manifest_sha256"], "artifact hash drift"
     m = load_json(manifest_path)
+    # Analysis identity: repository, revision, analyzer version and result-affecting configuration —
+    # which, for bounded manifests, includes the analyzer's bounds (uncertainty.analysis_bounds).
+    analysis_cfg, config_hash = analysis_config(m)
+    run_id = analysis_run_id(repo_id, sha, ENGINE_VERSION, config_hash)
 
     gh = load_json(sdir / "artifacts" / "github" / "repo.json")
     languages = load_json(sdir / "artifacts" / "github" / "languages.json")
@@ -343,7 +367,7 @@ def main(slug: str) -> int:
         records = [{"entity_id": run_id, "kind": "af_analysis_run", "label": f"{ENGINE} {ENGINE_VERSION} · {reg['commit_sha'][:12]}", "values": {
         "af_repository_id": repo_id, "af_revision_id": rev_id, "af_engine": ENGINE, "af_engine_version": ENGINE_VERSION,
         "af_manifest_schema_version": m.get("schema_version"), "af_analysis_mode": receipt["knowledge_cache"]["analysis_mode"],
-        "af_external_provider": "disabled", "af_analysis_status": "passed", "af_analysis_config_hash": CONFIG_HASH,
+        "af_external_provider": "disabled", "af_analysis_status": "passed", "af_analysis_config_hash": config_hash, "af_analysis_config": analysis_cfg,
         "af_artifact_ref": rel_ref(manifest_path), "af_artifact_sha256": receipt["manifest_sha256"], "af_artifact_bytes": receipt["manifest_bytes"],
         "af_started_at": receipt["started_at"], "af_elapsed_seconds": receipt["elapsed_seconds"],
         "af_grounding_bundle_ref": rel_ref(bdir / "grounding-bundle.json"), "af_grounding_bundle_sha256": bundle_hash,

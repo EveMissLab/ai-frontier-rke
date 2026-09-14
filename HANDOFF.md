@@ -187,3 +187,24 @@ taxonomy slug, listing published repositories), Weekly Frontier data path, canar
 `pub_assetrev_asset_repo_github_622352364_overview_v6_20260914T062749_published`; site commit `934a658`;
 live at https://evemisstechnology.com/ai-frontier/repository/simonw/llm/ (EN + zh-TW), portal lists 1 guide.
 Yield: 4 real runs → 1 published page. Next page-level step: a second repository, end to end.
+
+## 2026-09-14 (evening) — the machine ran out of memory; bounded analysis + hard caps
+
+canary-001 (11 repositories, 3 GLM workers, analyses and site builds stacked) exhausted the 32 GB machine.
+Root cause found afterwards: RepoLumen 0.10 applied its JavaScript call heuristic to datasette's vendored /
+minified bundles and produced a **5.5 GB manifest** (architecture.relations + call_graph ≈ 5.3 GB); step 3
+loading it took ~20 GB. Neo's rule (general memory): one job at a time on this machine, never fan out.
+
+Changes:
+- **RepoLumen** (`repo_semantic/limits.py`, analyzer version stays 0.10; CHANGELOG entry): files > 400 kB,
+  minified bundles (by name or line shape) and vendored directories are inventoried but not parsed; relation
+  extraction capped at 2,500 per file / 150,000 per repository; all of it reported under
+  `uncertainty.skipped_files`, `relation_truncations`, `analysis_bounds` (bounds_version 0.10.1). 172 tests pass.
+  RepoLumen's git tracks only two docs files; the package itself is untracked there — change recorded in its CHANGELOG.
+- **step 3** → projector **v1.2**: analysis identity includes `analysis_bounds` (bounded manifests get new analysis
+  runs; unbounded ones keep their identity), bundle uncertainties carry skipped/truncated lists, bounded manifests get
+  `lim_6`. Existing runs got `proj_<run>_v1_2` rows (identical groundings, no conflicts).
+- **canary.py**: `workers` default 1; free-RAM guard (≥ 8 GB) before every heavy step; every subprocess runs in a
+  Windows Job Object with a **6 GB hard cap** (verified: a capped child gets MemoryError instead of the machine
+  swapping); a manifest > 300 MB fails the analysis phase instead of reaching step 3; canary logs/previews untracked.
+- datasette (5.5 GB manifest, unbounded) and mitmproxy are re-queued as canary-002 with the bounded analyzer.

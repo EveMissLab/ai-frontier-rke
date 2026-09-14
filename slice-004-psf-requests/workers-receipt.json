@@ -7,135 +7,43 @@
   "verifier": 2,
   "writer": 3
  },
- "deterministic_check_1": {
-  "failures": [
-   "c32: no grounding_refs"
-  ],
-  "ok": false
- },
  "model": "glm-5.3-flash",
  "runs": [
   {
    "attempt": 1,
-   "candidate": "2c60e957-2d00-4128-af26-d6ce7216801b",
+   "candidate": "92fc5943-0ce1-41b5-b2a5-42f5afd88909",
    "conservative_cost_ceiling_usd": 0.034570699999999996,
    "cost": {
     "cost_kind": "estimated",
-    "currency_cost_usd": 0.0012156500000000002,
+    "currency_cost_usd": 0.00112165,
     "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.0006078250000000001,
+    "promotional_price_estimated_usd": 0.000560825,
     "promotional_price_observed_on": "2026-08-27",
     "usage": {
      "cached_tokens": 0,
-     "completion_tokens": 1417,
+     "completion_tokens": 1229,
      "prompt_tokens": 3381,
-     "reasoning_tokens": 1289,
-     "total_tokens": 4798
+     "reasoning_tokens": 1145,
+     "total_tokens": 4610
     }
    },
    "failure": null,
-   "latency_seconds": 17.08,
+   "latency_seconds": 16.59,
    "output_ref": "slice-004-psf-requests/worker_runs/taxonomy-01.json",
    "role": "taxonomy_classifier",
    "status": "candidate_success",
    "summary": {
-    "confidence": 0.6,
+    "confidence": 0.72,
     "primary": "web-and-applications",
     "secondary": [
      "developer-tools"
     ]
    },
    "task_id": "af-slice-004-psf-requests-taxonomy-01",
-   "worker_run_entity_id": "worker_2c60e957-2d00-4128-af26-d6ce7216801b"
-  },
-  {
-   "attempt": 1,
-   "candidate": "692f2be3-48a2-4e5b-8ac4-aa28db407423",
-   "conservative_cost_ceiling_usd": 0.0389135,
-   "cost": {
-    "cost_kind": "estimated",
-    "currency_cost_usd": 0.01874105,
-    "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.009370525,
-    "promotional_price_observed_on": "2026-08-27",
-    "usage": {
-     "cached_tokens": 0,
-     "completion_tokens": 33787,
-     "prompt_tokens": 12317,
-     "reasoning_tokens": 28870,
-     "total_tokens": 46104
-    }
-   },
-   "failure": null,
-   "latency_seconds": 265.09,
-   "output_ref": "slice-004-psf-requests/worker_runs/writer-01.json",
-   "role": "writer",
-   "status": "candidate_success",
-   "summary": {
-    "claims": 36,
-    "sections": [
-     "what_it_is",
-     "how_it_starts",
-     "structure",
-     "dependencies_and_tests",
-     "read_first",
-     "limits_of_this_analysis",
-     "notable_symbols"
-    ],
-    "status": "draft_ready"
-   },
-   "task_id": "af-slice-004-psf-requests-writer-01",
-   "worker_run_entity_id": "worker_692f2be3-48a2-4e5b-8ac4-aa28db407423"
-  },
-  {
-   "attempt": 2,
-   "candidate": "a2ffe5a1-7a43-4f46-a2b8-96055bd1b1c8",
-   "conservative_cost_ceiling_usd": 0.042296150000000005,
-   "cost": {
-    "cost_kind": "estimated",
-    "currency_cost_usd": 0.005680149999999999,
-    "pricing_basis_version": "zai-2026-08-27",
-    "promotional_price_estimated_usd": 0.0028400749999999996,
-    "promotional_price_observed_on": "2026-08-27",
-    "usage": {
-     "cached_tokens": 0,
-     "completion_tokens": 5666,
-     "prompt_tokens": 18981,
-     "reasoning_tokens": 841,
-     "total_tokens": 24647
-    }
-   },
-   "failure": null,
-   "latency_seconds": 37.99,
-   "output_ref": "slice-004-psf-requests/worker_runs/writer-revision-02.json",
-   "role": "writer",
-   "status": "candidate_success",
-   "summary": {
-    "claims": 35,
-    "sections": [
-     "what_it_is",
-     "how_it_starts",
-     "structure",
-     "dependencies_and_tests",
-     "read_first",
-     "limits_of_this_analysis",
-     "notable_symbols"
-    ],
-    "status": "draft_ready"
-   },
-   "task_id": "af-slice-004-psf-requests-writer-revision-02",
-   "worker_run_entity_id": "worker_a2ffe5a1-7a43-4f46-a2b8-96055bd1b1c8"
+   "worker_run_entity_id": "worker_92fc5943-0ce1-41b5-b2a5-42f5afd88909"
   }
  ],
  "slice": "slice-004-psf-requests",
- "started_at": "2026-09-14T07:52:43.516564Z",
- "synthetic": false,
- "taxonomy": {
-  "confidence": 0.6,
-  "primary": "web-and-applications",
-  "review_required": false,
-  "secondary": [
-   "developer-tools"
-  ]
- }
+ "started_at": "2026-09-14T08:30:43.604513Z",
+ "synthetic": false
 }

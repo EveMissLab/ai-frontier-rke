@@ -1,6 +1,6 @@
 {
  "analysis_run_id": "analysis_f20a9f60553ce57f",
- "analysis_run_mode": "reuse_existing_new_projection (run recorded ai-frontier-grounding/v1, now ai-frontier-grounding/v1.1)",
+ "analysis_run_mode": "reuse_existing_new_projection (run recorded ai-frontier-grounding/v1, now ai-frontier-grounding/v1.2)",
  "bounded_context_ratio": 0.00186,
  "counts": {
   "dependencies": 7,
@@ -30,9 +30,9 @@
    "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
   }
  ],
- "grounding_bundle_bytes": 12761210,
- "grounding_bundle_ref": "slice-001-simonw-llm-MOCK/artifacts/grounding/analysis_f20a9f60553ce57f/v1.1/grounding-bundle.json",
- "grounding_bundle_sha256": "de81d5ede5fe23dc499a59a07b8920cac911db59f181c09bb4ede535d6de1aba",
+ "grounding_bundle_bytes": 12761263,
+ "grounding_bundle_ref": "slice-001-simonw-llm-MOCK/artifacts/grounding/analysis_f20a9f60553ce57f/v1.2/grounding-bundle.json",
+ "grounding_bundle_sha256": "2cac72e62063dbd952e508753800d3813a3c3ae9626238f3d64774a7cbe1d040",
  "license_state": {
   "agreement": true,
   "repolumen_detected": "Apache-2.0",
@@ -43,22 +43,22 @@
  "manifest_sha256": "93a20ceebc85bfc707c7f8f8609a57b23c53f16f71684be481b9993d1737f1ca",
  "packets": {
   "overview": {
-   "bytes": 35375,
-   "sha256": "7bf50fdcaf97e2975027a4f9dc34f5328a367680c0a84c0a33d21a228c5dce40"
+   "bytes": 35428,
+   "sha256": "3ae2f657dd35bef493fecc89675a5fb6b29530261e63c8a66d562b0d5a239eb7"
   },
   "taxonomy": {
    "bytes": 7843,
    "sha256": "a4d931cc2d663b6d5051ecefc219bc297657dc4f51ba964d5da68304e34d3be9"
   }
  },
- "projection_id": "proj_analysis_f20a9f60553ce57f_v1_1",
- "projection_version": "ai-frontier-grounding/v1.1",
+ "projection_id": "proj_analysis_f20a9f60553ce57f_v1_2",
+ "projection_version": "ai-frontier-grounding/v1.2",
  "run_recorded_grounding_bundle_sha256": "3c9a1831d852254316b18a12d49d8053bb30fcdcab8491c3eeabdaaabad645a4",
  "sedb_write": {
-  "created_entities": 2,
+  "created_entities": 1,
   "unchanged_entities": 15061,
   "updated_entities": 0,
-  "written_cells": 24
+  "written_cells": 12
  },
  "supersedes_projection_id": "proj_analysis_f20a9f60553ce57f_v1"
 }
