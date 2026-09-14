@@ -1,10 +1,10 @@
 {
  "asset_id": "asset_repo_github_622352364_overview",
- "asset_revision_id": "assetrev_asset_repo_github_622352364_overview_v4",
- "canonical_bytes": 6258,
- "canonical_source_ref": "slice-001-simonw-llm-MOCK/canonical/overview.md",
- "canonical_source_sha256": "ed62482f84b9f4172a0dddd28c21973fed8515bd545a45e1c2dca2832f2aae72",
- "claims": 10,
+ "asset_revision_id": "assetrev_asset_repo_github_622352364_overview_v6",
+ "canonical_bytes": 20524,
+ "canonical_source_ref": "slice-001-simonw-llm-run4/canonical/overview.md",
+ "canonical_source_sha256": "1dbe78605863160ac659089c22827f90ae30e253a184a2557ac2cc9e2a310458",
+ "claims": 39,
  "gates": {
   "grounding": {
    "details": {
@@ -28,8 +28,8 @@
   },
   "policy": {
    "details": {
-    "claims": 10,
-    "sections": 5
+    "claims": 39,
+    "sections": 7
    },
    "passed": true
   },
@@ -60,7 +60,7 @@
   "created_entities": 9,
   "unchanged_entities": 0,
   "updated_entities": 3,
-  "written_cells": 96
+  "written_cells": 98
  },
- "supported_claims": 10
+ "supported_claims": 39
 }

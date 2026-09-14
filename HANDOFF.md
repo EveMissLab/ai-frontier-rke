@@ -136,3 +136,25 @@ groundings, packet 181 IDs all with catalog state, phantom rejected as unknown, 
    then portal routes reading view models from the catalog; then the 5–10-repository canary.
 4. GitHub: this lab is now a local git repository (initial commit 2026-09-13). The remote waits for Neo's
    organization account; artifacts, worker outputs and canonical drafts are git-ignored (validated ≠ published).
+
+## 2026-09-14 — projection history in the catalog, contracts v1.2, run 4 validated
+
+- **Catalog contract**: `af_grounding_projection` (immutable) in the SEDB project (`aeb2d2e`, 8 tests): one row per
+  analysis run × projector version with version, bundle ref/sha/bytes, counts, `af_supersedes_projection_id`.
+  Step 3 writes it (`proj_<run>_v1_1`) and backfilled `proj_<run>_v1` from the run row; a rerun at the same
+  version must reproduce the same bundle hash or step 3 refuses. Real catalog: v1 = 15,007, v1.1 = 15,061.
+- **Contracts v1.2** (`writer/overview/v1.2`, `writer/overview-revision/v1.2`, `critic/structure/v1.1`): the
+  gate's `FORBIDDEN_WORDING` now lives in `prompts.py` (step 5 imports it) and WORDING_RULES is in the
+  writer/revision contracts; the critic flags rejected wording as an issue.
+- **Run 4** (`slice-001-simonw-llm-run4`): 7 dispatches, 708 s, 0.060 USD list. Verifier 1 fail 37/39 — two
+  *semantic* superlatives the verifier read as overclaims ("highest by static call degree", "the most
+  referenced core modules") → targeted revision (2 fixes, 59 s) → verifier 2 pass 39/39; critic readability 0.70,
+  scope 0.90, 1 overclaim flag, no wording issues; step 5 v1.2 → `…overview_v6` **validated, unpublished**.
+  16/39 claims cite v1.1 IDs. Budget after step 4: writer 2/3, verifier 2/2 → no critic revision possible.
+- **Yield 3/4 real runs** (v2, v5, v6 validated; run 2 rejected). Cost band 0.05–0.06 USD, 9–14 min per run.
+
+**Next items (in order):** architecture asset (ArchitectureSelector packet + `writer/architecture/v1`,
+verifier reuse) → second repository (needs GitHub artifacts + RepoLumen run; pick one with pyproject-only
+dependencies to exercise the analyzer limitation) → portal routes on the Astro site reading view models from
+the catalog (`/ai-frontier/repository/<owner>/<repo>/`) → Weekly Frontier data path → 5–10-repository canary.
+Publication of any asset still needs human review + RELEASE_GATES G0–G10.

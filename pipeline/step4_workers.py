@@ -22,7 +22,7 @@ import os
 
 from af_common import load_json, open_store, rel_ref, slice_dir, utc_now, write_json
 from macr_worker import build_task, validate_output, worker_records
-from prompts import REVISION_V, VERIFIER_V, WRITER_V, contract_hash
+from prompts import CRITIC_V, REVISION_V, VERIFIER_V, WRITER_V, contract_hash
 
 # Paper 05 §29 MVP budget (writer 2, verifier 2) with one extra writer attempt reserved for a
 # deterministic-check revision, so a verifier-driven or critic-driven revision is still possible
@@ -244,7 +244,7 @@ def main(slug: str) -> int:
     hard_ok = det["ok"] and verdict is not None and verdict["status"] == "pass"
 
     # ---- critic and SEO metadata (quality signals; never technical truth)
-    critic = run_worker("critic", "critic/structure/v1", [("draft", json.dumps(draft, ensure_ascii=False, indent=1)), ("packet_summary", json.dumps({k: ov_packet[k] for k in ("repository_summary", "important_files", "entrypoints", "uncertainties")}, ensure_ascii=False, indent=1))], 1, "critic", "overview", 1)
+    critic = run_worker("critic", CRITIC_V, [("draft", json.dumps(draft, ensure_ascii=False, indent=1)), ("packet_summary", json.dumps({k: ov_packet[k] for k in ("repository_summary", "important_files", "entrypoints", "uncertainties")}, ensure_ascii=False, indent=1))], 1, "critic", "overview", 1)
     seo = run_worker("formatter", "formatter/seo-metadata/v1", [("validated_draft", json.dumps({"title": draft["title"], "summary": draft["summary"], "sections": [{"heading": s["heading"], "markdown": s["markdown"]} for s in draft["sections"]], "repository": ov_packet["repository"]["canonical_source_url"]}, ensure_ascii=False, indent=1))], 1, "seo", "overview", 1)
 
     final = {"draft": draft, "draft_run_ref": draft_run["output_ref"], "verifier": verdict, "critic": critic.get("output"), "seo": seo.get("output"),

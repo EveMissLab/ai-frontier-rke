@@ -17,7 +17,7 @@ from urllib.parse import urlparse
 import yaml
 
 from af_common import load_json, open_store, rel_ref, sha256_bytes, slice_dir, utc_now, write_json
-from prompts import SCHEMAS, WRITER_V
+from prompts import FORBIDDEN_WORDING, SCHEMAS, WRITER_V
 from step4_workers import deterministic_checks
 
 VALIDATOR_VERSION = "af-validators/v1.2"  # v1.1: URL host check strips trailing sentence punctuation; v1.2: "best" gate matches superlative/marketing use only, not the hedge "at best" (run 3 false positive)
@@ -31,8 +31,7 @@ AI_PROCESS_NOTICE = ("This page was produced using revision-aware repository ana
                      "claims are tied to the analyzed repository revision and may be revalidated when the source repository changes.")
 STATIC_NOTICE = ("Architecture reconstruction is based on static repository analysis and may not capture all runtime behavior, "
                  "dynamic dispatch, generated code, or environment-specific execution.")
-FORBIDDEN_WORDING = [r"\bwe tested\b", r"\bverified at runtime\b", r"\bguaranteed\b", r"\bblazing\b", r"\bproduction[- ]ready\b",
-                     r"\b(?:the|is|are|its|their)\s+best\b", r"\bbest[- ](?:in[- ]class|of[- ]breed|practices?|way|choice|tool|library|option)\b"]
+# FORBIDDEN_WORDING lives in prompts.py (the writer contract carries the same list since v1.2).
 
 
 def md_escape_cell(s: str) -> str:

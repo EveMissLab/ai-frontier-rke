@@ -1,0 +1,35 @@
+{
+ "candidate_categories": [
+  "ai-agents",
+  "ai-infrastructure",
+  "artificial-intelligence",
+  "cli-tools",
+  "developer-tools",
+  "llm-serving",
+  "local-ai"
+ ],
+ "commit_sha": "1df47ddcac20d58726a993949da8ef84f4081085",
+ "license": {
+  "file_bytes": 11357,
+  "file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "Apache-2.0",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_622352364_1df47ddcac20",
+ "observed_at": "2026-09-12T06:38:39.129538Z",
+ "repository_id": "repo_github_622352364",
+ "revision_id": "rev_repo_github_622352364_1df47ddcac20",
+ "sedb_write": {
+  "created_entities": 49,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 357
+ },
+ "slice": "slice-001-simonw-llm",
+ "snapshot_id": "snap_repo_github_622352364_20260912T063839.129538Z",
+ "taxonomy_version": "v1"
+}

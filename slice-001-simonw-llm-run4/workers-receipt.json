@@ -1,0 +1,292 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T05:30:48.596739Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "7245f60f-863c-4c9c-973f-fb483997a79a",
+   "conservative_cost_ceiling_usd": 0.0345749,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0012134499999999998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0006067249999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 1400,
+     "prompt_tokens": 3423,
+     "reasoning_tokens": 1275,
+     "total_tokens": 4823
+    }
+   },
+   "failure": null,
+   "latency_seconds": 15.77,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.78,
+    "primary": "cli-tools",
+    "secondary": [
+     "artificial-intelligence",
+     "developer-tools"
+    ]
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-taxonomy-01",
+   "worker_run_entity_id": "worker_7245f60f-863c-4c9c-973f-fb483997a79a"
+  },
+  {
+   "attempt": 1,
+   "candidate": "8a3b3d96-4c0e-4b20-afe2-0e19366b1e5d",
+   "conservative_cost_ceiling_usd": 0.039677449999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01506295,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.007531475,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 25763,
+     "prompt_tokens": 14543,
+     "reasoning_tokens": 21111,
+     "total_tokens": 40306
+    }
+   },
+   "failure": null,
+   "latency_seconds": 183.33,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-writer-01",
+   "worker_run_entity_id": "worker_8a3b3d96-4c0e-4b20-afe2-0e19366b1e5d"
+  },
+  {
+   "attempt": 1,
+   "candidate": "70eef988-863b-4622-b1d9-e036d3e03a09",
+   "conservative_cost_ceiling_usd": 0.042798199999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01364035,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.006820175,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 21014,
+     "prompt_tokens": 20889,
+     "reasoning_tokens": 18272,
+     "total_tokens": 41903
+    }
+   },
+   "failure": null,
+   "latency_seconds": 168.1,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 2,
+     "supported": 37,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 2,
+    "status": "fail"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-verifier-01",
+   "worker_run_entity_id": "worker_70eef988-863b-4622-b1d9-e036d3e03a09"
+  },
+  {
+   "attempt": 2,
+   "candidate": "4a63f93c-971d-43b2-be68-9d2d5c8f487c",
+   "conservative_cost_ceiling_usd": 0.04306685,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00789275,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003946375,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 9391,
+     "prompt_tokens": 21315,
+     "reasoning_tokens": 3432,
+     "total_tokens": 30706
+    }
+   },
+   "failure": null,
+   "latency_seconds": 59.1,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-writer-revision-02",
+   "worker_run_entity_id": "worker_4a63f93c-971d-43b2-be68-9d2d5c8f487c"
+  },
+  {
+   "attempt": 2,
+   "candidate": "9ca5f56f-3448-4edc-9e1b-3bc5a1676a64",
+   "conservative_cost_ceiling_usd": 0.042821,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0143056,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0071528,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 22334,
+     "prompt_tokens": 20924,
+     "reasoning_tokens": 19857,
+     "total_tokens": 43258
+    }
+   },
+   "failure": null,
+   "latency_seconds": 164.75,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-verifier-02",
+   "worker_run_entity_id": "worker_9ca5f56f-3448-4edc-9e1b-3bc5a1676a64"
+  },
+  {
+   "attempt": 1,
+   "candidate": "b33250f7-5500-40dd-ae83-1b291c6ec3eb",
+   "conservative_cost_ceiling_usd": 0.03728675,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0052093,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00260465,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 7832,
+     "prompt_tokens": 8622,
+     "reasoning_tokens": 6982,
+     "total_tokens": 16454
+    }
+   },
+   "failure": null,
+   "latency_seconds": 78.41,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.9,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-critic-01",
+   "worker_run_entity_id": "worker_b33250f7-5500-40dd-ae83-1b291c6ec3eb"
+  },
+  {
+   "attempt": 1,
+   "candidate": "371f28c3-227a-4b86-8afc-e4ffab694574",
+   "conservative_cost_ceiling_usd": 0.0341114,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0026274000000000002,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0013137000000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4647,
+     "prompt_tokens": 2026,
+     "reasoning_tokens": 4458,
+     "total_tokens": 6673
+    }
+   },
+   "failure": null,
+   "latency_seconds": 38.21,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-001-simonw-llm-run4-seo-01",
+   "worker_run_entity_id": "worker_371f28c3-227a-4b86-8afc-e4ffab694574"
+  }
+ ],
+ "slice": "slice-001-simonw-llm-run4",
+ "started_at": "2026-09-14T05:18:34.289955Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.78,
+  "primary": "cli-tools",
+  "review_required": false,
+  "secondary": [
+   "artificial-intelligence",
+   "developer-tools"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 claims pass. Every grounding_ref exists verbatim in the packet and supports the wording, including all numeric figures (116 files, 35/20/44 layout, 9698/9116/582/2324/7374 relations, role degrees, star/release metadata). Epistemic statuses are correct: claims citing exec_*, role_*, or summary_repository are marked inferred; observed claims cite only verified files, symbols, dep_*, lim_*, relation_counts, or observed platform metadata; meta_description/meta_homepage are correctly author_claimed. No knowledge leakage, hallucinated names, revision conflicts, or rights issues found.",
+  "unsupported": []
+ }
+}

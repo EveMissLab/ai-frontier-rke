@@ -31,7 +31,7 @@
   }
  ],
  "grounding_bundle_bytes": 12761210,
- "grounding_bundle_ref": "slice-001-simonw-llm-MOCK/artifacts/grounding/analysis_f20a9f60553ce57f/v1.1/grounding-bundle.json",
+ "grounding_bundle_ref": "slice-001-simonw-llm-run4/artifacts/grounding/analysis_f20a9f60553ce57f/v1.1/grounding-bundle.json",
  "grounding_bundle_sha256": "de81d5ede5fe23dc499a59a07b8920cac911db59f181c09bb4ede535d6de1aba",
  "license_state": {
   "agreement": true,
@@ -39,7 +39,7 @@
   "spdx": "Apache-2.0",
   "status": "open-source"
  },
- "manifest_ref": "slice-001-simonw-llm-MOCK/artifacts/repolumen/repo_github_622352364/1df47ddcac20d58726a993949da8ef84f4081085/0.10/semantic-manifest.json",
+ "manifest_ref": "slice-001-simonw-llm-run4/artifacts/repolumen/repo_github_622352364/1df47ddcac20d58726a993949da8ef84f4081085/0.10/semantic-manifest.json",
  "manifest_sha256": "93a20ceebc85bfc707c7f8f8609a57b23c53f16f71684be481b9993d1737f1ca",
  "packets": {
   "overview": {

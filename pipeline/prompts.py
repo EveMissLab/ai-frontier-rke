@@ -45,17 +45,29 @@ RIGHTS_RULES = (
     "yours or as EVEMISS's."
 )
 
+# v1.2 (2026-09-14): the release gate's wording list is part of the writer's contract, so wording never
+# reaches the gate. The list is the policy artifact; step 5 imports it from here. v1.2 of the validators
+# (2026-09-13) had already narrowed "best" to superlative/marketing use after a false positive on "at best".
+FORBIDDEN_WORDING = [r"\bwe tested\b", r"\bverified at runtime\b", r"\bguaranteed\b", r"\bblazing\b", r"\bproduction[- ]ready\b",
+                     r"\b(?:the|is|are|its|their)\s+best\b", r"\bbest[- ](?:in[- ]class|of[- ]breed|practices?|way|choice|tool|library|option)\b"]
+WORDING_RULES = (
+    "WORDING RULES: the release gate rejects these phrases, so never write them: 'we tested', 'verified at "
+    "runtime', 'guaranteed', 'blazing', 'production-ready', and superlative 'best' ('the best', 'is best', "
+    "'best-in-class', 'best practice(s)', 'best way/choice/tool'). Hedges such as 'at best' are fine. No "
+    "marketing adjectives: describe, do not praise."
+)
+
 OUTPUT_RULES = (
     "OUTPUT RULES: Return exactly one JSON object and nothing else (no Markdown fences, no prose "
     "before or after). Strings are UTF-8 English. Keep every claim text under 60 words."
 )
 
 WRITER_OVERVIEW_V1 = {
-    "version": "writer/overview/v1.1",
+    "version": "writer/overview/v1.2",
     "goal": "Write the AI Frontier 'overview' knowledge asset for one open-source repository, using only the grounding packet, as one JSON object matching the output schema.",
     "contract": "\n\n".join([
         "ROLE: Writer worker of the AI Frontier Repository Knowledge Engine. Asset type: overview. Audience: a developer who knows Python but has never opened this repository. Tone: plain, concrete, no marketing.",
-        DATA_BOUNDARY, EPISTEMIC_RULES, RIGHTS_RULES,
+        DATA_BOUNDARY, EPISTEMIC_RULES, RIGHTS_RULES, WORDING_RULES,
         "CONTENT: Produce 5 to 7 sections with these ids in this order: 'what_it_is' (what the repository is, from platform metadata and structural evidence), 'how_it_starts' (entrypoints and the static core flow), 'structure' (top-level layout, the most connected modules and what their static call degree suggests), 'dependencies_and_tests' (what dependency evidence exists, and its limits; test surface), 'read_first' (a short reading order grounded in important files and entrypoints), 'limits_of_this_analysis' (what the static analysis cannot establish for this repository: unresolved relations, plugin loading boundaries, partial dependency parsing, unverified runtime). Optional: 'notable_symbols'. Each section body is Markdown (paragraphs and short bullet lists, no headings inside) of at most 180 words. The summary is at most 60 words. At most 40 claims in total.",
         OUTPUT_RULES,
         "OUTPUT SCHEMA: {\"status\": \"draft_ready\", \"asset_type\": \"overview\", \"title\": string, \"summary\": string, \"summary_claim_ids\": [string], \"sections\": [{\"id\": string, \"heading\": string, \"markdown\": string, \"claim_ids\": [string]}], \"claims\": [{\"claim_id\": string (c1, c2, ...), \"section_id\": string, \"text\": string, \"grounding_refs\": [string], \"epistemic_status\": \"observed\"|\"inferred\"|\"author_claimed\"|\"unresolved\"}], \"uncertainties\": [string], \"questions\": [string]}. Every claim_id listed in a section or the summary must exist in `claims`, and every sentence of a section body must be covered by at least one of that section's claims.",
@@ -63,11 +75,11 @@ WRITER_OVERVIEW_V1 = {
 }
 
 WRITER_REVISION_V1 = {
-    "version": "writer/overview-revision/v1.1",
+    "version": "writer/overview-revision/v1.2",
     "goal": "Apply only the verifier's required fixes to the previous overview draft and return the complete revised draft as one JSON object in the writer output schema.",
     "contract": "\n\n".join([
         "ROLE: Writer worker performing a TARGETED REVISION. You receive the grounding packet, your previous draft and a list of required fixes from an independent verifier.",
-        DATA_BOUNDARY, EPISTEMIC_RULES, RIGHTS_RULES,
+        DATA_BOUNDARY, EPISTEMIC_RULES, RIGHTS_RULES, WORDING_RULES,
         "REVISION RULES: Change only the claims and section text named in `required_fixes` (remove, reword, downgrade epistemic_status, or add grounding refs that truly exist in the packet). Keep every other claim byte-identical (same claim_id, text, grounding_refs, epistemic_status). Do not add new claims except to replace a removed one when the section would otherwise be empty. Update section markdown so it no longer contains removed or changed statements.",
         OUTPUT_RULES,
         "OUTPUT SCHEMA: identical to the writer schema: {\"status\": \"draft_ready\", \"asset_type\": \"overview\", \"title\", \"summary\", \"summary_claim_ids\", \"sections\": [...], \"claims\": [...], \"uncertainties\": [...], \"questions\": [...]}.",
@@ -88,12 +100,13 @@ VERIFIER_GROUNDING_V1 = {
 }
 
 CRITIC_STRUCTURE_V1 = {
-    "version": "critic/structure/v1",
+    "version": "critic/structure/v1.1",
     "goal": "Review the overview draft for structure, redundancy, coherence, scope discipline, overclaiming and beginner readability; return one JSON critique object without adding technical facts.",
     "contract": "\n\n".join([
         "ROLE: Critic worker. You evaluate how the draft is organized and phrased. You never decide technical truth and you never add technical facts; the verifier has already checked grounding.",
         DATA_BOUNDARY,
-        "CHECKS: logical section order; redundancy between sections; missing explanation a newcomer needs (only if the packet already contains it - point to the packet item, do not supply facts yourself); misleading framing or overclaim in wording (flag claim_ids); jargon left unexplained; scope discipline (does the draft stay an overview rather than a tutorial).",
+        WORDING_RULES,
+        "CHECKS: wording the release gate rejects (see WORDING RULES; report it as an issue with its section_id); logical section order; redundancy between sections; missing explanation a newcomer needs (only if the packet already contains it - point to the packet item, do not supply facts yourself); misleading framing or overclaim in wording (flag claim_ids); jargon left unexplained; scope discipline (does the draft stay an overview rather than a tutorial).",
         OUTPUT_RULES,
         "OUTPUT SCHEMA: {\"status\": \"reviewed\", \"scores\": {\"structure\": number 0-1, \"redundancy\": number 0-1 (1 = no redundancy), \"coherence\": number 0-1, \"scope_discipline\": number 0-1, \"beginner_readability\": number 0-1}, \"issues\": [{\"severity\": \"low\"|\"medium\"|\"high\", \"section_id\": string|null, \"issue\": string, \"suggestion\": string}], \"overclaim_flags\": [{\"claim_id\": string, \"reason\": string}], \"wording_suggestions\": [{\"section_id\": string, \"suggested_text\": string}], \"no_new_technical_facts\": true}",
     ]),
@@ -191,10 +204,11 @@ TAXONOMY_SCHEMA = {
 }
 
 # Current contract versions (the *_V1 constants above hold the current text; their version strings are the truth).
-WRITER_V, REVISION_V, VERIFIER_V = WRITER_OVERVIEW_V1["version"], WRITER_REVISION_V1["version"], VERIFIER_GROUNDING_V1["version"]
+WRITER_V, REVISION_V, VERIFIER_V, CRITIC_V = WRITER_OVERVIEW_V1["version"], WRITER_REVISION_V1["version"], VERIFIER_GROUNDING_V1["version"], CRITIC_STRUCTURE_V1["version"]
 
 SCHEMAS = {
-    WRITER_V: WRITER_SCHEMA, REVISION_V: WRITER_SCHEMA, VERIFIER_V: VERIFIER_SCHEMA,
+    WRITER_V: WRITER_SCHEMA, REVISION_V: WRITER_SCHEMA, VERIFIER_V: VERIFIER_SCHEMA, CRITIC_V: CRITIC_SCHEMA,
+    "writer/overview/v1.1": WRITER_SCHEMA, "writer/overview-revision/v1.1": WRITER_SCHEMA,  # v1.1 kept: run 3 validates against it
     "writer/overview/v1": WRITER_SCHEMA, "writer/overview-revision/v1": WRITER_SCHEMA, "verifier/grounding/v1": VERIFIER_SCHEMA,  # v1 kept: recorded runs 1-2 validate against it
     "critic/structure/v1": CRITIC_SCHEMA, "formatter/seo-metadata/v1": SEO_SCHEMA, "taxonomy_classifier/v1": TAXONOMY_SCHEMA,
 }

@@ -8,7 +8,7 @@ EVEMISS Technology, 2026). It is a working vertical slice, not a crawler and not
 | | |
 |---|---|
 | Product status | **lab / prototype** — one repository (simonw/llm) end to end; nothing published yet |
-| Version | 0.1.0-lab (projector v1.1, validators v1.2, contracts v1.1) |
+| Version | 0.1.1-lab (projector v1.1, validators v1.2, contracts v1.2, catalog projection history) |
 | Canonical website | https://evemisstechnology.com/ai-frontier/ |
 | Maintainer | Neo.K (許筌崴), EVEMISS TECHNOLOGY CO., LTD. — kakon77777@evemisslab.com |
 | Issues | bug reports and questions welcome; feature requests are triaged against the RKE series, not first-come |
@@ -65,6 +65,7 @@ copied slice. Mock output is labelled SYNTHETIC everywhere and is never evidence
 | 1 | 2026-09-12 | v1 / v1.1 | 7 | 39/39, twice | 8/8 | overview **v2 validated**, unpublished | ≈0.061 USD |
 | 2 | 2026-09-13 | v1 / v1.1 | 5 | fail (4 claims) | — | rejected by the gates | 0.050 USD |
 | 3 | 2026-09-13 | **v1.1** / **v1.2** | 7 | 39/39 first draft; critic revision rejected by verifier 2 (38/39) | 8/8 | overview **v5 validated**, unpublished | 0.063 USD |
+| 4 | 2026-09-14 | v1.1 / v1.2, contracts **v1.2** | 7 | 37/39 → verifier-driven revision (2 wording overclaims) → 39/39 | 8/8 | overview **v6 validated**, unpublished | 0.060 USD |
 
 Details and the next steps are in [HANDOFF.md](HANDOFF.md); changes in [CHANGELOG.md](CHANGELOG.md).
 

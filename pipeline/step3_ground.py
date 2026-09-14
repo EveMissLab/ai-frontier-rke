@@ -304,15 +304,29 @@ def main(slug: str) -> int:
     # passed run is canonical; re-runs only regenerate projections and packets.
     existing = store.get(run_id)
     analysis_mode = "reuse_existing"
+    # Projection history (catalog contract 2026-09-14): one immutable af_grounding_projection row per
+    # (analysis run, projector version). The run row keeps its original projection; a newer projector
+    # version adds groundings beside it. The same version producing different bytes is a projector bug.
+    proj_id = f"proj_{run_id}_{PROJECTION_DIR.replace('.', '_')}"
+    proj_existing = store.get(proj_id)
+    if proj_existing is not None:
+        assert proj_existing["values"].get("af_grounding_bundle_sha256") == bundle_hash, "grounding projection changed at the same projector version; bump BUNDLE_VERSION"
+    proj_records, supersedes = [], None
     if existing is not None:
         assert existing["values"].get("af_artifact_sha256") == receipt["manifest_sha256"], "existing analysis run points at a different manifest"
         if existing["values"].get("af_grounding_bundle_sha256") != bundle_hash:
-            # The run record (immutable) keeps its original projection. A newer projector version may add
-            # groundings beside it; the same version producing different bytes is a projector bug.
-            prev_path = Path(__file__).resolve().parents[1] / existing["values"]["af_grounding_bundle_ref"]
-            prev_version = load_json(prev_path)["bundle_version"] if prev_path.exists() else None
-            assert prev_version != BUNDLE_VERSION, "grounding projection changed for an existing analysis run at the same projector version; bump BUNDLE_VERSION"
-            analysis_mode = f"reuse_existing_new_projection (run recorded {prev_version}, now {BUNDLE_VERSION})"
+            orig_ref = existing["values"].get("af_grounding_bundle_ref")
+            orig_path = Path(__file__).resolve().parents[1] / orig_ref
+            orig_version = load_json(orig_path)["bundle_version"] if orig_path.exists() else "ai-frontier-grounding/v1"
+            assert orig_version != BUNDLE_VERSION, "grounding projection changed for an existing analysis run at the same projector version; bump BUNDLE_VERSION"
+            supersedes = f"proj_{run_id}_{orig_version.rsplit('/', 1)[1].replace('.', '_')}"
+            if store.get(supersedes) is None:  # backfill the run's original projection from its own immutable row
+                proj_records.append({"entity_id": supersedes, "kind": "af_grounding_projection", "label": f"{orig_version} · {run_id}", "values": {
+                    "af_analysis_run_id": run_id, "af_repository_id": repo_id, "af_revision_id": rev_id, "af_projection_version": orig_version,
+                    "af_grounding_bundle_ref": orig_ref, "af_grounding_bundle_sha256": existing["values"]["af_grounding_bundle_sha256"],
+                    "af_grounding_bundle_bytes": orig_path.stat().st_size if orig_path.exists() else None, "af_counts": existing["values"].get("af_counts"),
+                    "af_supersedes_projection_id": None, "af_provenance_source": "repolumen", "af_created_at": existing["values"].get("af_created_at")}})
+            analysis_mode = f"reuse_existing_new_projection (run recorded {orig_version}, now {BUNDLE_VERSION})"
         records = []
     else:
         analysis_mode = "new"
@@ -336,6 +350,12 @@ def main(slug: str) -> int:
             "af_symbol": g.get("symbol"), "af_epistemic_status": g["epistemic_status"], "af_source_provenance": g.get("source_provenance"),
             "af_summary_text": (g.get("text") or "")[:400] or None, "af_provenance_source": "repolumen",
         }})
+    if proj_existing is None:
+        proj_records.append({"entity_id": proj_id, "kind": "af_grounding_projection", "label": f"{BUNDLE_VERSION} · {run_id}", "values": {
+            "af_analysis_run_id": run_id, "af_repository_id": repo_id, "af_revision_id": rev_id, "af_projection_version": BUNDLE_VERSION,
+            "af_grounding_bundle_ref": rel_ref(bdir / "grounding-bundle.json"), "af_grounding_bundle_sha256": bundle_hash, "af_grounding_bundle_bytes": bundle_bytes,
+            "af_counts": counts, "af_supersedes_projection_id": supersedes, "af_provenance_source": "repolumen", "af_created_at": utc_now()}})
+    records.extend(proj_records)
     if not license_state["agreement"]:
         records.append({"entity_id": f"lic_{rev_id}_repolumen", "kind": "af_license_record", "label": "license disagreement", "values": {
             "af_repository_id": repo_id, "af_revision_id": rev_id, "af_detected_spdx": rl_license, "af_license_status": "unresolved",
@@ -351,7 +371,7 @@ def main(slug: str) -> int:
     ov_hash = write_json(packets / "overview.json", ov)
     tx_hash = write_json(packets / "taxonomy.json", tx)
 
-    out = {"analysis_run_id": run_id, "projection_version": BUNDLE_VERSION, "manifest_ref": rel_ref(manifest_path), "manifest_sha256": receipt["manifest_sha256"],
+    out = {"analysis_run_id": run_id, "projection_version": BUNDLE_VERSION, "projection_id": proj_id, "supersedes_projection_id": supersedes, "manifest_ref": rel_ref(manifest_path), "manifest_sha256": receipt["manifest_sha256"],
            "run_recorded_grounding_bundle_sha256": (existing or {"values": {}})["values"].get("af_grounding_bundle_sha256", bundle_hash),
            "excluded_important_files": bundle["uncertainties"]["excluded_important_files"],
            "grounding_bundle_ref": rel_ref(bdir / "grounding-bundle.json"), "grounding_bundle_sha256": bundle_hash, "grounding_bundle_bytes": bundle_bytes,

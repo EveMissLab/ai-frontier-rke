@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1-lab — 2026-09-14
+
+- Catalog: `af_grounding_projection` kind (SEDB project commit `aeb2d2e`) — one immutable row per
+  analysis run × projector version; step 3 writes it and backfills the run's original v1 projection.
+- Contracts v1.2 (writer, revision) carry the release gate's wording list; critic v1.1 flags it; the list
+  lives in `prompts.py` and step 5 imports it.
+- Run 4 on simonw/llm: overview v6 validated (unpublished) after one verifier-driven revision, 0.060 USD.
+
 ## 0.1.0-lab — 2026-09-13
 
 - Projector `ai-frontier-grounding/v1.1`: citable IDs for dependency records, analyzer limitations,
