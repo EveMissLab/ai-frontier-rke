@@ -71,6 +71,14 @@ def _job_with_memory_cap(gb: float):
     return job
 
 
+STOP_FILE = "STOP"   # canary/<batch>/STOP: written by stop_batch.py; a running child gets CTRL_BREAK_EVENT and is waited for
+_stopping = {"flag": False, "signalled": set()}
+
+
+def stop_requested(bdir: Path) -> bool:
+    return _stopping["flag"] or (bdir / STOP_FILE).exists()
+
+
 def run(cmd: list[str], log: Path, cwd: Path = LAB) -> tuple[int, float]:
     # 2026-09-14: a fanned-out batch exhausted the machine's 32 GB. Heavy steps wait for headroom.
     waited = 0
@@ -82,12 +90,26 @@ def run(cmd: list[str], log: Path, cwd: Path = LAB) -> tuple[int, float]:
     t0 = time.perf_counter()
     with open(log, "a", encoding="utf-8") as f:
         f.write(f"\n===== {utc_now()} $ {' '.join(cmd)}  [memory cap {MEMORY_CAP_GB} GB]\n"); f.flush()
-        proc = subprocess.Popen(cmd, cwd=str(cwd), stdout=f, stderr=subprocess.STDOUT)
+        # own process group: a CTRL_BREAK_EVENT sent to it reaches this step and its MACR children, nothing else
+        proc = subprocess.Popen(cmd, cwd=str(cwd), stdout=f, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
         job = _job_with_memory_cap(MEMORY_CAP_GB)
         if job:
             import ctypes
             ctypes.windll.kernel32.AssignProcessToJobObject(job, int(proc._handle))  # children inherit the job
-        rc = proc.wait()
+        import signal
+        bdir = log.parent
+        while True:
+            try:
+                rc = proc.wait(timeout=5)
+                break
+            except subprocess.TimeoutExpired:
+                if (bdir / STOP_FILE).exists() and proc.pid not in _stopping["signalled"]:
+                    _stopping["flag"] = True; _stopping["signalled"].add(proc.pid)
+                    f.write(f"\n[stop] STOP file seen at {utc_now()}: sending CTRL_BREAK_EVENT to pid {proc.pid} and waiting for it to exit (no kill)\n"); f.flush()
+                    try:
+                        proc.send_signal(signal.CTRL_BREAK_EVENT)
+                    except Exception as exc:  # noqa: BLE001
+                        f.write(f"[stop] CTRL_BREAK_EVENT failed: {exc!r}\n"); f.flush()
     return rc, round(time.perf_counter() - t0, 1)
 
 
@@ -119,6 +141,9 @@ def main(batch_file: str) -> int:
         s = st(full_name); slug = s["slug"]
         if s["phases"].get(name) == "ok":
             return True
+        if stop_requested(bdir):
+            s["phases"][name] = "not started: batch stopped"; save()
+            return False
         rc, secs = run(cmd, bdir / f"{slug}.log", cwd)
         s["phases"][name] = "ok" if rc == 0 else f"failed rc={rc}"; s["timings"][name] = secs; save()
         return rc == 0
@@ -183,6 +208,10 @@ def main(batch_file: str) -> int:
         save()
         print(f"[C] {full_name} -> validated={s.get('validated')} claims={s.get('claims')} cost={s.get('cost_usd')}", flush=True)
 
+    if stop_requested(bdir):
+        status["stopped_at"] = utc_now(); save()
+        print("batch stopped by operator (STOP file); remove canary/<batch>/STOP before re-running", flush=True)
+        return 4
     status["completed_at"] = utc_now(); save()
     print(json.dumps({r: {k: v for k, v in st(r).items() if k in ("slug", "validated", "claims", "cost_usd", "dispatches", "outcome")} for r in repos}, ensure_ascii=False, indent=1))
     return 0

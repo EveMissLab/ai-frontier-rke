@@ -39,15 +39,33 @@ class PacketPolicyError(ValueError):
 _JSON_ESCAPES = re.compile(r'\\[ntr"]')
 
 
+def _string_leaves(obj):
+    if isinstance(obj, str):
+        yield obj
+    elif isinstance(obj, dict):
+        for k, v in obj.items():
+            yield k
+            yield from _string_leaves(v)
+    elif isinstance(obj, (list, tuple)):
+        for v in obj:
+            yield from _string_leaves(v)
+
+
 def scrub_check(text: str, label: str) -> None:
-    # Inputs are JSON text: a JSON-escaped newline after a one-letter class name (`class E:\n`) or after
-    # "by file:" is prose, not a path (2026-09-14: rich and click were refused on exactly that). Real
-    # paths survive the normalisation because a JSON-encoded backslash is `\\`, which is left alone.
-    norm = _JSON_ESCAPES.sub(" ", text)
-    for name, rx in (("windows_drive_path", _DRIVE), ("unc_path", _UNC), ("file_uri", _FILE_URI), ("credential_marker", _SECRET)):
-        m = rx.search(norm)
-        if m:
-            raise PacketPolicyError(f"input '{label}' contains a {name} marker near: {norm[max(0, m.start()-40):m.end()+40]!r}")
+    """Refuse an input that carries a local path, UNC path, file URI or credential marker.
+
+    Inputs are JSON text; the check runs on the *decoded* strings (2026-09-14: JSON escaping turned
+    `class E:\n` into a drive path and a source regex `^\\d+\\.\\d+$` into a UNC path). Non-JSON text is
+    checked with JSON escape sequences neutralised."""
+    try:
+        pieces = list(_string_leaves(json.loads(text)))
+    except Exception:
+        pieces = [_JSON_ESCAPES.sub(" ", text)]
+    for piece in pieces:
+        for name, rx in (("windows_drive_path", _DRIVE), ("unc_path", _UNC), ("file_uri", _FILE_URI), ("credential_marker", _SECRET)):
+            m = rx.search(piece)
+            if m:
+                raise PacketPolicyError(f"input '{label}' contains a {name} marker near: {piece[max(0, m.start()-40):m.end()+40]!r}")
 
 
 def build_task(task_id: str, contract_version: str, inputs: list[tuple[str, str]], *, max_cost_usd: float = 0.15,

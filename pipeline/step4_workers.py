@@ -19,6 +19,7 @@ import time
 from pathlib import Path
 
 import os
+import signal
 
 from af_common import load_json, open_store, rel_ref, slice_dir, utc_now, write_json
 from macr_worker import build_task, validate_output, worker_records
@@ -33,6 +34,25 @@ if BACKEND == "mock":
     from mock_worker import dispatch, MODEL_NAME as BACKEND_MODEL
 else:
     from macr_worker import dispatch, MODEL_NAME as BACKEND_MODEL
+
+
+# Graceful stop (MACR maintainer guidance, 2026-09-14): a CTRL_BREAK_EVENT reaches this process and its MACR
+# child together. The child finishes or unwinds and releases its lease in its own `finally`; we only refuse to
+# start the next dispatch. Never kill the child.
+STOP_REQUESTED = False
+
+
+class BatchStopped(Exception):
+    pass
+
+
+def _on_break(signum, frame):
+    global STOP_REQUESTED
+    STOP_REQUESTED = True
+
+
+if hasattr(signal, "SIGBREAK"):
+    signal.signal(signal.SIGBREAK, _on_break)
 
 
 def packet_ids(packet: dict) -> set[str]:
@@ -129,6 +149,8 @@ def main(slug: str) -> int:
     sedb_records = []
 
     def run_worker(role, contract_version, inputs, attempt, task_suffix, asset_type, max_attempts, validator=None):
+        if STOP_REQUESTED:
+            raise BatchStopped(f"stop requested before {role} attempt {attempt}")
         task_id = f"af-{slug}-{task_suffix}-{attempt:02d}"  # slice-unique: repetitions of the same packet get distinct MACR tasks and SEDB task rows
         task = build_task(task_id, contract_version, inputs)
         log(f"{role} attempt {attempt}: dispatch {task_id} ({sum(len(i[1]) for i in inputs)} input chars)")
@@ -167,6 +189,18 @@ def main(slug: str) -> int:
         write_json(sdir / "workers-receipt.json", receipt)
         return rec
 
+    try:
+        return _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id, run_id, bundle_sha, tasks_dir, runs_dir, log, store, receipt, sedb_records, run_worker)
+    except BatchStopped as stop:
+        log(f"stopped by operator: {stop} — no new dispatch; in-flight MACR child was left to exit on its own")
+        receipt["outcome"] = "stopped_by_operator"; receipt["completed_at"] = utc_now()
+        write_json(sdir / "workers-receipt.json", receipt)
+        if sedb_records:
+            store.write(sedb_records, source="worker")
+        return 5
+
+
+def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id, run_id, bundle_sha, tasks_dir, runs_dir, log, store, receipt, sedb_records, run_worker):
     # ---- taxonomy classifier (bounded discovery task)
     slugs = {t["slug"] for t in tx_packet["taxonomy_v1"]}
     def tx_validator(o):
