@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "20622e1259c29bda81831962ace1348ba1921c84",
+ "license": {
+  "file_bytes": 1080,
+  "file_sha256": "9c0428f0c3b4779850cf5bd96e11aaa8afc72d4a86d4a36223d7aba2e58d6e00",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "MIT",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_125266328_20622e1259c2",
+ "observed_at": "2026-09-14T06:56:33.177473Z",
+ "repository_id": "repo_github_125266328",
+ "revision_id": "rev_repo_github_125266328_20622e1259c2",
+ "sedb_write": {
+  "created_entities": 22,
+  "unchanged_entities": 39,
+  "updated_entities": 0,
+  "written_cells": 146
+ },
+ "slice": "slice-008-psf-black",
+ "snapshot_id": "snap_repo_github_125266328_20260914T065633.177473Z",
+ "taxonomy_version": "v1"
+}

@@ -19,3 +19,6 @@ step3.out
 slice-*/packets/
 NEW_SESSION_PROMPT.md
 pipeline/local_paths.json
+canary/*.log
+canary/**/*.log
+canary/**/previews/

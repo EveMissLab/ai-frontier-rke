@@ -1,0 +1,98 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "model": "glm-5.3-flash",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "048ab41f-a8f3-419f-bd98-538dffc2cb3e",
+   "conservative_cost_ceiling_usd": 0.0345662,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0011418499999999998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0005709249999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 1282,
+     "prompt_tokens": 3339,
+     "reasoning_tokens": 1140,
+     "total_tokens": 4621
+    }
+   },
+   "failure": null,
+   "latency_seconds": 15.37,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.85,
+    "primary": "cli-tools",
+    "secondary": [
+     "developer-tools",
+     "relational-databases"
+    ]
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-taxonomy-01",
+   "worker_run_entity_id": "worker_048ab41f-a8f3-419f-bd98-538dffc2cb3e"
+  },
+  {
+   "attempt": 1,
+   "candidate": "1206f7dc-a802-45d1-9aa9-8fe6c0071cac",
+   "conservative_cost_ceiling_usd": 0.0392021,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.019303599999999997,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.009651799999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 34685,
+     "prompt_tokens": 13074,
+     "reasoning_tokens": 29960,
+     "total_tokens": 47759
+    }
+   },
+   "failure": null,
+   "latency_seconds": 263.55,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-writer-01",
+   "worker_run_entity_id": "worker_1206f7dc-a802-45d1-9aa9-8fe6c0071cac"
+  }
+ ],
+ "slice": "slice-003-simonw-sqlite-utils",
+ "started_at": "2026-09-14T07:52:43.516565Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.85,
+  "primary": "cli-tools",
+  "review_required": false,
+  "secondary": [
+   "developer-tools",
+   "relational-databases"
+  ]
+ }
+}

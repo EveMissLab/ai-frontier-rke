@@ -1,0 +1,33 @@
+{
+ "candidate_categories": [
+  "ai-agents",
+  "ai-infrastructure",
+  "artificial-intelligence",
+  "llm-serving",
+  "local-ai"
+ ],
+ "commit_sha": "5cbacfc8f86d653baa0ca2e31970cbf4f0fcec95",
+ "license": {
+  "file_bytes": 1100,
+  "file_sha256": "bc0e89738f36944c8106e1947c3d69631f9c33b8f1bcb60ec4f89d677d2dfcf4",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "MIT",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_818331198_5cbacfc8f86d",
+ "observed_at": "2026-09-14T07:19:57.702791Z",
+ "repository_id": "repo_github_818331198",
+ "revision_id": "rev_repo_github_818331198_5cbacfc8f86d",
+ "sedb_write": {
+  "created_entities": 18,
+  "unchanged_entities": 39,
+  "updated_entities": 0,
+  "written_cells": 126
+ },
+ "slice": "slice-010-pydantic-pydantic-ai",
+ "snapshot_id": "snap_repo_github_818331198_20260914T071957.702791Z",
+ "taxonomy_version": "v1"
+}

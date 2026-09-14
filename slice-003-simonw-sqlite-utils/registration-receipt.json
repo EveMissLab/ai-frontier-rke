@@ -1,0 +1,30 @@
+{
+ "candidate_categories": [
+  "cli-tools",
+  "developer-tools"
+ ],
+ "commit_sha": "85b1be10c81d9dd3567e36faf8dd411e4a8789bd",
+ "license": {
+  "file_bytes": 11357,
+  "file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "Apache-2.0",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_140912432_85b1be10c81d",
+ "observed_at": "2026-09-14T06:54:29.095150Z",
+ "repository_id": "repo_github_140912432",
+ "revision_id": "rev_repo_github_140912432_85b1be10c81d",
+ "sedb_write": {
+  "created_entities": 21,
+  "unchanged_entities": 38,
+  "updated_entities": 0,
+  "written_cells": 141
+ },
+ "slice": "slice-003-simonw-sqlite-utils",
+ "snapshot_id": "snap_repo_github_140912432_20260914T065429.095150Z",
+ "taxonomy_version": "v1"
+}

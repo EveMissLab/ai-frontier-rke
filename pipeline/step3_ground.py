@@ -197,6 +197,16 @@ def build_bundle(m: dict, repo_id: str, rev_id: str, run_id: str, metadata: dict
     return bundle
 
 
+def sample_files(files: list[str], n: int = 40) -> list[str]:
+    """Bounded file sample for the packet: the top-level directory holding the most source files
+    (tests/docs excluded when something else exists), in path order. v1.1.1: was hard-coded to `llm/`."""
+    from collections import Counter as _C
+    src = [f for f in files if "/" in f and not f.split("/")[0].lower().startswith(("test", "doc", ".github", "example"))]
+    pool = src or [f for f in files if "/" in f] or files
+    top = _C(f.split("/")[0] for f in pool).most_common(1)[0][0]
+    return [f for f in files if f.startswith(top + "/")][:n]
+
+
 def overview_packet(bundle: dict, license_state: dict) -> dict:
     """OverviewSelector (Paper 04 §73): purpose, description, important files, entrypoints,
     high-level architecture, uncertainty. Deterministic and bounded."""
@@ -231,7 +241,7 @@ def overview_packet(bundle: dict, license_state: dict) -> dict:
         "relation_counts": bundle["architecture"]["relation_counts"],
         "dependencies_partial": bundle["dependency_records"],
         "tests": {"count": len(bundle["tests"]), "sample": bundle["tests"][:10]},
-        "files": {"count": len(bundle["files"]), "top_level_directories": bundle["repository_summary"]["top_level_directories"], "sample": [f for f in bundle["files"] if f.startswith("llm/")][:40]},
+        "files": {"count": len(bundle["files"]), "top_level_directories": bundle["repository_summary"]["top_level_directories"], "sample": sample_files(bundle["files"])},
         "teaching_claims": [{"id": c["id"], "section": c.get("section"), "text": c["text"], "evidence_ids": [e for e in c.get("evidence_ids", []) if e not in excluded], "provenance": c.get("provenance"), "status": c.get("status")} for c in bundle["teaching_claims"]],
         "runtime_hints_partial": bundle["runtime_hints_partial"],
         "uncertainties": bundle["uncertainties"],

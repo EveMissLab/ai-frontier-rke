@@ -1,0 +1,153 @@
+{
+ "batch": "canary-001",
+ "repos": {
+  "Textualize/rich": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-007-textualize-rich",
+   "timings": {
+    "repolumen": 21.7,
+    "step0": 2.1,
+    "step1": 3.7,
+    "step3": 9.1
+   }
+  },
+  "encode/httpx": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-006-encode-httpx",
+   "timings": {
+    "repolumen": 8.5,
+    "step0": 2.0,
+    "step1": 3.1,
+    "step3": 5.7
+   }
+  },
+  "huggingface/smolagents": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-009-huggingface-smolagents",
+   "timings": {
+    "repolumen": 12.8,
+    "step0": 2.1,
+    "step1": 5.5,
+    "step3": 9.1
+   }
+  },
+  "openai/whisper": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-002-openai-whisper",
+   "timings": {
+    "repolumen": 4.8,
+    "step0": 2.0,
+    "step1": 1.9,
+    "step3": 1.9
+   }
+  },
+  "pallets/click": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-005-pallets-click",
+   "timings": {
+    "repolumen": 10.7,
+    "step0": 2.1,
+    "step1": 2.9,
+    "step3": 5.2
+   }
+  },
+  "psf/black": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-008-psf-black",
+   "timings": {
+    "repolumen": 24.0,
+    "step0": 2.1,
+    "step1": 4.2,
+    "step3": 9.3
+   }
+  },
+  "psf/requests": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-004-psf-requests",
+   "timings": {
+    "repolumen": 6.1,
+    "step0": 2.0,
+    "step1": 2.4,
+    "step3": 3.4
+   }
+  },
+  "pydantic/pydantic-ai": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-010-pydantic-pydantic-ai",
+   "timings": {
+    "repolumen": 1359.6,
+    "step0": 2.0,
+    "step1": 6.2,
+    "step3": 103.4
+   }
+  },
+  "simonw/datasette": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok"
+   },
+   "slug": "slice-011-simonw-datasette",
+   "timings": {
+    "repolumen": 580.5,
+    "step0": 2.1
+   }
+  },
+  "simonw/sqlite-utils": {
+   "phases": {
+    "repolumen": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok"
+   },
+   "slug": "slice-003-simonw-sqlite-utils",
+   "timings": {
+    "repolumen": 14.7,
+    "step0": 2.1,
+    "step1": 1.7,
+    "step3": 5.5
+   }
+  }
+ },
+ "started_at": "2026-09-14T06:54:01.443306Z",
+ "updated_at": "2026-09-14T07:59:30.271341Z"
+}

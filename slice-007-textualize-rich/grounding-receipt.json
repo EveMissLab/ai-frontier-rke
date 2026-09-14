@@ -1,0 +1,64 @@
+{
+ "analysis_run_id": "analysis_451e2505d8c5f8f1",
+ "analysis_run_mode": "new",
+ "bounded_context_ratio": 0.00275,
+ "counts": {
+  "dependencies": 4,
+  "dependency_records": 4,
+  "entrypoints": 63,
+  "evidence": 1124,
+  "execution_paths": 612,
+  "files": 553,
+  "groundings": 17907,
+  "important_files": 8,
+  "lessons": 5,
+  "module_role_ids": 202,
+  "modules": 4,
+  "platform_metadata": 8,
+  "readme_claims_author_claimed_low_quality": 8,
+  "relations": 11248,
+  "semantic_blocks": 4868,
+  "symbols": 1046,
+  "teaching_claims": 10,
+  "teaching_sections": 7,
+  "tests": 68
+ },
+ "excluded_important_files": [
+  {
+   "excluded_id": "important_2",
+   "path": "readme.md",
+   "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
+  }
+ ],
+ "grounding_bundle_bytes": 14574848,
+ "grounding_bundle_ref": "slice-007-textualize-rich/artifacts/grounding/analysis_451e2505d8c5f8f1/v1.1/grounding-bundle.json",
+ "grounding_bundle_sha256": "a98fee856a152993067a40671ee1a67ea40c28710e15e3826b1ae892d405a53d",
+ "license_state": {
+  "agreement": false,
+  "repolumen_detected": null,
+  "spdx": "MIT",
+  "status": "unresolved"
+ },
+ "manifest_ref": "slice-007-textualize-rich/artifacts/repolumen/repo_github_220809393/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/0.10/semantic-manifest.json",
+ "manifest_sha256": "27d83100aafe05254a14c76824d96edf24ff60c5c3b9e64b07eb796d6efccb8b",
+ "packets": {
+  "overview": {
+   "bytes": 59023,
+   "sha256": "e477c5378dfa433e832508023ecf1c4a931f4c86223fe82cb59639412c08fee9"
+  },
+  "taxonomy": {
+   "bytes": 10072,
+   "sha256": "68d27ea4c1e5fa0094d8e928c3c91046a5c6c972361c07e6e30d458b76b3205f"
+  }
+ },
+ "projection_id": "proj_analysis_451e2505d8c5f8f1_v1_1",
+ "projection_version": "ai-frontier-grounding/v1.1",
+ "run_recorded_grounding_bundle_sha256": "a98fee856a152993067a40671ee1a67ea40c28710e15e3826b1ae892d405a53d",
+ "sedb_write": {
+  "created_entities": 17910,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 268648
+ },
+ "supersedes_projection_id": null
+}

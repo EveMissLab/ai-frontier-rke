@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "86098128c0b4f24f0e2aa2994de830614b474227",
+ "license": {
+  "file_bytes": 1063,
+  "file_sha256": "b5d65a59060e68c4ff940e1eddfa6f94b2d68fdf58ed7f4dd57721c997e35e9d",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "MIT",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_537603333_86098128c0b4",
+ "observed_at": "2026-09-14T06:54:08.580406Z",
+ "repository_id": "repo_github_537603333",
+ "revision_id": "rev_repo_github_537603333_86098128c0b4",
+ "sedb_write": {
+  "created_entities": 5,
+  "unchanged_entities": 38,
+  "updated_entities": 0,
+  "written_cells": 61
+ },
+ "slice": "slice-002-openai-whisper",
+ "snapshot_id": "snap_repo_github_537603333_20260914T065408.580406Z",
+ "taxonomy_version": "v1"
+}

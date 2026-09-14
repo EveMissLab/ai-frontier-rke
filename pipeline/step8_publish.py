@@ -39,6 +39,17 @@ PAGE_GATES = {
 }
 
 
+def export_taxonomy(store) -> Path:
+    """The versioned taxonomy the portal's category pages read (slug, name, parent). Always in sync with the catalog."""
+    rows = store.find("af_category")
+    by_id = {r["entity_id"]: r["values"]["af_category_slug"] for r in rows}
+    cats = sorted(({"slug": r["values"]["af_category_slug"], "name": r["values"]["af_display_name"], "parent": by_id.get(r["values"].get("af_parent_category_id")),
+                    "status": r["values"].get("af_category_status")} for r in rows), key=lambda c: (c["parent"] or "", c["slug"]))
+    out = SITE_DATA.parent / "taxonomy-v1.json"
+    write_json(out, {"version": "v1", "exported_at": utc_now(), "categories": cats})
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("slug"); ap.add_argument("--approved-by", required=True); ap.add_argument("--via", required=True)
@@ -76,6 +87,7 @@ def main() -> int:
     res = store.write(records, source="publication")
 
     SITE_DATA.mkdir(parents=True, exist_ok=True)
+    export_taxonomy(store)
     target = SITE_DATA / f"{repo['owner']}--{repo['name']}.json"
     if event == "published":
         view["publication"] = {"status": "published", "approved_by": a.approved_by, "via": a.via, "published_at": now, "event_id": event_id, "url": url}

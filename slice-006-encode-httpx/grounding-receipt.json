@@ -1,0 +1,64 @@
+{
+ "analysis_run_id": "analysis_97c4c7461e3e4a24",
+ "analysis_run_mode": "new",
+ "bounded_context_ratio": 0.00297,
+ "counts": {
+  "dependencies": 14,
+  "dependency_records": 14,
+  "entrypoints": 0,
+  "evidence": 761,
+  "execution_paths": 0,
+  "files": 124,
+  "groundings": 8316,
+  "important_files": 4,
+  "lessons": 5,
+  "module_role_ids": 50,
+  "modules": 3,
+  "platform_metadata": 8,
+  "readme_claims_author_claimed_low_quality": 8,
+  "relations": 4564,
+  "semantic_blocks": 2923,
+  "symbols": 751,
+  "teaching_claims": 11,
+  "teaching_sections": 7,
+  "tests": 40
+ },
+ "excluded_important_files": [
+  {
+   "excluded_id": "important_2",
+   "path": "readme.md",
+   "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
+  }
+ ],
+ "grounding_bundle_bytes": 7093517,
+ "grounding_bundle_ref": "slice-006-encode-httpx/artifacts/grounding/analysis_97c4c7461e3e4a24/v1.1/grounding-bundle.json",
+ "grounding_bundle_sha256": "93234dbe09ad47d3ddf25397750cc35462476f56c6caa3e88a1fc33181827509",
+ "license_state": {
+  "agreement": false,
+  "repolumen_detected": null,
+  "spdx": "BSD-3-Clause",
+  "status": "unresolved"
+ },
+ "manifest_ref": "slice-006-encode-httpx/artifacts/repolumen/repo_github_179492861/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/0.10/semantic-manifest.json",
+ "manifest_sha256": "76b9ccafa80424bd596a3126ebb2aa68dba8c26483e1a2dda528082c297e1570",
+ "packets": {
+  "overview": {
+   "bytes": 30825,
+   "sha256": "5aafbffb2f61295f46dab3a23a5d71db74d1c160a27ea3173bcf130018b1b5aa"
+  },
+  "taxonomy": {
+   "bytes": 7737,
+   "sha256": "6c466eee3da5eaa8fe8f5a3010317ae6cb5ecf3cb4a10559d9b9614dc166f5d8"
+  }
+ },
+ "projection_id": "proj_analysis_97c4c7461e3e4a24_v1_1",
+ "projection_version": "ai-frontier-grounding/v1.1",
+ "run_recorded_grounding_bundle_sha256": "93234dbe09ad47d3ddf25397750cc35462476f56c6caa3e88a1fc33181827509",
+ "sedb_write": {
+  "created_entities": 8319,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 124783
+ },
+ "supersedes_projection_id": null
+}

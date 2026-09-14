@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+ "license": {
+  "file_bytes": 1475,
+  "file_sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "BSD-3-Clause",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_19103692_6aabf099bfdd",
+ "observed_at": "2026-09-14T06:55:03.084767Z",
+ "repository_id": "repo_github_19103692",
+ "revision_id": "rev_repo_github_19103692_6aabf099bfdd",
+ "sedb_write": {
+  "created_entities": 10,
+  "unchanged_entities": 41,
+  "updated_entities": 0,
+  "written_cells": 86
+ },
+ "slice": "slice-005-pallets-click",
+ "snapshot_id": "snap_repo_github_19103692_20260914T065503.084767Z",
+ "taxonomy_version": "v1"
+}

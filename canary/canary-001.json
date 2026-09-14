@@ -1,0 +1,21 @@
+{
+ "batch": "canary-001",
+ "first_index": 2,
+ "workers": 1,
+ "repos": [
+  "openai/whisper",
+  "simonw/sqlite-utils",
+  "psf/requests",
+  "pallets/click",
+  "encode/httpx",
+  "Textualize/rich",
+  "psf/black",
+  "huggingface/smolagents",
+  "pydantic/pydantic-ai",
+  "simonw/datasette"
+ ],
+ "deferred": [
+  "mitmproxy/mitmproxy (large; run overnight)"
+ ],
+ "note": "pydantic-ai's RepoLumen run finished (slow, ~25 min CPU) before the batch was restarted; kept."
+}
