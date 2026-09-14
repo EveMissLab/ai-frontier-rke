@@ -390,7 +390,7 @@ def main(slug: str) -> int:
             "af_grounding_bundle_ref": rel_ref(bdir / "grounding-bundle.json"), "af_grounding_bundle_sha256": bundle_hash, "af_grounding_bundle_bytes": bundle_bytes,
             "af_counts": counts, "af_supersedes_projection_id": supersedes, "af_provenance_source": "repolumen", "af_created_at": utc_now()}})
     records.extend(proj_records)
-    if not license_state["agreement"]:
+    if not license_state["agreement"] and store.get(f"lic_{rev_id}_repolumen") is None:  # immutable; re-runs must not rewrite it
         records.append({"entity_id": f"lic_{rev_id}_repolumen", "kind": "af_license_record", "label": "license disagreement", "values": {
             "af_repository_id": repo_id, "af_revision_id": rev_id, "af_detected_spdx": rl_license, "af_license_status": "unresolved",
             "af_license_source": "repolumen", "af_license_policy": "block_source_reproduction", "af_provenance_source": "repolumen", "af_observed_at": utc_now()}})

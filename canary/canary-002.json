@@ -1,0 +1,23 @@
+{
+ "batch": "canary-002",
+ "first_index": 12,
+ "workers": 1,
+ "repos": [
+  "pallets/click",
+  "Textualize/rich",
+  "psf/requests",
+  "huggingface/smolagents",
+  "simonw/datasette",
+  "mitmproxy/mitmproxy",
+  "encode/httpx"
+ ],
+ "slugs": {
+  "pallets/click": "slice-005-pallets-click",
+  "Textualize/rich": "slice-007-textualize-rich",
+  "psf/requests": "slice-004-psf-requests-run2",
+  "huggingface/smolagents": "slice-009-huggingface-smolagents-run2",
+  "simonw/datasette": "slice-011-simonw-datasette",
+  "encode/httpx": "slice-006-encode-httpx-run2"
+ },
+ "note": "one at a time (Neo: \u6162\u6162\u4f86). click/rich rerun in place after the scrub fix; requests/smolagents as fresh run2 copies; datasette and mitmproxy with the bounded analyzer (datasette: remove the 5.5 GB unbounded manifest first). click/rich/httpx re-analysed with the bounded analyzer + SPDX license detection (LICENSE.txt / LICENSE.md)."
+}
