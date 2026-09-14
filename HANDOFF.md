@@ -182,3 +182,8 @@ the rendered preview. On his go: `step8_publish.py slice-001-simonw-llm-run4 --a
 
 **Then, in page terms:** second repository page (needs a new slice end to end), category pages (route per
 taxonomy slug, listing published repositories), Weekly Frontier data path, canary batch.
+
+**2026-09-14 14:29 +08:00 — published.** Neo approved after reviewing the rendered preview; event
+`pub_assetrev_asset_repo_github_622352364_overview_v6_20260914T062749_published`; site commit `934a658`;
+live at https://evemisstechnology.com/ai-frontier/repository/simonw/llm/ (EN + zh-TW), portal lists 1 guide.
+Yield: 4 real runs → 1 published page. Next page-level step: a second repository, end to end.
