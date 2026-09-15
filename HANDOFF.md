@@ -238,3 +238,14 @@ positives, fixed), datasette + mitmproxy (queue with the bounded analyzer, one a
 
 **Next (one at a time):** publish datasette + httpx after Neo's review; mitmproxy re-analysis + rerun; rich run2;
 then the next page-level items (Weekly Frontier data path, second category batch).
+
+## 2026-09-15 — the page's own promises, one by one (Neo: 先不分析新的產品，把頁面說的事一個一個完成)
+
+Done today, all live on evemisstechnology.com:
+1. **Related repositories** on every guide — deterministic (same primary category, shared categories, shared GitHub topics) with the reasons shown; language alone never relates; architecture overlap stated as not computed. Site `4c2953d`.
+2. **Stale notice / freshness** — lab `step9_freshness.py` (daily): GitHub head + metadata snapshot per published repo → `af_metadata_snapshot` (trend continuity), `af_freshness_state` (`changed_unassessed` when the default branch moved), newly observed revision registered; the view model gets a `freshness` block and the page shows the notice. First run: pydantic-ai moved (5cbacfc → 95c9890). Site `411ec4c`, lab `4aa5adc`.
+3. **Weekly Frontier data path** — lab `step10_weekly.py <week> [--publish --approved-by --via]`: deterministic channels from the ledger (new = publication events in the ISO week; popular = stars at the latest snapshot; trending = star delta first→last snapshot, needs two; changed = freshness moved; editorial only when a named person writes one), knowledge asset + asset revision (`asset_weekly_<week>`), publication event on publish, frozen JSON into `src/data/ai-frontier/weekly/`. Site: `/ai-frontier/weekly/<week>/` EN + zh-TW, reports archive lists editions, portal box shows the latest. Draft 2026-W38 built (8 new, 8 popular, 7 trending, 1 changed); **publish after the week closes (2026-09-21)** with Neo's approval. Site `b2557e4`, lab `fc63c0d`.
+
+Daily routine from now: `step9_freshness.py` (snapshots + notices) → rebuild + push the site; Mondays: `step10_weekly.py <previous week>` → preview → Neo → `--publish`.
+
+Still open on the page's promise list: search (no route yet), other guides per repository (architecture / getting started / source walkthrough — need new writer contracts), Chinese summaries on zh-TW guides, "Popular / New & Rising" channels on the portal itself (the edition has them), rename redirects. Pending Neo: datasette + httpx publication (validated, previews sent 2026-09-15); mitmproxy re-analysis; rich run2.
