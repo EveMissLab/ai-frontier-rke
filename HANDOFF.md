@@ -249,3 +249,17 @@ Done today, all live on evemisstechnology.com:
 Daily routine from now: `step9_freshness.py` (snapshots + notices) → rebuild + push the site; Mondays: `step10_weekly.py <previous week>` → preview → Neo → `--publish`.
 
 Still open on the page's promise list: search (no route yet), other guides per repository (architecture / getting started / source walkthrough — need new writer contracts), Chinese summaries on zh-TW guides, "Popular / New & Rising" channels on the portal itself (the edition has them), rename redirects. Pending Neo: datasette + httpx publication (validated, previews sent 2026-09-15); mitmproxy re-analysis; rich run2.
+
+**2026-09-15 evening — 10 guides live; more page promises filled.** datasette + httpx published on Neo's 發表
+(site `edecc61`). Portal "Browse by signal" (New / Popular / Changed at the source, deterministic; site
+`bf49ee4`). **Search** `/ai-frontier/search` EN + zh-TW: build-time index of published guides, categories and
+editions, client-side, `?q=` deep links, hero search form; status line now says search + category pages are
+open (site `5aab5d4`, 73 pages). Neo's rule for this phase: 先把頁面全部都基本完成後，再開始每日流程 — finish
+the page's promises first, then the daily routine (step 9 snapshots keep running daily because Weekly
+Frontier's trend channel depends on their continuity; that is data collection, not the routine).
+
+**Remaining promises, in order:** (1) the other guide types on every repository page — architecture first
+(ArchitectureSelector packet + `writer/architecture/v1` contract; step 4/5/6/7 generalised by asset type),
+then getting started, source walkthrough; (2) Chinese summaries on zh-TW guides (translator contract with a
+bilingual verifier); (3) rich run2 + mitmproxy re-analysis so the canary reaches 12; (4) first Weekly
+Frontier edition after 2026-09-21; (5) rename redirects (only when a rename happens).
