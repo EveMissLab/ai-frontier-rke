@@ -263,3 +263,9 @@ Frontier's trend channel depends on their continuity; that is data collection, n
 then getting started, source walkthrough; (2) Chinese summaries on zh-TW guides (translator contract with a
 bilingual verifier); (3) rich run2 + mitmproxy re-analysis so the canary reaches 12; (4) first Weekly
 Frontier edition after 2026-09-21; (5) rename redirects (only when a rename happens).
+
+**2026-09-15 21:45 +08:00 — canary complete: 12 guides live** (rich run2 40/40, mitmproxy 39/39 after re-analysis under a new
+analysis identity — RepoLumen `analysis_bounds.analyzer_patch = 0.10.2-license-spdx` now changes the config hash whenever the
+analyzer's behaviour changes; the same-identity guard correctly refused the first attempt). Site `f7ad817`, 81 pages. GLM spend
+2026-09-15: ≈ 0.15 USD. The RAM guard waited ~17 min today because the machine had < 8 GB free; that is by design.
+Tomorrow: architecture guides (new contract + packet; steps 4–7 by asset type), then getting-started / walkthrough, zh summaries.

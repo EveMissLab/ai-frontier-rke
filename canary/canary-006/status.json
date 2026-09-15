@@ -1,0 +1,48 @@
+{
+ "batch": "canary-006",
+ "completed_at": "2026-09-15T13:23:48.146104Z",
+ "repos": {
+  "mitmproxy/mitmproxy": {
+   "asset_revision_id": "assetrev_asset_repo_github_519832_overview_v2",
+   "claims": "39/39",
+   "cost_usd": 0.0714,
+   "dispatches": 7,
+   "outcome": "hard_gate_pass",
+   "phases": {
+    "repolumen": "ok",
+    "report": "ok",
+    "step0": "ok",
+    "step1": "ok",
+    "step3": "ok",
+    "step4": "ok",
+    "step5": "ok",
+    "step6": "ok",
+    "step7": "ok"
+   },
+   "slug": "slice-017-mitmproxy-mitmproxy",
+   "taxonomy": {
+    "confidence": 0.85,
+    "primary": "security",
+    "review_required": false,
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
+   "timings": {
+    "repolumen": 139.7,
+    "report": 95.7,
+    "step0": 0.4,
+    "step1": 0.4,
+    "step3": 61.3,
+    "step4": 1048.4,
+    "step5": 53.4,
+    "step6": 0.4,
+    "step7": 46.7
+   },
+   "validated": true
+  }
+ },
+ "started_at": "2026-09-15T12:38:26.638061Z",
+ "updated_at": "2026-09-15T13:23:48.146128Z"
+}

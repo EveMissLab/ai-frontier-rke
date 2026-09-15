@@ -1,0 +1,14 @@
+{
+ "batch": "canary-005",
+ "first_index": 40,
+ "workers": 1,
+ "repos": [
+  "mitmproxy/mitmproxy",
+  "Textualize/rich"
+ ],
+ "slugs": {
+  "mitmproxy/mitmproxy": "slice-017-mitmproxy-mitmproxy",
+  "Textualize/rich": "slice-007-textualize-rich-run2"
+ },
+ "note": "evening round 2026-09-15, one at a time: mitmproxy re-analysed (bounded + SPDX license); rich run2 with fresh task ids."
+}

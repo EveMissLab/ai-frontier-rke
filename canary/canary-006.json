@@ -1,0 +1,12 @@
+{
+ "batch": "canary-006",
+ "first_index": 50,
+ "workers": 1,
+ "repos": [
+  "mitmproxy/mitmproxy"
+ ],
+ "slugs": {
+  "mitmproxy/mitmproxy": "slice-017-mitmproxy-mitmproxy"
+ },
+ "note": "mitmproxy re-analysis after the analyzer_patch identity change (license detection); runs after canary-005 finishes rich."
+}
