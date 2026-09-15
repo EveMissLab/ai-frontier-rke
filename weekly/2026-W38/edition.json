@@ -1,0 +1,517 @@
+{
+ "channels": {
+  "changed": [
+   {
+    "analyzed_revision": "5cbacfc8f86d",
+    "freshness": "changed_unassessed",
+    "full_name": "pydantic/pydantic-ai",
+    "github_url": "https://github.com/pydantic/pydantic-ai",
+    "language": "Python",
+    "latest_observed_revision_id": "rev_repo_github_818331198_95c9890bef0a",
+    "license": "MIT",
+    "name": "pydantic-ai",
+    "owner": "pydantic",
+    "path": "/ai-frontier/repository/pydantic/pydantic-ai/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T10:11:41.835266Z",
+    "reason": "default-branch head moved after the analyzed revision; pages not yet reassessed",
+    "repository_id": "repo_github_818331198",
+    "summary": "A large MIT-licensed Python repository (2,754 analyzed files) described by its maintainers as 'How Python does AI'. Static analysis shows a pydantic_ai_slim package, a clai CLI module, examples, docs, and a test suite that dominates the resolved call graph. Runtime behavior and installation were not exercised; most static call targets remain unresolved."
+   }
+  ],
+  "editorial": {
+   "items": [],
+   "note": "No editorial picks this week: an editorial item exists only when a named person writes one."
+  },
+  "new": [
+   {
+    "analyzed_revision": "1df47ddcac20",
+    "full_name": "simonw/llm",
+    "github_url": "https://github.com/simonw/llm",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "llm",
+    "owner": "simonw",
+    "path": "/ai-frontier/repository/simonw/llm/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T06:27:49.613048Z",
+    "repository_id": "repo_github_622352364",
+    "summary": "A Python command-line tool whose platform metadata describes access to large language models from the terminal; Apache-2.0 licensed, with 116 analyzed files. Execution starts at an __main__ guard that calls cli(), which loads plugins through boundaries the static analysis cannot see past. Layout: docs, llm, and tests, with 44 test files."
+   },
+   {
+    "analyzed_revision": "86098128c0b4",
+    "full_name": "openai/whisper",
+    "github_url": "https://github.com/openai/whisper",
+    "language": "Python",
+    "license": "MIT",
+    "name": "whisper",
+    "owner": "openai",
+    "path": "/ai-frontier/repository/openai/whisper/",
+    "primary_category": {
+     "name": "Artificial Intelligence",
+     "slug": "artificial-intelligence"
+    },
+    "published_at": "2026-09-14T10:10:28.716490Z",
+    "repository_id": "repo_github_537603333",
+    "summary": "Static overview of the whisper repository: a Python codebase (45 analyzed files) built around a whisper package with model, decoding, timing, tokenizer, audio, and transcribe modules. Its one detected entrypoint is a __main__ guard in whisper/transcribe.py calling cli(). requirements.txt lists seven runtime dependencies and seven test files exist; 1233 of 1388 static relations remain unresolved."
+   },
+   {
+    "analyzed_revision": "85b1be10c81d",
+    "full_name": "simonw/sqlite-utils",
+    "github_url": "https://github.com/simonw/sqlite-utils",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "sqlite-utils",
+    "owner": "simonw",
+    "path": "/ai-frontier/repository/simonw/sqlite-utils/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T10:10:53.395472Z",
+    "repository_id": "repo_github_140912432",
+    "summary": "Static overview of a Python project whose top-level package is sqlite_utils, described by its authors as a CLI utility and library for manipulating SQLite databases. Execution starts at sqlite_utils/__main__.py, which calls cli in sqlite_utils/cli.py. Static call degree centers on sqlite_utils/db.py, and the repository has 59 test files. 7,360 of 8,672 recorded static relations remain external or unresolved."
+   },
+   {
+    "analyzed_revision": "20622e1259c2",
+    "full_name": "psf/black",
+    "github_url": "https://github.com/psf/black",
+    "language": "Python",
+    "license": "MIT",
+    "name": "black",
+    "owner": "psf",
+    "path": "/ai-frontier/repository/psf/black/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T10:11:17.277431Z",
+    "repository_id": "repo_github_125266328",
+    "summary": "A Python code formatter per its GitHub description, organized into src, tests, docs, and scripts subsystems. Static analysis covered 482 files and 9,339 relations, with 326 test-like files, but 8,487 relations remain unresolved, no execution path was run, and parsed dependency records are absent."
+   },
+   {
+    "analyzed_revision": "5cbacfc8f86d",
+    "full_name": "pydantic/pydantic-ai",
+    "github_url": "https://github.com/pydantic/pydantic-ai",
+    "language": "Python",
+    "license": "MIT",
+    "name": "pydantic-ai",
+    "owner": "pydantic",
+    "path": "/ai-frontier/repository/pydantic/pydantic-ai/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T10:11:41.835266Z",
+    "repository_id": "repo_github_818331198",
+    "summary": "A large MIT-licensed Python repository (2,754 analyzed files) described by its maintainers as 'How Python does AI'. Static analysis shows a pydantic_ai_slim package, a clai CLI module, examples, docs, and a test suite that dominates the resolved call graph. Runtime behavior and installation were not exercised; most static call targets remain unresolved."
+   },
+   {
+    "analyzed_revision": "6aabf099bfdd",
+    "full_name": "pallets/click",
+    "github_url": "https://github.com/pallets/click",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "name": "click",
+    "owner": "pallets",
+    "path": "/ai-frontier/repository/pallets/click/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T15:03:25.771238Z",
+    "repository_id": "repo_github_19103692",
+    "summary": "Static analysis of the click repository, described in GitHub metadata as a 'Python composable command line interface toolkit', inventoried 177 files, 5,640 static relations, and a src/click package covering core commands, terminal UI, shell completion, and parameter types. The detected entrypoint is examples/complex/complex/cli.py; runtime flow and declared dependencies remain unresolved."
+   },
+   {
+    "analyzed_revision": "dae7ef63b4df",
+    "full_name": "psf/requests",
+    "github_url": "https://github.com/psf/requests",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "requests",
+    "owner": "psf",
+    "path": "/ai-frontier/repository/psf/requests/",
+    "primary_category": {
+     "name": "Web and Applications",
+     "slug": "web-and-applications"
+    },
+    "published_at": "2026-09-14T15:03:56.135659Z",
+    "repository_id": "repo_github_1362490",
+    "summary": "A Python HTTP client library — the author's description reads 'A simple, yet elegant, HTTP library' — under an Apache-2.0 license, with the package in src/requests/ across 130 analyzed files. Static analysis recorded 3,080 relations (501 local, 2,579 unresolved), two __main__ guards plus a test-server entrypoint, and 42 test files; runtime was not exercised and dependency evidence is partial."
+   },
+   {
+    "analyzed_revision": "30bb1161095d",
+    "full_name": "huggingface/smolagents",
+    "github_url": "https://github.com/huggingface/smolagents",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "smolagents",
+    "owner": "huggingface",
+    "path": "/ai-frontier/repository/huggingface/smolagents/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T15:04:26.389171Z",
+    "repository_id": "repo_github_898968194",
+    "summary": "smolagents is a Python codebase whose GitHub description calls it 'a barebones library for agents that think in code' (maintainer claim). Apache-2.0 licensed; 185 analyzed files across src, examples, docs and tests. Scripts start from per-file __main__ guards; the static call graph centres on local_python_executor.py, models.py and agents.py. Findings are static-only; runtime behavior is not established."
+   }
+  ],
+  "popular": [
+   {
+    "analyzed_revision": "86098128c0b4",
+    "full_name": "openai/whisper",
+    "github_url": "https://github.com/openai/whisper",
+    "language": "Python",
+    "license": "MIT",
+    "name": "whisper",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "openai",
+    "path": "/ai-frontier/repository/openai/whisper/",
+    "primary_category": {
+     "name": "Artificial Intelligence",
+     "slug": "artificial-intelligence"
+    },
+    "published_at": "2026-09-14T10:10:28.716490Z",
+    "repository_id": "repo_github_537603333",
+    "stars": 109127,
+    "summary": "Static overview of the whisper repository: a Python codebase (45 analyzed files) built around a whisper package with model, decoding, timing, tokenizer, audio, and transcribe modules. Its one detected entrypoint is a __main__ guard in whisper/transcribe.py calling cli(). requirements.txt lists seven runtime dependencies and seven test files exist; 1233 of 1388 static relations remain unresolved."
+   },
+   {
+    "analyzed_revision": "dae7ef63b4df",
+    "full_name": "psf/requests",
+    "github_url": "https://github.com/psf/requests",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "requests",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "psf",
+    "path": "/ai-frontier/repository/psf/requests/",
+    "primary_category": {
+     "name": "Web and Applications",
+     "slug": "web-and-applications"
+    },
+    "published_at": "2026-09-14T15:03:56.135659Z",
+    "repository_id": "repo_github_1362490",
+    "stars": 54301,
+    "summary": "A Python HTTP client library — the author's description reads 'A simple, yet elegant, HTTP library' — under an Apache-2.0 license, with the package in src/requests/ across 130 analyzed files. Static analysis recorded 3,080 relations (501 local, 2,579 unresolved), two __main__ guards plus a test-server entrypoint, and 42 test files; runtime was not exercised and dependency evidence is partial."
+   },
+   {
+    "analyzed_revision": "20622e1259c2",
+    "full_name": "psf/black",
+    "github_url": "https://github.com/psf/black",
+    "language": "Python",
+    "license": "MIT",
+    "name": "black",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "psf",
+    "path": "/ai-frontier/repository/psf/black/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T10:11:17.277431Z",
+    "repository_id": "repo_github_125266328",
+    "stars": 41842,
+    "summary": "A Python code formatter per its GitHub description, organized into src, tests, docs, and scripts subsystems. Static analysis covered 482 files and 9,339 relations, with 326 test-like files, but 8,487 relations remain unresolved, no execution path was run, and parsed dependency records are absent."
+   },
+   {
+    "analyzed_revision": "30bb1161095d",
+    "full_name": "huggingface/smolagents",
+    "github_url": "https://github.com/huggingface/smolagents",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "smolagents",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "huggingface",
+    "path": "/ai-frontier/repository/huggingface/smolagents/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T15:04:26.389171Z",
+    "repository_id": "repo_github_898968194",
+    "stars": 29336,
+    "summary": "smolagents is a Python codebase whose GitHub description calls it 'a barebones library for agents that think in code' (maintainer claim). Apache-2.0 licensed; 185 analyzed files across src, examples, docs and tests. Scripts start from per-file __main__ guards; the static call graph centres on local_python_executor.py, models.py and agents.py. Findings are static-only; runtime behavior is not established."
+   },
+   {
+    "analyzed_revision": "5cbacfc8f86d",
+    "full_name": "pydantic/pydantic-ai",
+    "github_url": "https://github.com/pydantic/pydantic-ai",
+    "language": "Python",
+    "license": "MIT",
+    "name": "pydantic-ai",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "pydantic",
+    "path": "/ai-frontier/repository/pydantic/pydantic-ai/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T10:11:41.835266Z",
+    "repository_id": "repo_github_818331198",
+    "stars": 19948,
+    "summary": "A large MIT-licensed Python repository (2,754 analyzed files) described by its maintainers as 'How Python does AI'. Static analysis shows a pydantic_ai_slim package, a clai CLI module, examples, docs, and a test suite that dominates the resolved call graph. Runtime behavior and installation were not exercised; most static call targets remain unresolved."
+   },
+   {
+    "analyzed_revision": "6aabf099bfdd",
+    "full_name": "pallets/click",
+    "github_url": "https://github.com/pallets/click",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "name": "click",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "pallets",
+    "path": "/ai-frontier/repository/pallets/click/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T15:03:25.771238Z",
+    "repository_id": "repo_github_19103692",
+    "stars": 17666,
+    "summary": "Static analysis of the click repository, described in GitHub metadata as a 'Python composable command line interface toolkit', inventoried 177 files, 5,640 static relations, and a src/click package covering core commands, terminal UI, shell completion, and parameter types. The detected entrypoint is examples/complex/complex/cli.py; runtime flow and declared dependencies remain unresolved."
+   },
+   {
+    "analyzed_revision": "1df47ddcac20",
+    "full_name": "simonw/llm",
+    "github_url": "https://github.com/simonw/llm",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "llm",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "simonw",
+    "path": "/ai-frontier/repository/simonw/llm/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T06:27:49.613048Z",
+    "repository_id": "repo_github_622352364",
+    "stars": 12507,
+    "summary": "A Python command-line tool whose platform metadata describes access to large language models from the terminal; Apache-2.0 licensed, with 116 analyzed files. Execution starts at an __main__ guard that calls cli(), which loads plugins through boundaries the static analysis cannot see past. Layout: docs, llm, and tests, with 44 test files."
+   },
+   {
+    "analyzed_revision": "85b1be10c81d",
+    "full_name": "simonw/sqlite-utils",
+    "github_url": "https://github.com/simonw/sqlite-utils",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "sqlite-utils",
+    "observed_at": "2026-09-15T09:06:11.963982Z",
+    "owner": "simonw",
+    "path": "/ai-frontier/repository/simonw/sqlite-utils/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T10:10:53.395472Z",
+    "repository_id": "repo_github_140912432",
+    "stars": 2168,
+    "summary": "Static overview of a Python project whose top-level package is sqlite_utils, described by its authors as a CLI utility and library for manipulating SQLite databases. Execution starts at sqlite_utils/__main__.py, which calls cli in sqlite_utils/cli.py. Static call degree centers on sqlite_utils/db.py, and the repository has 59 test files. 7,360 of 8,672 recorded static relations remain external or unresolved."
+   }
+  ],
+  "trending": [
+   {
+    "analyzed_revision": "86098128c0b4",
+    "full_name": "openai/whisper",
+    "github_url": "https://github.com/openai/whisper",
+    "language": "Python",
+    "license": "MIT",
+    "name": "whisper",
+    "owner": "openai",
+    "path": "/ai-frontier/repository/openai/whisper/",
+    "primary_category": {
+     "name": "Artificial Intelligence",
+     "slug": "artificial-intelligence"
+    },
+    "published_at": "2026-09-14T10:10:28.716490Z",
+    "repository_id": "repo_github_537603333",
+    "stars_delta": 71,
+    "stars_first": 109056,
+    "stars_last": 109127,
+    "summary": "Static overview of the whisper repository: a Python codebase (45 analyzed files) built around a whisper package with model, decoding, timing, tokenizer, audio, and transcribe modules. Its one detected entrypoint is a __main__ guard in whisper/transcribe.py calling cli(). requirements.txt lists seven runtime dependencies and seven test files exist; 1233 of 1388 static relations remain unresolved.",
+    "window": [
+     "2026-09-14T06:54:08.580406Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   },
+   {
+    "analyzed_revision": "5cbacfc8f86d",
+    "full_name": "pydantic/pydantic-ai",
+    "github_url": "https://github.com/pydantic/pydantic-ai",
+    "language": "Python",
+    "license": "MIT",
+    "name": "pydantic-ai",
+    "owner": "pydantic",
+    "path": "/ai-frontier/repository/pydantic/pydantic-ai/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T10:11:41.835266Z",
+    "repository_id": "repo_github_818331198",
+    "stars_delta": 33,
+    "stars_first": 19915,
+    "stars_last": 19948,
+    "summary": "A large MIT-licensed Python repository (2,754 analyzed files) described by its maintainers as 'How Python does AI'. Static analysis shows a pydantic_ai_slim package, a clai CLI module, examples, docs, and a test suite that dominates the resolved call graph. Runtime behavior and installation were not exercised; most static call targets remain unresolved.",
+    "window": [
+     "2026-09-14T07:19:57.702791Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   },
+   {
+    "analyzed_revision": "30bb1161095d",
+    "full_name": "huggingface/smolagents",
+    "github_url": "https://github.com/huggingface/smolagents",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "smolagents",
+    "owner": "huggingface",
+    "path": "/ai-frontier/repository/huggingface/smolagents/",
+    "primary_category": {
+     "name": "AI Agents",
+     "slug": "ai-agents"
+    },
+    "published_at": "2026-09-14T15:04:26.389171Z",
+    "repository_id": "repo_github_898968194",
+    "stars_delta": 23,
+    "stars_first": 29313,
+    "stars_last": 29336,
+    "summary": "smolagents is a Python codebase whose GitHub description calls it 'a barebones library for agents that think in code' (maintainer claim). Apache-2.0 licensed; 185 analyzed files across src, examples, docs and tests. Scripts start from per-file __main__ guards; the static call graph centres on local_python_executor.py, models.py and agents.py. Findings are static-only; runtime behavior is not established.",
+    "window": [
+     "2026-09-14T06:57:01.470925Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   },
+   {
+    "analyzed_revision": "dae7ef63b4df",
+    "full_name": "psf/requests",
+    "github_url": "https://github.com/psf/requests",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "requests",
+    "owner": "psf",
+    "path": "/ai-frontier/repository/psf/requests/",
+    "primary_category": {
+     "name": "Web and Applications",
+     "slug": "web-and-applications"
+    },
+    "published_at": "2026-09-14T15:03:56.135659Z",
+    "repository_id": "repo_github_1362490",
+    "stars_delta": 3,
+    "stars_first": 54298,
+    "stars_last": 54301,
+    "summary": "A Python HTTP client library — the author's description reads 'A simple, yet elegant, HTTP library' — under an Apache-2.0 license, with the package in src/requests/ across 130 analyzed files. Static analysis recorded 3,080 relations (501 local, 2,579 unresolved), two __main__ guards plus a test-server entrypoint, and 42 test files; runtime was not exercised and dependency evidence is partial.",
+    "window": [
+     "2026-09-14T06:54:44.440713Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   },
+   {
+    "analyzed_revision": "6aabf099bfdd",
+    "full_name": "pallets/click",
+    "github_url": "https://github.com/pallets/click",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "name": "click",
+    "owner": "pallets",
+    "path": "/ai-frontier/repository/pallets/click/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T15:03:25.771238Z",
+    "repository_id": "repo_github_19103692",
+    "stars_delta": 1,
+    "stars_first": 17665,
+    "stars_last": 17666,
+    "summary": "Static analysis of the click repository, described in GitHub metadata as a 'Python composable command line interface toolkit', inventoried 177 files, 5,640 static relations, and a src/click package covering core commands, terminal UI, shell completion, and parameter types. The detected entrypoint is examples/complex/complex/cli.py; runtime flow and declared dependencies remain unresolved.",
+    "window": [
+     "2026-09-14T06:55:03.084767Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   },
+   {
+    "analyzed_revision": "85b1be10c81d",
+    "full_name": "simonw/sqlite-utils",
+    "github_url": "https://github.com/simonw/sqlite-utils",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "name": "sqlite-utils",
+    "owner": "simonw",
+    "path": "/ai-frontier/repository/simonw/sqlite-utils/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T10:10:53.395472Z",
+    "repository_id": "repo_github_140912432",
+    "stars_delta": 0,
+    "stars_first": 2168,
+    "stars_last": 2168,
+    "summary": "Static overview of a Python project whose top-level package is sqlite_utils, described by its authors as a CLI utility and library for manipulating SQLite databases. Execution starts at sqlite_utils/__main__.py, which calls cli in sqlite_utils/cli.py. Static call degree centers on sqlite_utils/db.py, and the repository has 59 test files. 7,360 of 8,672 recorded static relations remain external or unresolved.",
+    "window": [
+     "2026-09-14T06:54:29.095150Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   },
+   {
+    "analyzed_revision": "20622e1259c2",
+    "full_name": "psf/black",
+    "github_url": "https://github.com/psf/black",
+    "language": "Python",
+    "license": "MIT",
+    "name": "black",
+    "owner": "psf",
+    "path": "/ai-frontier/repository/psf/black/",
+    "primary_category": {
+     "name": "CLI Tools",
+     "slug": "cli-tools"
+    },
+    "published_at": "2026-09-14T10:11:17.277431Z",
+    "repository_id": "repo_github_125266328",
+    "stars_delta": -2,
+    "stars_first": 41844,
+    "stars_last": 41842,
+    "summary": "A Python code formatter per its GitHub description, organized into src, tests, docs, and scripts subsystems. Static analysis covered 482 files and 9,339 relations, with 326 test-like files, but 8,487 relations remain unresolved, no execution path was run, and parsed dependency records are absent.",
+    "window": [
+     "2026-09-14T06:56:33.177473Z",
+     "2026-09-15T09:06:11.963982Z"
+    ]
+   }
+  ]
+ },
+ "disclosure": "Deterministic edition built from the AI Frontier ledger (publication events, metadata snapshots, freshness states). No model wrote it.",
+ "frozen": false,
+ "generated_at": "2026-09-15T09:08:58.169778Z",
+ "notes": {
+  "changed": "Repositories whose default branch moved past the analyzed revision during the week; their guides still describe the analyzed revision.",
+  "freeze": "Ranks and numbers freeze when the edition is published and are never recomputed with later numbers.",
+  "new": "Guides whose publication event falls inside the week, in publication order.",
+  "popular": "Stars at the latest snapshot inside the week. A star count is a popularity signal at one moment, not a quality ranking.",
+  "trending": "Change in stars between a repository's first and last snapshot inside the week; needs at least two snapshots. Trending measures change, not quality."
+ },
+ "publication": {
+  "approved_by": null,
+  "event_id": null,
+  "published_at": null,
+  "status": "unpublished",
+  "url": "https://evemisstechnology.com/ai-frontier/weekly/2026-W38/",
+  "via": null
+ },
+ "published_guides_total": 8,
+ "range": {
+  "end": "2026-09-20",
+  "start": "2026-09-14"
+ },
+ "schema": "ai-frontier-weekly-edition/v0.1",
+ "week": "2026-W38"
+}
