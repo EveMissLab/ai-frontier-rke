@@ -74,14 +74,16 @@ def md_to_html(body: str) -> str:
     return "\n".join(out)
 
 
-def main(slug: str) -> int:
+def main(slug: str, asset_type: str = "overview") -> int:
     sdir = slice_dir(slug)
-    val = load_json(sdir / "validation-receipt.json")
+    from af_common import asset_paths
+    ap = asset_paths(sdir, asset_type)
+    val = load_json(ap["validation_receipt"])
     md = (sdir / val["canonical_source_ref"].split("/", 1)[1]).read_text(encoding="utf-8")
     fm = yaml.safe_load(md.split("---\n", 2)[1])
     body = md.split("---\n", 2)[2]
-    wr = load_json(sdir / "workers-receipt.json")
-    tax = wr.get("taxonomy") or {}
+    wr = load_json(ap["workers_receipt"])
+    tax = wr.get("taxonomy") or (load_json(sdir / "workers-receipt.json").get("taxonomy") if (sdir / "workers-receipt.json").exists() else {}) or {}
     status = "VALIDATED · unpublished (awaiting human review and release gates)" if val["hard_gate_pass"] else "NOT VALIDATED · hard gate failed"
     css = """body{font:16px/1.6 system-ui,sans-serif;max-width:920px;margin:2rem auto;padding:0 1rem;color:#111}
     .contract{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;border:1px solid #ddd;border-radius:12px;padding:1rem;margin:1rem 0;background:#fafafa}
@@ -107,11 +109,11 @@ def main(slug: str) -> int:
             f"<p><span class='status'>{status}</span> <span class='status'>LOCAL PREVIEW — not deployed</span></p>",
             f"<h1>{html.escape(fm['title'])}</h1>", "<dl class='contract'>" + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in contract) + "</dl>",
             md_to_html(body), "<hr><p class='notice'>Rendered from the canonical UTF-8 Markdown; the Markdown, not this HTML, is the source of truth.</p>"]
-    out = sdir / "canonical" / "preview.html"
+    out = ap["preview"]
     out.write_text("\n".join(page), encoding="utf-8")
     print(out)
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1]))
+    raise SystemExit(main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else "overview"))

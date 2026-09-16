@@ -1,0 +1,66 @@
+{
+ "asset_id": "asset_repo_github_179492861_overview",
+ "asset_revision_id": "assetrev_asset_repo_github_179492861_overview_v2",
+ "canonical_bytes": 22877,
+ "canonical_source_ref": "slice-006-encode-httpx-run2/canonical/overview.md",
+ "canonical_source_sha256": "e27e93885ee64129a1fbd780762397dafdd77d87069e12c1fc7a5b26918cd29d",
+ "claims": 39,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 39,
+    "sections": 7
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "registered": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/encode/httpx",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 9,
+  "unchanged_entities": 0,
+  "updated_entities": 3,
+  "written_cells": 101
+ },
+ "supported_claims": 39
+}

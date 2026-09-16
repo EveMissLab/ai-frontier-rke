@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+ "license": {
+  "file_bytes": 1508,
+  "file_sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "BSD-3-Clause",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_179492861_b5addb64f016",
+ "observed_at": "2026-09-14T06:55:21.686592Z",
+ "repository_id": "repo_github_179492861",
+ "revision_id": "rev_repo_github_179492861_b5addb64f016",
+ "sedb_write": {
+  "created_entities": 11,
+  "unchanged_entities": 40,
+  "updated_entities": 0,
+  "written_cells": 91
+ },
+ "slice": "slice-006-encode-httpx",
+ "snapshot_id": "snap_repo_github_179492861_20260914T065521.686592Z",
+ "taxonomy_version": "v1"
+}

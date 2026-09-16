@@ -86,6 +86,17 @@ def slice_dir(slug: str) -> Path:
     return LAB / slug
 
 
+def asset_paths(sdir: Path, asset_type: str = "overview") -> dict:
+    """Per-asset file layout. `overview` keeps the original flat layout; other assets get suffixed/nested names."""
+    if asset_type == "overview":
+        return {"packet": sdir / "packets" / "overview.json", "runs_dir": sdir / "worker_runs", "workers_receipt": sdir / "workers-receipt.json",
+                "log": sdir / "step4.log", "canonical_md": sdir / "canonical" / "overview.md", "validation_receipt": sdir / "validation-receipt.json",
+                "preview": sdir / "canonical" / "preview.html", "task_prefix": "", "path_suffix": ""}
+    return {"packet": sdir / "packets" / f"{asset_type}.json", "runs_dir": sdir / "worker_runs" / asset_type, "workers_receipt": sdir / f"workers-receipt.{asset_type}.json",
+            "log": sdir / f"step4.{asset_type}.log", "canonical_md": sdir / "canonical" / f"{asset_type}.md", "validation_receipt": sdir / f"validation-receipt.{asset_type}.json",
+            "preview": sdir / "canonical" / f"{asset_type}-preview.html", "task_prefix": f"{asset_type[:4]}-", "path_suffix": f"{asset_type}/"}
+
+
 def rel_ref(path: Path) -> str:
     """Artifact reference relative to the lab root (never an absolute local path)."""
     return Path(path).resolve().relative_to(LAB.resolve()).as_posix()
@@ -106,5 +117,5 @@ def analysis_run_id(repo_id: str, sha: str, engine_version: str, config_hash: st
 __all__ = [
     "LAB", "SEDB_ROOT", "SEDB_PROJECT", "MACR_ROOT", "MACR_STATE", "LICENSE_POLICY", "TAXONOMY_VERSION",
     "utc_now", "canonical_bytes", "sha256_bytes", "sha256_file", "short", "load_json", "write_json",
-    "open_store", "slice_dir", "rel_ref", "repository_entity_id", "revision_entity_id", "analysis_run_id",
+    "open_store", "slice_dir", "rel_ref", "repository_entity_id", "revision_entity_id", "analysis_run_id", "asset_paths",
 ]

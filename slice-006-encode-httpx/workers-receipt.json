@@ -1,0 +1,212 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T09:05:35.882025Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "5b987241-7020-4162-9700-d2434eb026ed",
+   "conservative_cost_ceiling_usd": 0.0345578,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0007913999999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00039569999999999997,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 570,
+     "prompt_tokens": 3376,
+     "reasoning_tokens": 427,
+     "total_tokens": 3946
+    }
+   },
+   "failure": null,
+   "latency_seconds": 8.8,
+   "output_ref": "slice-006-encode-httpx/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.8,
+    "primary": "web-and-applications",
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
+   "task_id": "af-slice-006-encode-httpx-taxonomy-01",
+   "worker_run_entity_id": "worker_5b987241-7020-4162-9700-d2434eb026ed"
+  },
+  {
+   "attempt": 1,
+   "candidate": "3f92490d-9bd0-4158-8a6c-9de6f8a73e10",
+   "conservative_cost_ceiling_usd": 0.03893315,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0187777,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00938885,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 33689,
+     "prompt_tokens": 12888,
+     "reasoning_tokens": 28587,
+     "total_tokens": 46577
+    }
+   },
+   "failure": null,
+   "latency_seconds": 319.92,
+   "output_ref": "slice-006-encode-httpx/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 38,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-006-encode-httpx-writer-01",
+   "worker_run_entity_id": "worker_3f92490d-9bd0-4158-8a6c-9de6f8a73e10"
+  },
+  {
+   "attempt": 1,
+   "candidate": "9f90fbd7-7680-4e92-96ff-15d494df6b51",
+   "conservative_cost_ceiling_usd": 0.0422444,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01140265,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005701325,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 16910,
+     "prompt_tokens": 19651,
+     "reasoning_tokens": 14633,
+     "total_tokens": 36561
+    }
+   },
+   "failure": null,
+   "latency_seconds": 151.86,
+   "output_ref": "slice-006-encode-httpx/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 38,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-006-encode-httpx-verifier-01",
+   "worker_run_entity_id": "worker_9f90fbd7-7680-4e92-96ff-15d494df6b51"
+  },
+  {
+   "attempt": 1,
+   "candidate": "45875c0f-76d1-4661-8282-303182ddf1d1",
+   "conservative_cost_ceiling_usd": 0.0373697,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0056895,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00284475,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8739,
+     "prompt_tokens": 8800,
+     "reasoning_tokens": 7838,
+     "total_tokens": 17539
+    }
+   },
+   "failure": null,
+   "latency_seconds": 99.95,
+   "output_ref": "slice-006-encode-httpx/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.65,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.9,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-006-encode-httpx-critic-01",
+   "worker_run_entity_id": "worker_45875c0f-76d1-4661-8282-303182ddf1d1"
+  },
+  {
+   "attempt": 1,
+   "candidate": "9e00f4ca-614a-42e1-a769-1fab5ee35d7a",
+   "conservative_cost_ceiling_usd": 0.03415625,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00264335,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.001321675,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4633,
+     "prompt_tokens": 2179,
+     "reasoning_tokens": 4483,
+     "total_tokens": 6812
+    }
+   },
+   "failure": null,
+   "latency_seconds": 37.81,
+   "output_ref": "slice-006-encode-httpx/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-006-encode-httpx-seo-01",
+   "worker_run_entity_id": "worker_9e00f4ca-614a-42e1-a769-1fab5ee35d7a"
+  }
+ ],
+ "slice": "slice-006-encode-httpx",
+ "started_at": "2026-09-14T08:54:58.741543Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.8,
+  "primary": "web-and-applications",
+  "review_required": false,
+  "secondary": [
+   "developer-tools",
+   "cli-tools"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 38 draft claims verified against the packet first. Every grounding_ref exists verbatim, every claim is supported, and no epistemic upgrades occur: claims citing role_*, summary_repository, or unresolved teaching claims are marked inferred/unresolved, author_claimed metadata stays author_claimed, and 'observed' claims cite only verified symbols, files, dep_*, lim_*, relation_counts, or observed platform metadata. No knowledge leakage, no hallucinated paths or symbols, no rights problems; the only quoted material is the one-line author description, correctly attributed. The draft's interpretive statements are explicitly flagged, its uncertainty notes match packet records (license agreement false, excluded important_2, partial runtime hints), and its question about the 1,276-vs-1,503 discrepancy is legitimate. No packet text resembled an instruction to the verifier; runtime hints read as analyzer guidance for repository users, not prompts. Overall verdict: pass.",
+  "unsupported": []
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "30bb1161095dbae2271e6bc3cc4c219cc3897a57",
+ "license": {
+  "file_bytes": 11357,
+  "file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "Apache-2.0",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_898968194_30bb1161095d",
+ "observed_at": "2026-09-14T06:57:01.470925Z",
+ "repository_id": "repo_github_898968194",
+ "revision_id": "rev_repo_github_898968194_30bb1161095d",
+ "sedb_write": {
+  "created_entities": 5,
+  "unchanged_entities": 38,
+  "updated_entities": 0,
+  "written_cells": 61
+ },
+ "slice": "slice-009-huggingface-smolagents",
+ "snapshot_id": "snap_repo_github_898968194_20260914T065701.470925Z",
+ "taxonomy_version": "v1"
+}

@@ -1,7 +1,7 @@
 {
- "analysis_run_id": "analysis_aeacbf406d1e8145",
+ "analysis_run_id": "analysis_3d4c7139f466dac4",
  "analysis_run_mode": "new",
- "bounded_context_ratio": 0.00267,
+ "bounded_context_ratio": 0.0027,
  "counts": {
   "dependencies": 0,
   "dependency_records": 0,
@@ -9,7 +9,7 @@
   "evidence": 935,
   "execution_paths": 5,
   "files": 177,
-  "groundings": 10257,
+  "groundings": 10258,
   "important_files": 4,
   "lessons": 5,
   "module_role_ids": 26,
@@ -30,35 +30,35 @@
    "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
   }
  ],
- "grounding_bundle_bytes": 8705878,
- "grounding_bundle_ref": "slice-005-pallets-click/artifacts/grounding/analysis_aeacbf406d1e8145/v1.1/grounding-bundle.json",
- "grounding_bundle_sha256": "012548c1140e03d815e4a9324bc2bfbfb97d2794810cfd47af1c2182881745ce",
+ "grounding_bundle_bytes": 8706729,
+ "grounding_bundle_ref": "slice-005-pallets-click/artifacts/grounding/analysis_3d4c7139f466dac4/v1.2/grounding-bundle.json",
+ "grounding_bundle_sha256": "013be1f5a36d85b797d5d76790bd7c0087d8b31582c4adc16cea62763ace41da",
  "license_state": {
-  "agreement": false,
-  "repolumen_detected": null,
+  "agreement": true,
+  "repolumen_detected": "BSD-3-Clause",
   "spdx": "BSD-3-Clause",
-  "status": "unresolved"
+  "status": "open-source"
  },
  "manifest_ref": "slice-005-pallets-click/artifacts/repolumen/repo_github_19103692/6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1/0.10/semantic-manifest.json",
- "manifest_sha256": "1b1d87f8c40f220626efa080361e1aeb9fb0601543c14094be864475d8e01997",
+ "manifest_sha256": "19de6117275ae515fcbba13a8c9458deba4b1c3fb25242ad994673fa967ef208",
  "packets": {
   "overview": {
-   "bytes": 33601,
-   "sha256": "7b64ceb2b69e5c90471ca70e58aed8fdbc3b4e40c493ef2d1cfc65ed9b37e75b"
+   "bytes": 33965,
+   "sha256": "05ea30a1635df5b4d3eba1ec4e8ce1b6bf42b7764464c4797112bfe59d8acfe9"
   },
   "taxonomy": {
    "bytes": 7696,
    "sha256": "8198f4ac84193e9b3af4779b7eb24c35063f0a06cd903175c6270bcfa19a466e"
   }
  },
- "projection_id": "proj_analysis_aeacbf406d1e8145_v1_1",
- "projection_version": "ai-frontier-grounding/v1.1",
- "run_recorded_grounding_bundle_sha256": "012548c1140e03d815e4a9324bc2bfbfb97d2794810cfd47af1c2182881745ce",
+ "projection_id": "proj_analysis_3d4c7139f466dac4_v1_2",
+ "projection_version": "ai-frontier-grounding/v1.2",
+ "run_recorded_grounding_bundle_sha256": "013be1f5a36d85b797d5d76790bd7c0087d8b31582c4adc16cea62763ace41da",
  "sedb_write": {
   "created_entities": 10260,
   "unchanged_entities": 0,
   "updated_entities": 0,
-  "written_cells": 153898
+  "written_cells": 153905
  },
  "supersedes_projection_id": null
 }

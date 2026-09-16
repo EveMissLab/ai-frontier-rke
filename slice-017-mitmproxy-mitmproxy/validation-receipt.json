@@ -1,0 +1,66 @@
+{
+ "asset_id": "asset_repo_github_519832_overview",
+ "asset_revision_id": "assetrev_asset_repo_github_519832_overview_v2",
+ "canonical_bytes": 25643,
+ "canonical_source_ref": "slice-017-mitmproxy-mitmproxy/canonical/overview.md",
+ "canonical_source_sha256": "01fa80c54663b48e2852c84c1db71e91889b82f6a95341650954b74b11429b2c",
+ "claims": 39,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 39,
+    "sections": 7
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "b506c68108e287104045333ade476d92c39c275e",
+    "registered": "b506c68108e287104045333ade476d92c39c275e"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/mitmproxy/mitmproxy",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 9,
+  "unchanged_entities": 0,
+  "updated_entities": 3,
+  "written_cells": 101
+ },
+ "supported_claims": 39
+}

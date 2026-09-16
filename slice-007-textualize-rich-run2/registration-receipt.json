@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+ "license": {
+  "file_bytes": 1056,
+  "file_sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "MIT",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_220809393_9d8f9a372cc5",
+ "observed_at": "2026-09-14T06:55:54.286962Z",
+ "repository_id": "repo_github_220809393",
+ "revision_id": "rev_repo_github_220809393_9d8f9a372cc5",
+ "sedb_write": {
+  "created_entities": 36,
+  "unchanged_entities": 39,
+  "updated_entities": 0,
+  "written_cells": 216
+ },
+ "slice": "slice-007-textualize-rich",
+ "snapshot_id": "snap_repo_github_220809393_20260914T065554.286962Z",
+ "taxonomy_version": "v1"
+}

@@ -16,8 +16,8 @@ from urllib.parse import urlparse
 
 import yaml
 
-from af_common import load_json, open_store, rel_ref, sha256_bytes, slice_dir, utc_now, write_json
-from prompts import FORBIDDEN_WORDING, SCHEMAS, WRITER_V
+from af_common import asset_paths, load_json, open_store, rel_ref, sha256_bytes, slice_dir, utc_now, write_json
+from prompts import ASSET_CONTRACTS, FORBIDDEN_WORDING, SCHEMAS, WRITER_V
 from step4_workers import deterministic_checks
 
 VALIDATOR_VERSION = "af-validators/v1.2"  # v1.1: URL host check strips trailing sentence punctuation; v1.2: "best" gate matches superlative/marketing use only, not the hedge "at best" (run 3 false positive)
@@ -38,7 +38,7 @@ def md_escape_cell(s: str) -> str:
     return str(s).replace("|", "\\|").replace("\n", " ")
 
 
-def build_markdown(draft, reg, gr, ov_packet, verdict, seo, taxonomy, worker_run_ids, catalog, license_rec, content_version=1) -> str:
+def build_markdown(draft, reg, gr, ov_packet, verdict, seo, taxonomy, worker_run_ids, catalog, license_rec, content_version=1, asset_type="overview") -> str:
     run_id = gr["analysis_run_id"]
     sha = reg["commit_sha"]
     repo_url = ov_packet["repository"]["canonical_source_url"]
@@ -48,7 +48,7 @@ def build_markdown(draft, reg, gr, ov_packet, verdict, seo, taxonomy, worker_run
     title = (seo or {}).get("title_candidates", [draft["title"]])[0] if seo else draft["title"]
     meta_desc = (seo or {}).get("meta_description")
     front = {
-        "asset_type": "overview", "asset_slug": "overview", "content_version": content_version, "locale": "en", "content_format": "markdown", "encoding": "utf-8",
+        "asset_type": asset_type, "asset_slug": asset_type, "content_version": content_version, "locale": "en", "content_format": "markdown", "encoding": "utf-8",
         "title": title, "meta_description": meta_desc, "repository": full_name, "platform": "github", "canonical_source_url": repo_url,
         "analyzed_revision": sha, "analysis_run_id": run_id,
         "analyzer": "RepoLumen 0.10, deterministic mode, external provider disabled", "manifest_sha256": gr["manifest_sha256"], "grounding_bundle_sha256": gr["grounding_bundle_sha256"],
@@ -122,31 +122,33 @@ def markdown_checks(md: str) -> list[str]:
     return errs
 
 
-def main(slug: str) -> int:
+def main(slug: str, asset_type: str = "overview") -> int:
     sdir = slice_dir(slug)
+    ap = asset_paths(sdir, asset_type)
     reg, gr = load_json(sdir / "registration-receipt.json"), load_json(sdir / "grounding-receipt.json")
-    wr = load_json(sdir / "workers-receipt.json")
-    final = load_json(sdir / "worker_runs" / "final-draft-bundle.json")
-    ov_packet = load_json(sdir / "packets" / "overview.json")
+    wr = load_json(ap["workers_receipt"])
+    final = load_json(ap["runs_dir"] / "final-draft-bundle.json")
+    ov_packet = load_json(ap["packet"])
     bundle = load_json(sdir / gr["grounding_bundle_ref"].split("/", 1)[1])
     catalog, files = bundle["groundings"], set(bundle["files"])
-    draft, verdict, seo, taxonomy = final["draft"], final.get("verifier"), final.get("seo"), wr.get("taxonomy")
+    draft, verdict, seo = final["draft"], final.get("verifier"), final.get("seo")
+    taxonomy = wr.get("taxonomy") or (load_json(sdir / "workers-receipt.json").get("taxonomy") if (sdir / "workers-receipt.json").exists() else None)
     repo_id, rev_id, run_id = reg["repository_id"], reg["revision_id"], gr["analysis_run_id"]
     store = open_store()
     lic_rec = reg["license"]
     lic_state = gr["license_state"]["status"]
 
     worker_run_ids = [r["worker_run_entity_id"] for r in wr["runs"] if r.get("worker_run_entity_id")]
-    asset_id = f"asset_{repo_id}_overview"
+    asset_id = f"asset_{repo_id}_{asset_type}"
     content_version = 1 + len(store.find("af_asset_revision", af_asset_id=asset_id))
-    md = build_markdown(draft, reg, gr, ov_packet, verdict, seo, taxonomy, worker_run_ids, catalog, dict(lic_rec, status=lic_state), content_version)
+    md = build_markdown(draft, reg, gr, ov_packet, verdict, seo, taxonomy, worker_run_ids, catalog, dict(lic_rec, status=lic_state), content_version, asset_type)
     allowed_hosts = {"github.com", "raw.githubusercontent.com"}
     hp = next((g["text"] for g in bundle["platform_metadata"] if g["id"] == "meta_homepage"), None)
     if hp:
         allowed_hosts.add(urlparse(hp).netloc.lower())
 
     import jsonschema
-    schema_errors = [e.message[:160] for e in jsonschema.Draft202012Validator(SCHEMAS[WRITER_V]).iter_errors(draft)]
+    schema_errors = [e.message[:160] for e in jsonschema.Draft202012Validator(SCHEMAS[ASSET_CONTRACTS[asset_type][0]]).iter_errors(draft)]
     det = deterministic_checks(draft, ov_packet, catalog, files)
     gates = {
         "schema": {"passed": not schema_errors, "details": schema_errors[:10]},
@@ -164,13 +166,12 @@ def main(slug: str) -> int:
     hard_pass = all(g["passed"] for g in gates.values())
     canonical_dir = sdir / "canonical"
     canonical_dir.mkdir(exist_ok=True)
-    name = "overview.md" if hard_pass else f"overview.v{1 + len(store.find('af_asset_revision', af_asset_id=f'asset_{repo_id}_overview'))}.DRAFT-NOT-VALIDATED.md"
+    name = ap["canonical_md"].name if hard_pass else f"{asset_type}.v{1 + len(store.find('af_asset_revision', af_asset_id=asset_id))}.DRAFT-NOT-VALIDATED.md"
     path = canonical_dir / name
     data = md.encode("utf-8")
     path.write_bytes(data)
     digest = sha256_bytes(data)
 
-    asset_id = f"asset_{repo_id}_overview"
     # Asset revisions and validation runs are immutable evidence: every validation pass creates the next
     # content version instead of rewriting an earlier one (Paper 03 §39-42).
     content_version = 1 + len(store.find("af_asset_revision", af_asset_id=asset_id))
@@ -182,7 +183,7 @@ def main(slug: str) -> int:
         records.append({"entity_id": f"val_{assetrev_id}_{vtype}_{VALIDATOR_VERSION.rsplit('/', 1)[1]}", "kind": "af_validation_run", "label": f"{vtype} · {assetrev_id[-14:]}", "values": {
             "af_target_type": "asset_revision", "af_target_id": assetrev_id, "af_validator_type": vtype, "af_validator_version": VALIDATOR_VERSION,
             "af_validation_status": "passed" if g["passed"] else "failed", "af_details": g["details"], "af_completed_at": now, "af_provenance_source": "system"}})
-    records.append({"entity_id": assetrev_id, "kind": "af_asset_revision", "label": f"overview v1 ({'validated' if hard_pass else 'rejected'})", "values": {
+    records.append({"entity_id": assetrev_id, "kind": "af_asset_revision", "label": f"{asset_type} v{content_version} ({'validated' if hard_pass else 'rejected'})", "values": {
         "af_asset_id": asset_id, "af_repository_id": repo_id, "af_repository_revision_id": rev_id, "af_analysis_run_id": run_id,
         "af_grounding_bundle_sha256": gr["grounding_bundle_sha256"], "af_content_version": content_version, "af_canonical_source_ref": rel_ref(path),
         "af_canonical_source_sha256": digest, "af_content_format": "markdown", "af_encoding": "utf-8", "af_locale": "en",
@@ -191,14 +192,14 @@ def main(slug: str) -> int:
         "af_claim_count": len(draft["claims"]), "af_supported_claim_count": supported,
         "af_quality_scores": {"critic": (final.get("critic") or {}).get("scores"), "grounding_coverage": round(supported / max(1, len(draft["claims"])), 3), "overclaim_flags": len((final.get("critic") or {}).get("overclaim_flags", []))},
         "af_created_at": now, "af_provenance_source": "system"}})
-    records.append({"entity_id": asset_id, "kind": "af_knowledge_asset", "label": f"{reg['repository_id']} overview", "values": {
-        "af_repository_id": repo_id, "af_asset_type": "overview", "af_asset_slug": "overview",
-        "af_canonical_path": f"/ai-frontier/repository/{'/'.join(ov_packet['repository']['canonical_source_url'].rstrip('/').split('/')[-2:])}/",
+    records.append({"entity_id": asset_id, "kind": "af_knowledge_asset", "label": f"{reg['repository_id']} {asset_type}", "values": {
+        "af_repository_id": repo_id, "af_asset_type": asset_type, "af_asset_slug": asset_type,
+        "af_canonical_path": f"/ai-frontier/repository/{'/'.join(ov_packet['repository']['canonical_source_url'].rstrip('/').split('/')[-2:])}/{ap['path_suffix']}",
         "af_asset_status": "validated" if hard_pass else "rejected", "af_current_revision_id": assetrev_id if hard_pass else None, "af_provenance_source": "system"}})
-    records.append({"entity_id": f"fresh_{asset_id}", "kind": "af_freshness_state", "label": "overview freshness", "values": {
+    records.append({"entity_id": f"fresh_{asset_id}", "kind": "af_freshness_state", "label": f"{asset_type} freshness", "values": {
         "af_entity_type": "asset", "af_entity_id": asset_id, "af_last_verified_revision_id": rev_id, "af_latest_observed_revision_id": rev_id,
         "af_freshness": "fresh" if hard_pass else "unknown", "af_reason": "validated against the analyzed revision" if hard_pass else "hard gate failed", "af_updated_at": now, "af_provenance_source": "system"}})
-    records.append({"entity_id": f"search_{repo_id}", "kind": "af_search_document", "label": f"search · {reg['repository_id']}", "values": {
+    if asset_type == "overview": records.append({"entity_id": f"search_{repo_id}", "kind": "af_search_document", "label": f"search · {reg['repository_id']}", "values": {
         "af_entity_type": "repository", "af_entity_id": repo_id, "af_title": "/".join(ov_packet["repository"]["canonical_source_url"].rstrip("/").split("/")[-2:]),
         "af_owner": ov_packet["repository"]["canonical_source_url"].rstrip("/").split("/")[-2], "af_summary": draft["summary"],
         "af_topics": [g["text"] for g in bundle["platform_metadata"] if g["id"] == "meta_topics"], "af_categories": [taxonomy["primary"]] + list(taxonomy.get("secondary", [])) if taxonomy else [],
@@ -208,10 +209,11 @@ def main(slug: str) -> int:
     out = {"hard_gate_pass": hard_pass, "gates": gates, "canonical_source_ref": rel_ref(path), "canonical_source_sha256": digest, "canonical_bytes": len(data),
            "asset_id": asset_id, "asset_revision_id": assetrev_id, "claims": len(draft["claims"]), "supported_claims": supported, "sedb_write": res.__dict__,
            "publication_status": "unpublished", "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication"}
-    write_json(sdir / "validation-receipt.json", out)
+    out["asset_type"] = asset_type
+    write_json(ap["validation_receipt"], out)
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0 if hard_pass else 3
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1]))
+    raise SystemExit(main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else "overview"))

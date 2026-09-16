@@ -16,7 +16,7 @@ from collections import Counter
 
 import yaml
 
-from af_common import load_json, open_store, rel_ref, slice_dir, utc_now, write_json
+from af_common import asset_paths, load_json, open_store, rel_ref, slice_dir, utc_now, write_json
 from step5_validate import VALIDATOR_VERSION
 
 VIEW_SCHEMA = "ai-frontier-repository-view/v0.1"
@@ -49,6 +49,34 @@ def split_canonical(md_text: str) -> tuple[dict, str, str, list[dict]]:
         sid = re.sub(r"[^a-z0-9]+", "-", heading.lower()).strip("-")
         sections.append({"id": sid, "heading": heading, "markdown": text.strip() + "\n"})
     return fm, title, summary, sections
+
+
+EXTRA_ASSET_TYPES = ("architecture", "getting_started", "source_walkthrough")
+
+
+def extra_assets(sdir) -> dict:
+    """Validated non-overview assets of this slice, in the same shape as the overview block; unpublished until step 8."""
+    out = {}
+    for asset_type in EXTRA_ASSET_TYPES:
+        ap = asset_paths(sdir, asset_type)
+        if not (ap["validation_receipt"].exists() and ap["canonical_md"].exists()):
+            continue
+        val = load_json(ap["validation_receipt"])
+        if not val.get("hard_gate_pass"):
+            continue
+        final = load_json(ap["runs_dir"] / "final-draft-bundle.json")
+        fm, title, summary, sections = split_canonical(ap["canonical_md"].read_text(encoding="utf-8"))
+        claims = final["draft"]["claims"]; counts = Counter(c["epistemic_status"] for c in claims)
+        by_heading = {s["heading"]: s for s in sections}
+        out[asset_type] = {"type": asset_type, "content_version": fm["content_version"], "asset_revision_id": val["asset_revision_id"], "canonical_source_sha256": val["canonical_source_sha256"],
+                           "validator_version": VALIDATOR_VERSION, "title": title, "summary": summary, "meta_description": fm.get("meta_description"),
+                           "sections": [s for s in sections if s["heading"] not in CHROME_SECTIONS],
+                           "uncertainties_markdown": by_heading.get("Uncertainties reported by the writer", {}).get("markdown"),
+                           "claims_markdown": by_heading.get("Claims and evidence", {}).get("markdown"),
+                           "claim_counts": {"total": len(claims), **{k: counts.get(k, 0) for k in ("observed", "inferred", "author_claimed", "unresolved")}},
+                           "supported_claims": val["supported_claims"], "worker_runs": fm["worker_runs"], "last_verified": fm["last_verified"], "language": "en",
+                           "publication": {"status": "unpublished", "approved_by": None, "via": None, "published_at": None, "event_id": None, "url": None}}
+    return out
 
 
 def main(slug: str) -> int:
@@ -100,6 +128,7 @@ def main(slug: str) -> int:
                   "claim_counts": {"total": len(claims), **{k: counts.get(k, 0) for k in ("observed", "inferred", "author_claimed", "unresolved")}},
                   "supported_claims": val["supported_claims"], "worker_runs": fm["worker_runs"], "language": "en"},
         "guides": [{"type": "overview", "available": True}, {"type": "getting_started", "available": False}, {"type": "architecture", "available": False}, {"type": "source_walkthrough", "available": False}],
+        "assets": extra_assets(sdir),
         "related": [],
         "notices": {"version": NOTICES_VERSION, "rights": NOTICES["rights"], "platform": NOTICES["platform"], "ai_process": NOTICES["ai_process"]},
         "publication": {"status": "unpublished", "approved_by": None, "via": None, "published_at": None, "event_id": None, "url": None},

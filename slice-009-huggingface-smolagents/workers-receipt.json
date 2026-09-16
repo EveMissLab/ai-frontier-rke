@@ -1,0 +1,263 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T09:26:23.298139Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c37: section_id summary not in sections",
+   "c38: section_id summary not in sections",
+   "c39: section_id summary not in sections"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [
+   "c37: section_id summary not in sections",
+   "c38: section_id summary not in sections",
+   "c39: section_id summary not in sections"
+  ],
+  "ok": false
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "escalation_required",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "556b5aff-789f-4532-a0ef-c71e8135bbcc",
+   "conservative_cost_ceiling_usd": 0.03478775,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0008455,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00042275,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 548,
+     "prompt_tokens": 3810,
+     "reasoning_tokens": 369,
+     "total_tokens": 4358
+    }
+   },
+   "failure": null,
+   "latency_seconds": 8.86,
+   "output_ref": "slice-009-huggingface-smolagents/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.97,
+    "primary": "ai-agents",
+    "secondary": [
+     "artificial-intelligence",
+     "cli-tools"
+    ]
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-taxonomy-01",
+   "worker_run_entity_id": "worker_556b5aff-789f-4532-a0ef-c71e8135bbcc"
+  },
+  {
+   "attempt": 1,
+   "candidate": "d8dc0d76-0463-4419-ab7f-5fc644133cc8",
+   "conservative_cost_ceiling_usd": 0.041309,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.017448099999999998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.008724049999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 29609,
+     "prompt_tokens": 17624,
+     "reasoning_tokens": 23789,
+     "total_tokens": 47233
+    }
+   },
+   "failure": null,
+   "latency_seconds": 264.78,
+   "output_ref": "slice-009-huggingface-smolagents/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-writer-01",
+   "worker_run_entity_id": "worker_d8dc0d76-0463-4419-ab7f-5fc644133cc8"
+  },
+  {
+   "attempt": 2,
+   "candidate": "b825ae71-bca9-40aa-8a2c-e2d50f728af2",
+   "conservative_cost_ceiling_usd": 0.044849150000000004,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0066692,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0033346,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5926,
+     "prompt_tokens": 24708,
+     "reasoning_tokens": 689,
+     "total_tokens": 30634
+    }
+   },
+   "failure": null,
+   "latency_seconds": 40.03,
+   "output_ref": "slice-009-huggingface-smolagents/worker_runs/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-writer-revision-02",
+   "worker_run_entity_id": "worker_b825ae71-bca9-40aa-8a2c-e2d50f728af2"
+  },
+  {
+   "attempt": 1,
+   "candidate": "180f60e0-1969-4122-96c8-34d5fb95df19",
+   "conservative_cost_ceiling_usd": 0.0447467,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0116046,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0058023,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 15837,
+     "prompt_tokens": 24574,
+     "reasoning_tokens": 13334,
+     "total_tokens": 40411
+    }
+   },
+   "failure": null,
+   "latency_seconds": 143.35,
+   "output_ref": "slice-009-huggingface-smolagents/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 1,
+     "supported": 38,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 2,
+    "status": "fail"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-verifier-01",
+   "worker_run_entity_id": "worker_180f60e0-1969-4122-96c8-34d5fb95df19"
+  },
+  {
+   "attempt": 1,
+   "candidate": "08698721-07df-45e8-86e3-16c2f9e7c770",
+   "conservative_cost_ceiling_usd": 0.038074699999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00600145,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003000725,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8942,
+     "prompt_tokens": 10203,
+     "reasoning_tokens": 7885,
+     "total_tokens": 19145
+    }
+   },
+   "failure": null,
+   "latency_seconds": 97.35,
+   "output_ref": "slice-009-huggingface-smolagents/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.75,
+     "redundancy": 0.55,
+     "scope_discipline": 0.85,
+     "structure": 0.65
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-critic-01",
+   "worker_run_entity_id": "worker_08698721-07df-45e8-86e3-16c2f9e7c770"
+  },
+  {
+   "attempt": 1,
+   "candidate": "4ea8be7f-f2bc-42fc-a477-2bc974628604",
+   "conservative_cost_ceiling_usd": 0.034161050000000005,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0024784,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0012392,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4310,
+     "prompt_tokens": 2156,
+     "reasoning_tokens": 4160,
+     "total_tokens": 6466
+    }
+   },
+   "failure": null,
+   "latency_seconds": 38.15,
+   "output_ref": "slice-009-huggingface-smolagents/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-009-huggingface-smolagents-seo-01",
+   "worker_run_entity_id": "worker_4ea8be7f-f2bc-42fc-a477-2bc974628604"
+  }
+ ],
+ "slice": "slice-009-huggingface-smolagents",
+ "started_at": "2026-09-14T09:16:07.535801Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.97,
+  "primary": "ai-agents",
+  "review_required": false,
+  "secondary": [
+   "artificial-intelligence",
+   "cli-tools"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 2,
+  "leakage": [],
+  "status": "fail",
+  "summary": "All 39 claims cite grounding IDs that exist verbatim in the packet, cited items support their texts, and every epistemic_status matches its evidence tier (no upgrades of inferred exec_*/role_*/summary_repository evidence to observed; author claims kept author_claimed). No knowledge leakage, hallucinated names, revision conflicts, or rights issues. One defect: c23 adds an unsupported 'compact script' characterization of cli.py, so the draft cannot pass as-is; a minor scoping reword is also suggested for the 'every bounded execution path' uncertainty given only six of a reported 90 paths are recorded.",
+  "unsupported": []
+ }
+}

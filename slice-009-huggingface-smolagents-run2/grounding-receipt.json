@@ -1,0 +1,64 @@
+{
+ "analysis_run_id": "analysis_c0e49dab7c5999ba",
+ "analysis_run_mode": "reuse_existing_new_projection (run recorded ai-frontier-grounding/v1.1, now ai-frontier-grounding/v1.2)",
+ "bounded_context_ratio": 0.00286,
+ "counts": {
+  "dependencies": 43,
+  "dependency_records": 43,
+  "entrypoints": 10,
+  "evidence": 533,
+  "execution_paths": 90,
+  "files": 185,
+  "groundings": 12126,
+  "important_files": 8,
+  "lessons": 5,
+  "module_role_ids": 38,
+  "modules": 3,
+  "platform_metadata": 8,
+  "readme_claims_author_claimed_low_quality": 8,
+  "relations": 7633,
+  "semantic_blocks": 3837,
+  "symbols": 509,
+  "teaching_claims": 10,
+  "teaching_sections": 7,
+  "tests": 28
+ },
+ "excluded_important_files": [
+  {
+   "excluded_id": "important_2",
+   "path": "readme.md",
+   "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
+  }
+ ],
+ "grounding_bundle_bytes": 10355728,
+ "grounding_bundle_ref": "slice-009-huggingface-smolagents-run2/artifacts/grounding/analysis_c0e49dab7c5999ba/v1.2/grounding-bundle.json",
+ "grounding_bundle_sha256": "83ca92f09522383f4da683ff6050954826c0bb630ba48a1fd7d321144f05f5da",
+ "license_state": {
+  "agreement": true,
+  "repolumen_detected": "Apache-2.0",
+  "spdx": "Apache-2.0",
+  "status": "open-source"
+ },
+ "manifest_ref": "slice-009-huggingface-smolagents-run2/artifacts/repolumen/repo_github_898968194/30bb1161095dbae2271e6bc3cc4c219cc3897a57/0.10/semantic-manifest.json",
+ "manifest_sha256": "c6cdbe692212bdf1ae6b6499e02151d9223b1bcb086c63fc437e1ae959e9119b",
+ "packets": {
+  "overview": {
+   "bytes": 45155,
+   "sha256": "7ad0d59c72c13c871d8f1a3d5955b10f7e615d6454dea9bc7736b46870ecc798"
+  },
+  "taxonomy": {
+   "bytes": 9140,
+   "sha256": "81432ef79464a1ea57c28820365740ce4cc7e55795489043474b23bccfa64f4f"
+  }
+ },
+ "projection_id": "proj_analysis_c0e49dab7c5999ba_v1_2",
+ "projection_version": "ai-frontier-grounding/v1.2",
+ "run_recorded_grounding_bundle_sha256": "a69d12a8f85e1a480f23ae4854377811853514acc26a669a39016e371b01e005",
+ "sedb_write": {
+  "created_entities": 1,
+  "unchanged_entities": 12126,
+  "updated_entities": 0,
+  "written_cells": 12
+ },
+ "supersedes_projection_id": "proj_analysis_c0e49dab7c5999ba_v1_1"
+}

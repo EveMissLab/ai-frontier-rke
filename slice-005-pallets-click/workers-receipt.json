@@ -1,0 +1,324 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T13:28:59.485927Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "0db86349-7370-415b-bd04-f4f584a243a0",
+   "conservative_cost_ceiling_usd": 0.03454625,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0006245,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00031225,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 253,
+     "prompt_tokens": 3320,
+     "reasoning_tokens": 169,
+     "total_tokens": 3573
+    }
+   },
+   "failure": null,
+   "latency_seconds": 5.57,
+   "output_ref": "slice-005-pallets-click/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "schema_invalid",
+   "summary": {
+    "confidence": 0.95,
+    "primary": "cli-tools",
+    "secondary": [
+     "developer-tools",
+     "programming-languages"
+    ]
+   },
+   "task_id": "af-slice-005-pallets-click-taxonomy-01",
+   "worker_run_entity_id": "worker_0db86349-7370-415b-bd04-f4f584a243a0"
+  },
+  {
+   "attempt": 2,
+   "candidate": "b1c07491-a2ae-45e2-b24e-be44c2d995f3",
+   "conservative_cost_ceiling_usd": 0.03454625,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0007935,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00039675,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 3264,
+     "completion_tokens": 591,
+     "prompt_tokens": 3320,
+     "reasoning_tokens": 476,
+     "total_tokens": 3911
+    }
+   },
+   "failure": null,
+   "latency_seconds": 7.32,
+   "output_ref": "slice-005-pallets-click/worker_runs/taxonomy-02.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.97,
+    "primary": "cli-tools",
+    "secondary": [
+     "developer-tools"
+    ]
+   },
+   "task_id": "af-slice-005-pallets-click-taxonomy-02",
+   "worker_run_entity_id": "worker_b1c07491-a2ae-45e2-b24e-be44c2d995f3"
+  },
+  {
+   "attempt": 1,
+   "candidate": "7d27c645-e031-4d60-bfd9-a7d2318f9c4f",
+   "conservative_cost_ceiling_usd": 0.039420199999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01511275,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.007556375,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 26111,
+     "prompt_tokens": 13715,
+     "reasoning_tokens": 21443,
+     "total_tokens": 39826
+    }
+   },
+   "failure": null,
+   "latency_seconds": 197.53,
+   "output_ref": "slice-005-pallets-click/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-005-pallets-click-writer-01",
+   "worker_run_entity_id": "worker_7d27c645-e031-4d60-bfd9-a7d2318f9c4f"
+  },
+  {
+   "attempt": 1,
+   "candidate": "cae2fefa-8c2f-485c-9c8a-ba363e9e9016",
+   "conservative_cost_ceiling_usd": 0.042552349999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01145575,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005727875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 16928,
+     "prompt_tokens": 19945,
+     "reasoning_tokens": 14657,
+     "total_tokens": 36873
+    }
+   },
+   "failure": null,
+   "latency_seconds": 139.53,
+   "output_ref": "slice-005-pallets-click/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 2,
+     "supported": 34,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 3,
+    "status": "fail"
+   },
+   "task_id": "af-slice-005-pallets-click-verifier-01",
+   "worker_run_entity_id": "worker_cae2fefa-8c2f-485c-9c8a-ba363e9e9016"
+  },
+  {
+   "attempt": 2,
+   "candidate": "c0ca8314-e698-4ee5-a817-dc38084ffe2d",
+   "conservative_cost_ceiling_usd": 0.042790550000000004,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.005973049999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0029865249999999994,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5848,
+     "prompt_tokens": 20327,
+     "reasoning_tokens": 1128,
+     "total_tokens": 26175
+    }
+   },
+   "failure": null,
+   "latency_seconds": 33.67,
+   "output_ref": "slice-005-pallets-click/worker_runs/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-005-pallets-click-writer-revision-02",
+   "worker_run_entity_id": "worker_c0ca8314-e698-4ee5-a817-dc38084ffe2d"
+  },
+  {
+   "attempt": 2,
+   "candidate": "c323530d-ea7f-4fef-bb78-33d1cf6c912f",
+   "conservative_cost_ceiling_usd": 0.0425789,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01191785,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005958925,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 17833,
+     "prompt_tokens": 20009,
+     "reasoning_tokens": 14841,
+     "total_tokens": 37842
+    }
+   },
+   "failure": null,
+   "latency_seconds": 131.86,
+   "output_ref": "slice-005-pallets-click/worker_runs/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 36,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-005-pallets-click-verifier-02",
+   "worker_run_entity_id": "worker_c323530d-ea7f-4fef-bb78-33d1cf6c912f"
+  },
+  {
+   "attempt": 1,
+   "candidate": "7604c4fa-3aec-43f4-a15d-b7aac542cf7d",
+   "conservative_cost_ceiling_usd": 0.03730985,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0043457,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00217285,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 6139,
+     "prompt_tokens": 8508,
+     "reasoning_tokens": 5376,
+     "total_tokens": 14647
+    }
+   },
+   "failure": null,
+   "latency_seconds": 67.37,
+   "output_ref": "slice-005-pallets-click/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.65,
+     "coherence": 0.75,
+     "redundancy": 0.65,
+     "scope_discipline": 0.9,
+     "structure": 0.7
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-005-pallets-click-critic-01",
+   "worker_run_entity_id": "worker_7604c4fa-3aec-43f4-a15d-b7aac542cf7d"
+  },
+  {
+   "attempt": 1,
+   "candidate": "4e6ebfc6-4292-4447-adc9-7f6e65701347",
+   "conservative_cost_ceiling_usd": 0.03407285,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0019154,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0009577,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3268,
+     "prompt_tokens": 1876,
+     "reasoning_tokens": 3123,
+     "total_tokens": 5144
+    }
+   },
+   "failure": null,
+   "latency_seconds": 27.64,
+   "output_ref": "slice-005-pallets-click/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-005-pallets-click-seo-01",
+   "worker_run_entity_id": "worker_4e6ebfc6-4292-4447-adc9-7f6e65701347"
+  }
+ ],
+ "slice": "slice-005-pallets-click",
+ "started_at": "2026-09-14T13:18:21.885381Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.97,
+  "primary": "cli-tools",
+  "review_required": false,
+  "secondary": [
+   "developer-tools"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 36 draft claims pass. Every grounding_ref exists verbatim in the packet; all numbers (177 files, 5640/590/5050 relations, directory counts, role degrees, line ranges), symbols, and paths match; epistemic statuses are correctly tiered (author_claimed for meta_description/meta_homepage, inferred for exec_*/role_*/summary_repository citations, observed elsewhere) with no upgrades over exec_*/role_*/summary evidence. No knowledge leakage, hallucinated names, or rights issues. One packet-internal revision conflict exists (claim_4d30ade3e21e vs the five exec_* records); the draft follows the exec_* evidence and already escalated it as a question, so the draft is accepted as-is.",
+  "unsupported": []
+ }
+}

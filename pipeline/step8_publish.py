@@ -54,16 +54,22 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("slug"); ap.add_argument("--approved-by", required=True); ap.add_argument("--via", required=True)
     ap.add_argument("--notes", default=""); ap.add_argument("--unpublish", action="store_true")
+    ap.add_argument("--asset", default="overview", help="asset type to publish: overview (default) or an additional guide such as architecture")
     a = ap.parse_args()
     sdir = slice_dir(a.slug)
-    val = load_json(sdir / "validation-receipt.json")
+    from af_common import asset_paths
+    apaths = asset_paths(sdir, a.asset)
+    val = load_json(apaths["validation_receipt"])
     view_path = sdir / "canonical" / "repository-view.json"
     assert val["hard_gate_pass"], "refusing: the asset revision did not pass the hard gates"
     assert view_path.exists(), "refusing: run step 7 first"
     view = load_json(view_path)
-    assert view["asset"]["asset_revision_id"] == val["asset_revision_id"], "view model is not for this validation receipt"
+    if a.asset == "overview":
+        assert view["asset"]["asset_revision_id"] == val["asset_revision_id"], "view model is not for this validation receipt"
+    else:
+        assert a.asset in view.get("assets", {}) and view["assets"][a.asset]["asset_revision_id"] == val["asset_revision_id"], "view model has no validated block for this asset; run step 7"
     repo = view["repository"]
-    url = f"{PUBLIC_BASE}/{repo['owner']}/{repo['name']}/"
+    url = f"{PUBLIC_BASE}/{repo['owner']}/{repo['name']}/{apaths['path_suffix']}"
     now = utc_now()
     event = "unpublished" if a.unpublish else "published"
     store = open_store()
@@ -77,11 +83,11 @@ def main() -> int:
     write_json(sdir / "canonical" / "PUBLICATION_APPROVAL.json", approval)
 
     records = [
-        {"entity_id": event_id, "kind": "af_publication_event", "label": f"{event} · {repo['full_name']} overview v{view['asset']['content_version']}", "values": {
+        {"entity_id": event_id, "kind": "af_publication_event", "label": f"{event} · {repo['full_name']} {a.asset} v{(view['asset'] if a.asset == 'overview' else view['assets'][a.asset])['content_version']}", "values": {
             "af_asset_revision_id": assetrev_id, "af_repository_id": val.get("repository_id") or view.get("repository_id"), "af_event": event, "af_url": url, "af_occurred_at": now,
             "af_provenance_source": "human", "af_uncertainty_note": f"approved by {a.approved_by} via {a.via}" + (f"; {a.notes}" if a.notes else "")}},
-        {"entity_id": asset_id, "kind": "af_knowledge_asset", "label": f"{repo['full_name']} overview", "values": {
-            "af_asset_status": "published" if event == "published" else "validated", "af_canonical_path": f"/ai-frontier/repository/{repo['owner']}/{repo['name']}/",
+        {"entity_id": asset_id, "kind": "af_knowledge_asset", "label": f"{repo['full_name']} {a.asset}", "values": {
+            "af_asset_status": "published" if event == "published" else "validated", "af_canonical_path": f"/ai-frontier/repository/{repo['owner']}/{repo['name']}/{apaths['path_suffix']}",
             "af_current_revision_id": assetrev_id, "af_provenance_source": "human"}},
     ]
     res = store.write(records, source="publication")
@@ -89,7 +95,16 @@ def main() -> int:
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     export_taxonomy(store)
     target = SITE_DATA / f"{repo['owner']}--{repo['name']}.json"
-    if event == "published":
+    if a.asset != "overview":
+        # an additional guide joins the repository's already-published view: merge the validated block, keep everything else
+        assert target.exists(), "refusing: the repository's overview is not published yet"
+        published_view = load_json(target)
+        block = dict(view["assets"][a.asset])
+        block["publication"] = {"status": "published" if event == "published" else "unpublished", "approved_by": a.approved_by, "via": a.via, "published_at": now if event == "published" else None, "event_id": event_id, "url": url}
+        published_view.setdefault("assets", {})[a.asset] = block
+        published_view["guides"] = [dict(g, available=(g["type"] == "overview") or (g["type"] in published_view.get("assets", {}) and published_view["assets"][g["type"]]["publication"]["status"] == "published")) for g in published_view["guides"]]
+        write_json(target, published_view)
+    elif event == "published":
         view["publication"] = {"status": "published", "approved_by": a.approved_by, "via": a.via, "published_at": now, "event_id": event_id, "url": url}
         view["disclosure"] = "AI-assisted analysis. Human-edited and reviewed by EVEMISS Technology."
         write_json(target, view)

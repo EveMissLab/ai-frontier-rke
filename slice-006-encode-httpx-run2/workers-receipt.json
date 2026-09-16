@@ -1,0 +1,212 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T11:28:04.043260Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "3259b578-6609-42dd-80e5-a76a9372ada6",
+   "conservative_cost_ceiling_usd": 0.0345578,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0011119,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00055595,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 1211,
+     "prompt_tokens": 3376,
+     "reasoning_tokens": 1056,
+     "total_tokens": 4587
+    }
+   },
+   "failure": null,
+   "latency_seconds": 15.71,
+   "output_ref": "slice-006-encode-httpx-run2/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.62,
+    "primary": "web-and-applications",
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
+   "task_id": "af-slice-006-encode-httpx-run2-taxonomy-01",
+   "worker_run_entity_id": "worker_3259b578-6609-42dd-80e5-a76a9372ada6"
+  },
+  {
+   "attempt": 1,
+   "candidate": "23c72d0e-9e6b-4c3a-838c-ae913dc18507",
+   "conservative_cost_ceiling_usd": 0.03899075,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0191286,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0095643,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 34359,
+     "prompt_tokens": 12994,
+     "reasoning_tokens": 28911,
+     "total_tokens": 47353
+    }
+   },
+   "failure": null,
+   "latency_seconds": 308.14,
+   "output_ref": "slice-006-encode-httpx-run2/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-006-encode-httpx-run2-writer-01",
+   "worker_run_entity_id": "worker_23c72d0e-9e6b-4c3a-838c-ae913dc18507"
+  },
+  {
+   "attempt": 1,
+   "candidate": "e1bc5551-105a-41c8-8463-14ca018e01c8",
+   "conservative_cost_ceiling_usd": 0.042438949999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00980065,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004900325,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 13547,
+     "prompt_tokens": 20181,
+     "reasoning_tokens": 11088,
+     "total_tokens": 33728
+    }
+   },
+   "failure": null,
+   "latency_seconds": 105.56,
+   "output_ref": "slice-006-encode-httpx-run2/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-006-encode-httpx-run2-verifier-01",
+   "worker_run_entity_id": "worker_e1bc5551-105a-41c8-8463-14ca018e01c8"
+  },
+  {
+   "attempt": 1,
+   "candidate": "1fd3f94e-633b-4a06-b601-32063b8fd4f3",
+   "conservative_cost_ceiling_usd": 0.03756245,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.005857899999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0029289499999999996,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8918,
+     "prompt_tokens": 9326,
+     "reasoning_tokens": 7768,
+     "total_tokens": 18244
+    }
+   },
+   "failure": null,
+   "latency_seconds": 96.18,
+   "output_ref": "slice-006-encode-httpx-run2/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.7,
+     "redundancy": 0.5,
+     "scope_discipline": 0.7,
+     "structure": 0.6
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-006-encode-httpx-run2-critic-01",
+   "worker_run_entity_id": "worker_1fd3f94e-633b-4a06-b601-32063b8fd4f3"
+  },
+  {
+   "attempt": 1,
+   "candidate": "2bca71de-6b7f-4dac-9f70-ea98456a474f",
+   "conservative_cost_ceiling_usd": 0.03418985,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0020545,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00102725,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3434,
+     "prompt_tokens": 2250,
+     "reasoning_tokens": 3292,
+     "total_tokens": 5684
+    }
+   },
+   "failure": null,
+   "latency_seconds": 28.86,
+   "output_ref": "slice-006-encode-httpx-run2/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-006-encode-httpx-run2-seo-01",
+   "worker_run_entity_id": "worker_2bca71de-6b7f-4dac-9f70-ea98456a474f"
+  }
+ ],
+ "slice": "slice-006-encode-httpx-run2",
+ "started_at": "2026-09-14T11:18:27.661549Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.62,
+  "primary": "web-and-applications",
+  "review_required": false,
+  "secondary": [
+   "developer-tools",
+   "cli-tools"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 claims verified claim-by-claim: every grounding_ref exists in the packet, every citation supports its text, and no epistemic upgrades exist (role_*/summary_repository claims are marked inferred or lower; author-claimed metadata stays author_claimed; observed claims cite only verified/observed records). No knowledge leakage, no hallucinated file or symbol names, no rights problems; quoted material is limited to the short repository description. The draft's relation figures follow relation_counts (1503 local) and avoid the stale 1276 figure in teaching claim claim_e4261069234d, so no revision conflict affects the draft. No packet text resembled an instruction.",
+  "unsupported": []
+ }
+}

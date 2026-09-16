@@ -1,0 +1,75 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T11:02:40.770360Z",
+ "model": "glm-5.3-flash",
+ "outcome": "writer_failed",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "6ffe4dc1-0ae7-44dc-81c7-abacdb98dd82",
+   "conservative_cost_ceiling_usd": 0.03478775,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0010455,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00052275,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 3776,
+     "completion_tokens": 948,
+     "prompt_tokens": 3810,
+     "reasoning_tokens": 775,
+     "total_tokens": 4758
+    }
+   },
+   "failure": null,
+   "latency_seconds": 13.11,
+   "output_ref": "slice-009-huggingface-smolagents-run2/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.96,
+    "primary": "ai-agents",
+    "secondary": [
+     "artificial-intelligence",
+     "cli-tools"
+    ]
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run2-taxonomy-01",
+   "worker_run_entity_id": "worker_6ffe4dc1-0ae7-44dc-81c7-abacdb98dd82"
+  },
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.041317849999999996,
+   "cost": {},
+   "failure": "admission:DispatchLeaseError",
+   "latency_seconds": 2.17,
+   "output_ref": "slice-009-huggingface-smolagents-run2/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "failed",
+   "summary": null,
+   "task_id": "af-slice-009-huggingface-smolagents-run2-writer-01",
+   "worker_run_entity_id": "worker_4a32215143e5b3f7"
+  }
+ ],
+ "slice": "slice-009-huggingface-smolagents-run2",
+ "started_at": "2026-09-14T11:02:19.789944Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.96,
+  "primary": "ai-agents",
+  "review_required": false,
+  "secondary": [
+   "artificial-intelligence",
+   "cli-tools"
+  ]
+ }
+}

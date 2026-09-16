@@ -86,6 +86,24 @@ WRITER_REVISION_V1 = {
     ]),
 }
 
+WRITER_ARCHITECTURE_V1 = {
+    "version": "writer/architecture/v1",
+    "goal": "Write the AI Frontier 'architecture' knowledge asset for one open-source repository — how it is put together and how control flows through it — using only the grounding packet, as one JSON object matching the output schema.",
+    "contract": "\n\n".join([
+        "ROLE: Writer worker of the AI Frontier Repository Knowledge Engine. Asset type: architecture. Audience: a developer who has read the repository's overview and now wants to understand its shape before reading code. Tone: plain, concrete, no marketing; explain, do not reproduce.",
+        DATA_BOUNDARY, EPISTEMIC_RULES, RIGHTS_RULES, WORDING_RULES,
+        "CONTENT: Produce 5 to 7 sections with these ids in this order: 'shape_at_a_glance' (top-level subsystems and directories, file counts, what each part appears to hold — from subsystems, modules and the file inventory), 'entry_and_control_flow' (the detected entrypoints and what the bounded static execution paths show: which module is reached first, where paths end and why — terminal reasons, truncation, cycles), 'core_modules_and_roles' (the most connected modules by static call degree and the role the analyzer assigns; say explicitly that roles are inferred from call counts), 'boundaries' (where static paths stop: external libraries, dynamic dispatch, plugin loading, unresolved targets — from boundaries_static and the unresolved relation counts), 'dependencies_between_parts' (what the resolved relation summary and dependency records say about which parts depend on which; what the analyzer could not resolve), 'what_static_analysis_cannot_show' (runtime wiring, configuration, dynamic imports, generated code, tests as behaviour — cite lim_* and the uncertainties). Optional: 'reading_order_for_the_architecture'. Each section body is Markdown (paragraphs and short bullet lists, no headings inside) of at most 180 words. The summary is at most 60 words. At most 40 claims in total. Every claim about an execution path, a module role, the reconstruction or a boundary is 'inferred'.",
+        OUTPUT_RULES,
+        "OUTPUT SCHEMA: {\"status\": \"draft_ready\", \"asset_type\": \"architecture\", \"title\": string, \"summary\": string, \"summary_claim_ids\": [string], \"sections\": [{\"id\": string, \"heading\": string, \"markdown\": string, \"claim_ids\": [string]}], \"claims\": [{\"claim_id\": string (c1, c2, ...), \"section_id\": string, \"text\": string, \"grounding_refs\": [string], \"epistemic_status\": \"observed\"|\"inferred\"|\"author_claimed\"|\"unresolved\"}], \"uncertainties\": [string], \"questions\": [string]}. Every claim_id listed in a section or the summary must exist in `claims`, and every sentence of a section body must be covered by at least one of that section's claims.",
+    ]),
+}
+
+WRITER_ARCHITECTURE_REVISION_V1 = {
+    "version": "writer/architecture-revision/v1",
+    "goal": WRITER_REVISION_V1["goal"].replace("overview draft", "architecture draft"),
+    "contract": WRITER_REVISION_V1["contract"].replace("previous overview draft", "previous architecture draft").replace('"asset_type": "overview"', '"asset_type": "architecture"'),
+}
+
 VERIFIER_GROUNDING_V1 = {
     "version": "verifier/grounding/v1.1",
     "goal": "Independently verify every claim of the overview draft against the grounding packet, claim by claim, and return one JSON verification object.",
@@ -124,6 +142,22 @@ SEO_METADATA_V1 = {
     ]),
 }
 
+# v1.1: the title phrase follows the guide type instead of always saying "repository overview".
+GUIDE_PHRASES = {"overview": "'repository overview' or 'explained'", "architecture": "'architecture' or 'how it is structured'",
+                 "getting_started": "'getting started'", "source_walkthrough": "'source walkthrough' or 'reading the source'"}
+
+SEO_METADATA_V1_1 = {
+    "version": "formatter/seo-metadata/v1.1",
+    "goal": "Propose page metadata for the validated guide: title candidates, one meta description and keywords; return one JSON object; no technical claims beyond the draft.",
+    "contract": "\n\n".join([
+        "ROLE: SEO metadata worker (formatter family). You only propose title candidates, a meta description and keywords derived from the validated draft. You must not introduce facts absent from the draft.",
+        DATA_BOUNDARY,
+        "RULES: the input names the guide_type (overview, architecture, getting_started or source_walkthrough) and a guide_phrase. 5 title candidates, each under 70 characters, each naming the repository (owner/name) and using the guide_phrase for that guide_type - never call an architecture, getting-started or source-walkthrough guide a 'repository overview'; one meta_description of 120 to 160 characters in plain English with no superlatives that says which kind of guide this is; up to 10 keywords taken from the draft; no version numbers unless in the draft.",
+        OUTPUT_RULES,
+        "OUTPUT SCHEMA: {\"title_candidates\": [string], \"meta_description\": string, \"keywords\": [string]}",
+    ]),
+}
+
 TAXONOMY_CLASSIFIER_V1 = {
     "version": "taxonomy_classifier/v1",
     "goal": "Assign one primary and up to two secondary AI Frontier taxonomy v1 categories to the repository from the packet; return one JSON object; use only existing slugs.",
@@ -136,7 +170,12 @@ TAXONOMY_CLASSIFIER_V1 = {
     ]),
 }
 
-CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, TAXONOMY_CLASSIFIER_V1)}
+CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
+SEO_V = SEO_METADATA_V1_1["version"]
+
+# asset type -> (writer contract, revision contract). Verifier, critic and SEO contracts are shared.
+ASSET_CONTRACTS = {"overview": (WRITER_OVERVIEW_V1["version"], WRITER_REVISION_V1["version"]),
+                   "architecture": (WRITER_ARCHITECTURE_V1["version"], WRITER_ARCHITECTURE_REVISION_V1["version"])}
 
 
 def contract_hash(version: str) -> str:
@@ -149,11 +188,13 @@ _STR = {"type": "string"}
 _STRS = {"type": "array", "items": _STR}
 EPI = {"type": "string", "enum": ["observed", "inferred", "author_claimed", "unresolved"]}
 
-WRITER_SCHEMA = {
+def writer_schema(asset_type: str) -> dict:
+    """The writer output schema for one asset type (identical shape; asset_type pinned)."""
+    return {
     "type": "object",
     "required": ["status", "asset_type", "title", "summary", "summary_claim_ids", "sections", "claims", "uncertainties", "questions"],
     "properties": {
-        "status": {"const": "draft_ready"}, "asset_type": {"const": "overview"}, "title": _STR, "summary": _STR, "summary_claim_ids": _STRS,
+        "status": {"const": "draft_ready"}, "asset_type": {"const": asset_type}, "title": _STR, "summary": _STR, "summary_claim_ids": _STRS,
         "sections": {"type": "array", "minItems": 4, "maxItems": 8, "items": {"type": "object", "required": ["id", "heading", "markdown", "claim_ids"],
                      "properties": {"id": _STR, "heading": _STR, "markdown": _STR, "claim_ids": _STRS}}},
         "claims": {"type": "array", "minItems": 1, "maxItems": 45, "items": {"type": "object", "required": ["claim_id", "section_id", "text", "grounding_refs", "epistemic_status"],
@@ -161,6 +202,10 @@ WRITER_SCHEMA = {
         "uncertainties": _STRS, "questions": _STRS,
     },
 }
+
+
+WRITER_SCHEMA = writer_schema("overview")
+ARCHITECTURE_SCHEMA = writer_schema("architecture")
 
 VERIFIER_SCHEMA = {
     "type": "object",
@@ -208,7 +253,8 @@ WRITER_V, REVISION_V, VERIFIER_V, CRITIC_V = WRITER_OVERVIEW_V1["version"], WRIT
 
 SCHEMAS = {
     WRITER_V: WRITER_SCHEMA, REVISION_V: WRITER_SCHEMA, VERIFIER_V: VERIFIER_SCHEMA, CRITIC_V: CRITIC_SCHEMA,
+    WRITER_ARCHITECTURE_V1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1["version"]: ARCHITECTURE_SCHEMA,
     "writer/overview/v1.1": WRITER_SCHEMA, "writer/overview-revision/v1.1": WRITER_SCHEMA,  # v1.1 kept: run 3 validates against it
     "writer/overview/v1": WRITER_SCHEMA, "writer/overview-revision/v1": WRITER_SCHEMA, "verifier/grounding/v1": VERIFIER_SCHEMA,  # v1 kept: recorded runs 1-2 validate against it
-    "critic/structure/v1": CRITIC_SCHEMA, "formatter/seo-metadata/v1": SEO_SCHEMA, "taxonomy_classifier/v1": TAXONOMY_SCHEMA,
+    "critic/structure/v1": CRITIC_SCHEMA, "formatter/seo-metadata/v1": SEO_SCHEMA, "formatter/seo-metadata/v1.1": SEO_SCHEMA, "taxonomy_classifier/v1": TAXONOMY_SCHEMA,
 }

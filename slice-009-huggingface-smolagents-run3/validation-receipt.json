@@ -1,0 +1,66 @@
+{
+ "asset_id": "asset_repo_github_898968194_overview",
+ "asset_revision_id": "assetrev_asset_repo_github_898968194_overview_v1",
+ "canonical_bytes": 24624,
+ "canonical_source_ref": "slice-009-huggingface-smolagents-run3/canonical/overview.md",
+ "canonical_source_sha256": "f7298252ee2757bd5dcb2e85b78d4b91a73a769733824a66dbe9875185faf4a7",
+ "claims": 40,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 40,
+    "sections": 7
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "30bb1161095dbae2271e6bc3cc4c219cc3897a57",
+    "registered": "30bb1161095dbae2271e6bc3cc4c219cc3897a57"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/huggingface/smolagents",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 12,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 124
+ },
+ "supported_claims": 40
+}

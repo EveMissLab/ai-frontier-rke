@@ -1,0 +1,292 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-15T13:20:01.751693Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "ccbb7d55-90d0-4b57-a3d1-ad841b4351ba",
+   "conservative_cost_ceiling_usd": 0.0349565,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0010171,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00050855,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 776,
+     "prompt_tokens": 4194,
+     "reasoning_tokens": 629,
+     "total_tokens": 4970
+    }
+   },
+   "failure": null,
+   "latency_seconds": 11.99,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.85,
+    "primary": "security",
+    "secondary": [
+     "developer-tools",
+     "cli-tools"
+    ]
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-taxonomy-01",
+   "worker_run_entity_id": "worker_ccbb7d55-90d0-4b57-a3d1-ad841b4351ba"
+  },
+  {
+   "attempt": 1,
+   "candidate": "11a1ce0e-92fe-4172-894c-321850e53da2",
+   "conservative_cost_ceiling_usd": 0.042626,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.02048935,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.010244675,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 34775,
+     "prompt_tokens": 20679,
+     "reasoning_tokens": 29113,
+     "total_tokens": 55454
+    }
+   },
+   "failure": null,
+   "latency_seconds": 320.63,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-writer-01",
+   "worker_run_entity_id": "worker_11a1ce0e-92fe-4172-894c-321850e53da2"
+  },
+  {
+   "attempt": 1,
+   "candidate": "0e600851-5b44-4377-9b21-a18637746b0b",
+   "conservative_cost_ceiling_usd": 0.046442300000000006,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0152089,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00760445,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 21989,
+     "prompt_tokens": 28096,
+     "reasoning_tokens": 18737,
+     "total_tokens": 50085
+    }
+   },
+   "failure": null,
+   "latency_seconds": 198.69,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 1,
+     "partially_supported": 3,
+     "supported": 35,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 4,
+    "status": "fail"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-verifier-01",
+   "worker_run_entity_id": "worker_0e600851-5b44-4377-9b21-a18637746b0b"
+  },
+  {
+   "attempt": 2,
+   "candidate": "3cd1da52-0ba6-4bf4-be0c-52765d9c8fa1",
+   "conservative_cost_ceiling_usd": 0.04676015,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0085789,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00428945,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8579,
+     "prompt_tokens": 28596,
+     "reasoning_tokens": 2848,
+     "total_tokens": 37175
+    }
+   },
+   "failure": null,
+   "latency_seconds": 61.46,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-writer-revision-02",
+   "worker_run_entity_id": "worker_3cd1da52-0ba6-4bf4-be0c-52765d9c8fa1"
+  },
+  {
+   "attempt": 2,
+   "candidate": "a0e65e73-a9fc-44d6-86de-e551053f9515",
+   "conservative_cost_ceiling_usd": 0.04649,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0162727,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00813635,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 24095,
+     "prompt_tokens": 28168,
+     "reasoning_tokens": 21338,
+     "total_tokens": 52263
+    }
+   },
+   "failure": null,
+   "latency_seconds": 217.99,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-verifier-02",
+   "worker_run_entity_id": "worker_a0e65e73-a9fc-44d6-86de-e551053f9515"
+  },
+  {
+   "attempt": 1,
+   "candidate": "3a057fa6-76e5-45d7-be84-e698f66b5113",
+   "conservative_cost_ceiling_usd": 0.0397046,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00767705,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003838525,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11380,
+     "prompt_tokens": 13247,
+     "reasoning_tokens": 10025,
+     "total_tokens": 24627
+    }
+   },
+   "failure": null,
+   "latency_seconds": 125.37,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.9,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-critic-01",
+   "worker_run_entity_id": "worker_3a057fa6-76e5-45d7-be84-e698f66b5113"
+  },
+  {
+   "attempt": 1,
+   "candidate": "2ad04555-56c4-449f-aa32-4c48d42cf059",
+   "conservative_cost_ceiling_usd": 0.034382449999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0021234,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0010617,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3528,
+     "prompt_tokens": 2396,
+     "reasoning_tokens": 3363,
+     "total_tokens": 5924
+    }
+   },
+   "failure": null,
+   "latency_seconds": 34.09,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-seo-01",
+   "worker_run_entity_id": "worker_2ad04555-56c4-449f-aa32-4c48d42cf059"
+  }
+ ],
+ "slice": "slice-017-mitmproxy-mitmproxy",
+ "started_at": "2026-09-15T13:03:18.383270Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.85,
+  "primary": "security",
+  "review_required": false,
+  "secondary": [
+   "developer-tools",
+   "cli-tools"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 claims verified against the packet. Every grounding_ref resolves verbatim, cited evidence supports each statement, and epistemic statuses match evidence provenance: author_claimed for GitHub description/homepage, observed for verified entrypoints, relation_counts, dependencies, limits and selected symbols, inferred for role_*/exec_*/summary_repository-based claims, and unresolved for the startup-flow gap. The only 25-file __main__ count, 44 dependency records (18 runtime/26 dev from web/package.json), directory counts, relation counts, role degrees, symbol lists and limitation quotes all match the packet. The summary_repository (version.py) versus entry_21 (tools/main.py) discrepancy is disclosed rather than smoothed over, and the six listed execution paths are correctly described as unresolved. The two-line code excerpt is minimal and no README text is mirrored. No leakage, no hallucinated paths or symbols, no rights issues, and no packet text was interpreted as an instruction. Status: pass.",
+  "unsupported": []
+ }
+}

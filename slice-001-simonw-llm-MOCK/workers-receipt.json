@@ -7,7 +7,7 @@
   "verifier": 2,
   "writer": 3
  },
- "completed_at": "2026-09-14T05:18:13.983943Z",
+ "completed_at": "2026-09-14T13:16:07.836046Z",
  "deterministic_check_1": {
   "failures": [],
   "ok": true
@@ -37,7 +37,7 @@
     ]
    },
    "task_id": "af-slice-001-simonw-llm-MOCK-taxonomy-01",
-   "worker_run_entity_id": "worker_58ece7d7aef0dde0"
+   "worker_run_entity_id": "worker_f711d20135400109"
   },
   {
    "attempt": 1,
@@ -64,7 +64,7 @@
     "status": "draft_ready"
    },
    "task_id": "af-slice-001-simonw-llm-MOCK-writer-01",
-   "worker_run_entity_id": "worker_bdca0240affe809a"
+   "worker_run_entity_id": "worker_9045f5972695e124"
   },
   {
    "attempt": 1,
@@ -91,7 +91,7 @@
     "status": "pass"
    },
    "task_id": "af-slice-001-simonw-llm-MOCK-verifier-01",
-   "worker_run_entity_id": "worker_9e411505c719f490"
+   "worker_run_entity_id": "worker_e43dfd0608dcaa25"
   },
   {
    "attempt": 1,
@@ -118,7 +118,7 @@
     "status": "reviewed"
    },
    "task_id": "af-slice-001-simonw-llm-MOCK-critic-01",
-   "worker_run_entity_id": "worker_4a6e3784c691add6"
+   "worker_run_entity_id": "worker_1d23d8679ef96843"
   },
   {
    "attempt": 1,
@@ -135,11 +135,11 @@
    "status": "candidate_success",
    "summary": {},
    "task_id": "af-slice-001-simonw-llm-MOCK-seo-01",
-   "worker_run_entity_id": "worker_4654498f688dddd2"
+   "worker_run_entity_id": "worker_1a12b7ac5e320ebb"
   }
  ],
  "slice": "slice-001-simonw-llm-MOCK",
- "started_at": "2026-09-14T05:18:13.557117Z",
+ "started_at": "2026-09-14T13:16:07.558675Z",
  "synthetic": true,
  "taxonomy": {
   "confidence": 0.5,

@@ -1,0 +1,211 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T09:15:43.215354Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "98b1ac63-25d0-4abc-b3ad-9da65960880a",
+   "conservative_cost_ceiling_usd": 0.0347339,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0009646,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0004823,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 818,
+     "prompt_tokens": 3704,
+     "reasoning_tokens": 696,
+     "total_tokens": 4522
+    }
+   },
+   "failure": null,
+   "latency_seconds": 11.63,
+   "output_ref": "slice-008-psf-black/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.9,
+    "primary": "cli-tools",
+    "secondary": [
+     "developer-tools",
+     "code-intelligence"
+    ]
+   },
+   "task_id": "af-slice-008-psf-black-taxonomy-01",
+   "worker_run_entity_id": "worker_98b1ac63-25d0-4abc-b3ad-9da65960880a"
+  },
+  {
+   "attempt": 1,
+   "candidate": "67a97bac-7349-47e1-b439-7dcba846663d",
+   "conservative_cost_ceiling_usd": 0.04076315,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0169735,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00848675,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 28970,
+     "prompt_tokens": 16590,
+     "reasoning_tokens": 24774,
+     "total_tokens": 45560
+    }
+   },
+   "failure": null,
+   "latency_seconds": 251.98,
+   "output_ref": "slice-008-psf-black/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 38,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-008-psf-black-writer-01",
+   "worker_run_entity_id": "worker_67a97bac-7349-47e1-b439-7dcba846663d"
+  },
+  {
+   "attempt": 1,
+   "candidate": "c5884c4e-2064-4052-8ab4-6dc4a721302b",
+   "conservative_cost_ceiling_usd": 0.04367675,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01188175,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005940875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 17069,
+     "prompt_tokens": 22315,
+     "reasoning_tokens": 14375,
+     "total_tokens": 39384
+    }
+   },
+   "failure": null,
+   "latency_seconds": 161.14,
+   "output_ref": "slice-008-psf-black/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 38,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-008-psf-black-verifier-01",
+   "worker_run_entity_id": "worker_c5884c4e-2064-4052-8ab4-6dc4a721302b"
+  },
+  {
+   "attempt": 1,
+   "candidate": "ee476221-fd82-4e24-982e-ea4894c709ff",
+   "conservative_cost_ceiling_usd": 0.03813725,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0042135,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00210675,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5340,
+     "prompt_tokens": 10290,
+     "reasoning_tokens": 4469,
+     "total_tokens": 15630
+    }
+   },
+   "failure": null,
+   "latency_seconds": 62.44,
+   "output_ref": "slice-008-psf-black/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.8,
+     "redundancy": 0.7,
+     "scope_discipline": 0.9,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-008-psf-black-critic-01",
+   "worker_run_entity_id": "worker_ee476221-fd82-4e24-982e-ea4894c709ff"
+  },
+  {
+   "attempt": 1,
+   "candidate": "4bab0f13-3d8d-4817-9d7c-b838547883a2",
+   "conservative_cost_ceiling_usd": 0.0340325,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0024684,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0012342,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4362,
+     "prompt_tokens": 1916,
+     "reasoning_tokens": 4208,
+     "total_tokens": 6278
+    }
+   },
+   "failure": null,
+   "latency_seconds": 37.66,
+   "output_ref": "slice-008-psf-black/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-008-psf-black-seo-01",
+   "worker_run_entity_id": "worker_4bab0f13-3d8d-4817-9d7c-b838547883a2"
+  }
+ ],
+ "slice": "slice-008-psf-black",
+ "started_at": "2026-09-14T09:06:39.714210Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.9,
+  "primary": "cli-tools",
+  "review_required": false,
+  "secondary": [
+   "developer-tools",
+   "code-intelligence"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 38 claims pass. Every grounding_ref exists verbatim in the packet and supports its claim text. Epistemic statuses are correctly calibrated: author_claimed for meta_description/meta_homepage, observed for verified files, symbols, entrypoints, lim_*, relation_counts, ev_*, subsys_*, and observed platform metadata, inferred for claims resting on exec_*, role_*, or reconstruction-derived data, and unresolved for the plugin-directory question. All figures check out (482 files; 9,339/8,219/1,120/8,487/852 relations; 18 entrypoints, cross-checked against the 18-item entrypoints array; 176 bounded paths; 7 manifests; 326 tests; star, release, license, topic, and language-byte values; all line ranges and call-degree numbers). The highest-incoming/highest-outgoing superlatives in c18 were independently confirmed across all ten listed roles. No knowledge leakage, revision conflicts, hallucinated paths or symbols, or rights problems. Nothing in the grounding packet was instruction-like, so no security-boundary flag is raised.",
+  "unsupported": []
+ }
+}

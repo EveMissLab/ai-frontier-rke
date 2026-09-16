@@ -1,0 +1,73 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T11:01:35.856512Z",
+ "model": "glm-5.3-flash",
+ "outcome": "writer_failed",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "f3c69395-e4dc-454b-b8ed-152ac6f8e82e",
+   "conservative_cost_ceiling_usd": 0.034570699999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0013506500000000001,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0006753250000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 1687,
+     "prompt_tokens": 3381,
+     "reasoning_tokens": 1557,
+     "total_tokens": 5068
+    }
+   },
+   "failure": null,
+   "latency_seconds": 21.76,
+   "output_ref": "slice-004-psf-requests-run2/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.6,
+    "primary": "web-and-applications",
+    "secondary": [
+     "developer-tools"
+    ]
+   },
+   "task_id": "af-slice-004-psf-requests-run2-taxonomy-01",
+   "worker_run_entity_id": "worker_f3c69395-e4dc-454b-b8ed-152ac6f8e82e"
+  },
+  {
+   "attempt": 1,
+   "candidate": null,
+   "conservative_cost_ceiling_usd": 0.03892235,
+   "cost": {},
+   "failure": "admission:DispatchLeaseError",
+   "latency_seconds": 2.04,
+   "output_ref": "slice-004-psf-requests-run2/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "failed",
+   "summary": null,
+   "task_id": "af-slice-004-psf-requests-run2-writer-01",
+   "worker_run_entity_id": "worker_08f601f9f6443556"
+  }
+ ],
+ "slice": "slice-004-psf-requests-run2",
+ "started_at": "2026-09-14T11:01:06.173473Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.6,
+  "primary": "web-and-applications",
+  "review_required": true,
+  "secondary": [
+   "developer-tools"
+  ]
+ }
+}

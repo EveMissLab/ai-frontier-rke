@@ -1,0 +1,29 @@
+{
+ "candidate_categories": [
+  "other"
+ ],
+ "commit_sha": "b506c68108e287104045333ade476d92c39c275e",
+ "license": {
+  "file_bytes": 1079,
+  "file_sha256": "cc4ab04ed7180af6c0ede7147f9ec2aa05212c088d7b3c8e38bbffe91c9c8f82",
+  "sources": [
+   "github_api",
+   "repository_file"
+  ],
+  "spdx": "MIT",
+  "status": "open-source"
+ },
+ "license_record_id": "lic_rev_repo_github_519832_b506c68108e2",
+ "observed_at": "2026-09-14T10:45:45.258262Z",
+ "repository_id": "repo_github_519832",
+ "revision_id": "rev_repo_github_519832_b506c68108e2",
+ "sedb_write": {
+  "created_entities": 25,
+  "unchanged_entities": 40,
+  "updated_entities": 0,
+  "written_cells": 161
+ },
+ "slice": "slice-017-mitmproxy-mitmproxy",
+ "snapshot_id": "snap_repo_github_519832_20260914T104545.258262Z",
+ "taxonomy_version": "v1"
+}

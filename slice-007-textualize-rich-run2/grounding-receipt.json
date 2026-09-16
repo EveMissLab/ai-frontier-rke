@@ -31,7 +31,7 @@
   }
  ],
  "grounding_bundle_bytes": 14575690,
- "grounding_bundle_ref": "slice-007-textualize-rich/artifacts/grounding/analysis_7a8a98c4ba2ee6a1/v1.2/grounding-bundle.json",
+ "grounding_bundle_ref": "slice-007-textualize-rich-run2/artifacts/grounding/analysis_7a8a98c4ba2ee6a1/v1.2/grounding-bundle.json",
  "grounding_bundle_sha256": "c3f1b279929484f2e137919d9c4fcb204a40a78ab911da7af671a186871cb989",
  "license_state": {
   "agreement": true,
@@ -39,7 +39,7 @@
   "spdx": "MIT",
   "status": "open-source"
  },
- "manifest_ref": "slice-007-textualize-rich/artifacts/repolumen/repo_github_220809393/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/0.10/semantic-manifest.json",
+ "manifest_ref": "slice-007-textualize-rich-run2/artifacts/repolumen/repo_github_220809393/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/0.10/semantic-manifest.json",
  "manifest_sha256": "4060debc6c889c0ef0ba12c4f001ec34b8a2e1e6daf80ca875c90ef0c63db775",
  "packets": {
   "overview": {

@@ -1,0 +1,66 @@
+{
+ "asset_id": "asset_repo_github_818331198_overview",
+ "asset_revision_id": "assetrev_asset_repo_github_818331198_overview_v1",
+ "canonical_bytes": 22045,
+ "canonical_source_ref": "slice-010-pydantic-pydantic-ai/canonical/overview.md",
+ "canonical_source_sha256": "bd2380db4f8da6beb8160518a4902f2c7d40b191dcf39f0b97c235494b484141",
+ "claims": 39,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 39,
+    "sections": 7
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "5cbacfc8f86d653baa0ca2e31970cbf4f0fcec95",
+    "registered": "5cbacfc8f86d653baa0ca2e31970cbf4f0fcec95"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/pydantic/pydantic-ai",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 12,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 124
+ },
+ "supported_claims": 39
+}

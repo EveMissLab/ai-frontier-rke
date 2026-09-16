@@ -271,6 +271,45 @@ def overview_packet(bundle: dict, license_state: dict) -> dict:
     }
 
 
+def architecture_packet(bundle: dict, license_state: dict) -> dict:
+    """ArchitectureSelector (Paper 04 §73; asset type `architecture`): entrypoints, static execution paths
+    with their steps, module roles by static call degree, the reconstruction's core flow and boundaries,
+    the resolved-relation summary, relation counts, subsystem evidence and the analyzer's limits. No
+    symbol-level excerpts beyond entrypoints; the writer explains shape and control flow, not code."""
+    recon = bundle["architecture"]["reconstruction"]
+    roles = sorted(bundle["module_role_ids"], key=lambda r: -(r.get("incoming_calls", 0) + r.get("outgoing_calls", 0)))[:20]
+    paths = [{"id": p["id"], "entrypoint": f"{p['entrypoint_path']}:{p.get('entrypoint_symbol')}", "terminal_reason": p.get("terminal_reason"), "truncated": p.get("truncated"), "cycle_detected": p.get("cycle_detected"),
+              "steps": [f"{s.get('source_path')}:{s.get('source_symbol') or ''} -> {s.get('target_path') or s.get('boundary_target') or s.get('target_symbol')}:{s.get('target_symbol') or ''} ({s.get('resolution')})" for s in p.get("steps", [])[:8]]}
+             for p in bundle["execution_paths"][:10]]
+    excluded = {x["excluded_id"] for x in bundle["uncertainties"]["excluded_important_files"]}
+    return {
+        "task": "write_architecture_asset",
+        "packet_version": "architecture-selector/v1",
+        "repository": {"canonical_source_url": bundle["source"]["repository"], "analyzed_revision": bundle["source"]["revision"], "analyzer": bundle["analyzer"], "license_state": license_state},
+        "platform_metadata": [g for g in bundle["platform_metadata"] if g["id"] in ("meta_description", "meta_primary_language", "meta_topics")],
+        "repository_summary": bundle["repository_summary"],
+        "important_files": [{"id": f["id"], "path": f["path"], "observation": f["observation"], "provenance": f["provenance"]} for f in bundle["important_files"]],
+        "subsystems": [{"id": e["id"], "path": e.get("path"), "observation": e.get("observation"), "provenance": e.get("provenance")} for e in bundle["evidence"] if e["id"].startswith("subsys_")],
+        "modules": bundle["modules"],
+        "entrypoints": [{"id": e["id"], "path": e["path"], "symbol": e.get("symbol"), "observation": e.get("observation"), "excerpt": e.get("excerpt"), "provenance": e.get("provenance")} for e in bundle["entrypoints"]],
+        "module_roles_by_static_call_degree": [{"id": r["id"], "path": r["path"], "role": r["role"], "incoming_calls": r["incoming_calls"], "outgoing_calls": r["outgoing_calls"], "evidence_basis": r.get("evidence_basis")} for r in roles],
+        "reconstruction_overview_static": recon.get("overview"),
+        "core_flow_static": recon.get("core_flow", [])[:16],
+        "boundaries_static": recon.get("boundaries", [])[:20],
+        "execution_paths_static": paths,
+        "execution_flow_notes": bundle["architecture"]["execution_flow"][:8],
+        "data_flow_notes": bundle["architecture"]["data_flow"][:8],
+        "resolved_relation_summary_sample": bundle["architecture"]["resolved_relation_summary"][:30],
+        "relation_counts": bundle["architecture"]["relation_counts"],
+        "dependencies_partial": bundle["dependency_records"],
+        "tests": {"count": len(bundle["tests"]), "sample": bundle["tests"][:8]},
+        "files": {"count": len(bundle["files"]), "top_level_directories": bundle["repository_summary"]["top_level_directories"]},
+        "teaching_claims": [{"id": c["id"], "section": c.get("section"), "text": c["text"], "evidence_ids": [e for e in c.get("evidence_ids", []) if e not in excluded], "provenance": c.get("provenance"), "status": c.get("status")} for c in bundle["teaching_claims"]],
+        "uncertainties": bundle["uncertainties"],
+        "grounding_id_note": "Cite only IDs that appear in this packet: important_*, entry_*, py_*, exec_*, claim_*, meta_*, dep_* (dependency records), lim_* (analyzer limitations), role_* (module roles, inferred), relation_counts, summary_repository, architecture_reconstruction, subsys_*, ev_*.",
+    }
+
+
 def taxonomy_packet(bundle: dict, candidates: list[str], taxonomy: list[dict]) -> dict:
     return {
         "task": "classify_repository_taxonomy_v1",
@@ -402,8 +441,10 @@ def main(slug: str) -> int:
     packets = sdir / "packets"
     ov = overview_packet(bundle, license_state)
     tx = taxonomy_packet(bundle, reg["candidate_categories"], taxonomy)
+    ar = architecture_packet(bundle, license_state)
     ov_hash = write_json(packets / "overview.json", ov)
     tx_hash = write_json(packets / "taxonomy.json", tx)
+    ar_hash = write_json(packets / "architecture.json", ar)
 
     out = {"analysis_run_id": run_id, "projection_version": BUNDLE_VERSION, "projection_id": proj_id, "supersedes_projection_id": supersedes, "manifest_ref": rel_ref(manifest_path), "manifest_sha256": receipt["manifest_sha256"],
            "run_recorded_grounding_bundle_sha256": (existing or {"values": {}})["values"].get("af_grounding_bundle_sha256", bundle_hash),
@@ -412,7 +453,8 @@ def main(slug: str) -> int:
            "counts": counts, "license_state": license_state, "analysis_run_mode": analysis_mode,
            "sedb_write": (result.__dict__ if result else {"created_entities": 0, "unchanged_entities": 0, "updated_entities": 0, "written_cells": 0, "note": "existing analysis run reused"}),
            "packets": {"overview": {"sha256": ov_hash, "bytes": (packets / "overview.json").stat().st_size},
-                       "taxonomy": {"sha256": tx_hash, "bytes": (packets / "taxonomy.json").stat().st_size}},
+                       "taxonomy": {"sha256": tx_hash, "bytes": (packets / "taxonomy.json").stat().st_size},
+                       "architecture": {"sha256": ar_hash, "bytes": (packets / "architecture.json").stat().st_size}},
            "bounded_context_ratio": round((packets / "overview.json").stat().st_size / receipt["manifest_bytes"], 5)}
     write_json(sdir / "grounding-receipt.json", out)
     print(json.dumps(out, ensure_ascii=False, indent=1))

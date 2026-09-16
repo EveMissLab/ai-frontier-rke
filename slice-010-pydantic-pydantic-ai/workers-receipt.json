@@ -1,0 +1,257 @@
+{
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-14T09:38:02.878137Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c9: path 'claude/skills/testing-skill/parse_cassette.py' not in the analyzed file inventory"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "fe662962-ffe0-485f-9fd0-b5b29ff5bc35",
+   "conservative_cost_ceiling_usd": 0.03512765,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0010824,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0005412,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 819,
+     "prompt_tokens": 4486,
+     "reasoning_tokens": 621,
+     "total_tokens": 5305
+    }
+   },
+   "failure": null,
+   "latency_seconds": 11.49,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/taxonomy-01.json",
+   "role": "taxonomy_classifier",
+   "status": "candidate_success",
+   "summary": {
+    "confidence": 0.95,
+    "primary": "ai-agents",
+    "secondary": [
+     "artificial-intelligence",
+     "evaluation"
+    ]
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-taxonomy-01",
+   "worker_run_entity_id": "worker_fe662962-ffe0-485f-9fd0-b5b29ff5bc35"
+  },
+  {
+   "attempt": 1,
+   "candidate": "cd6dcce7-1e58-4b7f-8578-3767d356fa86",
+   "conservative_cost_ceiling_usd": 0.0432875,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01855525,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.009277625,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 30590,
+     "prompt_tokens": 21735,
+     "reasoning_tokens": 25465,
+     "total_tokens": 52325
+    }
+   },
+   "failure": null,
+   "latency_seconds": 261.46,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-writer-01",
+   "worker_run_entity_id": "worker_cd6dcce7-1e58-4b7f-8578-3767d356fa86"
+  },
+  {
+   "attempt": 2,
+   "candidate": "c816210e-c66b-4ce8-8df3-d7fb05d9fc6f",
+   "conservative_cost_ceiling_usd": 0.046850449999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.010078349999999998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005039174999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11547,
+     "prompt_tokens": 28699,
+     "reasoning_tokens": 5859,
+     "total_tokens": 40246
+    }
+   },
+   "failure": null,
+   "latency_seconds": 88.61,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "what_it_is",
+     "how_it_starts",
+     "structure",
+     "dependencies_and_tests",
+     "read_first",
+     "limits_of_this_analysis",
+     "notable_symbols"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-writer-revision-02",
+   "worker_run_entity_id": "worker_c816210e-c66b-4ce8-8df3-d7fb05d9fc6f"
+  },
+  {
+   "attempt": 1,
+   "candidate": "d3e0dddd-1391-4f34-be35-bee2a43365d0",
+   "conservative_cost_ceiling_usd": 0.04674215,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0137602,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0068801,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 18965,
+     "prompt_tokens": 28518,
+     "reasoning_tokens": 16512,
+     "total_tokens": 47483
+    }
+   },
+   "failure": null,
+   "latency_seconds": 162.51,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-verifier-01",
+   "worker_run_entity_id": "worker_d3e0dddd-1391-4f34-be35-bee2a43365d0"
+  },
+  {
+   "attempt": 1,
+   "candidate": "0fa72ac7-fbe7-4895-af2b-b4e9feeccafb",
+   "conservative_cost_ceiling_usd": 0.040265,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00649415,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003247075,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8596,
+     "prompt_tokens": 14641,
+     "reasoning_tokens": 7512,
+     "total_tokens": 23237
+    }
+   },
+   "failure": null,
+   "latency_seconds": 94.87,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.65,
+     "redundancy": 0.6,
+     "scope_discipline": 0.8,
+     "structure": 0.7
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-critic-01",
+   "worker_run_entity_id": "worker_0fa72ac7-fbe7-4895-af2b-b4e9feeccafb"
+  },
+  {
+   "attempt": 1,
+   "candidate": "0208f2a6-bfc2-4bf3-9c7e-16587cd9f43d",
+   "conservative_cost_ceiling_usd": 0.0342146,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0014073,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00070365,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 2166,
+     "prompt_tokens": 2162,
+     "reasoning_tokens": 2003,
+     "total_tokens": 4328
+    }
+   },
+   "failure": null,
+   "latency_seconds": 25.65,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-010-pydantic-pydantic-ai-seo-01",
+   "worker_run_entity_id": "worker_0208f2a6-bfc2-4bf3-9c7e-16587cd9f43d"
+  }
+ ],
+ "slice": "slice-010-pydantic-pydantic-ai",
+ "started_at": "2026-09-14T09:26:52.787532Z",
+ "synthetic": false,
+ "taxonomy": {
+  "confidence": 0.95,
+  "primary": "ai-agents",
+  "review_required": false,
+  "secondary": [
+   "artificial-intelligence",
+   "evaluation"
+  ]
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 claims verified. Every grounding_ref exists in the packet; cited evidence supports each statement; epistemic statuses are consistent with provenance (observed claims cite only verified/observed records such as entrypoints, symbols, relation_counts, lim_*, and observed metadata; inferred claims cite summary_repository, role_*, exec_*, or teaching claims; author_claimed is used for description/homepage). No knowledge leakage, no hallucinated paths or symbols, no rights issues. Packet-internal conflicts (claim_4d30ade3e21e vs the 485 bounded paths; 30,575 vs 34,776 resolved relations) are disclosed in the draft's uncertainties and were not propagated into any claim. No packet text resembled embedded instructions.",
+  "unsupported": []
+ }
+}

@@ -21,9 +21,9 @@ from pathlib import Path
 import os
 import signal
 
-from af_common import load_json, open_store, rel_ref, slice_dir, utc_now, write_json
+from af_common import asset_paths, load_json, open_store, rel_ref, slice_dir, utc_now, write_json
 from macr_worker import build_task, validate_output, worker_records
-from prompts import CRITIC_V, REVISION_V, VERIFIER_V, WRITER_V, contract_hash
+from prompts import ASSET_CONTRACTS, CRITIC_V, REVISION_V, VERIFIER_V, WRITER_V, contract_hash, GUIDE_PHRASES, SEO_V
 
 # Paper 05 §29 MVP budget (writer 2, verifier 2) with one extra writer attempt reserved for a
 # deterministic-check revision, so a verifier-driven or critic-driven revision is still possible
@@ -128,22 +128,24 @@ def deterministic_checks(draft: dict, packet: dict, catalog: dict, files: set[st
     return {"ok": not failures, "failures": failures, "fixes": uniq, "claims": len(claims), "packet_ids": len(ids)}
 
 
-def main(slug: str) -> int:
+def main(slug: str, asset_type: str = "overview", seo_only: bool = False) -> int:
     sdir = slice_dir(slug)
+    ap = asset_paths(sdir, asset_type)
     reg = load_json(sdir / "registration-receipt.json")
     gr = load_json(sdir / "grounding-receipt.json")
-    ov_packet = load_json(sdir / "packets" / "overview.json")
+    ov_packet = load_json(ap["packet"])
     tx_packet = load_json(sdir / "packets" / "taxonomy.json")
     bundle = load_json(sdir / gr["grounding_bundle_ref"].split("/", 1)[1])
     catalog, files = bundle["groundings"], set(bundle["files"])
     repo_id, rev_id, run_id, bundle_sha = reg["repository_id"], reg["revision_id"], gr["analysis_run_id"], gr["grounding_bundle_sha256"]
-    tasks_dir, runs_dir = sdir / "tasks", sdir / "worker_runs"
-    logf = open(sdir / "step4.log", "a", encoding="utf-8")
+    tasks_dir, runs_dir = sdir / "tasks", ap["runs_dir"]
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    logf = open(ap["log"], "a", encoding="utf-8")
     def log(msg):
         line = f"[{utc_now()}] {msg}"; print(line, flush=True); logf.write(line + "\n"); logf.flush()
 
     store = open_store()
-    receipt = {"slice": slug, "backend": BACKEND, "model": BACKEND_MODEL, "synthetic": BACKEND == "mock", "started_at": utc_now(), "runs": [],
+    receipt = {"slice": slug, "asset_type": asset_type, "backend": BACKEND, "model": BACKEND_MODEL, "synthetic": BACKEND == "mock", "started_at": utc_now(), "runs": [],
                "budget": {"writer": WRITER_MAX, "verifier": VERIFIER_MAX, "critic": 1, "seo": 1, "taxonomy": 1}}
     log(f"worker backend: {BACKEND} ({BACKEND_MODEL}){' — SYNTHETIC, not a model' if BACKEND == 'mock' else ''}")
     sedb_records = []
@@ -151,7 +153,7 @@ def main(slug: str) -> int:
     def run_worker(role, contract_version, inputs, attempt, task_suffix, asset_type, max_attempts, validator=None):
         if STOP_REQUESTED:
             raise BatchStopped(f"stop requested before {role} attempt {attempt}")
-        task_id = f"af-{slug}-{task_suffix}-{attempt:02d}"  # slice-unique: repetitions of the same packet get distinct MACR tasks and SEDB task rows
+        task_id = f"af-{slug}-{ap['task_prefix']}{task_suffix}-{attempt:02d}"  # slice-unique: repetitions of the same packet get distinct MACR tasks and SEDB task rows
         task = build_task(task_id, contract_version, inputs)
         log(f"{role} attempt {attempt}: dispatch {task_id} ({sum(len(i[1]) for i in inputs)} input chars)")
         rec = dispatch(task, tasks_dir, attempt=attempt, log=log)
@@ -186,29 +188,63 @@ def main(slug: str) -> int:
         receipt["runs"].append({"role": role, "attempt": attempt, "task_id": task_id, "status": rec["status"], "failure": rec.get("failure"), "latency_seconds": rec.get("latency_seconds"),
                                 "worker_run_entity_id": rec.get("worker_run_entity_id"),
                                 "cost": rec.get("cost"), "conservative_cost_ceiling_usd": rec.get("conservative_cost_ceiling_usd"), "candidate": rec.get("macr_candidate_id"), "summary": summary, "output_ref": rec["output_ref"]})
-        write_json(sdir / "workers-receipt.json", receipt)
+        write_json(ap["workers_receipt"], receipt)
         return rec
 
     try:
-        return _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id, run_id, bundle_sha, tasks_dir, runs_dir, log, store, receipt, sedb_records, run_worker)
+        if seo_only:
+            return _seo_only(ap, ov_packet, log, store, receipt, sedb_records, run_worker, asset_type)
+        return _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id, run_id, bundle_sha, tasks_dir, runs_dir, log, store, receipt, sedb_records, run_worker, asset_type, ap)
     except BatchStopped as stop:
         log(f"stopped by operator: {stop} — no new dispatch; in-flight MACR child was left to exit on its own")
         receipt["outcome"] = "stopped_by_operator"; receipt["completed_at"] = utc_now()
-        write_json(sdir / "workers-receipt.json", receipt)
+        write_json(ap["workers_receipt"], receipt)
         if sedb_records:
             store.write(sedb_records, source="worker")
         return 5
 
 
-def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id, run_id, bundle_sha, tasks_dir, runs_dir, log, store, receipt, sedb_records, run_worker):
-    # ---- taxonomy classifier (bounded discovery task)
+def seo_worker(run_worker, draft, ov_packet, asset_type, attempt):
+    """SEO metadata worker (formatter family): title candidates, meta description, keywords. The guide type and its title phrase travel in the input (contract v1.1)."""
+    payload = {"guide_type": asset_type, "guide_phrase": GUIDE_PHRASES[asset_type], "title": draft["title"], "summary": draft["summary"],
+               "sections": [{"heading": s["heading"], "markdown": s["markdown"]} for s in draft["sections"]], "repository": ov_packet["repository"]["canonical_source_url"]}
+    return run_worker("formatter", SEO_V, [("validated_draft", json.dumps(payload, ensure_ascii=False, indent=1))], attempt, "seo", asset_type, 1)
+
+
+def _seo_only(ap, ov_packet, log, store, receipt, sedb_records, run_worker, asset_type):
+    """Re-run only the SEO worker on an existing final-draft-bundle (contract bump); the draft, verifier and critic results are untouched."""
+    bundle_path = ap["runs_dir"] / "final-draft-bundle.json"
+    final = load_json(bundle_path)
+    prior = load_json(ap["workers_receipt"]) if ap["workers_receipt"].exists() else {"runs": []}
+    receipt["runs"] = list(prior.get("runs", []))
+    receipt["seo_rerun_of"] = {"previous_outcome": prior.get("outcome"), "previous_seo_contract": next((r.get("contract_version") for r in reversed(receipt["runs"]) if r["role"] == "formatter"), None)}
+    for k in ("outcome", "deterministic_check_1", "deterministic_check_2", "verifier_verdict"):
+        if k in prior: receipt[k] = prior[k]
+    attempt = sum(1 for r in receipt["runs"] if r["role"] == "formatter") + 1
+    log(f"SEO-only rerun with {SEO_V} (attempt {attempt}); draft/verifier/critic unchanged")
+    seo = seo_worker(run_worker, final["draft"], ov_packet, asset_type, attempt)
+    if seo["status"] != "candidate_success":
+        log(f"SEO rerun failed: {seo['status']} — bundle left unchanged"); receipt["completed_at"] = utc_now(); write_json(ap["workers_receipt"], receipt); store.write(sedb_records, source="worker"); return 4
+    final["seo"], final["seo_contract"] = seo["output"], SEO_V
+    final["worker_run_ids"] = [x["worker_run_entity_id"] for x in receipt["runs"] if x.get("worker_run_entity_id")]
+    write_json(bundle_path, final)
+    receipt["completed_at"] = utc_now(); write_json(ap["workers_receipt"], receipt)
+    log(f"SEDB: {store.write(sedb_records, source='worker')}")
+    log(f"outcome: {receipt.get('outcome')} (seo rerun ok; titles: {seo['output']['title_candidates'][:2]})")
+    return 0 if receipt.get("outcome") == "hard_gate_pass" else 3
+
+
+def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id, run_id, bundle_sha, tasks_dir, runs_dir, log, store, receipt, sedb_records, run_worker, asset_type="overview", ap=None):
+    ap = ap or asset_paths(sdir, asset_type)
+    writer_contract, revision_contract = ASSET_CONTRACTS[asset_type]
+    # ---- taxonomy classifier (bounded discovery task; a repository property, so overview runs only)
     slugs = {t["slug"] for t in tx_packet["taxonomy_v1"]}
     def tx_validator(o):
         errs = []
         if o["primary"] not in slugs: errs.append(f"primary slug not in taxonomy: {o['primary']}")
         errs += [f"secondary slug not in taxonomy: {s}" for s in o.get("secondary", []) if s not in slugs]
         return errs
-    tx = run_worker("taxonomy_classifier", "taxonomy_classifier/v1", [("taxonomy_packet", json.dumps(tx_packet, ensure_ascii=False, indent=1))], 1, "taxonomy", None, 2, tx_validator)
+    tx = run_worker("taxonomy_classifier", "taxonomy_classifier/v1", [("taxonomy_packet", json.dumps(tx_packet, ensure_ascii=False, indent=1))], 1, "taxonomy", None, 2, tx_validator) if asset_type == "overview" else {"status": "skipped"}
     if tx["status"] == "schema_invalid":  # Paper 05 §71: one bounded retry on a schema envelope failure (run 2 omitted a required field)
         log(f"taxonomy: schema invalid ({tx.get('schema_errors')}); one retry")
         tx = run_worker("taxonomy_classifier", "taxonomy_classifier/v1", [("taxonomy_packet", json.dumps(tx_packet, ensure_ascii=False, indent=1))], 2, "taxonomy", None, 2, tx_validator)
@@ -227,19 +263,19 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
     packet_text = json.dumps(ov_packet, ensure_ascii=False, indent=1)
     writer_attempts = 0
     draft, draft_run = None, None
-    w = run_worker("writer", WRITER_V, [("grounding_packet", packet_text)], 1, "writer", "overview", WRITER_MAX)
+    w = run_worker("writer", writer_contract, [("grounding_packet", packet_text)], 1, "writer", asset_type, WRITER_MAX)
     writer_attempts += 1
     if w["status"] == "candidate_success":
         draft, draft_run = w["output"], w
     elif w["status"] == "schema_invalid" and writer_attempts < WRITER_MAX:
         log("writer: schema invalid; one full regeneration allowed (structure fundamentally wrong)")
-        w = run_worker("writer", WRITER_V, [("grounding_packet", packet_text)], 2, "writer", "overview", WRITER_MAX)
+        w = run_worker("writer", writer_contract, [("grounding_packet", packet_text)], 2, "writer", asset_type, WRITER_MAX)
         writer_attempts += 1
         if w["status"] == "candidate_success":
             draft, draft_run = w["output"], w
     if draft is None:
         receipt["outcome"] = "writer_failed"; receipt["completed_at"] = utc_now()
-        write_json(sdir / "workers-receipt.json", receipt); store.write(sedb_records, source="worker"); return 2
+        write_json(ap["workers_receipt"], receipt); store.write(sedb_records, source="worker"); return 2
 
     det = deterministic_checks(draft, ov_packet, catalog, files)
     write_json(runs_dir / "deterministic-check-01.json", det)
@@ -251,7 +287,7 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
     if not det["ok"] and writer_attempts < WRITER_MAX:
         fixes_source = {"source": "deterministic", "required_fixes": det["fixes"]}
     else:
-        v = run_worker("verifier", VERIFIER_V, [("grounding_packet", packet_text), ("draft", json.dumps(draft, ensure_ascii=False, indent=1))], 1, "verifier", "overview", VERIFIER_MAX)
+        v = run_worker("verifier", VERIFIER_V, [("grounding_packet", packet_text), ("draft", json.dumps(draft, ensure_ascii=False, indent=1))], 1, "verifier", asset_type, VERIFIER_MAX)
         verifier_attempts += 1
         if v["status"] == "candidate_success":
             verdict = v["output"]
@@ -259,8 +295,8 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
                 fixes_source = {"source": "verifier", "required_fixes": verdict.get("required_fixes", [])}
     if fixes_source and writer_attempts < WRITER_MAX:
         log(f"targeted revision from {fixes_source['source']} ({len(fixes_source['required_fixes'])} fixes)")
-        r = run_worker("writer", REVISION_V, [("grounding_packet", packet_text), ("previous_draft", json.dumps(draft, ensure_ascii=False, indent=1)),
-                                                                ("required_fixes", json.dumps(fixes_source["required_fixes"], ensure_ascii=False, indent=1))], 2, "writer-revision", "overview", WRITER_MAX)
+        r = run_worker("writer", revision_contract, [("grounding_packet", packet_text), ("previous_draft", json.dumps(draft, ensure_ascii=False, indent=1)),
+                                                                ("required_fixes", json.dumps(fixes_source["required_fixes"], ensure_ascii=False, indent=1))], 2, "writer-revision", asset_type, WRITER_MAX)
         writer_attempts += 1
         if r["status"] == "candidate_success":
             draft, draft_run = r["output"], r
@@ -270,7 +306,7 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
             log(f"deterministic checks on revision: ok={det2['ok']} failures={len(det2['failures'])}")
             det = det2
         if verifier_attempts < VERIFIER_MAX:
-            v = run_worker("verifier", VERIFIER_V, [("grounding_packet", packet_text), ("draft", json.dumps(draft, ensure_ascii=False, indent=1))], verifier_attempts + 1, "verifier", "overview", VERIFIER_MAX)
+            v = run_worker("verifier", VERIFIER_V, [("grounding_packet", packet_text), ("draft", json.dumps(draft, ensure_ascii=False, indent=1))], verifier_attempts + 1, "verifier", asset_type, VERIFIER_MAX)
             verifier_attempts += 1
             if v["status"] == "candidate_success":
                 verdict = v["output"]
@@ -278,16 +314,16 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
     hard_ok = det["ok"] and verdict is not None and verdict["status"] == "pass"
 
     # ---- critic and SEO metadata (quality signals; never technical truth)
-    critic = run_worker("critic", CRITIC_V, [("draft", json.dumps(draft, ensure_ascii=False, indent=1)), ("packet_summary", json.dumps({k: ov_packet[k] for k in ("repository_summary", "important_files", "entrypoints", "uncertainties")}, ensure_ascii=False, indent=1))], 1, "critic", "overview", 1)
-    seo = run_worker("formatter", "formatter/seo-metadata/v1", [("validated_draft", json.dumps({"title": draft["title"], "summary": draft["summary"], "sections": [{"heading": s["heading"], "markdown": s["markdown"]} for s in draft["sections"]], "repository": ov_packet["repository"]["canonical_source_url"]}, ensure_ascii=False, indent=1))], 1, "seo", "overview", 1)
+    critic = run_worker("critic", CRITIC_V, [("draft", json.dumps(draft, ensure_ascii=False, indent=1)), ("packet_summary", json.dumps({k: ov_packet[k] for k in ("repository_summary", "important_files", "entrypoints", "uncertainties") if k in ov_packet}, ensure_ascii=False, indent=1))], 1, "critic", asset_type, 1)
+    seo = seo_worker(run_worker, draft, ov_packet, asset_type, 1)
 
     final = {"draft": draft, "draft_run_ref": draft_run["output_ref"], "verifier": verdict, "critic": critic.get("output"), "seo": seo.get("output"),
              "deterministic": det, "hard_gate_pass": hard_ok, "writer_attempts": writer_attempts, "verifier_attempts": verifier_attempts,
              "worker_run_ids": [x["worker_run_entity_id"] for x in receipt["runs"] if x.get("worker_run_entity_id")]}
-    write_json(sdir / "worker_runs" / "final-draft-bundle.json", final)
+    write_json(runs_dir / "final-draft-bundle.json", final)
     receipt["outcome"] = "hard_gate_pass" if hard_ok else "escalation_required"
     receipt["completed_at"] = utc_now()
-    write_json(sdir / "workers-receipt.json", receipt)
+    write_json(ap["workers_receipt"], receipt)
     res = store.write(sedb_records, source="worker")
     log(f"SEDB: {res}")
     log(f"outcome: {receipt['outcome']}")
@@ -295,4 +331,5 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1]))
+    _args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    raise SystemExit(main(_args[0], _args[1] if len(_args) > 1 else "overview", seo_only="--seo-only" in sys.argv))
