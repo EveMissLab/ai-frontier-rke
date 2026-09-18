@@ -1,0 +1,250 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T07:51:39.399075Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "d4d9155a-d7ce-446b-aa2a-3e1d68461d31",
+   "conservative_cost_ceiling_usd": 0.0379718,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01573335,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.007866675,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 28665,
+     "prompt_tokens": 9339,
+     "reasoning_tokens": 23497,
+     "total_tokens": 38004
+    }
+   },
+   "failure": null,
+   "latency_seconds": 302.53,
+   "output_ref": "slice-004-psf-requests-run3/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-004-psf-requests-run3-arch-writer-01",
+   "worker_run_entity_id": "worker_d4d9155a-d7ce-446b-aa2a-3e1d68461d31"
+  },
+  {
+   "attempt": 1,
+   "candidate": "3c8906ff-5e14-4cb0-9e39-536068eeb513",
+   "conservative_cost_ceiling_usd": 0.0412907,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01308475,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.006542375,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 21350,
+     "prompt_tokens": 16065,
+     "reasoning_tokens": 18835,
+     "total_tokens": 37415
+    }
+   },
+   "failure": null,
+   "latency_seconds": 283.62,
+   "output_ref": "slice-004-psf-requests-run3/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 2,
+     "supported": 37,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 2,
+    "status": "fail"
+   },
+   "task_id": "af-slice-004-psf-requests-run3-arch-verifier-01",
+   "worker_run_entity_id": "worker_3c8906ff-5e14-4cb0-9e39-536068eeb513"
+  },
+  {
+   "attempt": 2,
+   "candidate": "d9cc13fb-7545-403a-b4a9-86173d41200c",
+   "conservative_cost_ceiling_usd": 0.04160735,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00681885,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003409425,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8682,
+     "prompt_tokens": 16519,
+     "reasoning_tokens": 3489,
+     "total_tokens": 25201
+    }
+   },
+   "failure": null,
+   "latency_seconds": 84.73,
+   "output_ref": "slice-004-psf-requests-run3/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-004-psf-requests-run3-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_d9cc13fb-7545-403a-b4a9-86173d41200c"
+  },
+  {
+   "attempt": 2,
+   "candidate": "94b11edc-b65a-4bdc-8140-9bd9223cf3fc",
+   "conservative_cost_ceiling_usd": 0.0413102,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.011619,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0058095,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 18411,
+     "prompt_tokens": 16090,
+     "reasoning_tokens": 16009,
+     "total_tokens": 34501
+    }
+   },
+   "failure": null,
+   "latency_seconds": 179.39,
+   "output_ref": "slice-004-psf-requests-run3/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-004-psf-requests-run3-arch-verifier-02",
+   "worker_run_entity_id": "worker_94b11edc-b65a-4bdc-8140-9bd9223cf3fc"
+  },
+  {
+   "attempt": 1,
+   "candidate": "b9585b9e-432c-4fc5-b24d-3bd2d8adac11",
+   "conservative_cost_ceiling_usd": 0.03778685,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0047379,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00236895,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 6633,
+     "prompt_tokens": 9476,
+     "reasoning_tokens": 5544,
+     "total_tokens": 16109
+    }
+   },
+   "failure": null,
+   "latency_seconds": 93.43,
+   "output_ref": "slice-004-psf-requests-run3/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.7,
+     "redundancy": 0.55,
+     "scope_discipline": 0.9,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-004-psf-requests-run3-arch-critic-01",
+   "worker_run_entity_id": "worker_b9585b9e-432c-4fc5-b24d-3bd2d8adac11"
+  },
+  {
+   "attempt": 1,
+   "candidate": "b992127c-f393-44ad-9c3c-d6eddb9c9e3e",
+   "conservative_cost_ceiling_usd": 0.0341909,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00196245,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.000981225,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3306,
+     "prompt_tokens": 2063,
+     "reasoning_tokens": 3151,
+     "total_tokens": 5369
+    }
+   },
+   "failure": null,
+   "latency_seconds": 36.5,
+   "output_ref": "slice-004-psf-requests-run3/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-004-psf-requests-run3-arch-seo-01",
+   "worker_run_entity_id": "worker_b992127c-f393-44ad-9c3c-d6eddb9c9e3e"
+  }
+ ],
+ "slice": "slice-004-psf-requests-run3",
+ "started_at": "2026-09-18T07:34:56.467567Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 claims pass: every grounding_ref exists verbatim in the packet, each cited record supports its claim text, and no epistemic_status overreaches (exec_*, role_*, summary_repository and reconstruction claims stay at inferred or lower; observed claims rest on verified entrypoints/files, relation_counts, lim_* or observed platform metadata; meta_description remains author_claimed). No leakage, hallucinated names, or rights issues; packet text contained no instruction-like content, confirming the draft's boundary note. The packet-internal metric tension (overview's 310 resolved call relations / 25 paths vs relation_counts' 501 local / 10 listed paths) is correctly attributed per source and already raised in the draft's questions, so no claim is penalized.",
+  "unsupported": []
+ }
+}

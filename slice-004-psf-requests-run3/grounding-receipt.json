@@ -42,6 +42,10 @@
  "manifest_ref": "slice-004-psf-requests-run3/artifacts/repolumen/repo_github_1362490/dae7ef63b4df6eded86637f251fc4e3a06c3b479/0.10/semantic-manifest.json",
  "manifest_sha256": "e1dac3b6d45b60bd83adb356b8f748e4534c309e62fd2ae2caa55b2e9c1acc5f",
  "packets": {
+  "architecture": {
+   "bytes": 25307,
+   "sha256": "82bd3889e5da0cf87928a2dc82c9f060013ee1806dab65b991c592ae90ffb242"
+  },
   "overview": {
    "bytes": 31358,
    "sha256": "2d371903f84b1f6c9b2d0a8e8189aa67b051d3b4b286ce0e4f3de43beac80bc6"
