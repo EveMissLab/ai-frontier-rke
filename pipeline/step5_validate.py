@@ -10,6 +10,7 @@ Usage: python step5_validate.py <slice_slug>
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from urllib.parse import urlparse
@@ -210,10 +211,16 @@ def main(slug: str, asset_type: str = "overview") -> int:
            "asset_id": asset_id, "asset_revision_id": assetrev_id, "claims": len(draft["claims"]), "supported_claims": supported, "sedb_write": res.__dict__,
            "publication_status": "unpublished", "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication"}
     out["asset_type"] = asset_type
+    out["worker_series"] = ap.get("series")  # which worker loop produced the validated draft (None = the first loop)
+    out["workers_receipt_ref"] = rel_ref(ap["workers_receipt"])
     write_json(ap["validation_receipt"], out)
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0 if hard_pass else 3
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else "overview"))
+    if "--series" in sys.argv:
+        os.environ["AF_SERIES"] = sys.argv[sys.argv.index("--series") + 1]
+    _flag_values = {sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--series" and i + 1 < len(sys.argv)}
+    _args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in _flag_values]
+    raise SystemExit(main(_args[0], _args[1] if len(_args) > 1 else "overview"))

@@ -18,6 +18,7 @@ Usage: python step4b_revise.py <slice_slug> [asset_type] [--source critic|verifi
 from __future__ import annotations
 
 import json
+import os
 import sys
 
 from af_common import asset_paths, load_json, open_store, rel_ref, slice_dir, utc_now, write_json
@@ -124,6 +125,9 @@ def main(slug: str, asset_type: str = "overview", source: str = "critic") -> int
 
 
 if __name__ == "__main__":
-    _args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--series" in sys.argv:
+        os.environ["AF_SERIES"] = sys.argv[sys.argv.index("--series") + 1]
+    _flag_values = {sys.argv[i + 1] for i, a in enumerate(sys.argv) if a in ("--source", "--series") and i + 1 < len(sys.argv)}
+    _args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in _flag_values]
     _src = sys.argv[sys.argv.index("--source") + 1] if "--source" in sys.argv else "critic"
-    raise SystemExit(main(_args[0], _args[1] if len(_args) > 1 and _args[1] not in ("critic", "verifier") else "overview", _src))
+    raise SystemExit(main(_args[0], _args[1] if len(_args) > 1 else "overview", _src))

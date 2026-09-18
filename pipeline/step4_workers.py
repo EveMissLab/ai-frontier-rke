@@ -331,5 +331,8 @@ def _run(slug, sdir, reg, ov_packet, tx_packet, catalog, files, repo_id, rev_id,
 
 
 if __name__ == "__main__":
-    _args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--series" in sys.argv:
+        os.environ["AF_SERIES"] = sys.argv[sys.argv.index("--series") + 1]
+    _flag_values = {sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--series" and i + 1 < len(sys.argv)}
+    _args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in _flag_values]
     raise SystemExit(main(_args[0], _args[1] if len(_args) > 1 else "overview", seo_only="--seo-only" in sys.argv))

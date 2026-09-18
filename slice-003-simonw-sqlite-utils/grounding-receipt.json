@@ -1,6 +1,6 @@
 {
  "analysis_run_id": "analysis_4dc72394ecce6742",
- "analysis_run_mode": "new",
+ "analysis_run_mode": "reuse_existing_new_projection (run recorded ai-frontier-grounding/v1.1, now ai-frontier-grounding/v1.2)",
  "bounded_context_ratio": 0.002,
  "counts": {
   "dependencies": 0,
@@ -30,9 +30,9 @@
    "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
   }
  ],
- "grounding_bundle_bytes": 11275746,
- "grounding_bundle_ref": "slice-003-simonw-sqlite-utils/artifacts/grounding/analysis_4dc72394ecce6742/v1.1/grounding-bundle.json",
- "grounding_bundle_sha256": "0055d24e40d67b3822c0e1c85999927e304d1111f12f179f1a6333d21e9f18eb",
+ "grounding_bundle_bytes": 11275799,
+ "grounding_bundle_ref": "slice-003-simonw-sqlite-utils/artifacts/grounding/analysis_4dc72394ecce6742/v1.2/grounding-bundle.json",
+ "grounding_bundle_sha256": "708337154a42078c70e5481e8c6dda7dc69e079db2304e13da57d9c96230fc58",
  "license_state": {
   "agreement": true,
   "repolumen_detected": "Apache-2.0",
@@ -42,23 +42,27 @@
  "manifest_ref": "slice-003-simonw-sqlite-utils/artifacts/repolumen/repo_github_140912432/85b1be10c81d9dd3567e36faf8dd411e4a8789bd/0.10/semantic-manifest.json",
  "manifest_sha256": "36060768f9757f06701d419f6ea0161eee67a3c743ae8f951091ba2b9d60aba5",
  "packets": {
+  "architecture": {
+   "bytes": 20800,
+   "sha256": "af96284af888c5a327c2245bd69ba88eb4008ac2316354d8bf47d109522b0ac2"
+  },
   "overview": {
-   "bytes": 32728,
-   "sha256": "4a32096c29aecd111f91958e95ac97b993a46829e511035a54c0f832995e089f"
+   "bytes": 32781,
+   "sha256": "80a183d51d67e994124047e40cf43dbb276698f40ad0dc436072136521e2ac3e"
   },
   "taxonomy": {
    "bytes": 7822,
    "sha256": "8c1ac335d0da2a01c0657a510f8848b06c9a5f8ee581f89bab56cfe8f2e9b948"
   }
  },
- "projection_id": "proj_analysis_4dc72394ecce6742_v1_1",
- "projection_version": "ai-frontier-grounding/v1.1",
+ "projection_id": "proj_analysis_4dc72394ecce6742_v1_2",
+ "projection_version": "ai-frontier-grounding/v1.2",
  "run_recorded_grounding_bundle_sha256": "0055d24e40d67b3822c0e1c85999927e304d1111f12f179f1a6333d21e9f18eb",
  "sedb_write": {
-  "created_entities": 13342,
-  "unchanged_entities": 0,
+  "created_entities": 1,
+  "unchanged_entities": 13340,
   "updated_entities": 0,
-  "written_cells": 200134
+  "written_cells": 12
  },
- "supersedes_projection_id": null
+ "supersedes_projection_id": "proj_analysis_4dc72394ecce6742_v1_1"
 }

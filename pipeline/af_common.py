@@ -86,15 +86,20 @@ def slice_dir(slug: str) -> Path:
     return LAB / slug
 
 
-def asset_paths(sdir: Path, asset_type: str = "overview") -> dict:
-    """Per-asset file layout. `overview` keeps the original flat layout; other assets get suffixed/nested names."""
+def asset_paths(sdir: Path, asset_type: str = "overview", series: str | None = None) -> dict:
+    """Per-asset file layout. `overview` keeps the original flat layout; other assets get suffixed/nested names.
+    `series` (or env AF_SERIES) names a fresh worker loop for the same asset — its own runs dir, receipt, log and MACR task
+    ids — so a rerun after an escalation needs no new slice directory. Canonical/validation paths stay per asset."""
+    series = series or os.environ.get("AF_SERIES") or None
     if asset_type == "overview":
         return {"packet": sdir / "packets" / "overview.json", "runs_dir": sdir / "worker_runs", "workers_receipt": sdir / "workers-receipt.json",
                 "log": sdir / "step4.log", "canonical_md": sdir / "canonical" / "overview.md", "validation_receipt": sdir / "validation-receipt.json",
                 "preview": sdir / "canonical" / "preview.html", "task_prefix": "", "path_suffix": ""}
-    return {"packet": sdir / "packets" / f"{asset_type}.json", "runs_dir": sdir / "worker_runs" / asset_type, "workers_receipt": sdir / f"workers-receipt.{asset_type}.json",
-            "log": sdir / f"step4.{asset_type}.log", "canonical_md": sdir / "canonical" / f"{asset_type}.md", "validation_receipt": sdir / f"validation-receipt.{asset_type}.json",
-            "preview": sdir / "canonical" / f"{asset_type}-preview.html", "task_prefix": f"{asset_type[:4]}-", "path_suffix": f"{asset_type}/"}
+    run_label = f"{asset_type}-{series}" if series else asset_type
+    return {"packet": sdir / "packets" / f"{asset_type}.json", "runs_dir": sdir / "worker_runs" / run_label, "workers_receipt": sdir / f"workers-receipt.{run_label}.json",
+            "log": sdir / f"step4.{run_label}.log", "canonical_md": sdir / "canonical" / f"{asset_type}.md", "validation_receipt": sdir / f"validation-receipt.{asset_type}.json",
+            "preview": sdir / "canonical" / f"{asset_type}-preview.html", "task_prefix": f"{asset_type[:4]}-{series + '-' if series else ''}", "path_suffix": f"{asset_type}/",
+            "series": series}
 
 
 def rel_ref(path: Path) -> str:

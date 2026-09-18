@@ -104,6 +104,23 @@ WRITER_ARCHITECTURE_REVISION_V1 = {
     "contract": WRITER_REVISION_V1["contract"].replace("previous overview draft", "previous architecture draft").replace('"asset_type": "overview"', '"asset_type": "architecture"'),
 }
 
+CITATION_COMPLETENESS = ("CITATIONS: a claim that speaks about all listed execution paths, all module roles, all boundaries or all dependency records must cite every "
+                         "record it covers (list every exec_*, role_*, boundary or dep id), or be scoped explicitly to the records it cites ('of the N listed paths, the three "
+                         "cited …'). A negative statement ('no listed path reaches X') is a scan of records: cite every record scanned. A statement about an entrypoint's "
+                         "__main__ guard cites the py_entry_* record, not only the important-file or entrypoint flag. Prefer fewer, fully cited claims over broad ones.")
+
+WRITER_ARCHITECTURE_V1_1 = {
+    "version": "writer/architecture/v1.1",
+    "goal": WRITER_ARCHITECTURE_V1["goal"],
+    "contract": WRITER_ARCHITECTURE_V1["contract"].replace(WORDING_RULES, WORDING_RULES + "\n\n" + CITATION_COMPLETENESS, 1),
+}
+
+WRITER_ARCHITECTURE_REVISION_V1_1 = {
+    "version": "writer/architecture-revision/v1.1",
+    "goal": WRITER_ARCHITECTURE_REVISION_V1["goal"],
+    "contract": WRITER_ARCHITECTURE_REVISION_V1["contract"] + "\n\n" + CITATION_COMPLETENESS,
+}
+
 VERIFIER_GROUNDING_V1 = {
     "version": "verifier/grounding/v1.1",
     "goal": "Independently verify every claim of the overview draft against the grounding packet, claim by claim, and return one JSON verification object.",
@@ -170,12 +187,12 @@ TAXONOMY_CLASSIFIER_V1 = {
     ]),
 }
 
-CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
+CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, WRITER_ARCHITECTURE_V1_1, WRITER_ARCHITECTURE_REVISION_V1_1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
 SEO_V = SEO_METADATA_V1_1["version"]
 
 # asset type -> (writer contract, revision contract). Verifier, critic and SEO contracts are shared.
 ASSET_CONTRACTS = {"overview": (WRITER_OVERVIEW_V1["version"], WRITER_REVISION_V1["version"]),
-                   "architecture": (WRITER_ARCHITECTURE_V1["version"], WRITER_ARCHITECTURE_REVISION_V1["version"])}
+                   "architecture": (WRITER_ARCHITECTURE_V1_1["version"], WRITER_ARCHITECTURE_REVISION_V1_1["version"])}
 
 
 def contract_hash(version: str) -> str:
@@ -254,6 +271,7 @@ WRITER_V, REVISION_V, VERIFIER_V, CRITIC_V = WRITER_OVERVIEW_V1["version"], WRIT
 SCHEMAS = {
     WRITER_V: WRITER_SCHEMA, REVISION_V: WRITER_SCHEMA, VERIFIER_V: VERIFIER_SCHEMA, CRITIC_V: CRITIC_SCHEMA,
     WRITER_ARCHITECTURE_V1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1["version"]: ARCHITECTURE_SCHEMA,
+    WRITER_ARCHITECTURE_V1_1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1_1["version"]: ARCHITECTURE_SCHEMA,
     "writer/overview/v1.1": WRITER_SCHEMA, "writer/overview-revision/v1.1": WRITER_SCHEMA,  # v1.1 kept: run 3 validates against it
     "writer/overview/v1": WRITER_SCHEMA, "writer/overview-revision/v1": WRITER_SCHEMA, "verifier/grounding/v1": VERIFIER_SCHEMA,  # v1 kept: recorded runs 1-2 validate against it
     "critic/structure/v1": CRITIC_SCHEMA, "formatter/seo-metadata/v1": SEO_SCHEMA, "formatter/seo-metadata/v1.1": SEO_SCHEMA, "taxonomy_classifier/v1": TAXONOMY_SCHEMA,

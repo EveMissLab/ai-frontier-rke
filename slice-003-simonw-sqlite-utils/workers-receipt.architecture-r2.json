@@ -1,0 +1,250 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T06:46:51.274143Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "a1515053-eaf2-48f1-820e-0bad504559e5",
+   "conservative_cost_ceiling_usd": 0.03726395,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.017203200000000002,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.008601600000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 32001,
+     "prompt_tokens": 8018,
+     "reasoning_tokens": 27577,
+     "total_tokens": 40019
+    }
+   },
+   "failure": null,
+   "latency_seconds": 328.67,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/architecture-r2/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 33,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-arch-r2-writer-01",
+   "worker_run_entity_id": "worker_a1515053-eaf2-48f1-820e-0bad504559e5"
+  },
+  {
+   "attempt": 1,
+   "candidate": "2b0e7499-90c4-42f5-a6fd-f37bc082fedb",
+   "conservative_cost_ceiling_usd": 0.0401885,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.009116,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004558,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 14107,
+     "prompt_tokens": 13750,
+     "reasoning_tokens": 11839,
+     "total_tokens": 27857
+    }
+   },
+   "failure": null,
+   "latency_seconds": 140.06,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/architecture-r2/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 1,
+     "supported": 32,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 1,
+    "status": "fail"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-arch-r2-verifier-01",
+   "worker_run_entity_id": "worker_2b0e7499-90c4-42f5-a6fd-f37bc082fedb"
+  },
+  {
+   "attempt": 2,
+   "candidate": "c823a866-2e3e-44e8-aa71-fdaef8da8ecc",
+   "conservative_cost_ceiling_usd": 0.040463,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00504295,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.002521475,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5840,
+     "prompt_tokens": 14153,
+     "reasoning_tokens": 873,
+     "total_tokens": 19993
+    }
+   },
+   "failure": null,
+   "latency_seconds": 48.57,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/architecture-r2/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 33,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-arch-r2-writer-revision-02",
+   "worker_run_entity_id": "worker_c823a866-2e3e-44e8-aa71-fdaef8da8ecc"
+  },
+  {
+   "attempt": 2,
+   "candidate": "ea86da26-ec46-4e7d-a516-49170828b514",
+   "conservative_cost_ceiling_usd": 0.0401885,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.010519,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0052595,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 16913,
+     "prompt_tokens": 13750,
+     "reasoning_tokens": 14772,
+     "total_tokens": 30663
+    }
+   },
+   "failure": null,
+   "latency_seconds": 185.67,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/architecture-r2/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 33,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-arch-r2-verifier-02",
+   "worker_run_entity_id": "worker_ea86da26-ec46-4e7d-a516-49170828b514"
+  },
+  {
+   "attempt": 1,
+   "candidate": "96c9d7cd-78b1-4440-bf22-f12a7a7acd63",
+   "conservative_cost_ceiling_usd": 0.03727715,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00569975,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.002849875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8926,
+     "prompt_tokens": 8245,
+     "reasoning_tokens": 8004,
+     "total_tokens": 17171
+    }
+   },
+   "failure": null,
+   "latency_seconds": 124.59,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/architecture-r2/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.9,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-003-simonw-sqlite-utils-arch-r2-critic-01",
+   "worker_run_entity_id": "worker_96c9d7cd-78b1-4440-bf22-f12a7a7acd63"
+  },
+  {
+   "attempt": 1,
+   "candidate": "5379814d-806b-4579-8e12-19732ac162e4",
+   "conservative_cost_ceiling_usd": 0.0341096,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00135775,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.000678875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 2150,
+     "prompt_tokens": 1885,
+     "reasoning_tokens": 1990,
+     "total_tokens": 4035
+    }
+   },
+   "failure": null,
+   "latency_seconds": 28.83,
+   "output_ref": "slice-003-simonw-sqlite-utils/worker_runs/architecture-r2/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-003-simonw-sqlite-utils-arch-r2-seo-01",
+   "worker_run_entity_id": "worker_5379814d-806b-4579-8e12-19732ac162e4"
+  }
+ ],
+ "slice": "slice-003-simonw-sqlite-utils",
+ "started_at": "2026-09-18T06:32:13.550129Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 33 draft claims verified against the packet: every grounding_ref exists verbatim, every claim is supported, epistemic statuses match evidence classes (no 'observed' claim cites exec_*, role_*, reconstruction or summary_repository; meta_description is kept author_claimed), counts and figures match (107 files, role degrees, relation_counts, exec-path breakdown of 1 strip / 2 utils-mediated / 6 click.option), no knowledge leakage, no hallucinated file or symbol names, and no rights issues. The draft also correctly flags the packet-internal discrepancies (13 paths vs 10 listed records; 1127 vs 1312 resolved figures) without asserting either as reconciled. Verdict: pass.",
+  "unsupported": []
+ }
+}
