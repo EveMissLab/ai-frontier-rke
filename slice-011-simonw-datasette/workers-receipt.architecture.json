@@ -1,0 +1,250 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T18:41:35.893985Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "15c90902-defd-486b-b0d0-762779bd87de",
+   "conservative_cost_ceiling_usd": 0.03793475,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.02139225,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.010696125,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 39948,
+     "prompt_tokens": 9455,
+     "reasoning_tokens": 34673,
+     "total_tokens": 49403
+    }
+   },
+   "failure": null,
+   "latency_seconds": 352.42,
+   "output_ref": "slice-011-simonw-datasette/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 35,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-011-simonw-datasette-arch-writer-01",
+   "worker_run_entity_id": "worker_15c90902-defd-486b-b0d0-762779bd87de"
+  },
+  {
+   "attempt": 1,
+   "candidate": "7ee210e5-f13b-40e8-a724-e980779da2e9",
+   "conservative_cost_ceiling_usd": 0.0412601,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.013785549999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.006892774999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 22727,
+     "prompt_tokens": 16147,
+     "reasoning_tokens": 19419,
+     "total_tokens": 38874
+    }
+   },
+   "failure": null,
+   "latency_seconds": 239.34,
+   "output_ref": "slice-011-simonw-datasette/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 1,
+     "supported": 34,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 1,
+    "status": "fail"
+   },
+   "task_id": "af-slice-011-simonw-datasette-arch-verifier-01",
+   "worker_run_entity_id": "worker_7ee210e5-f13b-40e8-a724-e980779da2e9"
+  },
+  {
+   "attempt": 2,
+   "candidate": "705e4d2b-3655-4a14-8727-7a10e9511c5b",
+   "conservative_cost_ceiling_usd": 0.04152275,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01045625,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005228125,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 15955,
+     "prompt_tokens": 16525,
+     "reasoning_tokens": 9382,
+     "total_tokens": 32480
+    }
+   },
+   "failure": null,
+   "latency_seconds": 128.08,
+   "output_ref": "slice-011-simonw-datasette/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 35,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-011-simonw-datasette-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_705e4d2b-3655-4a14-8727-7a10e9511c5b"
+  },
+  {
+   "attempt": 2,
+   "candidate": "21dfe3db-2d79-42c6-b1c2-ea52288e5341",
+   "conservative_cost_ceiling_usd": 0.04127315,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01282775,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.006413875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 20806,
+     "prompt_tokens": 16165,
+     "reasoning_tokens": 18325,
+     "total_tokens": 36971
+    }
+   },
+   "failure": null,
+   "latency_seconds": 203.57,
+   "output_ref": "slice-011-simonw-datasette/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 35,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-011-simonw-datasette-arch-verifier-02",
+   "worker_run_entity_id": "worker_21dfe3db-2d79-42c6-b1c2-ea52288e5341"
+  },
+  {
+   "attempt": 1,
+   "candidate": "eecedf10-e81d-43a9-96e2-2eee1f4f9265",
+   "conservative_cost_ceiling_usd": 0.03803135,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0060687,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00303435,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 9162,
+     "prompt_tokens": 9918,
+     "reasoning_tokens": 8030,
+     "total_tokens": 19080
+    }
+   },
+   "failure": null,
+   "latency_seconds": 108.21,
+   "output_ref": "slice-011-simonw-datasette/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.75,
+     "redundancy": 0.55,
+     "scope_discipline": 0.8,
+     "structure": 0.7
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-011-simonw-datasette-arch-critic-01",
+   "worker_run_entity_id": "worker_eecedf10-e81d-43a9-96e2-2eee1f4f9265"
+  },
+  {
+   "attempt": 1,
+   "candidate": "221d0bc2-daee-4ecf-be04-e63abd240dfe",
+   "conservative_cost_ceiling_usd": 0.0342344,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0018530999999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0009265499999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3054,
+     "prompt_tokens": 2174,
+     "reasoning_tokens": 2879,
+     "total_tokens": 5228
+    }
+   },
+   "failure": null,
+   "latency_seconds": 31.15,
+   "output_ref": "slice-011-simonw-datasette/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-011-simonw-datasette-arch-seo-01",
+   "worker_run_entity_id": "worker_221d0bc2-daee-4ecf-be04-e63abd240dfe"
+  }
+ ],
+ "slice": "slice-011-simonw-datasette",
+ "started_at": "2026-09-18T18:23:25.353364Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 35 claims verified against the packet. Every grounding_ref exists verbatim (including summary_repository and architecture_reconstruction, which the packet's grounding_id_note sanctions); all claims are supported, including exact matches for directory counts, role numbers, execution-path enumeration (10 listed, one in-repo, nine app.py boundary stops, Setting x5), relation_counts figures, dependency records, and limitation texts. No epistemic upgrades: 'observed' claims cite only verified/observed records (subsys_*, meta_*, important_*, py_entry_*, entry_*, relation_counts, dep_*, lim_*), while exec_*, role_*, summary_repository, and architecture_reconstruction claims are correctly 'inferred'. No knowledge leakage, hallucinated names, or rights issues. The packet's self-conflicting teaching claim claim_4d30ade3e21e is correctly flagged in the draft's uncertainties and left unused, and the 4537-vs-5488 figure difference is handled by citing each number to its own record. Verdict: pass with no required fixes.",
+  "unsupported": []
+ }
+}

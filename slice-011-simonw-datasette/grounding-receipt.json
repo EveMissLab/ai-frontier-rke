@@ -1,6 +1,6 @@
 {
  "analysis_run_id": "analysis_ef14c7222eb9f538",
- "analysis_run_mode": "new",
+ "analysis_run_mode": "reuse_existing",
  "bounded_context_ratio": 0.00087,
  "counts": {
   "dependencies": 6,
@@ -42,6 +42,10 @@
  "manifest_ref": "slice-011-simonw-datasette/artifacts/repolumen/repo_github_107914493/b338c6f5f6b39dd3e0a341431f071d8cecb0d12b/0.10/semantic-manifest.json",
  "manifest_sha256": "95065c9e555143f8531a1b3a9eaa7a942eacbf8d2bb3de7a7edd64f089293524",
  "packets": {
+  "architecture": {
+   "bytes": 24811,
+   "sha256": "81d37d3527e396b77bd0b15603fdd004fac65a41fac8ac908895b0a744735186"
+  },
   "overview": {
    "bytes": 36011,
    "sha256": "4b8ea4431efff42ee42b4444730a945918f85d033df30b26467b39492b4de116"
@@ -55,10 +59,11 @@
  "projection_version": "ai-frontier-grounding/v1.2",
  "run_recorded_grounding_bundle_sha256": "e4acc8e2acd10a9a0505599424d8db7c4667a5e58c456fcf2a51754d8379c2b4",
  "sedb_write": {
-  "created_entities": 32806,
+  "created_entities": 0,
+  "note": "existing analysis run reused",
   "unchanged_entities": 0,
   "updated_entities": 0,
-  "written_cells": 492095
+  "written_cells": 0
  },
  "supersedes_projection_id": null
 }
