@@ -42,6 +42,10 @@
  "manifest_ref": "slice-009-huggingface-smolagents-run3/artifacts/repolumen/repo_github_898968194/30bb1161095dbae2271e6bc3cc4c219cc3897a57/0.10/semantic-manifest.json",
  "manifest_sha256": "c6cdbe692212bdf1ae6b6499e02151d9223b1bcb086c63fc437e1ae959e9119b",
  "packets": {
+  "architecture": {
+   "bytes": 34685,
+   "sha256": "474a8bce59014de4f81ffde36c571c4a23ead6dbc37c7d91a0aef10fa126dbcd"
+  },
   "overview": {
    "bytes": 45155,
    "sha256": "7ad0d59c72c13c871d8f1a3d5955b10f7e615d6454dea9bc7736b46870ecc798"

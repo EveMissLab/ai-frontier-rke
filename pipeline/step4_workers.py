@@ -112,6 +112,8 @@ def deterministic_checks(draft: dict, packet: dict, catalog: dict, files: set[st
             failures.append(f"section {s['id']}: unknown claim ids {missing}")
         if len(s.get("markdown", "").split()) > 260:
             failures.append(f"section {s['id']}: over 260 words"); fixes.append({"target": s["id"], "action": "reword", "instruction": "shorten this section to at most 180 words"})
+        if re.search(r"\[c\d+\]", s.get("markdown", "")):  # 2026-09-19 smolagents: inline [cN] markers leaked into the prose and would render on the page
+            failures.append(f"section {s['id']}: inline claim-id markers in the body"); fixes.append({"target": s["id"], "action": "reword", "instruction": "remove bracketed claim-id markers such as [c12] from the section body; claim ids belong only in claim_ids and summary_claim_ids, never in the prose"})
         quotes = re.findall(r"```.*?```", s.get("markdown", ""), flags=re.S)
         for q in quotes:
             if q.count("\n") > 4:

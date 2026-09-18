@@ -1,0 +1,170 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T16:24:05.001949Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "51092964-8c6c-40b1-8441-d18505a38012",
+   "conservative_cost_ceiling_usd": 0.03959285,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.02401965,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.012009825,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 44193,
+     "prompt_tokens": 12821,
+     "reasoning_tokens": 38807,
+     "total_tokens": 57014
+    }
+   },
+   "failure": null,
+   "latency_seconds": 476.53,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture-r2/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-r2-writer-01",
+   "worker_run_entity_id": "worker_51092964-8c6c-40b1-8441-d18505a38012"
+  },
+  {
+   "attempt": 1,
+   "candidate": "c411c30a-7a99-4a2c-90c7-1aecfaf63d02",
+   "conservative_cost_ceiling_usd": 0.04310855,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00930395,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004651975,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 12679,
+     "prompt_tokens": 19763,
+     "reasoning_tokens": 10036,
+     "total_tokens": 32442
+    }
+   },
+   "failure": null,
+   "latency_seconds": 107.47,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture-r2/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 40,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-r2-verifier-01",
+   "worker_run_entity_id": "worker_c411c30a-7a99-4a2c-90c7-1aecfaf63d02"
+  },
+  {
+   "attempt": 1,
+   "candidate": "5821281a-bc0c-4705-8e36-33bfc44dfe9d",
+   "conservative_cost_ceiling_usd": 0.03834335,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00861355,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004306775,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 14093,
+     "prompt_tokens": 10447,
+     "reasoning_tokens": 12940,
+     "total_tokens": 24540
+    }
+   },
+   "failure": null,
+   "latency_seconds": 178.44,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture-r2/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.85,
+     "structure": 0.8
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-r2-critic-01",
+   "worker_run_entity_id": "worker_5821281a-bc0c-4705-8e36-33bfc44dfe9d"
+  },
+  {
+   "attempt": 1,
+   "candidate": "ebd9c3c7-ef9d-4ec6-a5e3-6a1361107486",
+   "conservative_cost_ceiling_usd": 0.03428525,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0028544,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0014272,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5041,
+     "prompt_tokens": 2226,
+     "reasoning_tokens": 4886,
+     "total_tokens": 7267
+    }
+   },
+   "failure": null,
+   "latency_seconds": 55.06,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture-r2/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-r2-seo-01",
+   "worker_run_entity_id": "worker_ebd9c3c7-ef9d-4ec6-a5e3-6a1361107486"
+  }
+ ],
+ "slice": "slice-009-huggingface-smolagents-run3",
+ "started_at": "2026-09-18T16:10:13.077853Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 40 claims verified against the packet. Every grounding ref resolves (summary_repository and architecture_reconstruction are authorized IDs per the packet's grounding_id_note and its own teaching-claim evidence, mapping to repository_summary and reconstruction_overview_static); all cited figures, paths, roles, versions and counts match; no claim marked observed cites inferred-only evidence; no leakage, hallucinated names or rights issues. The draft itself correctly flags the unreconciled 615 vs 745 figures, the readme.md case-variant exclusion, and the 10-of-90 path coverage. Verdict: pass.",
+  "unsupported": []
+ }
+}

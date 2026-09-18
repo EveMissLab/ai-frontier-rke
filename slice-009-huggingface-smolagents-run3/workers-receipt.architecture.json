@@ -1,0 +1,250 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T16:07:34.179748Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "60d62172-69c7-48a3-b029-3fb59702e66e",
+   "conservative_cost_ceiling_usd": 0.03959285,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.034566150000000004,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.017283075000000002,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 65286,
+     "prompt_tokens": 12821,
+     "reasoning_tokens": 59858,
+     "total_tokens": 78107
+    }
+   },
+   "failure": null,
+   "latency_seconds": 766.35,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-writer-01",
+   "worker_run_entity_id": "worker_60d62172-69c7-48a3-b029-3fb59702e66e"
+  },
+  {
+   "attempt": 1,
+   "candidate": "31a9921d-127c-4764-80d6-fd96a41b1b3d",
+   "conservative_cost_ceiling_usd": 0.042965449999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01102325,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005511625,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 16117,
+     "prompt_tokens": 19765,
+     "reasoning_tokens": 13678,
+     "total_tokens": 35882
+    }
+   },
+   "failure": null,
+   "latency_seconds": 167.71,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 1,
+     "supported": 35,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 1,
+    "status": "fail"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-verifier-01",
+   "worker_run_entity_id": "worker_31a9921d-127c-4764-80d6-fd96a41b1b3d"
+  },
+  {
+   "attempt": 2,
+   "candidate": "5bd71a23-327d-43bf-86fb-5437a2d30dab",
+   "conservative_cost_ceiling_usd": 0.0432446,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.013488100000000001,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0067440500000000006,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 20927,
+     "prompt_tokens": 20164,
+     "reasoning_tokens": 15280,
+     "total_tokens": 41091
+    }
+   },
+   "failure": null,
+   "latency_seconds": 201.76,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_5bd71a23-327d-43bf-86fb-5437a2d30dab"
+  },
+  {
+   "attempt": 2,
+   "candidate": "8ae1f67c-38ec-4746-80db-919bb6e9cb50",
+   "conservative_cost_ceiling_usd": 0.043118449999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0097937,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00489685,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 13588,
+     "prompt_tokens": 19998,
+     "reasoning_tokens": 11091,
+     "total_tokens": 33586
+    }
+   },
+   "failure": null,
+   "latency_seconds": 121.68,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 36,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-verifier-02",
+   "worker_run_entity_id": "worker_8ae1f67c-38ec-4746-80db-919bb6e9cb50"
+  },
+  {
+   "attempt": 1,
+   "candidate": "ebdd9e28-406f-436f-96a1-56111c62ca5f",
+   "conservative_cost_ceiling_usd": 0.03835325,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0069828,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0034914,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 10761,
+     "prompt_tokens": 10682,
+     "reasoning_tokens": 9698,
+     "total_tokens": 21443
+    }
+   },
+   "failure": null,
+   "latency_seconds": 140.99,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.7,
+     "redundancy": 0.65,
+     "scope_discipline": 0.9,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-critic-01",
+   "worker_run_entity_id": "worker_ebdd9e28-406f-436f-96a1-56111c62ca5f"
+  },
+  {
+   "attempt": 1,
+   "candidate": "7af0dd43-0dd4-4873-a5b3-3182ea092af1",
+   "conservative_cost_ceiling_usd": 0.03427865,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00204975,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.001024875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3396,
+     "prompt_tokens": 2345,
+     "reasoning_tokens": 3234,
+     "total_tokens": 5741
+    }
+   },
+   "failure": null,
+   "latency_seconds": 37.19,
+   "output_ref": "slice-009-huggingface-smolagents-run3/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-009-huggingface-smolagents-run3-arch-seo-01",
+   "worker_run_entity_id": "worker_7af0dd43-0dd4-4873-a5b3-3182ea092af1"
+  }
+ ],
+ "slice": "slice-009-huggingface-smolagents-run3",
+ "started_at": "2026-09-18T15:43:10.284605Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 36 claims pass. Every grounding_ref exists in the packet (including summary_repository and architecture_reconstruction, both sanctioned by the packet's grounding_id_note) and supports its claim text: counts (185 files, directory splits, 10 entrypoints, 615/6888/745/7633/90 relations and paths, 20 role records, 43 dependency records), path excerpts (eight __main__ guards with six main() callers as qualified in c8), role degrees, and dependency name/version pairs all verify exactly. Epistemic statuses are never stronger than the cited provenance: observed claims cite only verified/observed records (entrypoints, subsystems, important files, relation_counts, lim_*, dep_*, meta_primary_language), while role- and path-based claims are marked inferred or unresolved. No knowledge leakage, no hallucinated file or symbol names, no rights problems; the draft's uncertainty notes (90 vs 10 itemized paths, 615 vs 745 discrepancy, excluded readme.md case variant, unparsed pyproject tables) accurately reflect packet limitations.",
+  "unsupported": []
+ }
+}
