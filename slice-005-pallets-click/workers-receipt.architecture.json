@@ -1,0 +1,170 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T08:12:04.729230Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "bfdd3507-4068-487c-8efe-8345703e6d12",
+   "conservative_cost_ceiling_usd": 0.037115449999999994,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0128718,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0064359,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 23466,
+     "prompt_tokens": 7592,
+     "reasoning_tokens": 19225,
+     "total_tokens": 31058
+    }
+   },
+   "failure": null,
+   "latency_seconds": 302.49,
+   "output_ref": "slice-005-pallets-click/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 33,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-005-pallets-click-arch-writer-01",
+   "worker_run_entity_id": "worker_bfdd3507-4068-487c-8efe-8345703e6d12"
+  },
+  {
+   "attempt": 1,
+   "candidate": "de772046-8ae2-49c6-94d0-0b6ad6f817ad",
+   "conservative_cost_ceiling_usd": 0.03995105,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0078488,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0039244,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11788,
+     "prompt_tokens": 13032,
+     "reasoning_tokens": 9547,
+     "total_tokens": 24820
+    }
+   },
+   "failure": null,
+   "latency_seconds": 131.57,
+   "output_ref": "slice-005-pallets-click/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 33,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-005-pallets-click-arch-verifier-01",
+   "worker_run_entity_id": "worker_de772046-8ae2-49c6-94d0-0b6ad6f817ad"
+  },
+  {
+   "attempt": 1,
+   "candidate": "e8c40405-5fec-42a8-ad65-ffc25e136940",
+   "conservative_cost_ceiling_usd": 0.037175900000000005,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0050705,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00253525,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 7768,
+     "prompt_tokens": 7910,
+     "reasoning_tokens": 6587,
+     "total_tokens": 15678
+    }
+   },
+   "failure": null,
+   "latency_seconds": 104.88,
+   "output_ref": "slice-005-pallets-click/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.65,
+     "coherence": 0.8,
+     "redundancy": 0.6,
+     "scope_discipline": 0.9,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-005-pallets-click-arch-critic-01",
+   "worker_run_entity_id": "worker_e8c40405-5fec-42a8-ad65-ffc25e136940"
+  },
+  {
+   "attempt": 1,
+   "candidate": "fc32b3e6-c333-4668-b358-5e05a7c3ad6f",
+   "conservative_cost_ceiling_usd": 0.034150099999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0015948499999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0007974249999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 2605,
+     "prompt_tokens": 1949,
+     "reasoning_tokens": 2445,
+     "total_tokens": 4554
+    }
+   },
+   "failure": null,
+   "latency_seconds": 37.78,
+   "output_ref": "slice-005-pallets-click/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-005-pallets-click-arch-seo-01",
+   "worker_run_entity_id": "worker_fc32b3e6-c333-4668-b358-5e05a7c3ad6f"
+  }
+ ],
+ "slice": "slice-005-pallets-click",
+ "started_at": "2026-09-18T08:02:12.297043Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 33 draft claims were checked against the packet. Every grounding_ref exists in the packet (including summary_repository and architecture_reconstruction, both authorized citable IDs), every citation supports its claim, numeric values (file counts, role degrees, relation counts, exec path terminals) match exactly, and no epistemic status exceeds what the cited items allow (observed is used only with verified files/entrypoints/subsystems, lim_*, relation_counts, or observed platform metadata). No knowledge leakage, no hallucinated paths or symbols, no rights problems. The 428-vs-590 discrepancy flagged in the draft's questions is not asserted in the draft body, which correctly cites only relation_counts. Overall verdict: pass with no required fixes.",
+  "unsupported": []
+ }
+}
