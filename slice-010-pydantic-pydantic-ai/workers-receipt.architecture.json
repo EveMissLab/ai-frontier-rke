@@ -1,0 +1,307 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T18:02:01.103178Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c5: path 'github/scripts/agentic_workflow_guard.py' not in the analyzed file inventory",
+   "c5: path 'github/scripts/agent_spend_report.py' not in the analyzed file inventory",
+   "c5: path 'github/scripts/semantic_owner_router.py' not in the analyzed file inventory",
+   "c10: path 'github/scripts/pydantic_ai_gh_aw_shim/cli.py' not in the analyzed file inventory",
+   "c12: path 'claude/skills/testing-skill/parse_cassette.py' not in the analyzed file inventory"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [
+   "c5: path 'github/scripts/agent_spend_report.py' not in the analyzed file inventory",
+   "c5: path 'github/scripts/semantic_owner_router.py' not in the analyzed file inventory"
+  ],
+  "ok": false
+ },
+ "deterministic_check_3": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "7e6ee83a-9405-4ec1-8856-6b0dbfcc82a7",
+   "conservative_cost_ceiling_usd": 0.04085405,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.02054195,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.010270975,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 36412,
+     "prompt_tokens": 15573,
+     "reasoning_tokens": 30899,
+     "total_tokens": 51985
+    }
+   },
+   "failure": null,
+   "latency_seconds": 359.08,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 37,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-writer-01",
+   "worker_run_entity_id": "worker_7e6ee83a-9405-4ec1-8856-6b0dbfcc82a7"
+  },
+  {
+   "attempt": 2,
+   "candidate": "e74dd405-ea00-448d-a9d7-23b3db0e2dc9",
+   "conservative_cost_ceiling_usd": 0.04471625,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.009370100000000001,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0046850500000000005,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11860,
+     "prompt_tokens": 22934,
+     "reasoning_tokens": 5870,
+     "total_tokens": 34794
+    }
+   },
+   "failure": null,
+   "latency_seconds": 91.72,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 37,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_e74dd405-ea00-448d-a9d7-23b3db0e2dc9"
+  },
+  {
+   "attempt": 1,
+   "candidate": "16a28ae3-9b66-443a-9b1b-3914353a2f7a",
+   "conservative_cost_ceiling_usd": 0.0443972,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.013865200000000001,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.006932600000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 21008,
+     "prompt_tokens": 22408,
+     "reasoning_tokens": 17782,
+     "total_tokens": 43416
+    }
+   },
+   "failure": null,
+   "latency_seconds": 196.36,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 1,
+     "supported": 36,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 1,
+    "status": "fail"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-verifier-01",
+   "worker_run_entity_id": "worker_16a28ae3-9b66-443a-9b1b-3914353a2f7a"
+  },
+  {
+   "attempt": 1,
+   "candidate": "39485804-e95e-4bcb-a6dc-6b17e5477164",
+   "conservative_cost_ceiling_usd": 0.040538,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.008223,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0041115,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11964,
+     "prompt_tokens": 14940,
+     "reasoning_tokens": 10941,
+     "total_tokens": 26904
+    }
+   },
+   "failure": null,
+   "latency_seconds": 148.33,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.8,
+     "redundancy": 0.7,
+     "scope_discipline": 0.85,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-critic-01",
+   "worker_run_entity_id": "worker_39485804-e95e-4bcb-a6dc-6b17e5477164"
+  },
+  {
+   "attempt": 1,
+   "candidate": "4cb91fec-2cb6-41ed-85af-c9c9cc355bed",
+   "conservative_cost_ceiling_usd": 0.03431675,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00291795,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.001458975,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 5160,
+     "prompt_tokens": 2253,
+     "reasoning_tokens": 4991,
+     "total_tokens": 7413
+    }
+   },
+   "failure": null,
+   "latency_seconds": 54.21,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-seo-01",
+   "worker_run_entity_id": "worker_4cb91fec-2cb6-41ed-85af-c9c9cc355bed"
+  },
+  {
+   "attempt": 3,
+   "candidate": "c76abc11-9b98-44ea-9cb5-5dc473098aaf",
+   "conservative_cost_ceiling_usd": 0.0446813,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.008322399999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0041611999999999994,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 9809,
+     "prompt_tokens": 22786,
+     "reasoning_tokens": 4314,
+     "total_tokens": 32595
+    }
+   },
+   "failure": null,
+   "latency_seconds": 74.25,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/writer-revision-03.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 37,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-writer-revision-03",
+   "worker_run_entity_id": "worker_c76abc11-9b98-44ea-9cb5-5dc473098aaf"
+  },
+  {
+   "attempt": 2,
+   "candidate": "16f041dd-f775-4a7e-a6de-53849a51ba97",
+   "conservative_cost_ceiling_usd": 0.04442045,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.011194200000000001,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005597100000000001,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 15666,
+     "prompt_tokens": 22408,
+     "reasoning_tokens": 13015,
+     "total_tokens": 38074
+    }
+   },
+   "failure": null,
+   "latency_seconds": 133.0,
+   "output_ref": "slice-010-pydantic-pydantic-ai/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 37,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-010-pydantic-pydantic-ai-arch-verifier-02",
+   "worker_run_entity_id": "worker_16f041dd-f775-4a7e-a6de-53849a51ba97"
+  }
+ ],
+ "slice": "slice-010-pydantic-pydantic-ai",
+ "started_at": "2026-09-18T17:47:22.171201Z",
+ "synthetic": false,
+ "verifier_revision": {
+  "claims": 37,
+  "source": "verifier",
+  "status": "revision_accepted"
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 37 draft claims verified against the packet: every grounding ref exists verbatim as a citable ID, every claim is supported (many matching packet values exactly, e.g. directory counts, role degrees, relation_counts sums, exec-path structure), and epistemic statuses are appropriate - observed only on verified files/entrypoints/subsystems/limitation records/relation_counts, inferred for exec_*, role_*, summary_repository, architecture_reconstruction, and teaching claims, author_claimed for meta_description. No knowledge leakage, no hallucinated paths or symbols, no rights issues. One packet-level inconsistency (claim_4d30ade3e21e vs. the 485 reported paths) is noted but does not affect any draft claim; the draft cites the reconstruction figure and surfaces the conflict itself. No packet text was treated as an instruction.",
+  "unsupported": []
+ }
+}

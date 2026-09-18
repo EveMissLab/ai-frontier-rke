@@ -102,9 +102,12 @@ def deterministic_checks(draft: dict, packet: dict, catalog: dict, files: set[st
         if st in ("observed", "inferred") and states and states <= {"author_claimed"}:
             failures.append(f"{cid}: marked {st} but only author-claimed groundings cited"); fixes.append({"target": cid, "action": "downgrade_status", "instruction": "only author-claimed metadata is cited; set epistemic_status to author_claimed"})
         # hallucinated path names
-        for p in re.findall(r"\b[\w./-]+\.(?:py|toml|md|txt|yml|yaml|json|sh|cfg|ini)\b", c.get("text", "")):
-            p = p.strip("./")
-            if p and p not in files and not any(f.endswith("/" + p) for f in files):
+        # 2026-09-19 pydantic-ai: `.github/scripts/x.py` was matched as `github/scripts/x.py` and reported missing —
+        # keep a leading dot-directory, and compare with and without it.
+        for p in re.findall(r"(?<![\w/])\.?[\w./-]+\.(?:py|toml|md|txt|yml|yaml|json|sh|cfg|ini)\b", c.get("text", "")):
+            p = re.sub(r"^(\./)+", "", p).rstrip(".")
+            cands = {p, p.lstrip(".")}
+            if p and not any(q in files or any(f.endswith("/" + q) for f in files) for q in cands if q):
                 failures.append(f"{cid}: path '{p}' not in the analyzed file inventory"); fixes.append({"target": cid, "action": "reword", "instruction": f"'{p}' is not a file in the analyzed revision; remove or correct it"})
     for s in draft.get("sections", []):
         missing = [c for c in s.get("claim_ids", []) if c not in claims]

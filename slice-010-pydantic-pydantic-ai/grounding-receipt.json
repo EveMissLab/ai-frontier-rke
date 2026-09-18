@@ -1,6 +1,6 @@
 {
  "analysis_run_id": "analysis_05adb8136b6eff1b",
- "analysis_run_mode": "new",
+ "analysis_run_mode": "reuse_existing_new_projection (run recorded ai-frontier-grounding/v1.1, now ai-frontier-grounding/v1.2)",
  "bounded_context_ratio": 0.00019,
  "counts": {
   "dependencies": 0,
@@ -30,9 +30,9 @@
    "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
   }
  ],
- "grounding_bundle_bytes": 208799691,
- "grounding_bundle_ref": "slice-010-pydantic-pydantic-ai/artifacts/grounding/analysis_05adb8136b6eff1b/v1.1/grounding-bundle.json",
- "grounding_bundle_sha256": "6d8e04de757f6e2d4d8fa06d41ba672b40cfb688210a3ebf9bffd7a80c5acfa4",
+ "grounding_bundle_bytes": 208799744,
+ "grounding_bundle_ref": "slice-010-pydantic-pydantic-ai/artifacts/grounding/analysis_05adb8136b6eff1b/v1.2/grounding-bundle.json",
+ "grounding_bundle_sha256": "a9eef781adff83c097c958bb6cf2830c7e10b616327badec97f87bca2be7adc6",
  "license_state": {
   "agreement": true,
   "repolumen_detected": "MIT",
@@ -42,23 +42,27 @@
  "manifest_ref": "slice-010-pydantic-pydantic-ai/artifacts/repolumen/repo_github_818331198/5cbacfc8f86d653baa0ca2e31970cbf4f0fcec95/0.10/semantic-manifest.json",
  "manifest_sha256": "b56ba15d4481d942759200dd188ef1cf155671105714578caa7719207e6502a8",
  "packets": {
+  "architecture": {
+   "bytes": 42974,
+   "sha256": "6a6dafee362a8f3a47f25ac527df03a16b0e3fc918f08ae0f9b2402ab80fbe64"
+  },
   "overview": {
-   "bytes": 57956,
-   "sha256": "e0e1d34a94b2275c2ed0c173e9a03c98b607e1c4560bd32073e1d82c24a649ec"
+   "bytes": 58009,
+   "sha256": "a35490eff438c4441ef7582d4d8ccf750b2df01a768acf61ee5b1ee78da3fd57"
   },
   "taxonomy": {
    "bytes": 11370,
    "sha256": "7be40c266f1c442dd4dbded185d7b89c3096042afe374f490f0f89f928073707"
   }
  },
- "projection_id": "proj_analysis_05adb8136b6eff1b_v1_1",
- "projection_version": "ai-frontier-grounding/v1.1",
+ "projection_id": "proj_analysis_05adb8136b6eff1b_v1_2",
+ "projection_version": "ai-frontier-grounding/v1.2",
  "run_recorded_grounding_bundle_sha256": "6d8e04de757f6e2d4d8fa06d41ba672b40cfb688210a3ebf9bffd7a80c5acfa4",
  "sedb_write": {
-  "created_entities": 234596,
-  "unchanged_entities": 0,
+  "created_entities": 1,
+  "unchanged_entities": 234594,
   "updated_entities": 0,
-  "written_cells": 3518944
+  "written_cells": 12
  },
- "supersedes_projection_id": null
+ "supersedes_projection_id": "proj_analysis_05adb8136b6eff1b_v1_1"
 }
