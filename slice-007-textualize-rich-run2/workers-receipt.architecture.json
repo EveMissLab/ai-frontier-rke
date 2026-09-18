@@ -1,0 +1,170 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T11:53:15.135209Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "d3360920-4e3c-4491-8ea2-a8e8e5e49793",
+   "conservative_cost_ceiling_usd": 0.041580349999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.02021525,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.010107625,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 35347,
+     "prompt_tokens": 16945,
+     "reasoning_tokens": 30506,
+     "total_tokens": 52292
+    }
+   },
+   "failure": null,
+   "latency_seconds": 388.9,
+   "output_ref": "slice-007-textualize-rich-run2/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 39,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-007-textualize-rich-run2-arch-writer-01",
+   "worker_run_entity_id": "worker_d3360920-4e3c-4491-8ea2-a8e8e5e49793"
+  },
+  {
+   "attempt": 1,
+   "candidate": "4073b5d9-b792-4125-ba06-234c3a5ba3a0",
+   "conservative_cost_ceiling_usd": 0.044747,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.012268,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.006134,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 17561,
+     "prompt_tokens": 23250,
+     "reasoning_tokens": 15072,
+     "total_tokens": 40811
+    }
+   },
+   "failure": null,
+   "latency_seconds": 198.75,
+   "output_ref": "slice-007-textualize-rich-run2/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-007-textualize-rich-run2-arch-verifier-01",
+   "worker_run_entity_id": "worker_4073b5d9-b792-4125-ba06-234c3a5ba3a0"
+  },
+  {
+   "attempt": 1,
+   "candidate": "5289333f-40db-4bc7-8c08-779c1813da5a",
+   "conservative_cost_ceiling_usd": 0.0414908,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00913285,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004566425,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 13181,
+     "prompt_tokens": 16949,
+     "reasoning_tokens": 11909,
+     "total_tokens": 30130
+    }
+   },
+   "failure": null,
+   "latency_seconds": 173.54,
+   "output_ref": "slice-007-textualize-rich-run2/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.65,
+     "coherence": 0.8,
+     "redundancy": 0.7,
+     "scope_discipline": 0.95,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-007-textualize-rich-run2-arch-critic-01",
+   "worker_run_entity_id": "worker_5289333f-40db-4bc7-8c08-779c1813da5a"
+  },
+  {
+   "attempt": 1,
+   "candidate": "a6f64462-10d9-48a8-abae-159568feed2c",
+   "conservative_cost_ceiling_usd": 0.03414635,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0018375499999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0009187749999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3091,
+     "prompt_tokens": 1947,
+     "reasoning_tokens": 2950,
+     "total_tokens": 5038
+    }
+   },
+   "failure": null,
+   "latency_seconds": 34.59,
+   "output_ref": "slice-007-textualize-rich-run2/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-007-textualize-rich-run2-arch-seo-01",
+   "worker_run_entity_id": "worker_a6f64462-10d9-48a8-abae-159568feed2c"
+  }
+ ],
+ "slice": "slice-007-textualize-rich-run2",
+ "started_at": "2026-09-18T11:39:42.332406Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 39 draft claims verified against the packet: every grounding_ref exists verbatim, all numbers, file paths, symbols, versions, role degrees, dependency records and execution-path details match, and no epistemic status exceeds what the cited evidence allows (observed used only with entrypoints, dep_*, lim_*, relation_counts and important_* records; claims citing exec_*, role_*, summary_repository or architecture_reconstruction are kept at inferred or weaker). No knowledge leakage, no hallucinated names, no rights problems. The draft correctly quarantined the packet-internal conflict between claim_4d30ade3e21e ('no bounded static execution path is available') and the 612-path reconstruction in its questions instead of asserting it, and its four questions accurately describe packet contents. Status: pass.",
+  "unsupported": []
+ }
+}

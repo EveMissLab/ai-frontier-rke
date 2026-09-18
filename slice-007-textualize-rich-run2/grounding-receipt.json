@@ -42,6 +42,10 @@
  "manifest_ref": "slice-007-textualize-rich-run2/artifacts/repolumen/repo_github_220809393/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/0.10/semantic-manifest.json",
  "manifest_sha256": "4060debc6c889c0ef0ba12c4f001ec34b8a2e1e6daf80ca875c90ef0c63db775",
  "packets": {
+  "architecture": {
+   "bytes": 47297,
+   "sha256": "0f8370ecfd8ddd7e44b4c14575200c8e09b5e4c01646097142c966d2349a0438"
+  },
   "overview": {
    "bytes": 59378,
    "sha256": "69233c9dd66d8ee5704fc2dc70c8e7290f3c99b641649230251dd1c81f3c2f13"
