@@ -1,0 +1,302 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T19:14:20.145649Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c1: section_id summary not in sections",
+   "c2: section_id summary not in sections",
+   "c3: section_id summary not in sections"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_3": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "66b08205-639d-4000-a868-2473bba21d92",
+   "conservative_cost_ceiling_usd": 0.0407465,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0242255,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.01211275,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 43759,
+     "prompt_tokens": 15640,
+     "reasoning_tokens": 37278,
+     "total_tokens": 59399
+    }
+   },
+   "failure": null,
+   "latency_seconds": 376.53,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-writer-01",
+   "worker_run_entity_id": "worker_66b08205-639d-4000-a868-2473bba21d92"
+  },
+  {
+   "attempt": 2,
+   "candidate": "f92b51b8-0c10-4e5c-b804-f6db714886db",
+   "conservative_cost_ceiling_usd": 0.0452354,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01091115,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005455575,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 14511,
+     "prompt_tokens": 24371,
+     "reasoning_tokens": 8022,
+     "total_tokens": 38882
+    }
+   },
+   "failure": null,
+   "latency_seconds": 135.15,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_f92b51b8-0c10-4e5c-b804-f6db714886db"
+  },
+  {
+   "attempt": 1,
+   "candidate": "19e84c6a-040b-443e-bb6b-b538c6dd3efe",
+   "conservative_cost_ceiling_usd": 0.044928199999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.02122375,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.010611875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 35276,
+     "prompt_tokens": 23905,
+     "reasoning_tokens": 32233,
+     "total_tokens": 59181
+    }
+   },
+   "failure": null,
+   "latency_seconds": 361.47,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 2,
+     "supported": 38,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 2,
+    "status": "fail"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-verifier-01",
+   "worker_run_entity_id": "worker_19e84c6a-040b-443e-bb6b-b538c6dd3efe"
+  },
+  {
+   "attempt": 1,
+   "candidate": "411d2c12-e754-4f63-bbd9-0b3158332575",
+   "conservative_cost_ceiling_usd": 0.040211449999999996,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00999185,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004995925,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 15700,
+     "prompt_tokens": 14279,
+     "reasoning_tokens": 14293,
+     "total_tokens": 29979
+    }
+   },
+   "failure": null,
+   "latency_seconds": 171.31,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.75,
+     "redundancy": 0.55,
+     "scope_discipline": 0.7,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-critic-01",
+   "worker_run_entity_id": "worker_411d2c12-e754-4f63-bbd9-0b3158332575"
+  },
+  {
+   "attempt": 1,
+   "candidate": "232290f0-c648-475e-a693-4ae98c9fca22",
+   "conservative_cost_ceiling_usd": 0.03437765,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00170295,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.000851475,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 2715,
+     "prompt_tokens": 2303,
+     "reasoning_tokens": 2574,
+     "total_tokens": 5018
+    }
+   },
+   "failure": null,
+   "latency_seconds": 26.41,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-seo-01",
+   "worker_run_entity_id": "worker_232290f0-c648-475e-a693-4ae98c9fca22"
+  },
+  {
+   "attempt": 3,
+   "candidate": "48dba0f7-e27f-49e9-b8b0-346f64787a3b",
+   "conservative_cost_ceiling_usd": 0.0452798,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01159045,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005795225,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 15860,
+     "prompt_tokens": 24403,
+     "reasoning_tokens": 9326,
+     "total_tokens": 40263
+    }
+   },
+   "failure": null,
+   "latency_seconds": 106.02,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/writer-revision-03.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-writer-revision-03",
+   "worker_run_entity_id": "worker_48dba0f7-e27f-49e9-b8b0-346f64787a3b"
+  },
+  {
+   "attempt": 2,
+   "candidate": "865487ab-ddb0-4bad-b955-7fc08414dab1",
+   "conservative_cost_ceiling_usd": 0.0449351,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01755475,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.008777375,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 27950,
+     "prompt_tokens": 23865,
+     "reasoning_tokens": 25425,
+     "total_tokens": 51815
+    }
+   },
+   "failure": null,
+   "latency_seconds": 259.65,
+   "output_ref": "slice-017-mitmproxy-mitmproxy/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 40,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-017-mitmproxy-mitmproxy-arch-verifier-02",
+   "worker_run_entity_id": "worker_865487ab-ddb0-4bad-b955-7fc08414dab1"
+  }
+ ],
+ "slice": "slice-017-mitmproxy-mitmproxy",
+ "started_at": "2026-09-18T18:56:04.546626Z",
+ "synthetic": false,
+ "verifier_revision": {
+  "claims": 40,
+  "source": "verifier",
+  "status": "revision_accepted"
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 40 claims verified against the packet: every grounding ref exists, every claim is supported, and no claim upgrades its epistemic status (observed claims cite only verified/observed items such as entrypoints, deps, lim_*, relation_counts and subsys_*). Counts, role degrees, dependency splits, exec-path terminations and quoted texts all match the packet. Section prose, uncertainties and the asset summary stay within packet data; the excluded readme.md record is correctly avoided and the non-citable relation sample is transparently disclosed. No leakage, hallucinated names, rights issues or revision conflicts; no fixes required.",
+  "unsupported": []
+ }
+}
