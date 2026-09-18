@@ -269,3 +269,40 @@ analysis identity — RepoLumen `analysis_bounds.analyzer_patch = 0.10.2-license
 analyzer's behaviour changes; the same-identity guard correctly refused the first attempt). Site `f7ad817`, 81 pages. GLM spend
 2026-09-15: ≈ 0.15 USD. The RAM guard waited ~17 min today because the machine had < 8 GB free; that is by design.
 Tomorrow: architecture guides (new contract + packet; steps 4–7 by asset type), then getting-started / walkthrough, zh summaries.
+
+## 2026-09-16 — second guide type: architecture (Neo: 今天也繼續完成官網需要的內容，慢慢來)
+
+**Asset types.** A repository page now has more than one knowledge asset. `af_common.asset_paths(sdir, asset_type)` gives every
+step its paths: overview keeps the flat layout (`packets/overview.json`, `worker_runs/`, `workers-receipt.json`, `canonical/repository-view.md`),
+every other type lives under `worker_runs/<type>/`, `workers-receipt.<type>.json`, `canonical/<type>.md`, `validation-receipt.<type>.json`,
+MACR task ids `af-<slice>-arch-…`. Steps 4–8 take the type as the second argument (`python pipeline/step4_workers.py <slice> architecture`);
+step 7 puts validated non-overview assets under `view["assets"][type]` (unpublished until step 8 `--asset <type>` merges the block into
+the site JSON and flips `guides[].available`). Asset ids: `asset_<repo>_<type>`, revisions `assetrev_…_<type>_v<n>` — n counts validated
+revisions in SEDB, so a re-validation after a contract bump is v2 even if v1 never shipped (honest: both revisions exist in the ledger).
+
+**Architecture packet** (`step3_ground.architecture_packet`, ~20–22k chars): shape (inventory by directory), entrypoints, bounded static
+execution paths, module roles by static call degree, static boundaries (external/unresolved targets), partial dependencies, plus the
+analyzer's own uncertainty notes. Contract `writer/architecture/v1` + `writer/architecture-revision/v1`; sections: shape at a glance →
+entry points and control flow → core modules and their roles → where static paths stop → dependencies between parts → what static
+analysis cannot show. Verifier/critic contracts are shared with the overview. Step 3 must be re-run per slice first (writes the packet;
+older slices move from projector v1.1 to v1.2 — new bundle sha, same analysis run; the published overview keeps its own receipt).
+
+**SEO contract v1.1** (`formatter/seo-metadata/v1.1`): the guide type and a title phrase travel in the input (`GUIDE_PHRASES` in
+prompts.py), so an architecture guide is no longer titled "repository overview: …". `step4_workers.py <slice> <type> --seo-only` re-runs
+just the SEO worker on an existing final-draft-bundle (one MACR call, ≈ 0.002 USD) — used for llm today; the draft, verifier and critic
+results were untouched and step 5 re-validated as v2.
+
+**Site.** `src/lib/aiFrontier.ts`: `GuideAsset`, `publishedGuides()`, `guidePath()`, `GUIDE_LABELS`; routes
+`/ai-frontier/repository/<owner>/<repo>/<guide>/` EN + zh-TW render one page per published extra asset with a guide switcher (Overview ·
+Getting started · Architecture · Source walkthrough; unpublished ones say "not yet") and the same contract chrome as the overview;
+overview pages link published guides with their content version.
+
+**Published today:** simonw/llm architecture (35/35 claims, 26 inferred / 8 observed / 1 unresolved; writer 2 attempts, verifier 2,
+GLM ≈ 0.06 USD; revision v2 after the SEO fix). Neo: 「那你再一輪修你認為的問題後。我們在發表。」 → fixed, published, site `244a0f5`
+(83 pages), lab `89a2100`. Preview method that works: build `dist/` with the block temporarily marked published, serve `dist/` with
+`python -m http.server`, screenshot from the Browser pane — the Astro dev server returned the 404 page for the new dynamic route and
+headless Edge wrote nothing; don't spend time on those again.
+
+**Next:** architecture guides for the other 11 repositories, one at a time (step 3 → step 4 architecture → 5 → 6 → 7 → preview → Neo's
+發布 → step 8 `--asset architecture` → build + push). Whisper started 16:02 +08:00. Then getting-started / source-walkthrough contracts,
+zh-TW summaries, Weekly Frontier 2026-W38 after 2026-09-21.

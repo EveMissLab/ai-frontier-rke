@@ -1,0 +1,301 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-16T08:12:18.451905Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c1: section_id summary not in sections",
+   "c2: section_id summary not in sections"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_3": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "8bc4ebce-f424-4a98-bbad-e84bba0fb912",
+   "conservative_cost_ceiling_usd": 0.03734945,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01506805,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.007534025,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 27632,
+     "prompt_tokens": 8347,
+     "reasoning_tokens": 22777,
+     "total_tokens": 35979
+    }
+   },
+   "failure": null,
+   "latency_seconds": 232.27,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-002-openai-whisper-arch-writer-01",
+   "worker_run_entity_id": "worker_8bc4ebce-f424-4a98-bbad-e84bba0fb912"
+  },
+  {
+   "attempt": 2,
+   "candidate": "436f7a95-e2d7-4082-96f3-9bc6b22ad433",
+   "conservative_cost_ceiling_usd": 0.040931449999999994,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0065271,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00326355,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8544,
+     "prompt_tokens": 15034,
+     "reasoning_tokens": 3044,
+     "total_tokens": 23578
+    }
+   },
+   "failure": null,
+   "latency_seconds": 64.26,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-002-openai-whisper-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_436f7a95-e2d7-4082-96f3-9bc6b22ad433"
+  },
+  {
+   "attempt": 1,
+   "candidate": "9286af5c-a8ff-4a6c-acef-d10f483bd920",
+   "conservative_cost_ceiling_usd": 0.040800199999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01051715,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005258575,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 16582,
+     "prompt_tokens": 14841,
+     "reasoning_tokens": 13389,
+     "total_tokens": 31423
+    }
+   },
+   "failure": null,
+   "latency_seconds": 147.19,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 1,
+     "supported": 39,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 1,
+    "status": "fail"
+   },
+   "task_id": "af-slice-002-openai-whisper-arch-verifier-01",
+   "worker_run_entity_id": "worker_9286af5c-a8ff-4a6c-acef-d10f483bd920"
+  },
+  {
+   "attempt": 1,
+   "candidate": "fd2386d1-2693-4cab-a99b-220306dfa191",
+   "conservative_cost_ceiling_usd": 0.03768005,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0053767,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00268835,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 8111,
+     "prompt_tokens": 8808,
+     "reasoning_tokens": 7047,
+     "total_tokens": 16919
+    }
+   },
+   "failure": null,
+   "latency_seconds": 79.6,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.7,
+     "coherence": 0.85,
+     "redundancy": 0.7,
+     "scope_discipline": 0.95,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-002-openai-whisper-arch-critic-01",
+   "worker_run_entity_id": "worker_fd2386d1-2693-4cab-a99b-220306dfa191"
+  },
+  {
+   "attempt": 1,
+   "candidate": "43b97064-d7dc-456d-abce-0293a3faf3b4",
+   "conservative_cost_ceiling_usd": 0.034236199999999994,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0022905,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.00114525,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 3951,
+     "prompt_tokens": 2100,
+     "reasoning_tokens": 3784,
+     "total_tokens": 6051
+    }
+   },
+   "failure": null,
+   "latency_seconds": 36.81,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-002-openai-whisper-arch-seo-01",
+   "worker_run_entity_id": "worker_43b97064-d7dc-456d-abce-0293a3faf3b4"
+  },
+  {
+   "attempt": 3,
+   "candidate": "37fbfc30-cb7c-41d4-a8bb-1231b02a81fa",
+   "conservative_cost_ceiling_usd": 0.0409589,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0075951000000000005,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0037975500000000002,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 10680,
+     "prompt_tokens": 15034,
+     "reasoning_tokens": 5123,
+     "total_tokens": 25714
+    }
+   },
+   "failure": null,
+   "latency_seconds": 78.69,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/writer-revision-03.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 40,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-002-openai-whisper-arch-writer-revision-03",
+   "worker_run_entity_id": "worker_37fbfc30-cb7c-41d4-a8bb-1231b02a81fa"
+  },
+  {
+   "attempt": 2,
+   "candidate": "49c57f2b-314c-4f51-86d6-3463f7bad85b",
+   "conservative_cost_ceiling_usd": 0.04082075,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00949715,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004748575,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 14548,
+     "prompt_tokens": 14821,
+     "reasoning_tokens": 12066,
+     "total_tokens": 29369
+    }
+   },
+   "failure": null,
+   "latency_seconds": 125.96,
+   "output_ref": "slice-002-openai-whisper/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 40,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-002-openai-whisper-arch-verifier-02",
+   "worker_run_entity_id": "worker_49c57f2b-314c-4f51-86d6-3463f7bad85b"
+  }
+ ],
+ "slice": "slice-002-openai-whisper",
+ "started_at": "2026-09-16T08:02:32.243662Z",
+ "synthetic": false,
+ "verifier_revision": {
+  "claims": 40,
+  "source": "verifier",
+  "status": "revision_accepted"
+ },
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 40 claims verified against the grounding packet. Every grounding_ref exists (summary_repository and architecture_reconstruction are permitted IDs per the packet's grounding_id_note), every claim is supported by its cited items, and no observed claim rests on inferred-only sources (exec_*, role_*, reconstruction, summary) — statuses including author_claimed (c4) and unresolved (c36) are correctly calibrated. No knowledge leakage, no hallucinated paths or symbols, no rights problems; limits texts (lim_1 to lim_5) and the two-line entrypoint excerpt are short, attributed paraphrases or quotes. Three packet-internal discrepancies (12 vs 10 execution paths, 95 vs 155 resolved/local figures, stale claim_4d30ade3e21e) were found, but the draft already discloses or avoids all of them, so no writer fixes are required.",
+  "unsupported": []
+ }
+}

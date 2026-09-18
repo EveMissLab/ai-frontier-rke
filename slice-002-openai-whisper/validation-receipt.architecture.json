@@ -1,0 +1,67 @@
+{
+ "asset_id": "asset_repo_github_537603333_architecture",
+ "asset_revision_id": "assetrev_asset_repo_github_537603333_architecture_v2",
+ "asset_type": "architecture",
+ "canonical_bytes": 22319,
+ "canonical_source_ref": "slice-002-openai-whisper/canonical/architecture.md",
+ "canonical_source_sha256": "7e640d066217484155cc2f76c60c17c96afdceefcc0f62b106beb7166cc3aeb9",
+ "claims": 40,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 40,
+    "sections": 7
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "registered": "86098128c0b4f24f0e2aa2994de830614b474227"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/openai/whisper",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 9,
+  "unchanged_entities": 0,
+  "updated_entities": 2,
+  "written_cells": 98
+ },
+ "supported_claims": 40
+}

@@ -1,7 +1,7 @@
 {
  "analysis_run_id": "analysis_ee52b965e66bce7b",
- "analysis_run_mode": "new",
- "bounded_context_ratio": 0.01095,
+ "analysis_run_mode": "reuse_existing_new_projection (run recorded ai-frontier-grounding/v1.1, now ai-frontier-grounding/v1.2)",
+ "bounded_context_ratio": 0.01097,
  "counts": {
   "dependencies": 7,
   "dependency_records": 7,
@@ -30,9 +30,9 @@
    "reason": "path not in the analyzed file inventory (analyzer matched a case variant on a case-insensitive filesystem)"
   }
  ],
- "grounding_bundle_bytes": 1630612,
- "grounding_bundle_ref": "slice-002-openai-whisper/artifacts/grounding/analysis_ee52b965e66bce7b/v1.1/grounding-bundle.json",
- "grounding_bundle_sha256": "095dc86c0706a8f9e80b49b024444f97ab9560a62b08cc0f870a4ef834cc019f",
+ "grounding_bundle_bytes": 1630665,
+ "grounding_bundle_ref": "slice-002-openai-whisper/artifacts/grounding/analysis_ee52b965e66bce7b/v1.2/grounding-bundle.json",
+ "grounding_bundle_sha256": "d7701ff455a08ae0224483a428f5effbdaf0f2d0dfcc2bc5523f0cd0c52d85ad",
  "license_state": {
   "agreement": true,
   "repolumen_detected": "MIT",
@@ -42,23 +42,27 @@
  "manifest_ref": "slice-002-openai-whisper/artifacts/repolumen/repo_github_537603333/86098128c0b4f24f0e2aa2994de830614b474227/0.10/semantic-manifest.json",
  "manifest_sha256": "1916f322670a8ffe58f24eb35fd40d836e0650340ccd828fb3c9c38000313094",
  "packets": {
+  "architecture": {
+   "bytes": 21836,
+   "sha256": "a7c03e27dd100051ca422357b2c8d290134db3c5f7fe630a28131e8261a72eb2"
+  },
   "overview": {
-   "bytes": 27453,
-   "sha256": "4a61bad3ad93bb7adfc9fa4c96f151247dcbe37679fa550d98dc6096fd2bf2cd"
+   "bytes": 27506,
+   "sha256": "c975295b70b7004787c26a34f10c98977cecaf263784de30ae442d1271d4e9a6"
   },
   "taxonomy": {
    "bytes": 7656,
    "sha256": "c0b043f9619944d23edade637ca9760140a386aff2663c24dc3cb3a465770e81"
   }
  },
- "projection_id": "proj_analysis_ee52b965e66bce7b_v1_1",
- "projection_version": "ai-frontier-grounding/v1.1",
+ "projection_id": "proj_analysis_ee52b965e66bce7b_v1_2",
+ "projection_version": "ai-frontier-grounding/v1.2",
  "run_recorded_grounding_bundle_sha256": "095dc86c0706a8f9e80b49b024444f97ab9560a62b08cc0f870a4ef834cc019f",
  "sedb_write": {
-  "created_entities": 2067,
-  "unchanged_entities": 0,
+  "created_entities": 1,
+  "unchanged_entities": 2065,
   "updated_entities": 0,
-  "written_cells": 31009
+  "written_cells": 12
  },
- "supersedes_projection_id": null
+ "supersedes_projection_id": "proj_analysis_ee52b965e66bce7b_v1_1"
 }
