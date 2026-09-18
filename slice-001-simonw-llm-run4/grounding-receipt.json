@@ -59,10 +59,10 @@
  "projection_version": "ai-frontier-grounding/v1.2",
  "run_recorded_grounding_bundle_sha256": "3c9a1831d852254316b18a12d49d8053bb30fcdcab8491c3eeabdaaabad645a4",
  "sedb_write": {
-  "created_entities": 1,
+  "created_entities": 0,
   "unchanged_entities": 15061,
   "updated_entities": 0,
-  "written_cells": 12
+  "written_cells": 0
  },
  "supersedes_projection_id": "proj_analysis_f20a9f60553ce57f_v1"
 }

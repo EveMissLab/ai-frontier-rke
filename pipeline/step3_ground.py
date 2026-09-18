@@ -310,6 +310,47 @@ def architecture_packet(bundle: dict, license_state: dict) -> dict:
     }
 
 
+MANIFEST_NAMES = ("pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "requirements-dev.txt", "package.json", "Cargo.toml", "go.mod",
+                  "Makefile", "Dockerfile", "docker-compose.yml", "environment.yml", "tox.ini", "noxfile.py", "justfile", "Pipfile", "poetry.lock", "uv.lock")
+
+
+def getting_started_packet(bundle: dict, license_state: dict) -> dict:
+    """GettingStartedSelector (asset type `getting_started`): what the project says it is (platform metadata,
+    author-claimed), what the manifests and dependency records show, how it starts (entrypoints with their
+    guard excerpts, the first bounded paths), where to look first (important files, teaching claims), and —
+    prominently — what this analysis cannot tell a newcomer (lim_*: install/run/build inference is partial,
+    commands are not verified). README lines are included as non-citable context only: v0.10 extracts them
+    line by line and the sample is mostly badges and code."""
+    excluded = {x["excluded_id"] for x in bundle["uncertainties"]["excluded_important_files"]}
+    files = bundle["files"]
+    manifests = sorted(f for f in files if f.split("/")[-1] in MANIFEST_NAMES or f.split("/")[-1].startswith("requirements"))[:20]
+    dep_sources = sorted({d["source_path"] for d in bundle["dependency_records"]})
+    paths = [{"id": p["id"], "entrypoint": f"{p['entrypoint_path']}:{p.get('entrypoint_symbol')}", "terminal_reason": p.get("terminal_reason"), "truncated": p.get("truncated"),
+              "steps": [f"{s.get('source_path')}:{s.get('source_symbol') or ''} -> {s.get('target_path') or s.get('boundary_target') or s.get('target_symbol')}:{s.get('target_symbol') or ''} ({s.get('resolution')})" for s in p.get("steps", [])[:5]]}
+             for p in bundle["execution_paths"][:5]]
+    return {
+        "task": "write_getting_started_asset",
+        "packet_version": "getting-started-selector/v1",
+        "repository": {"canonical_source_url": bundle["source"]["repository"], "analyzed_revision": bundle["source"]["revision"], "analyzer": bundle["analyzer"], "license_state": license_state},
+        "platform_metadata": bundle["platform_metadata"],
+        "repository_summary": bundle["repository_summary"],
+        "important_files": [{"id": f["id"], "path": f["path"], "observation": f["observation"], "provenance": f["provenance"]} for f in bundle["important_files"]],
+        "entrypoints": [{"id": e["id"], "path": e["path"], "symbol": e.get("symbol"), "observation": e.get("observation"), "excerpt": e.get("excerpt"), "provenance": e.get("provenance")} for e in bundle["entrypoints"]],
+        "first_execution_paths_static": paths,
+        "dependency_records": bundle["dependency_records"],
+        "dependency_manifests_parsed": dep_sources,
+        "manifest_files_in_inventory_noncitable": {"paths": manifests, "note": "observed file names from the analyzed inventory; not citable by themselves — cite an important_* or dep_* record that names the file, or summary_repository for the manifest count"},
+        "runtime_hints_analyzer_generic": {"hints": bundle["runtime_hints_partial"], "note": "these hints describe the analyzer's v0.10 method, not this repository; cite lim_2 when saying that install/run/build inference is partial and commands are not verified"},
+        "readme_lines_author_claimed_noncitable": {"lines": bundle["readme_claims_author_claimed_low_quality"][:12], "note": "line-based extraction (lim_4), mostly badges and code; not citable and not to be mirrored"},
+        "tests": {"count": len(bundle["tests"]), "sample": bundle["tests"][:10]},
+        "files": {"count": len(files), "top_level_directories": bundle["repository_summary"]["top_level_directories"]},
+        "teaching_claims": [{"id": c["id"], "section": c.get("section"), "text": c["text"], "evidence_ids": [e for e in c.get("evidence_ids", []) if e not in excluded], "provenance": c.get("provenance"), "status": c.get("status")} for c in bundle["teaching_claims"]],
+        "limitations": [{"id": k, "text": v.get("text"), "epistemic_status": v.get("epistemic_status")} for k, v in bundle["groundings"].items() if k.startswith("lim_")],
+        "uncertainties": bundle["uncertainties"],
+        "grounding_id_note": "Cite only IDs that appear in this packet: meta_*, important_*, entry_*, py_*, exec_*, dep_*, lim_*, claim_*, summary_repository, subsys_*, ev_*. Manifest file names and README lines are context, not citations.",
+    }
+
+
 def taxonomy_packet(bundle: dict, candidates: list[str], taxonomy: list[dict]) -> dict:
     return {
         "task": "classify_repository_taxonomy_v1",
@@ -442,9 +483,11 @@ def main(slug: str) -> int:
     ov = overview_packet(bundle, license_state)
     tx = taxonomy_packet(bundle, reg["candidate_categories"], taxonomy)
     ar = architecture_packet(bundle, license_state)
+    gs = getting_started_packet(bundle, license_state)
     ov_hash = write_json(packets / "overview.json", ov)
     tx_hash = write_json(packets / "taxonomy.json", tx)
     ar_hash = write_json(packets / "architecture.json", ar)
+    gs_hash = write_json(packets / "getting_started.json", gs)
 
     out = {"analysis_run_id": run_id, "projection_version": BUNDLE_VERSION, "projection_id": proj_id, "supersedes_projection_id": supersedes, "manifest_ref": rel_ref(manifest_path), "manifest_sha256": receipt["manifest_sha256"],
            "run_recorded_grounding_bundle_sha256": (existing or {"values": {}})["values"].get("af_grounding_bundle_sha256", bundle_hash),

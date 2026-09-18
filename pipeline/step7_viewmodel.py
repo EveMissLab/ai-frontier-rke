@@ -64,6 +64,8 @@ def extra_assets(sdir) -> dict:
         val = load_json(ap["validation_receipt"])
         if not val.get("hard_gate_pass"):
             continue
+        if val.get("worker_series"):  # the validated draft came from a rerun series (its own runs dir), not the first loop
+            ap = asset_paths(sdir, asset_type, series=val["worker_series"])
         final = load_json(ap["runs_dir"] / "final-draft-bundle.json")
         fm, title, summary, sections = split_canonical(ap["canonical_md"].read_text(encoding="utf-8"))
         claims = final["draft"]["claims"]; counts = Counter(c["epistemic_status"] for c in claims)

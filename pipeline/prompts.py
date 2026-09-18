@@ -104,6 +104,31 @@ WRITER_ARCHITECTURE_REVISION_V1 = {
     "contract": WRITER_REVISION_V1["contract"].replace("previous overview draft", "previous architecture draft").replace('"asset_type": "overview"', '"asset_type": "architecture"'),
 }
 
+CITATION_COMPLETENESS_GS = ("CITATIONS: a claim that speaks about all dependency records, all entrypoints or all manifests must cite every record it covers, or be scoped "
+                            "explicitly to the records it cites. A statement about an entrypoint's __main__ guard cites the py_entry_* record. A statement that something is "
+                            "'not verified' or 'not parsed' cites the lim_* record that says so. Prefer fewer, fully cited claims over broad ones.")
+
+WRITER_GETTING_STARTED_V1 = {
+    "version": "writer/getting-started/v1",
+    "goal": "Write the AI Frontier 'getting started' knowledge asset for one open-source repository — what a newcomer can learn from the manifests, entrypoints and metadata before touching it, and what this analysis cannot tell them — using only the grounding packet, as one JSON object matching the output schema.",
+    "contract": "\n\n".join([
+        "ROLE: Writer worker of the AI Frontier Repository Knowledge Engine. Asset type: getting_started. Audience: a developer who has never opened this repository and wants to know what it is, what it needs, how it starts and where to look first. Tone: plain, concrete, no marketing; explain, do not reproduce. This is NOT a tutorial and NOT a runbook: the packet contains no verified installation, build or run commands, and you must never write one.",
+        DATA_BOUNDARY, EPISTEMIC_RULES, RIGHTS_RULES, WORDING_RULES,
+        "NO RECIPES: never write a shell command, package-manager invocation, URL to install from, or step-by-step instruction (no 'pip install', 'npm install', 'git clone', 'docker run', 'python -m ...' and no numbered install steps). Say what the manifests show (which manifest, which dependency names, versions and scopes, dep_*), which entrypoint files carry a __main__ guard and what the guard calls (py_entry_*/entry_*), and that installation and run commands are not verified by this analysis (lim_2). A package name on a registry, a documented CLI, or a supported platform is not established unless a packet record states it.",
+        "CONTENT: Produce 5 to 7 sections with these ids in this order: 'what_you_are_looking_at' (what the platform metadata says the project is — author-claimed — plus language, license state, latest release and size signals from summary_repository), 'what_it_needs' (dependency records by manifest and scope, which manifests were parsed and which were not — pyproject dependency tables are not parsed, lim_3), 'how_it_starts' (the entrypoint records: files with a __main__ guard and what the guard body calls, filename-heuristic candidates, the first bounded static paths and where they stop; say that runtime behaviour beyond these records is not established), 'where_to_look_first' (project-level important files, the analyzer's learning-path and modify-guide teaching claims, top-level directories, whether tests exist and how many test-like files), 'what_this_analysis_cannot_tell_you' (lim_*: commands unverified, manifests partially parsed, README extraction line-based, static only — and any packet-internal inconsistency you noticed). Optional: 'what_the_project_says_about_itself' (only meta_description / meta_homepage / meta_topics, marked author_claimed) and 'next_guides' (one short paragraph pointing to the overview and architecture guides — no claims needed beyond the packet). Each section body is Markdown (paragraphs and short bullet lists, no headings inside) of at most 170 words. The summary is at most 60 words. At most 40 claims in total.",
+        CITATION_COMPLETENESS_GS,
+        OUTPUT_RULES,
+        "OUTPUT SCHEMA: {\"status\": \"draft_ready\", \"asset_type\": \"getting_started\", \"title\": string, \"summary\": string, \"summary_claim_ids\": [string], \"sections\": [{\"id\": string, \"heading\": string, \"markdown\": string, \"claim_ids\": [string]}], \"claims\": [{\"claim_id\": string (c1, c2, ...), \"section_id\": string, \"text\": string, \"grounding_refs\": [string], \"epistemic_status\": \"observed\"|\"inferred\"|\"author_claimed\"|\"unresolved\"}], \"uncertainties\": [string], \"questions\": [string]}. Every claim_id listed in a section or the summary must exist in `claims`, every claim's section_id must be one of the section ids above (never 'summary'), and every sentence of a section body must be covered by at least one of that section's claims. Claim ids belong in claim_ids only, never inside the prose.",
+    ]),
+}
+
+WRITER_GETTING_STARTED_REVISION_V1 = {
+    "version": "writer/getting-started-revision/v1",
+    "goal": WRITER_REVISION_V1["goal"].replace("overview draft", "getting-started draft"),
+    "contract": WRITER_REVISION_V1["contract"].replace("previous overview draft", "previous getting-started draft").replace('"asset_type": "overview"', '"asset_type": "getting_started"')
+                + "\n\nNO RECIPES: the revision must not introduce any shell command, package-manager invocation or install step; installation and run commands are not verified by this analysis (lim_2).",
+}
+
 CITATION_COMPLETENESS = ("CITATIONS: a claim that speaks about all listed execution paths, all module roles, all boundaries or all dependency records must cite every "
                          "record it covers (list every exec_*, role_*, boundary or dep id), or be scoped explicitly to the records it cites ('of the N listed paths, the three "
                          "cited …'). A negative statement ('no listed path reaches X') is a scan of records: cite every record scanned. A statement about an entrypoint's "
@@ -187,12 +212,13 @@ TAXONOMY_CLASSIFIER_V1 = {
     ]),
 }
 
-CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, WRITER_ARCHITECTURE_V1_1, WRITER_ARCHITECTURE_REVISION_V1_1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
+CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, WRITER_ARCHITECTURE_V1_1, WRITER_ARCHITECTURE_REVISION_V1_1, WRITER_GETTING_STARTED_V1, WRITER_GETTING_STARTED_REVISION_V1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
 SEO_V = SEO_METADATA_V1_1["version"]
 
 # asset type -> (writer contract, revision contract). Verifier, critic and SEO contracts are shared.
 ASSET_CONTRACTS = {"overview": (WRITER_OVERVIEW_V1["version"], WRITER_REVISION_V1["version"]),
-                   "architecture": (WRITER_ARCHITECTURE_V1_1["version"], WRITER_ARCHITECTURE_REVISION_V1_1["version"])}
+                   "architecture": (WRITER_ARCHITECTURE_V1_1["version"], WRITER_ARCHITECTURE_REVISION_V1_1["version"]),
+                   "getting_started": (WRITER_GETTING_STARTED_V1["version"], WRITER_GETTING_STARTED_REVISION_V1["version"])}
 
 
 def contract_hash(version: str) -> str:
@@ -223,6 +249,7 @@ def writer_schema(asset_type: str) -> dict:
 
 WRITER_SCHEMA = writer_schema("overview")
 ARCHITECTURE_SCHEMA = writer_schema("architecture")
+GETTING_STARTED_SCHEMA = writer_schema("getting_started")
 
 VERIFIER_SCHEMA = {
     "type": "object",
@@ -272,6 +299,7 @@ SCHEMAS = {
     WRITER_V: WRITER_SCHEMA, REVISION_V: WRITER_SCHEMA, VERIFIER_V: VERIFIER_SCHEMA, CRITIC_V: CRITIC_SCHEMA,
     WRITER_ARCHITECTURE_V1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1["version"]: ARCHITECTURE_SCHEMA,
     WRITER_ARCHITECTURE_V1_1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1_1["version"]: ARCHITECTURE_SCHEMA,
+    WRITER_GETTING_STARTED_V1["version"]: GETTING_STARTED_SCHEMA, WRITER_GETTING_STARTED_REVISION_V1["version"]: GETTING_STARTED_SCHEMA,
     "writer/overview/v1.1": WRITER_SCHEMA, "writer/overview-revision/v1.1": WRITER_SCHEMA,  # v1.1 kept: run 3 validates against it
     "writer/overview/v1": WRITER_SCHEMA, "writer/overview-revision/v1": WRITER_SCHEMA, "verifier/grounding/v1": VERIFIER_SCHEMA,  # v1 kept: recorded runs 1-2 validate against it
     "critic/structure/v1": CRITIC_SCHEMA, "formatter/seo-metadata/v1": SEO_SCHEMA, "formatter/seo-metadata/v1.1": SEO_SCHEMA, "taxonomy_classifier/v1": TAXONOMY_SCHEMA,

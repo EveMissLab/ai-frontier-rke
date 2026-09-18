@@ -72,6 +72,12 @@ def packet_ids(packet: dict) -> set[str]:
     return ids
 
 
+# 2026-09-19 getting-started guides: the packet never contains verified install/run commands (lim_2), so any
+# command-shaped string in a draft is invented. Applies to every asset type.
+RECIPE_PATTERNS = [r"\b(?:pip3?|pipx|uv|poetry|conda|npm|pnpm|yarn|cargo|brew|apt-get|apt|gem|composer)\s+(?:install|add|sync|update)\b",
+                   r"\bpython3?\s+-m\s+pip\b", r"\bdocker\s+(?:run|compose|build)\b", r"\bgit\s+clone\b", r"\bmake\s+(?:install|build)\b"]
+
+
 def deterministic_checks(draft: dict, packet: dict, catalog: dict, files: set[str]) -> dict:
     """Paper 05 §74 deterministic validators on a writer draft. Returns {ok, failures, fixes}."""
     ids = packet_ids(packet)
@@ -115,6 +121,9 @@ def deterministic_checks(draft: dict, packet: dict, catalog: dict, files: set[st
             failures.append(f"section {s['id']}: unknown claim ids {missing}")
         if len(s.get("markdown", "").split()) > 260:
             failures.append(f"section {s['id']}: over 260 words"); fixes.append({"target": s["id"], "action": "reword", "instruction": "shorten this section to at most 180 words"})
+        hit = next((m.group(0) for pat in RECIPE_PATTERNS for m in [re.search(pat, s.get("markdown", ""), flags=re.I)] if m), None)
+        if hit:
+            failures.append(f"section {s['id']}: command-shaped text '{hit}' (install/run commands are not verified by this analysis)"); fixes.append({"target": s["id"], "action": "reword", "instruction": f"remove the command '{hit}': the packet contains no verified installation or run commands (lim_2); describe what the manifests and entrypoint records show instead"})
         if re.search(r"\[c\d+\]", s.get("markdown", "")):  # 2026-09-19 smolagents: inline [cN] markers leaked into the prose and would render on the page
             failures.append(f"section {s['id']}: inline claim-id markers in the body"); fixes.append({"target": s["id"], "action": "reword", "instruction": "remove bracketed claim-id markers such as [c12] from the section body; claim ids belong only in claim_ids and summary_claim_ids, never in the prose"})
         quotes = re.findall(r"```.*?```", s.get("markdown", ""), flags=re.S)
