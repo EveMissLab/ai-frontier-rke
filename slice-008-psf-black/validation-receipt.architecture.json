@@ -1,0 +1,69 @@
+{
+ "asset_id": "asset_repo_github_125266328_architecture",
+ "asset_revision_id": "assetrev_asset_repo_github_125266328_architecture_v1",
+ "asset_type": "architecture",
+ "canonical_bytes": 22987,
+ "canonical_source_ref": "slice-008-psf-black/canonical/architecture.md",
+ "canonical_source_sha256": "853b08c319a19ae1cf70b46d6d89ed0b1c1d7edcf8eea81fe7b6dfc23538c3f8",
+ "claims": 35,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 35,
+    "sections": 7
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "20622e1259c29bda81831962ace1348ba1921c84",
+    "registered": "20622e1259c29bda81831962ace1348ba1921c84"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/psf/black",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 11,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 110
+ },
+ "supported_claims": 35,
+ "worker_series": null,
+ "workers_receipt_ref": "slice-008-psf-black/workers-receipt.architecture.json"
+}

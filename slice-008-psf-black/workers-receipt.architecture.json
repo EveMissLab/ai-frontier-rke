@@ -1,0 +1,250 @@
+{
+ "asset_type": "architecture",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T12:47:05.405840Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "deterministic_check_2": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "e3f3d6cf-5a95-41c0-8ce9-b6df9b9f725f",
+   "conservative_cost_ceiling_usd": 0.038654,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.023190099999999998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.011595049999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 43112,
+     "prompt_tokens": 10894,
+     "reasoning_tokens": 38263,
+     "total_tokens": 54006
+    }
+   },
+   "failure": null,
+   "latency_seconds": 474.82,
+   "output_ref": "slice-008-psf-black/worker_runs/architecture/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 35,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-008-psf-black-arch-writer-01",
+   "worker_run_entity_id": "worker_e3f3d6cf-5a95-41c0-8ce9-b6df9b9f725f"
+  },
+  {
+   "attempt": 1,
+   "candidate": "12ffc634-ec70-4d20-a581-a6c36a99ded1",
+   "conservative_cost_ceiling_usd": 0.04176875,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.011919299999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0059596499999999995,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 18708,
+     "prompt_tokens": 17102,
+     "reasoning_tokens": 16155,
+     "total_tokens": 35810
+    }
+   },
+   "failure": null,
+   "latency_seconds": 165.12,
+   "output_ref": "slice-008-psf-black/worker_runs/architecture/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 2,
+     "supported": 33,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 2,
+    "status": "fail"
+   },
+   "task_id": "af-slice-008-psf-black-arch-verifier-01",
+   "worker_run_entity_id": "worker_12ffc634-ec70-4d20-a581-a6c36a99ded1"
+  },
+  {
+   "attempt": 2,
+   "candidate": "622565e9-3f3d-4c11-9b6d-f530a6a8500e",
+   "conservative_cost_ceiling_usd": 0.04208465,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.008397799999999999,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.004198899999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 11518,
+     "prompt_tokens": 17592,
+     "reasoning_tokens": 6519,
+     "total_tokens": 29110
+    }
+   },
+   "failure": null,
+   "latency_seconds": 102.01,
+   "output_ref": "slice-008-psf-black/worker_runs/architecture/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 35,
+    "sections": [
+     "shape_at_a_glance",
+     "entry_and_control_flow",
+     "core_modules_and_roles",
+     "boundaries",
+     "dependencies_between_parts",
+     "what_static_analysis_cannot_show",
+     "reading_order_for_the_architecture"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-008-psf-black-arch-writer-revision-02",
+   "worker_run_entity_id": "worker_622565e9-3f3d-4c11-9b6d-f530a6a8500e"
+  },
+  {
+   "attempt": 2,
+   "candidate": "37758050-b8c5-448c-bf05-b115005a85d6",
+   "conservative_cost_ceiling_usd": 0.0418433,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.017487799999999998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.008743899999999999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 29791,
+     "prompt_tokens": 17282,
+     "reasoning_tokens": 27265,
+     "total_tokens": 47073
+    }
+   },
+   "failure": null,
+   "latency_seconds": 330.73,
+   "output_ref": "slice-008-psf-black/worker_runs/architecture/verifier-02.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 35,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-008-psf-black-arch-verifier-02",
+   "worker_run_entity_id": "worker_37758050-b8c5-448c-bf05-b115005a85d6"
+  },
+  {
+   "attempt": 1,
+   "candidate": "73af65a2-28af-469e-8901-01e2c5bc25ce",
+   "conservative_cost_ceiling_usd": 0.038583349999999995,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.007108850000000001,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0035544250000000004,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 10879,
+     "prompt_tokens": 11129,
+     "reasoning_tokens": 9847,
+     "total_tokens": 22008
+    }
+   },
+   "failure": null,
+   "latency_seconds": 143.19,
+   "output_ref": "slice-008-psf-black/worker_runs/architecture/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 1,
+    "scores": {
+     "beginner_readability": 0.65,
+     "coherence": 0.7,
+     "redundancy": 0.6,
+     "scope_discipline": 0.95,
+     "structure": 0.75
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-008-psf-black-arch-critic-01",
+   "worker_run_entity_id": "worker_73af65a2-28af-469e-8901-01e2c5bc25ce"
+  },
+  {
+   "attempt": 1,
+   "candidate": "6983ec4a-5410-4c64-8b5e-c998eaddf705",
+   "conservative_cost_ceiling_usd": 0.0341498,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00260115,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.001300575,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4605,
+     "prompt_tokens": 1991,
+     "reasoning_tokens": 4454,
+     "total_tokens": 6596
+    }
+   },
+   "failure": null,
+   "latency_seconds": 49.68,
+   "output_ref": "slice-008-psf-black/worker_runs/architecture/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-008-psf-black-arch-seo-01",
+   "worker_run_entity_id": "worker_6983ec4a-5410-4c64-8b5e-c998eaddf705"
+  }
+ ],
+ "slice": "slice-008-psf-black",
+ "started_at": "2026-09-18T12:25:37.823821Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "All 35 claims verified against the packet. Every grounding_ref exists verbatim; all cited figures match exactly (482 files and directory counts; 18 entrypoints; 17 __main__-guard records split 8 scripts / 5 src / 4 tests; ten exec paths with 7 os.getenv, 2 re.compile, 1 Path, all unresolved_boundary; role degrees 118/104/177/79/66/13/10; 9,339 total with 8,487 unresolved and 852 local; 8,219 calls, 1,120 imports; 813 resolved calls; 326 test-like files). Epistemic calibration is correct: every 'observed' claim cites only verified entrypoint/file records, relation_counts, or lim_* notes, while exec_*, role_*, summary, and reconstruction-based claims are 'inferred' or 'unresolved'. No leakage, hallucinated names, or rights issues. The draft transparently handles the packet's internal discrepancies (176 reported paths vs 10 listed; 813 vs 852; the summary naming scripts/check_pre_commit_rev_in_example.py as starting place; the excluded readme.md case variant) and does not propagate the contradictory teaching claim claim_4d30ade3e21e. No fixes required.",
+  "unsupported": []
+ }
+}
