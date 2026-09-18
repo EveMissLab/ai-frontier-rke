@@ -306,3 +306,42 @@ headless Edge wrote nothing; don't spend time on those again.
 **Next:** architecture guides for the other 11 repositories, one at a time (step 3 → step 4 architecture → 5 → 6 → 7 → preview → Neo's
 發布 → step 8 `--asset architecture` → build + push). Whisper started 16:02 +08:00. Then getting-started / source-walkthrough contracts,
 zh-TW summaries, Weekly Frontier 2026-W38 after 2026-09-21.
+
+## 2026-09-18 → 09-19 — architecture guides complete: 12 / 12 (Neo: 繼續完善原來那一個頁面要完備的，先不急著開新專案)
+
+**Published, one at a time, each on Neo's 發布 after a rendered preview:** whisper 40/40 v2, sqlite-utils 33/33 v2 (series r2),
+requests 39/39 v1, click 33/33 v1, httpx 39/39 v1, rich 39/39 v1, black 35/35 v1, smolagents 40/40 v2 (series r2), pydantic-ai 37/37 v2,
+datasette 35/35 v1, mitmproxy 40/40 v2. Site `76d08cd` (105 pages), lab `1ff1d1a`. Whole architecture series: 80 worker runs,
+GLM ≈ 0.81 USD list (≈ 0.40 at the promotional rate). Every repository page now links Overview + Architecture; Getting started and
+Source walkthrough still say "not yet".
+
+**Pipeline changes that came out of the series (all pushed):**
+- `writer/architecture/v1.1` — CITATION_COMPLETENESS: a quantified statement cites every record it covers or scopes itself to the cited
+  ones; `__main__` guards cite `py_entry_*`. Root cause of whisper c36 and sqlite-utils c5/c14/c24 ("true per packet, cites a subset").
+  v1 stays registered (llm published under it, whisper validated under it).
+- worker **series**: `--series r2` on steps 4 / 4b / 5 (`af_common.asset_paths(series=)` / env `AF_SERIES`) — a fresh loop for the same
+  slice + asset with its own MACR task ids, runs dir, receipt and log; canonical/validation paths stay per asset; step 5 records
+  `worker_series` + `workers_receipt_ref`. Used for sqlite-utils (verifier budget exhausted on citation completeness) and smolagents
+  (inline markers). No more new slice directories for reruns.
+- step 4b by asset type + `--source verifier`: when step 4's single in-loop revision went to deterministic fixes and the verifier then
+  failed, the verifier's own required_fixes drive one more revision + re-verification, still inside the Paper 05 budgets (writer 3,
+  verifier 2). Used for whisper, pydantic-ai, mitmproxy. An exhausted budget prints `budget_exhausted` (exit 2) — that is the escalation.
+- deterministic checks: (a) inline `[cN]` claim markers in a section body fail with a reword fix (smolagents v1 leaked them into the
+  prose; 36/36 verified but never published); (b) the path check keeps a leading dot-directory — `.github/scripts/x.py` used to be
+  matched as `github/scripts/x.py` and reported missing (pydantic-ai false positive).
+- site `md()`: a code span may wrap a line (CommonMark); the underscore guard split single-line spans only, so `__name__` inside a
+  wrapped span rendered its backslashes (whisper).
+- SEO v1.1 (09-16) held: no more "repository overview" titles on architecture guides.
+
+**Pattern worth knowing for the next asset types:** the writer's first draft fails deterministic checks about a third of the time,
+almost always by filing claims under a non-existent `summary` section; the in-loop revision fixes it but consumes the one revision the
+verifier might need. Verifier failures were all citation discipline (superlatives contradicted by other records, a non-citable sample
+cited, a subset cited for a universal statement) — never leakage, never a hallucinated name.
+
+**Daily:** step 9 ran 09-18 (black, pydantic-ai, datasette moved at the source → changed_unassessed notices). Run it again before the next
+site push. Weekly Frontier 2026-W38: publish after 2026-09-21 with Neo's approval.
+
+**Next on the page's promise list:** getting-started guide (packet: install/run/build inference, manifests, README claims, entrypoints;
+contract `writer/getting-started/v1`; must never turn "installation commands are not verified" into a recipe), then source walkthrough
+(reading order over the bounded paths + module roles), then zh-TW summaries (translator contract + bilingual verifier), then
+"Popular / New & Rising" channels on the portal itself, rename redirects when a rename happens.
