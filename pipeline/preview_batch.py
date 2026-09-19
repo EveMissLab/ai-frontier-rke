@@ -11,21 +11,23 @@ from __future__ import annotations
 
 import http.server
 import json
+import os
 import shutil
 import socketserver
 import subprocess
 import sys
 import threading
-from pathlib import Path
 
 from af_common import LAB, load_json, slice_dir, write_json
 from step8_publish import SITE_DATA, SITE_ROOT
 
-EDGE = Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
+EDGE = os.environ.get("EDGE_EXECUTABLE") or shutil.which("msedge") or shutil.which("microsoft-edge")
 PORT = 5199
 
 
 def main(batch: str) -> int:
+    if not EDGE:
+        raise RuntimeError("Set EDGE_EXECUTABLE or make Microsoft Edge available on PATH before previewing.")
     status = load_json(LAB / "canary" / batch / "status.json")
     out_dir = LAB / "canary" / batch / "previews"; out_dir.mkdir(parents=True, exist_ok=True)
     temp, pages = [], []
