@@ -1,0 +1,69 @@
+{
+ "asset_id": "asset_repo_github_140912432_getting_started",
+ "asset_revision_id": "assetrev_asset_repo_github_140912432_getting_started_v1",
+ "asset_type": "getting_started",
+ "canonical_bytes": 19700,
+ "canonical_source_ref": "slice-003-simonw-sqlite-utils/canonical/getting_started.md",
+ "canonical_source_sha256": "63e820b6871f0ba736c0164ba5a27e5b5fb2325d59b99cf4656f087118bebc64",
+ "claims": 38,
+ "gates": {
+  "grounding": {
+   "details": {
+    "deterministic_failures": [],
+    "leakage": [],
+    "unsupported": [],
+    "verifier_status": "pass"
+   },
+   "passed": true
+  },
+  "license": {
+   "details": {
+    "policy": "allowed",
+    "state": "open-source"
+   },
+   "passed": true
+  },
+  "markdown": {
+   "details": [],
+   "passed": true
+  },
+  "policy": {
+   "details": {
+    "claims": 38,
+    "sections": 6
+   },
+   "passed": true
+  },
+  "revision": {
+   "details": {
+    "packet": "85b1be10c81d9dd3567e36faf8dd411e4a8789bd",
+    "registered": "85b1be10c81d9dd3567e36faf8dd411e4a8789bd"
+   },
+   "passed": true
+  },
+  "schema": {
+   "details": [],
+   "passed": true
+  },
+  "security": {
+   "details": [],
+   "passed": true
+  },
+  "source": {
+   "details": "https://github.com/simonw/sqlite-utils",
+   "passed": true
+  }
+ },
+ "hard_gate_pass": true,
+ "note": "validated ≠ published; release gates G0–G10 and the canary policy decide publication",
+ "publication_status": "unpublished",
+ "sedb_write": {
+  "created_entities": 11,
+  "unchanged_entities": 0,
+  "updated_entities": 0,
+  "written_cells": 110
+ },
+ "supported_claims": 38,
+ "worker_series": null,
+ "workers_receipt_ref": "slice-003-simonw-sqlite-utils/workers-receipt.getting_started.json"
+}
