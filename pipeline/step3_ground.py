@@ -346,7 +346,7 @@ def getting_started_packet(bundle: dict, license_state: dict) -> dict:
         "files": {"count": len(files), "top_level_directories": bundle["repository_summary"]["top_level_directories"]},
         "teaching_claims": [{"id": c["id"], "section": c.get("section"), "text": c["text"], "evidence_ids": [e for e in c.get("evidence_ids", []) if e not in excluded], "provenance": c.get("provenance"), "status": c.get("status")} for c in bundle["teaching_claims"]],
         "limitations": [{"id": k, "text": v.get("text"), "epistemic_status": v.get("epistemic_status")} for k, v in bundle["groundings"].items() if k.startswith("lim_")],
-        "uncertainties": bundle["uncertainties"],
+        "uncertainties": {k: v for k, v in bundle["uncertainties"].items() if k != "excluded_important_files"},  # analyzer-internal; a newcomer guide must not narrate phantom entries
         "grounding_id_note": "Cite only IDs that appear in this packet: meta_*, important_*, entry_*, py_*, exec_*, dep_*, lim_*, claim_*, summary_repository, subsys_*, ev_*. Manifest file names and README lines are context, not citations.",
     }
 

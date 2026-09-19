@@ -1,0 +1,168 @@
+{
+ "asset_type": "getting_started",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T20:30:20.890597Z",
+ "deterministic_check_1": {
+  "failures": [],
+  "ok": true
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "hard_gate_pass",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "9ed1170a-53f8-4345-832e-2e87b975d15b",
+   "conservative_cost_ceiling_usd": 0.0364634,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0211462,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0105731,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 40277,
+     "prompt_tokens": 6718,
+     "reasoning_tokens": 36499,
+     "total_tokens": 46995
+    }
+   },
+   "failure": null,
+   "latency_seconds": 393.77,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started-r2/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 28,
+    "sections": [
+     "what_you_are_looking_at",
+     "what_it_needs",
+     "how_it_starts",
+     "where_to_look_first",
+     "what_this_analysis_cannot_tell_you"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-r2-writer-01",
+   "worker_run_entity_id": "worker_9ed1170a-53f8-4345-832e-2e87b975d15b"
+  },
+  {
+   "attempt": 1,
+   "candidate": "7b7e8ade-f12a-422d-b24c-ef1db10ea850",
+   "conservative_cost_ceiling_usd": 0.03875645,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01143635,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.005718175,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 19537,
+     "prompt_tokens": 11119,
+     "reasoning_tokens": 17567,
+     "total_tokens": 30656
+    }
+   },
+   "failure": null,
+   "latency_seconds": 189.63,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started-r2/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 28,
+     "unresolved": 0,
+     "unsupported": 0
+    },
+    "required_fixes": 0,
+    "status": "pass"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-r2-verifier-01",
+   "worker_run_entity_id": "worker_7b7e8ade-f12a-422d-b24c-ef1db10ea850"
+  },
+  {
+   "attempt": 1,
+   "candidate": "2077c18b-0880-4f5a-b5fa-607346aa72e3",
+   "conservative_cost_ceiling_usd": 0.03675095,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00196875,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.000984375,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 1812,
+     "prompt_tokens": 7085,
+     "reasoning_tokens": 102,
+     "total_tokens": 8897
+    }
+   },
+   "failure": null,
+   "latency_seconds": 27.73,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started-r2/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 3,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.85,
+     "redundancy": 0.75,
+     "scope_discipline": 0.85,
+     "structure": 0.9
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-r2-critic-01",
+   "worker_run_entity_id": "worker_2077c18b-0880-4f5a-b5fa-607346aa72e3"
+  },
+  {
+   "attempt": 1,
+   "candidate": "a8e6428d-7f21-43e8-b5ff-6ed5bc805db3",
+   "conservative_cost_ceiling_usd": 0.03406745,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.002579,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0012895,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4615,
+     "prompt_tokens": 1810,
+     "reasoning_tokens": 4441,
+     "total_tokens": 6425
+    }
+   },
+   "failure": null,
+   "latency_seconds": 36.6,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started-r2/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-001-simonw-llm-run4-gett-r2-seo-01",
+   "worker_run_entity_id": "worker_a8e6428d-7f21-43e8-b5ff-6ed5bc805db3"
+  }
+ ],
+ "slice": "slice-001-simonw-llm-run4",
+ "started_at": "2026-09-18T20:19:17.735442Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 0,
+  "leakage": [],
+  "status": "pass",
+  "summary": "Verified all 28 claims against the packet. Every grounding_ref exists verbatim; support is accurate, with most claims close paraphrases of packet records under correct IDs; epistemic calibration is correct (author_claimed for meta_description/meta_homepage, observed only over observed-category evidence, inferred for exec_*/summary/teaching syntheses, unresolved for the contradictory teaching claim). No knowledge leakage, hallucinated names, grounding errors, or rights issues. Two packet-internal discrepancies (no-paths claim vs five listed paths; 13 paths and 2059 relations vs five listed paths and the 9698/7374 edge arithmetic) are real but honestly disclosed by the draft in c27, c28 and its uncertainties, so no writer fixes are required. The draft's treatment of the imperative runtime_hints lines as analyzer-method data rather than instructions or evidence is correct. Verdict: pass.",
+  "unsupported": []
+ }
+}

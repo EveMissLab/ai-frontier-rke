@@ -1,0 +1,222 @@
+{
+ "asset_type": "getting_started",
+ "backend": "macr",
+ "budget": {
+  "critic": 1,
+  "seo": 1,
+  "taxonomy": 1,
+  "verifier": 2,
+  "writer": 3
+ },
+ "completed_at": "2026-09-18T20:16:25.015088Z",
+ "deterministic_check_1": {
+  "failures": [
+   "c34: path 'readme.md' not in the analyzed file inventory",
+   "c34: path 'readme.md' not in the analyzed file inventory"
+  ],
+  "ok": false
+ },
+ "deterministic_check_2": {
+  "failures": [
+   "c34: unknown grounding ids ['important_2']",
+   "c34: path 'readme.md' not in the analyzed file inventory",
+   "c34: path 'readme.md' not in the analyzed file inventory"
+  ],
+  "ok": false
+ },
+ "model": "glm-5.3-flash",
+ "outcome": "escalation_required",
+ "runs": [
+  {
+   "attempt": 1,
+   "candidate": "49dfb945-6813-46da-84c7-384b2fefa297",
+   "conservative_cost_ceiling_usd": 0.036482,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0200753,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.01003765,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 38122,
+     "prompt_tokens": 6762,
+     "reasoning_tokens": 34140,
+     "total_tokens": 44884
+    }
+   },
+   "failure": null,
+   "latency_seconds": 394.77,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started/writer-01.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "what_you_are_looking_at",
+     "what_it_needs",
+     "how_it_starts",
+     "where_to_look_first",
+     "what_this_analysis_cannot_tell_you",
+     "next_guides"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-writer-01",
+   "worker_run_entity_id": "worker_49dfb945-6813-46da-84c7-384b2fefa297"
+  },
+  {
+   "attempt": 2,
+   "candidate": "518664bc-d359-4baa-83d7-1d6a57f061e0",
+   "conservative_cost_ceiling_usd": 0.03918875,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00654975,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.003274875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 9513,
+     "prompt_tokens": 11955,
+     "reasoning_tokens": 5005,
+     "total_tokens": 21468
+    }
+   },
+   "failure": null,
+   "latency_seconds": 69.55,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started/writer-revision-02.json",
+   "role": "writer",
+   "status": "candidate_success",
+   "summary": {
+    "claims": 36,
+    "sections": [
+     "what_you_are_looking_at",
+     "what_it_needs",
+     "how_it_starts",
+     "where_to_look_first",
+     "what_this_analysis_cannot_tell_you",
+     "next_guides"
+    ],
+    "status": "draft_ready"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-writer-revision-02",
+   "worker_run_entity_id": "worker_518664bc-d359-4baa-83d7-1d6a57f061e0"
+  },
+  {
+   "attempt": 1,
+   "candidate": "a6b6a7d3-2191-4abf-93b4-14f1a170bd7a",
+   "conservative_cost_ceiling_usd": 0.039048650000000004,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.01443835,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.007219175,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 25349,
+     "prompt_tokens": 11759,
+     "reasoning_tokens": 23048,
+     "total_tokens": 37108
+    }
+   },
+   "failure": null,
+   "latency_seconds": 265.57,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started/verifier-01.json",
+   "role": "verifier",
+   "status": "candidate_success",
+   "summary": {
+    "claim_checks": {
+     "conflicting": 0,
+     "partially_supported": 0,
+     "supported": 35,
+     "unresolved": 0,
+     "unsupported": 1
+    },
+    "required_fixes": 1,
+    "status": "fail"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-verifier-01",
+   "worker_run_entity_id": "worker_a6b6a7d3-2191-4abf-93b4-14f1a170bd7a"
+  },
+  {
+   "attempt": 1,
+   "candidate": "14e54601-4202-46dd-bdea-711c8f796482",
+   "conservative_cost_ceiling_usd": 0.037043150000000004,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.00454175,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.002270875,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 6766,
+     "prompt_tokens": 7725,
+     "reasoning_tokens": 5881,
+     "total_tokens": 14491
+    }
+   },
+   "failure": null,
+   "latency_seconds": 66.25,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started/critic-01.json",
+   "role": "critic",
+   "status": "candidate_success",
+   "summary": {
+    "overclaim_flags": 2,
+    "scores": {
+     "beginner_readability": 0.6,
+     "coherence": 0.8,
+     "redundancy": 0.55,
+     "scope_discipline": 0.9,
+     "structure": 0.85
+    },
+    "status": "reviewed"
+   },
+   "task_id": "af-slice-001-simonw-llm-run4-gett-critic-01",
+   "worker_run_entity_id": "worker_14e54601-4202-46dd-bdea-711c8f796482"
+  },
+  {
+   "attempt": 1,
+   "candidate": "b8bf94e5-4046-4996-9435-253c41fb598e",
+   "conservative_cost_ceiling_usd": 0.03408245,
+   "cost": {
+    "cost_kind": "estimated",
+    "currency_cost_usd": 0.0023998,
+    "pricing_basis_version": "zai-2026-08-27",
+    "promotional_price_estimated_usd": 0.0011999,
+    "promotional_price_observed_on": "2026-08-27",
+    "usage": {
+     "cached_tokens": 0,
+     "completion_tokens": 4250,
+     "prompt_tokens": 1832,
+     "reasoning_tokens": 4097,
+     "total_tokens": 6082
+    }
+   },
+   "failure": null,
+   "latency_seconds": 44.15,
+   "output_ref": "slice-001-simonw-llm-run4/worker_runs/getting_started/seo-01.json",
+   "role": "formatter",
+   "status": "candidate_success",
+   "summary": {},
+   "task_id": "af-slice-001-simonw-llm-run4-gett-seo-01",
+   "worker_run_entity_id": "worker_b8bf94e5-4046-4996-9435-253c41fb598e"
+  }
+ ],
+ "slice": "slice-001-simonw-llm-run4",
+ "started_at": "2026-09-18T20:02:04.417235Z",
+ "synthetic": false,
+ "verifier_verdict": {
+  "fixes": 1,
+  "leakage": [
+   "c35 asserts companion overview and architecture guides exist and expand on specific content; no companion assets are referenced anywhere in the packet."
+  ],
+  "status": "fail",
+  "summary": "35 of 36 claims are supported with correct grounding refs and epistemic status; numbers, versions, paths and symbols all match the packet, README text is not mirrored, and packet-internal inconsistencies (denied execution paths, excluded readme.md, 3-vs-4 manifest count) are transparently surfaced rather than asserted. The single defect is c35, which asserts companion overview and architecture guides the packet never mentions. Minor non-blocking note: the asset summary's 'lists Sphinx documentation dependencies' could mirror c11's hedge more closely.",
+  "unsupported": [
+   "c35"
+  ]
+ }
+}

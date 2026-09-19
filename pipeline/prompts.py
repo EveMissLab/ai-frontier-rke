@@ -129,6 +129,18 @@ WRITER_GETTING_STARTED_REVISION_V1 = {
                 + "\n\nNO RECIPES: the revision must not introduce any shell command, package-manager invocation or install step; installation and run commands are not verified by this analysis (lim_2).",
 }
 
+# v1.1 (2026-09-19, after the llm pilot): the optional 'next_guides' section asked for sentences no packet record could
+# support (verifier: "asserts companion guides the packet never mentions"), and the writer discussed the analyzer's
+# excluded phantom README entry as if it were a repository fact. Both removed from the contract; the packet no longer
+# ships excluded_important_files for this asset.
+WRITER_GETTING_STARTED_V1_1 = {
+    "version": "writer/getting-started/v1.1",
+    "goal": WRITER_GETTING_STARTED_V1["goal"],
+    "contract": WRITER_GETTING_STARTED_V1["contract"]
+        .replace(" and 'next_guides' (one short paragraph pointing to the overview and architecture guides — no claims needed beyond the packet)", "")
+        .replace("Optional: 'what_the_project_says_about_itself'", "Do not mention other guides, companion assets or this site. Do not mention analyzer-internal exclusions or phantom entries; if the packet's uncertainties list an excluded file, that file is not part of the analyzed repository and is not a fact about it. Optional: 'what_the_project_says_about_itself'"),
+}
+
 CITATION_COMPLETENESS = ("CITATIONS: a claim that speaks about all listed execution paths, all module roles, all boundaries or all dependency records must cite every "
                          "record it covers (list every exec_*, role_*, boundary or dep id), or be scoped explicitly to the records it cites ('of the N listed paths, the three "
                          "cited …'). A negative statement ('no listed path reaches X') is a scan of records: cite every record scanned. A statement about an entrypoint's "
@@ -212,13 +224,13 @@ TAXONOMY_CLASSIFIER_V1 = {
     ]),
 }
 
-CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, WRITER_ARCHITECTURE_V1_1, WRITER_ARCHITECTURE_REVISION_V1_1, WRITER_GETTING_STARTED_V1, WRITER_GETTING_STARTED_REVISION_V1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
+CONTRACTS = {c["version"]: c for c in (WRITER_OVERVIEW_V1, WRITER_REVISION_V1, WRITER_ARCHITECTURE_V1, WRITER_ARCHITECTURE_REVISION_V1, WRITER_ARCHITECTURE_V1_1, WRITER_ARCHITECTURE_REVISION_V1_1, WRITER_GETTING_STARTED_V1, WRITER_GETTING_STARTED_V1_1, WRITER_GETTING_STARTED_REVISION_V1, VERIFIER_GROUNDING_V1, CRITIC_STRUCTURE_V1, SEO_METADATA_V1, SEO_METADATA_V1_1, TAXONOMY_CLASSIFIER_V1)}
 SEO_V = SEO_METADATA_V1_1["version"]
 
 # asset type -> (writer contract, revision contract). Verifier, critic and SEO contracts are shared.
 ASSET_CONTRACTS = {"overview": (WRITER_OVERVIEW_V1["version"], WRITER_REVISION_V1["version"]),
                    "architecture": (WRITER_ARCHITECTURE_V1_1["version"], WRITER_ARCHITECTURE_REVISION_V1_1["version"]),
-                   "getting_started": (WRITER_GETTING_STARTED_V1["version"], WRITER_GETTING_STARTED_REVISION_V1["version"])}
+                   "getting_started": (WRITER_GETTING_STARTED_V1_1["version"], WRITER_GETTING_STARTED_REVISION_V1["version"])}
 
 
 def contract_hash(version: str) -> str:
@@ -299,7 +311,7 @@ SCHEMAS = {
     WRITER_V: WRITER_SCHEMA, REVISION_V: WRITER_SCHEMA, VERIFIER_V: VERIFIER_SCHEMA, CRITIC_V: CRITIC_SCHEMA,
     WRITER_ARCHITECTURE_V1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1["version"]: ARCHITECTURE_SCHEMA,
     WRITER_ARCHITECTURE_V1_1["version"]: ARCHITECTURE_SCHEMA, WRITER_ARCHITECTURE_REVISION_V1_1["version"]: ARCHITECTURE_SCHEMA,
-    WRITER_GETTING_STARTED_V1["version"]: GETTING_STARTED_SCHEMA, WRITER_GETTING_STARTED_REVISION_V1["version"]: GETTING_STARTED_SCHEMA,
+    WRITER_GETTING_STARTED_V1["version"]: GETTING_STARTED_SCHEMA, WRITER_GETTING_STARTED_V1_1["version"]: GETTING_STARTED_SCHEMA, WRITER_GETTING_STARTED_REVISION_V1["version"]: GETTING_STARTED_SCHEMA,
     "writer/overview/v1.1": WRITER_SCHEMA, "writer/overview-revision/v1.1": WRITER_SCHEMA,  # v1.1 kept: run 3 validates against it
     "writer/overview/v1": WRITER_SCHEMA, "writer/overview-revision/v1": WRITER_SCHEMA, "verifier/grounding/v1": VERIFIER_SCHEMA,  # v1 kept: recorded runs 1-2 validate against it
     "critic/structure/v1": CRITIC_SCHEMA, "formatter/seo-metadata/v1": SEO_SCHEMA, "formatter/seo-metadata/v1.1": SEO_SCHEMA, "taxonomy_classifier/v1": TAXONOMY_SCHEMA,
