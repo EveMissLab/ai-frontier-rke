@@ -322,6 +322,12 @@ def getting_started_packet(bundle: dict, license_state: dict) -> dict:
     commands are not verified). README lines are included as non-citable context only: v0.10 extracts them
     line by line and the sample is mostly badges and code."""
     excluded = {x["excluded_id"] for x in bundle["uncertainties"]["excluded_important_files"]}
+    excluded_paths = {x.get("path") for x in bundle["uncertainties"]["excluded_important_files"] if x.get("path")}
+    # 2026-09-19 whisper: a teaching claim ("Read readme.md early ...") is the phantom entry's shadow — its only evidence was
+    # the excluded id and its text names the excluded path. Such claims never enter this packet.
+    def phantom_shadow(c):
+        ev = [e for e in c.get("evidence_ids", []) if e not in excluded]
+        return not ev and any(pth in c.get("text", "") for pth in excluded_paths)
     files = bundle["files"]
     manifests = sorted(f for f in files if f.split("/")[-1] in MANIFEST_NAMES or f.split("/")[-1].startswith("requirements"))[:20]
     dep_sources = sorted({d["source_path"] for d in bundle["dependency_records"]})
@@ -344,7 +350,7 @@ def getting_started_packet(bundle: dict, license_state: dict) -> dict:
         "readme_lines_author_claimed_noncitable": {"lines": bundle["readme_claims_author_claimed_low_quality"][:12], "note": "line-based extraction (lim_4), mostly badges and code; not citable and not to be mirrored"},
         "tests": {"count": len(bundle["tests"]), "sample": bundle["tests"][:10]},
         "files": {"count": len(files), "top_level_directories": bundle["repository_summary"]["top_level_directories"]},
-        "teaching_claims": [{"id": c["id"], "section": c.get("section"), "text": c["text"], "evidence_ids": [e for e in c.get("evidence_ids", []) if e not in excluded], "provenance": c.get("provenance"), "status": c.get("status")} for c in bundle["teaching_claims"]],
+        "teaching_claims": [{"id": c["id"], "section": c.get("section"), "text": c["text"], "evidence_ids": [e for e in c.get("evidence_ids", []) if e not in excluded], "provenance": c.get("provenance"), "status": c.get("status")} for c in bundle["teaching_claims"] if not phantom_shadow(c)],
         "limitations": [{"id": k, "text": v.get("text"), "epistemic_status": v.get("epistemic_status")} for k, v in bundle["groundings"].items() if k.startswith("lim_")],
         "uncertainties": {k: v for k, v in bundle["uncertainties"].items() if k != "excluded_important_files"},  # analyzer-internal; a newcomer guide must not narrate phantom entries
         "grounding_id_note": "Cite only IDs that appear in this packet: meta_*, important_*, entry_*, py_*, exec_*, dep_*, lim_*, claim_*, summary_repository, subsys_*, ev_*. Manifest file names and README lines are context, not citations.",
